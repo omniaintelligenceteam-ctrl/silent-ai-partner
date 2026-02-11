@@ -1,58 +1,95 @@
-import { Phone } from 'lucide-react'
+'use client'
+
+import Link from 'next/link'
 import { FadeIn } from '@/components/ui/FadeIn'
 
 export function Hero() {
   return (
-    <section className="relative pt-24 pb-36 overflow-hidden bg-bg-primary">
-      {/* Animated dot grid */}
-      <div className="absolute inset-0 hero-grid" />
-      {/* Floating orbs */}
-      <div className="orb orb-1" />
-      <div className="orb orb-2" />
-      {/* Radial vignette */}
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_0%,#06080F_70%)]" />
+    <section className="relative min-h-screen bg-bg-primary overflow-hidden">
+      {/* Background Effects */}
+      <div className="absolute inset-0">
+        <div className="hero-grid absolute inset-0"></div>
+        <div className="orb orb-1"></div>
+        <div className="orb orb-2"></div>
+      </div>
 
-      <div className="relative container mx-auto px-6 text-center">
-        <FadeIn>
-          <div className="inline-flex items-center gap-2 glass px-4 py-1.5 rounded-full text-xs font-medium tracking-[0.2em] uppercase text-slate-300 mb-8">
-            <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-            The Perfect Office Manager
+      {/* Content */}
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 pb-16">
+        <div className="grid lg:grid-cols-12 gap-8 items-center min-h-[80vh]">
+          {/* Main Content - Left Side */}
+          <div className="lg:col-span-8">
+            <FadeIn>
+              {/* Badge */}
+              <div className="inline-flex items-center px-4 py-2 rounded-full bg-slate-800/50 border border-orange-500/20 mb-8">
+                <span className="text-xs font-mono uppercase tracking-wide text-orange-400">
+                  THE AI OFFICE MANAGER FOR CONTRACTORS
+                </span>
+              </div>
+            </FadeIn>
+
+            <FadeIn delay={100}>
+              {/* Headline */}
+              <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold leading-tight mb-6">
+                <span className="text-white">ZERO VOICEMAIL.</span>
+                <br />
+                <span className="gradient-text">TOTAL LEVERAGE.</span>
+              </h1>
+            </FadeIn>
+
+            <FadeIn delay={200}>
+              {/* Subheadline */}
+              <p className="text-xl text-slate-300 mb-8 max-w-2xl leading-relaxed">
+                An AI office manager built for the mud, the noise, and the job site. 
+                Sarah handles your calls, books your jobs, and chases your invoices — 
+                while you're in the field.
+              </p>
+            </FadeIn>
+
+            <FadeIn delay={300}>
+              {/* CTAs */}
+              <div className="flex flex-col sm:flex-row gap-4">
+                <Link
+                  href="/demo"
+                  className="bg-gradient-to-r from-orange-500 to-amber-500 text-white px-8 py-4 rounded-lg font-semibold text-lg btn-glow hover:from-orange-600 hover:to-amber-600 transition-all duration-200 text-center"
+                >
+                  Try Sarah Free
+                </Link>
+                <Link
+                  href="#pricing"
+                  className="border-2 border-orange-500/30 text-orange-400 px-8 py-4 rounded-lg font-semibold text-lg hover:border-orange-400 hover:bg-orange-500/10 transition-all duration-200 text-center"
+                >
+                  See Pricing
+                </Link>
+              </div>
+            </FadeIn>
           </div>
-        </FadeIn>
 
-        <FadeIn delay={100}>
-          <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight leading-[0.95] mb-6">
-            She Never Misses.
-            <br />
-            <span className="gradient-text">She Never Quits.</span>
-          </h1>
-        </FadeIn>
-
-        <FadeIn delay={200}>
-          <p className="text-lg md:text-xl text-slate-400 mb-4 max-w-3xl mx-auto leading-relaxed">
-            An AI office manager who answers every call, books every job, texts your crew,
-            and remembers every customer — 24/7, 365 days a year.
-          </p>
-          <p className="text-base text-slate-500 mb-12">A real office manager costs $4,500/mo. Yours costs less than $20/day.</p>
-        </FadeIn>
-
-        <FadeIn delay={300}>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a
-              href="/demo"
-              className="bg-gradient-to-r from-blue-500 to-violet-500 hover:from-blue-400 hover:to-violet-400 text-white px-8 py-4 rounded-full text-lg font-semibold transition-all btn-glow inline-flex items-center justify-center gap-2"
-            >
-              <Phone className="w-5 h-5" />
-              Try Our Live Demo
-            </a>
-            <a
-              href="#pricing"
-              className="border border-white/20 text-white hover:border-blue-500/50 hover:text-blue-300 px-8 py-4 rounded-full text-lg font-semibold transition-all"
-            >
-              See Pricing
-            </a>
+          {/* Stats - Right Side */}
+          <div className="lg:col-span-4">
+            <div className="space-y-4">
+              <FadeIn delay={400}>
+                <div className="glass-card p-6">
+                  <div className="text-sm font-mono text-slate-400 mb-1">Revenue Protected</div>
+                  <div className="text-2xl font-bold text-emerald-400">$42,850</div>
+                </div>
+              </FadeIn>
+              
+              <FadeIn delay={500}>
+                <div className="glass-card p-6">
+                  <div className="text-sm font-mono text-slate-400 mb-1">Response Time</div>
+                  <div className="text-2xl font-bold text-orange-400">&lt;1 second</div>
+                </div>
+              </FadeIn>
+            </div>
           </div>
-        </FadeIn>
+        </div>
+      </div>
+
+      {/* Scroll Indicator */}
+      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2">
+        <div className="w-6 h-10 border-2 border-orange-500/30 rounded-full flex justify-center">
+          <div className="w-1 h-3 bg-orange-400 rounded-full mt-2 animate-bounce"></div>
+        </div>
       </div>
     </section>
   )

@@ -9,9 +9,9 @@
   --bg-primary: #06080F;
   --bg-secondary: #0A0F1E;
   --bg-tertiary: #111827;
-  --accent-blue: #3B82F6;
-  --accent-violet: #8B5CF6;
-  --accent-cyan: #06B6D4;
+  --accent-orange: #F97316;
+  --accent-amber: #F59E0B;
+  --accent-emerald: #10B981;
 }
 
 @theme inline {
@@ -20,10 +20,11 @@
   --color-bg-primary: #06080F;
   --color-bg-secondary: #0A0F1E;
   --color-bg-tertiary: #111827;
-  --color-accent-blue: #3B82F6;
-  --color-accent-violet: #8B5CF6;
-  --color-accent-cyan: #06B6D4;
+  --color-accent-orange: #F97316;
+  --color-accent-amber: #F59E0B;
+  --color-accent-emerald: #10B981;
   --font-sans: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, "SF Mono", Consolas, "Liberation Mono", Menlo, monospace;
 }
 
 /* ============================================
@@ -58,12 +59,12 @@ body {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: linear-gradient(180deg, #3B82F6, #8B5CF6);
+  background: linear-gradient(180deg, #F97316, #F59E0B);
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(180deg, #60A5FA, #A78BFA);
+  background: linear-gradient(180deg, #FB923C, #FBBF24);
 }
 
 /* ============================================
@@ -71,7 +72,7 @@ body {
    ============================================ */
 button:focus,
 a:focus {
-  outline: 2px solid #3B82F6;
+  outline: 2px solid #F97316;
   outline-offset: 2px;
 }
 
@@ -79,14 +80,14 @@ a:focus {
    GRADIENT TEXT
    ============================================ */
 .gradient-text {
-  background: linear-gradient(135deg, #3B82F6 0%, #8B5CF6 50%, #06B6D4 100%);
+  background: linear-gradient(135deg, #F97316 0%, #F59E0B 50%, #FBBF24 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
 .gradient-text-warm {
-  background: linear-gradient(135deg, #EF4444 0%, #F97316 100%);
+  background: linear-gradient(135deg, #F97316 0%, #F59E0B 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -112,8 +113,8 @@ a:focus {
 }
 
 .glass-card:hover {
-  border-color: rgba(59, 130, 246, 0.3);
-  box-shadow: 0 0 30px rgba(59, 130, 246, 0.08);
+  border-color: rgba(249, 115, 22, 0.3);
+  box-shadow: 0 0 30px rgba(249, 115, 22, 0.08);
 }
 
 /* ============================================
@@ -130,7 +131,7 @@ a:focus {
   inset: 0;
   border-radius: 16px;
   padding: 1.5px;
-  background: linear-gradient(135deg, #3B82F6, #8B5CF6, #06B6D4, #3B82F6);
+  background: linear-gradient(135deg, #F97316, #F59E0B, #FBBF24, #F97316);
   background-size: 300% 300%;
   -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
   -webkit-mask-composite: xor;
@@ -154,14 +155,14 @@ a:focus {
 }
 
 .btn-glow:hover {
-  box-shadow: 0 0 24px rgba(59, 130, 246, 0.4), 0 0 48px rgba(139, 92, 246, 0.2);
+  box-shadow: 0 0 24px rgba(249, 115, 22, 0.4), 0 0 48px rgba(245, 158, 11, 0.2);
 }
 
 /* ============================================
    HERO BACKGROUND EFFECTS
    ============================================ */
 .hero-grid {
-  background-image: radial-gradient(circle, rgba(59, 130, 246, 0.15) 1px, transparent 1px);
+  background-image: radial-gradient(circle, rgba(249, 115, 22, 0.15) 1px, transparent 1px);
   background-size: 40px 40px;
   animation: grid-pulse 8s ease-in-out infinite;
 }
@@ -181,7 +182,7 @@ a:focus {
 .orb-1 {
   width: 600px;
   height: 600px;
-  background: radial-gradient(circle, rgba(59, 130, 246, 0.12) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(249, 115, 22, 0.12) 0%, transparent 70%);
   animation: orb-float-1 20s ease-in-out infinite;
   top: -200px;
   right: -100px;
@@ -190,7 +191,7 @@ a:focus {
 .orb-2 {
   width: 500px;
   height: 500px;
-  background: radial-gradient(circle, rgba(139, 92, 246, 0.1) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(245, 158, 11, 0.1) 0%, transparent 70%);
   animation: orb-float-2 25s ease-in-out infinite;
   bottom: -150px;
   left: -100px;
@@ -283,11 +284,11 @@ details[open] > div {
 
 @keyframes pulse-glow {
   0%, 100% { 
-    box-shadow: 0 0 20px rgba(59, 130, 246, 0.3);
+    box-shadow: 0 0 20px rgba(249, 115, 22, 0.3);
     transform: scale(1);
   }
   50% { 
-    box-shadow: 0 0 40px rgba(59, 130, 246, 0.6);
+    box-shadow: 0 0 40px rgba(249, 115, 22, 0.6);
     transform: scale(1.02);
   }
 }
@@ -313,6 +314,6 @@ details[open] > div {
   }
   .call-active {
     animation: none;
-    box-shadow: 0 0 20px rgba(59, 130, 246, 0.3);
+    box-shadow: 0 0 20px rgba(249, 115, 22, 0.3);
   }
 }
