@@ -27,14 +27,16 @@ export default function Home() {
           </div>
         </div>
         <div className="relative container mx-auto px-6 text-center">
+          <div className="text-sm font-semibold text-amber-400 tracking-widest uppercase mb-4">Your business. Always on.</div>
           <h1 className="text-5xl md:text-7xl font-bold mb-6 leading-tight">
-            Your Silent Partner<br />That{' '}
+            The Partner That<br />{' '}
             <span className="text-amber-400">Never Sleeps</span>
           </h1>
-          <p className="text-xl md:text-2xl text-gray-300 mb-12 max-w-4xl mx-auto leading-relaxed">
+          <p className="text-xl md:text-2xl text-gray-300 mb-4 max-w-4xl mx-auto leading-relaxed">
             AI that answers your phones, books your jobs, and runs 90% of your business — 
-            so you can focus on the work.
+            so you can focus on the work that pays.
           </p>
+          <p className="text-lg text-gray-500 mb-12">Built by a contractor. For contractors.</p>
           <div className="flex flex-col sm:flex-row gap-6 justify-center">
             <a 
               href="tel:+18667821303" 
@@ -55,9 +57,10 @@ export default function Home() {
       {/* Problem Section */}
       <section className="py-24 bg-gray-900">
         <div className="container mx-auto px-6">
-          <h2 className="text-4xl md:text-5xl font-bold text-center mb-16 text-amber-400">
-            The Hidden Cost of Missed Calls
+          <h2 className="text-4xl md:text-5xl font-bold text-center mb-6 text-amber-400">
+            Every Missed Call = Money Gone
           </h2>
+          <p className="text-center text-gray-400 text-lg mb-16 max-w-2xl mx-auto">While you&apos;re under a sink or on a roof, your phone is ringing. Here&apos;s what happens when nobody picks up:</p>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             <div className="text-center">
               <div className="text-6xl font-bold text-red-500 mb-4">62%</div>
@@ -73,7 +76,7 @@ export default function Home() {
             </div>
             <div className="text-center">
               <div className="text-6xl font-bold text-amber-400 mb-4">$500+</div>
-              <p className="text-gray-300 text-lg">Every missed call is a missed job worth</p>
+              <p className="text-gray-300 text-lg">lost revenue per missed call</p>
             </div>
           </div>
         </div>
@@ -91,21 +94,21 @@ export default function Home() {
                 1
               </div>
               <h3 className="text-2xl font-semibold mb-4">Customer Calls</h3>
-              <p className="text-gray-300 text-lg">Your phone rings, AI answers instantly</p>
+              <p className="text-gray-300 text-lg">Your phone rings. AI picks up on the first ring. Every time.</p>
             </div>
             <div className="text-center">
               <div className="bg-amber-500 text-black w-16 h-16 rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-6">
                 2
               </div>
               <h3 className="text-2xl font-semibold mb-4">AI Handles It</h3>
-              <p className="text-gray-300 text-lg">Books appointments, answers questions, captures leads</p>
+              <p className="text-gray-300 text-lg">Answers questions, gives quotes, books the job. Sounds human. Because it should.</p>
             </div>
             <div className="text-center">
               <div className="bg-amber-500 text-black w-16 h-16 rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-6">
                 3
               </div>
               <h3 className="text-2xl font-semibold mb-4">You Get Paid</h3>
-              <p className="text-gray-300 text-lg">Text notification with all details, job booked</p>
+              <p className="text-gray-300 text-lg">You get a text with the details. Job&apos;s booked. Customer&apos;s happy. You didn&apos;t lift a finger.</p>
             </div>
           </div>
         </div>
@@ -141,7 +144,7 @@ export default function Home() {
       <section className="py-24">
         <div className="container mx-auto px-6 text-center">
           <h2 className="text-4xl md:text-5xl font-bold mb-8 text-amber-400">
-            Don't take our word for it. Call right now.
+            Hear It Yourself. Right Now.
           </h2>
           <div className="bg-gray-900 border-2 border-amber-500 rounded-2xl p-12 max-w-2xl mx-auto">
             <div className="text-6xl md:text-7xl font-bold text-amber-400 mb-6">
@@ -263,7 +266,7 @@ export default function Home() {
           <h2 className="text-4xl md:text-5xl font-bold text-center mb-4 text-amber-400">
             What Our Customers Say
           </h2>
-          <p className="text-center text-gray-400 mb-16">Coming soon — we just launched!</p>
+          <p className="text-center text-gray-400 mb-16">Early customers are already seeing results</p>
           <div className="grid md:grid-cols-3 gap-8">
             <div className="bg-black border border-gray-700 rounded-lg p-8 text-center">
               <div className="text-amber-400 text-6xl mb-4">"</div>
@@ -335,7 +338,7 @@ export default function Home() {
             Stop Missing Calls. Start Tonight.
           </h2>
           <p className="text-xl text-black/80 mb-12 max-w-2xl mx-auto">
-            Join hundreds of contractors who never miss another call. Setup takes 5 minutes.
+            One missed emergency call = one lost customer. Stop the bleeding. Setup takes 5 minutes.
           </p>
           <a 
             href="tel:+18667821303" 
