@@ -40,3 +40,4 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 tools/lead-scraper/node_modules/
+webhook/node_modules/
