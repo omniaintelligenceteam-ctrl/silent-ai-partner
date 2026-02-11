@@ -1,0 +1,54 @@
+[
+  {
+    "timestamp": "2026-02-11T06:10:35.269Z",
+    "caller": "+14805551234",
+    "duration": 127,
+    "endedReason": "hangup",
+    "extracted": {},
+    "transcriptLength": 622
+  },
+  {
+    "timestamp": "2026-02-11T06:10:56.439Z",
+    "caller": "+14805551234",
+    "duration": 127,
+    "endedReason": "hangup",
+    "extracted": {},
+    "transcriptLength": 634
+  },
+  {
+    "timestamp": "2026-02-11T06:11:35.610Z",
+    "caller": "+14805551234",
+    "duration": 127,
+    "endedReason": "hangup",
+    "extracted": {
+      "customer_name": "John Martinez",
+      "customer_phone": null,
+      "service_needed": "Leaking gas water heater, water covering garage floor",
+      "urgency": "emergency",
+      "preferred_time": "ASAP (emergency same-day)",
+      "address": "4521 East Cactus Road, Scottsdale",
+      "special_notes": "Gas water heater, 50 gallon capacity",
+      "estimated_value": "$164 ($89 assessment + $75 emergency fee)",
+      "summary": "John Martinez called about an actively leaking 50-gallon gas water heater flooding his garage, requesting emergency same-day service."
+    },
+    "transcriptLength": 634
+  },
+  {
+    "timestamp": "2026-02-11T06:18:27.857Z",
+    "caller": "+12705597478",
+    "duration": 0,
+    "endedReason": "customer-ended-call",
+    "extracted": {
+      "customer_name": "Sam Thompson",
+      "customer_phone": "270-556-8432",
+      "service_needed": "Leaky faucet that drips when turned on",
+      "urgency": "routine",
+      "preferred_time": "Tomorrow at 4:00 PM",
+      "address": "842 Westwood Drive, Scottsdale, Arizona",
+      "special_notes": "$49 service call fee (waived if work approved). Technician will call 30 minutes before arrival. Estimated repair cost $150-$300.",
+      "estimated_value": "$150-$300",
+      "summary": "Customer reported a leaky faucet and scheduled a service appointment for tomorrow at 4 PM at their Scottsdale address."
+    },
+    "transcriptLength": 1801
+  }
+]
