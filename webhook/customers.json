@@ -1,0 +1,11 @@
+{
+  "customers": [
+    {
+      "id": "demo",
+      "business_name": "Mike's Plumbing",
+      "owner_phone": "+15551234567",
+      "twilio_number": "+18667821303",
+      "features": ["silent-listener", "ai-receptionist"]
+    }
+  ]
+}

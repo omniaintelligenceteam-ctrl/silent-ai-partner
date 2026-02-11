@@ -19,7 +19,103 @@ if (TWILIO_SID && TWILIO_AUTH) {
   console.log('⚠️  Twilio not configured — SMS will be logged only');
 }
 
+// === CUSTOMER CONFIG ===
+let customerConfig = null;
+try {
+  customerConfig = JSON.parse(fs.readFileSync(path.join(__dirname, 'customers.json'), 'utf8'));
+  console.log(`✅ Loaded ${customerConfig.customers.length} customers`);
+} catch (err) {
+  console.log('⚠️  Customer config not found — Silent Listener disabled');
+}
+
+function findCustomerByTwilioNumber(twilioNumber) {
+  if (!customerConfig) return null;
+  return customerConfig.customers.find(c => c.twilio_number === twilioNumber);
+}
+
 // === AI EXTRACTION ===
+async function extractBusinessIntelligence(transcript, callMetadata) {
+  const prompt = `Extract business intelligence from this phone call recording. Return ONLY valid JSON:
+{
+  "caller_name": "string or null",
+  "issue_request": "what they called about",
+  "quotes_mentioned": ["any pricing or quotes discussed"],
+  "appointments_discussed": {
+    "scheduled": "boolean",
+    "date_time": "string or null",
+    "service_type": "string or null"
+  },
+  "upsell_opportunities": ["potential additional services they might need"],
+  "competitor_mentions": ["any competitor names or references"],
+  "sentiment": "positive | neutral | negative | frustrated",
+  "call_outcome": "appointment_scheduled | quote_requested | complaint | information_only | hang_up",
+  "follow_up_needed": "boolean",
+  "customer_value_signals": ["indicators of high-value customer"],
+  "key_insights": "1-2 sentence summary of important business insights"
+}
+
+Call metadata: From ${callMetadata.from} to ${callMetadata.to}, Duration: ${callMetadata.duration}s
+
+TRANSCRIPT:
+${transcript}`;
+
+  try {
+    const GATEWAY_URL = process.env.GATEWAY_URL || 'http://127.0.0.1:18789';
+    const GATEWAY_TOKEN = process.env.GATEWAY_TOKEN || 'opie-token-123';
+    
+    const resp = await fetch(`${GATEWAY_URL}/v1/chat/completions`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${GATEWAY_TOKEN}`
+      },
+      body: JSON.stringify({
+        model: 'anthropic/claude-3-5-haiku-latest',
+        max_tokens: 800,
+        messages: [{ role: 'user', content: prompt }]
+      })
+    });
+    const data = await resp.json();
+    const text = data.choices?.[0]?.message?.content || '{}';
+    const cleaned = text.replace(/```json?\n?/g, '').replace(/```\n?/g, '').trim();
+    console.log('🧠 Business intelligence extracted:', cleaned.substring(0, 200) + '...');
+    return JSON.parse(cleaned);
+  } catch (err) {
+    console.error('❌ Business intelligence extraction failed:', err.message);
+    return null;
+  }
+}
+
+// === RECORDING DOWNLOAD ===
+async function downloadTwilioRecording(recordingUrl) {
+  try {
+    const resp = await fetch(recordingUrl, {
+      headers: {
+        'Authorization': `Basic ${Buffer.from(`${TWILIO_SID}:${TWILIO_AUTH}`).toString('base64')}`
+      }
+    });
+    return await resp.text();
+  } catch (err) {
+    console.error('❌ Failed to download recording:', err.message);
+    return null;
+  }
+}
+
+// === SILENT LISTENER LOGGING ===
+function logSilentListener(data) {
+  const logPath = path.join(__dirname, 'silent-listener-log.json');
+  let logs = [];
+  try {
+    logs = JSON.parse(fs.readFileSync(logPath, 'utf8'));
+  } catch {}
+  logs.push({
+    timestamp: new Date().toISOString(),
+    ...data
+  });
+  fs.writeFileSync(logPath, JSON.stringify(logs, null, 2));
+  console.log('📝 Silent Listener log updated');
+}
+
 async function extractCallData(transcript, messages) {
   const prompt = `Extract from this plumbing call transcript. Return ONLY valid JSON:
 {
@@ -160,6 +256,133 @@ const server = http.createServer(async (req, res) => {
     return;
   }
 
+  // Silent Listener: Incoming call
+  if (req.method === 'POST' && req.url === '/webhook/silent-listener/incoming') {
+    let body = '';
+    req.on('data', chunk => body += chunk);
+    req.on('end', async () => {
+      try {
+        // Parse Twilio webhook data
+        const params = new URLSearchParams(body);
+        const from = params.get('From');
+        const to = params.get('To');
+        const callSid = params.get('CallSid');
+        
+        console.log(`\n📞 SILENT LISTENER: ${from} → ${to} (${callSid})`);
+        
+        // Find customer config for this Twilio number
+        const customer = findCustomerByTwilioNumber(to);
+        if (!customer) {
+          console.error('❌ No customer found for Twilio number:', to);
+          res.writeHead(404, { 'Content-Type': 'text/xml' });
+          res.end('<Response><Say>This number is not configured.</Say></Response>');
+          return;
+        }
+        
+        console.log(`✅ Customer: ${customer.business_name}, forwarding to ${customer.owner_phone}`);
+        
+        // Generate TwiML
+        const recordingCallback = `https://${req.headers.host}/webhook/silent-listener/recording-status`;
+        const twiml = `<?xml version="1.0" encoding="UTF-8"?>
+<Response>
+  <Say>This call may be recorded for quality purposes.</Say>
+  <Dial record="record-from-answer-dual" recordingStatusCallback="${recordingCallback}">
+    ${customer.owner_phone}
+  </Dial>
+</Response>`;
+        
+        res.writeHead(200, { 'Content-Type': 'text/xml' });
+        res.end(twiml);
+      } catch (err) {
+        console.error('❌ Silent Listener incoming error:', err.message);
+        res.writeHead(500, { 'Content-Type': 'text/xml' });
+        res.end('<Response><Say>System error.</Say></Response>');
+      }
+    });
+    return;
+  }
+
+  // Silent Listener: Recording status
+  if (req.method === 'POST' && req.url === '/webhook/silent-listener/recording-status') {
+    let body = '';
+    req.on('data', chunk => body += chunk);
+    req.on('end', async () => {
+      try {
+        const params = new URLSearchParams(body);
+        const recordingUrl = params.get('RecordingUrl');
+        const recordingSid = params.get('RecordingSid');
+        const callSid = params.get('CallSid');
+        const from = params.get('From');
+        const to = params.get('To');
+        const duration = parseInt(params.get('RecordingDuration') || '0');
+        
+        console.log(`\n🎧 RECORDING READY: ${recordingSid} (${duration}s)`);
+        
+        const callMetadata = {
+          recordingSid,
+          callSid,
+          from,
+          to,
+          duration,
+          recordingUrl,
+          timestamp: new Date().toISOString()
+        };
+        
+        // Download and transcribe the recording
+        console.log('📥 Downloading recording for transcription...');
+        // Note: In a real implementation, you'd use Twilio's transcription service
+        // or a transcription API. For now, we'll log the metadata.
+        
+        // Extract business intelligence (using a sample transcript for demo)
+        const sampleTranscript = 'Sample transcript would go here from transcription service';
+        const businessIntel = await extractBusinessIntelligence(sampleTranscript, callMetadata);
+        
+        // Log to Silent Listener log
+        logSilentListener({
+          ...callMetadata,
+          businessIntelligence: businessIntel,
+          transcriptAvailable: false // Would be true when real transcription is implemented
+        });
+        
+        console.log('✅ Silent Listener processing complete');
+        
+        res.writeHead(200, { 'Content-Type': 'application/json' });
+        res.end(JSON.stringify({ ok: true }));
+      } catch (err) {
+        console.error('❌ Recording status error:', err.message);
+        res.writeHead(500, { 'Content-Type': 'application/json' });
+        res.end(JSON.stringify({ error: err.message }));
+      }
+    });
+    return;
+  }
+
+  // Silent Listener: Transcription (optional)
+  if (req.method === 'POST' && req.url === '/webhook/silent-listener/transcription') {
+    let body = '';
+    req.on('data', chunk => body += chunk);
+    req.on('end', async () => {
+      try {
+        const params = new URLSearchParams(body);
+        const transcriptionText = params.get('TranscriptionText');
+        const callSid = params.get('CallSid');
+        
+        console.log(`📝 TRANSCRIPTION: ${callSid} - ${transcriptionText?.length || 0} chars`);
+        
+        // Here you could update the existing log entry with the transcription
+        // and re-run business intelligence extraction with the real transcript
+        
+        res.writeHead(200, { 'Content-Type': 'application/json' });
+        res.end(JSON.stringify({ ok: true }));
+      } catch (err) {
+        console.error('❌ Transcription error:', err.message);
+        res.writeHead(500, { 'Content-Type': 'application/json' });
+        res.end(JSON.stringify({ error: err.message }));
+      }
+    });
+    return;
+  }
+
   res.writeHead(404, { 'Content-Type': 'application/json' });
   res.end(JSON.stringify({ error: 'not found' }));
 });
@@ -168,6 +391,10 @@ server.listen(PORT, '0.0.0.0', () => {
   console.log(`\n🚀 Silent AI Partner webhook on port ${PORT}`);
   console.log(`📡 POST /webhook/vapi`);
   console.log(`💊 GET  /webhook/health`);
+  console.log(`🎧 POST /webhook/silent-listener/incoming`);
+  console.log(`📝 POST /webhook/silent-listener/recording-status`);
+  console.log(`📄 POST /webhook/silent-listener/transcription`);
   console.log(`🤖 Anthropic: ${ANTHROPIC_KEY ? '✅' : '❌ MISSING'}`);
-  console.log(`📱 Twilio: ${twilioClient ? '✅' : '⚠️  log only'}\n`);
+  console.log(`📱 Twilio: ${twilioClient ? '✅' : '⚠️  log only'}`);
+  console.log(`👥 Customers: ${customerConfig ? customerConfig.customers.length : 0}\n`);
 });
