@@ -1,0 +1,178 @@
+[
+  {
+    "name": "Top Notch Plumbing and Drain",
+    "phone": "(480) 626-4990",
+    "email": "",
+    "website": "",
+    "address": "Gilbert, AZ",
+    "score": 60,
+    "scoreReasons": ["no_website", "has_phone", "likely_no_after_hours"],
+    "city": "Gilbert, AZ",
+    "scrapedDate": "2026-02-11"
+  },
+  {
+    "name": "Lawson Family Plumbing Inc.",
+    "phone": "(602) 413-5790",
+    "email": "",
+    "website": "https://lawsonfamilyplumbing.com",
+    "address": "1497 E Baseline Rd STE 110, Gilbert, AZ 85233",
+    "score": 40,
+    "scoreReasons": ["has_phone", "likely_no_after_hours"],
+    "city": "Gilbert, AZ",
+    "scrapedDate": "2026-02-11"
+  },
+  {
+    "name": "Gold Star Plumbing & Drain",
+    "phone": "(480) 405-0922",
+    "email": "",
+    "website": "",
+    "address": "Gilbert, AZ",
+    "score": 60,
+    "scoreReasons": ["no_website", "has_phone", "likely_no_after_hours"],
+    "city": "Gilbert, AZ",
+    "scrapedDate": "2026-02-11"
+  },
+  {
+    "name": "Travis & Sons Plumbing & Rooter",
+    "phone": "(480) 568-2309",
+    "email": "",
+    "website": "",
+    "address": "Gilbert, AZ",
+    "score": 60,
+    "scoreReasons": ["no_website", "has_phone", "likely_no_after_hours"],
+    "city": "Gilbert, AZ",
+    "scrapedDate": "2026-02-11"
+  },
+  {
+    "name": "Water Pros Plumbing",
+    "phone": "(480) 459-4424",
+    "email": "",
+    "website": "",
+    "address": "Gilbert, AZ",
+    "score": 60,
+    "scoreReasons": ["no_website", "has_phone", "likely_no_after_hours"],
+    "city": "Gilbert, AZ",
+    "scrapedDate": "2026-02-11"
+  },
+  {
+    "name": "Solace Plumbing",
+    "phone": "(480) 630-0224",
+    "email": "",
+    "website": "",
+    "address": "Gilbert, AZ",
+    "score": 60,
+    "scoreReasons": ["no_website", "has_phone", "likely_no_after_hours"],
+    "city": "Gilbert, AZ",
+    "scrapedDate": "2026-02-11"
+  },
+  {
+    "name": "The Neighborhood Plumbing and Air",
+    "phone": "(480) 233-3765",
+    "email": "",
+    "website": "",
+    "address": "Gilbert, AZ",
+    "score": 60,
+    "scoreReasons": ["no_website", "has_phone", "likely_no_after_hours"],
+    "city": "Gilbert, AZ",
+    "scrapedDate": "2026-02-11"
+  },
+  {
+    "name": "Phend Plumbing & Rooter LLC",
+    "phone": "(480) 388-6093",
+    "email": "",
+    "website": "",
+    "address": "Gilbert, AZ",
+    "score": 60,
+    "scoreReasons": ["no_website", "has_phone", "likely_no_after_hours"],
+    "city": "Gilbert, AZ",
+    "scrapedDate": "2026-02-11"
+  },
+  {
+    "name": "A/C & Plumbing Doctors",
+    "phone": "(602) 767-1830",
+    "email": "",
+    "website": "",
+    "address": "Gilbert, AZ",
+    "score": 60,
+    "scoreReasons": ["no_website", "has_phone", "likely_no_after_hours"],
+    "city": "Gilbert, AZ",
+    "scrapedDate": "2026-02-11"
+  },
+  {
+    "name": "Aspen Plumbing & Rooter LLC",
+    "phone": "(480) 571-0983",
+    "email": "",
+    "website": "https://www.aspenplumbingandrooter.com",
+    "address": "Gilbert, AZ",
+    "score": 40,
+    "scoreReasons": ["has_phone", "likely_no_after_hours"],
+    "city": "Gilbert, AZ",
+    "scrapedDate": "2026-02-11"
+  },
+  {
+    "name": "EZ Flow Plumbing LLC",
+    "phone": "",
+    "email": "",
+    "website": "https://www.ezflowplumbingaz.com",
+    "address": "Gilbert, AZ",
+    "score": 15,
+    "scoreReasons": ["likely_no_after_hours"],
+    "city": "Gilbert, AZ",
+    "scrapedDate": "2026-02-11"
+  },
+  {
+    "name": "Second Opinion Plumbing",
+    "phone": "(480) 365-9555",
+    "email": "",
+    "website": "https://secondopinionplumbingaz.com",
+    "address": "Gilbert, AZ",
+    "score": 40,
+    "scoreReasons": ["has_phone", "likely_no_after_hours"],
+    "city": "Gilbert, AZ",
+    "scrapedDate": "2026-02-11"
+  },
+  {
+    "name": "Ground Zero Plumbing & AC",
+    "phone": "(480) 448-0603",
+    "email": "",
+    "website": "https://www.groundzeroplumbingac.com",
+    "address": "Gilbert, AZ",
+    "score": 40,
+    "scoreReasons": ["has_phone", "likely_no_after_hours"],
+    "city": "Gilbert, AZ",
+    "scrapedDate": "2026-02-11"
+  },
+  {
+    "name": "City Wide Plumbing and Co.",
+    "phone": "(480) 966-8795",
+    "email": "",
+    "website": "https://citywideplumbingaz.com",
+    "address": "401 W. Orion St, Tempe, AZ 85283",
+    "score": 40,
+    "scoreReasons": ["has_phone", "likely_no_after_hours"],
+    "city": "Gilbert, AZ",
+    "scrapedDate": "2026-02-11"
+  },
+  {
+    "name": "Master Rooter Plumbing",
+    "phone": "(602) 399-9464",
+    "email": "",
+    "website": "https://masterrooter.co",
+    "address": "Gilbert, AZ",
+    "score": 40,
+    "scoreReasons": ["has_phone", "likely_no_after_hours"],
+    "city": "Gilbert, AZ",
+    "scrapedDate": "2026-02-11"
+  },
+  {
+    "name": "Cure All Plumbing",
+    "phone": "",
+    "email": "",
+    "website": "https://www.cureallplumbing.com",
+    "address": "Gilbert, AZ",
+    "score": 15,
+    "scoreReasons": ["likely_no_after_hours"],
+    "city": "Gilbert, AZ",
+    "scrapedDate": "2026-02-11"
+  }
+]

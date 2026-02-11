@@ -3,18 +3,18 @@ import { FadeIn } from '@/components/ui/FadeIn'
 const steps = [
   {
     num: 1,
-    title: 'Customer Calls',
-    desc: 'Your phone rings. AI picks up on the first ring. Every time.',
+    title: 'She Answers',
+    desc: 'Every call. First ring. 2am on a Sunday? She\'s there. Holiday weekend? She\'s there.',
   },
   {
     num: 2,
-    title: 'AI Handles It',
-    desc: 'Answers questions, gives quotes, books the job. Sounds human. Because it should.',
+    title: 'She Handles It',
+    desc: 'Knows your services, your prices, your schedule. Books the job. Texts your crew. Confirms with the customer.',
   },
   {
     num: 3,
     title: 'You Get Paid',
-    desc: "You get a text with the details. Job's booked. Customer's happy. You didn't lift a finger.",
+    desc: "You get a text: \"New job booked.\" That's it. She did everything else.",
   },
 ]
 
@@ -24,7 +24,7 @@ export function HowItWorks() {
       <div className="container mx-auto px-6">
         <FadeIn>
           <h2 className="text-3xl md:text-5xl lg:text-6xl font-bold text-center mb-20 tracking-tight">
-            How It <span className="gradient-text">Works</span>
+            Meet Your New <span className="gradient-text">Office Manager</span>
           </h2>
         </FadeIn>
 

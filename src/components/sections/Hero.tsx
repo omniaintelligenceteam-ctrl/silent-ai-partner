@@ -16,24 +16,24 @@ export function Hero() {
         <FadeIn>
           <div className="inline-flex items-center gap-2 glass px-4 py-1.5 rounded-full text-xs font-medium tracking-[0.2em] uppercase text-slate-300 mb-8">
             <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-            Your business. Always on.
+            The Perfect Office Manager
           </div>
         </FadeIn>
 
         <FadeIn delay={100}>
           <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight leading-[0.95] mb-6">
-            The Partner That
+            She Never Misses.
             <br />
-            <span className="gradient-text">Never Sleeps</span>
+            <span className="gradient-text">She Never Quits.</span>
           </h1>
         </FadeIn>
 
         <FadeIn delay={200}>
           <p className="text-lg md:text-xl text-slate-400 mb-4 max-w-3xl mx-auto leading-relaxed">
-            AI that answers your phones, books your jobs, and runs 90% of your business —
-            so you can focus on the work that pays.
+            An AI office manager who answers every call, books every job, texts your crew,
+            and remembers every customer — 24/7, 365 days a year.
           </p>
-          <p className="text-base text-slate-500 mb-12">Built by a contractor. For contractors.</p>
+          <p className="text-base text-slate-500 mb-12">A real office manager costs $4,500/mo. Yours costs less than $20/day.</p>
         </FadeIn>
 
         <FadeIn delay={300}>

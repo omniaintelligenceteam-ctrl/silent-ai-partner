@@ -1,0 +1,96 @@
+[
+  {
+    "name": "Mike's Emergency Plumbing",
+    "phone": "(480) 555-1234",
+    "email": "",
+    "website": "",
+    "address": "123 Main St, Scottsdale, AZ",
+    "rating": 4.2,
+    "reviews": 15,
+    "hours": "Mon-Fri 8-5",
+    "score": 85,
+    "category": "Plumber",
+    "city": "Scottsdale, AZ",
+    "scrapedDate": "2026-02-11",
+    "scoreReasons": [
+      "no_website",
+      "small_business",
+      "no_after_hours",
+      "has_phone"
+    ]
+  },
+  {
+    "name": "Desert Rose Plumbing LLC",
+    "phone": "(602) 555-5678",
+    "email": "info@desertroseplumbing.com",
+    "website": "https://desertroseplumbing.com",
+    "address": "456 Oak Ave, Scottsdale, AZ",
+    "rating": 4.7,
+    "reviews": 89,
+    "hours": "Mon-Fri 7-6, Sat 8-4",
+    "score": 35,
+    "category": "Plumber",
+    "city": "Scottsdale, AZ",
+    "scrapedDate": "2026-02-11",
+    "scoreReasons": [
+      "has_phone"
+    ]
+  },
+  {
+    "name": "Quick Fix Plumbing",
+    "phone": "",
+    "email": "",
+    "website": "",
+    "address": "789 Desert Rd, Scottsdale, AZ",
+    "rating": 3.8,
+    "reviews": 7,
+    "hours": "Mon-Fri 9-5",
+    "score": 45,
+    "category": "Plumber",
+    "city": "Scottsdale, AZ",
+    "scrapedDate": "2026-02-11",
+    "scoreReasons": [
+      "no_website",
+      "small_business",
+      "no_after_hours"
+    ]
+  },
+  {
+    "name": "Ace Plumbing & Drain Cleaning",
+    "phone": "(480) 555-9999",
+    "email": "service@aceplumbing.biz",
+    "website": "",
+    "address": "321 Cactus Blvd, Scottsdale, AZ",
+    "rating": 4.1,
+    "reviews": 23,
+    "hours": "Mon-Fri 8-5",
+    "score": 100,
+    "category": "Plumber",
+    "city": "Scottsdale, AZ",
+    "scrapedDate": "2026-02-11",
+    "scoreReasons": [
+      "no_website",
+      "communication_issues",
+      "small_business",
+      "no_after_hours",
+      "has_phone"
+    ]
+  },
+  {
+    "name": "Valley Wide Plumbing Services",
+    "phone": "(623) 555-2468",
+    "email": "contact@valleywideplumbing.com",
+    "website": "https://valleywideplumbing.com",
+    "address": "654 Mountain View Dr, Scottsdale, AZ",
+    "rating": 4.9,
+    "reviews": 156,
+    "hours": "24/7 Emergency Service",
+    "score": 25,
+    "category": "Plumber",
+    "city": "Scottsdale, AZ",
+    "scrapedDate": "2026-02-11",
+    "scoreReasons": [
+      "has_phone"
+    ]
+  }
+]

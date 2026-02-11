@@ -10,12 +10,12 @@ export function FooterCTA() {
       <div className="container mx-auto px-6 text-center relative">
         <FadeIn>
           <h2 className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight mb-6">
-            Stop Missing Calls.
+            Hire Her Tonight.
             <br />
-            <span className="gradient-text">Start Tonight.</span>
+            <span className="gradient-text">She Starts Immediately.</span>
           </h2>
           <p className="text-xl text-slate-400 mb-12 max-w-2xl mx-auto">
-            One missed emergency call = one lost customer. Stop the bleeding. Setup takes 5 minutes.
+            No interviews. No training. No sick days. Your perfect office manager is ready in 5 minutes.
           </p>
           <a
             href="tel:+18667821303"

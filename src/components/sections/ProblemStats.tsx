@@ -13,10 +13,10 @@ export function ProblemStats() {
       <div className="container mx-auto px-6">
         <FadeIn>
           <h2 className="text-3xl md:text-5xl lg:text-6xl font-bold text-center mb-4 tracking-tight">
-            Every Missed Call = <span className="text-red-400">Money Gone</span>
+            Your Best Employee <span className="text-red-400">Doesn&apos;t Exist Yet</span>
           </h2>
           <p className="text-center text-slate-400 text-lg mb-16 max-w-2xl mx-auto">
-            While you&apos;re under a sink or on a roof, your phone is ringing. Here&apos;s what happens when nobody picks up:
+            While you&apos;re on a job site, your phone is ringing. Your office manager called in sick. Again.
           </p>
         </FadeIn>
 
