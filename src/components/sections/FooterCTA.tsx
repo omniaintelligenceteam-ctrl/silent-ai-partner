@@ -18,11 +18,11 @@ export function FooterCTA() {
             No interviews. No training. No sick days. Your perfect office manager is ready in 5 minutes.
           </p>
           <a
-            href="tel:+18667821303"
+            href="/demo"
             className="bg-gradient-to-r from-blue-500 to-violet-500 hover:from-blue-400 hover:to-violet-400 text-white px-12 py-5 rounded-full text-xl font-semibold transition-all btn-glow inline-flex items-center gap-3"
           >
             <Phone className="w-6 h-6" />
-            Call Our Demo Line
+            Try Our Live Demo
           </a>
         </FadeIn>
       </div>

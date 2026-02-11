@@ -39,11 +39,11 @@ export function Hero() {
         <FadeIn delay={300}>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a
-              href="tel:+18667821303"
+              href="/demo"
               className="bg-gradient-to-r from-blue-500 to-violet-500 hover:from-blue-400 hover:to-violet-400 text-white px-8 py-4 rounded-full text-lg font-semibold transition-all btn-glow inline-flex items-center justify-center gap-2"
             >
               <Phone className="w-5 h-5" />
-              Call Our Demo Line
+              Try Our Live Demo
             </a>
             <a
               href="#pricing"

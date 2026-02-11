@@ -37,21 +37,21 @@ export function Demo() {
                 ))}
               </div>
 
-              <div className="text-5xl md:text-7xl font-bold gradient-text mb-6">
-                (866) 782-1303
+              <div className="text-3xl md:text-5xl font-bold gradient-text mb-6">
+                Talk to Sarah Live
               </div>
 
               <div className="flex items-center justify-center gap-2 mb-8">
                 <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-                <span className="text-sm text-emerald-400 font-medium">Sarah is live and ready</span>
+                <span className="text-sm text-emerald-400 font-medium">Sarah is live and ready — right in your browser</span>
               </div>
 
               <a
-                href="tel:+18667821303"
+                href="/demo"
                 className="bg-gradient-to-r from-blue-500 to-violet-500 hover:from-blue-400 hover:to-violet-400 text-white px-8 py-4 rounded-full text-xl font-semibold transition-all btn-glow inline-flex items-center gap-2"
               >
                 <Phone className="w-5 h-5" />
-                Call Now
+                Try Sarah Now
               </a>
             </div>
           </div>

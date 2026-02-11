@@ -21,11 +21,11 @@ export function Header() {
           Silent <span className="gradient-text">AI</span> Partner
         </div>
         <a
-          href="tel:+18667821303"
+          href="/demo"
           className="bg-gradient-to-r from-blue-500 to-violet-500 hover:from-blue-400 hover:to-violet-400 text-white px-6 py-2.5 rounded-full font-semibold transition-all btn-glow text-sm inline-flex items-center gap-2"
         >
           <Phone className="w-4 h-4" />
-          Call Demo Line
+          Try Demo
         </a>
       </div>
     </header>

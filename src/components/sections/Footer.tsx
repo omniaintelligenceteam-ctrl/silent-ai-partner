@@ -29,7 +29,7 @@ export function Footer() {
           {/* Quick Links */}
           <div className="flex flex-col gap-2 text-sm text-slate-400">
             <a href="#pricing" className="hover:text-white transition-colors w-fit">Pricing</a>
-            <a href="tel:+18667821303" className="hover:text-white transition-colors w-fit">Demo Line</a>
+            <a href="/demo" className="hover:text-white transition-colors w-fit">Demo Line</a>
             <a href="mailto:hello@silentaipartner.com" className="hover:text-white transition-colors w-fit">Contact</a>
           </div>
 
