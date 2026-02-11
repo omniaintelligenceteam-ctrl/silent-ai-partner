@@ -67,7 +67,7 @@ export function Features() {
       <div className="container mx-auto px-6">
         <FadeIn>
           <h2 className="text-3xl md:text-5xl lg:text-6xl font-bold text-center mb-16 tracking-tight">
-            Everything You <span className="gradient-text">Need</span>
+            What She <span className="gradient-text">Does For You</span>
           </h2>
         </FadeIn>
 
