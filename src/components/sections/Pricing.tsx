@@ -3,38 +3,44 @@ import { FadeIn } from '@/components/ui/FadeIn'
 
 const tiers = [
   {
-    name: 'Starter',
+    name: 'Answering Service',
     price: '$197',
+    subtitle: 'Never miss a call again',
     features: [
       '300 minutes included',
       '24/7 call answering',
       'Message taking & SMS alerts',
       'Basic FAQ handling',
+      'Call recordings',
     ],
     featured: false,
   },
   {
-    name: 'Professional',
+    name: 'Receptionist',
     price: '$297',
+    subtitle: 'Answer, book, confirm — hands-free',
     features: [
       '600 minutes included',
-      'Everything in Starter',
-      'Appointment booking',
-      'Emergency routing',
-      'Call recordings & transcripts',
+      'Everything in Answering Service',
+      'Appointment booking & confirmations',
+      'Emergency routing & dispatch',
+      'Full transcripts & recordings',
+      'Customer follow-up texts',
     ],
     featured: true,
   },
   {
-    name: 'Business',
+    name: 'Office Manager',
     price: '$497',
+    subtitle: 'A real office manager costs $4,500/mo',
     features: [
       '1,200 minutes included',
-      'Everything in Professional',
-      'Follow-up texts to missed calls',
+      'Everything in Receptionist',
+      'Auto-dispatch to right technician',
+      'Knows your services, pricing & schedule',
       'Custom voice & personality',
-      'Priority support',
       'Spanish language support',
+      'Priority support',
     ],
     featured: false,
   },
@@ -87,7 +93,8 @@ function TierContent({
 }) {
   return (
     <>
-      <h3 className="text-xl font-semibold mb-2">{tier.name}</h3>
+      <h3 className="text-xl font-semibold mb-1">{tier.name}</h3>
+      {tier.subtitle && <p className="text-xs text-slate-500 mb-2">{tier.subtitle}</p>}
       <div className="text-4xl font-bold gradient-text mb-6">
         {tier.price}
         <span className="text-lg text-slate-500">/mo</span>

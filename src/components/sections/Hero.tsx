@@ -30,10 +30,10 @@ export function Hero() {
 
         <FadeIn delay={200}>
           <p className="text-lg md:text-xl text-slate-400 mb-4 max-w-3xl mx-auto leading-relaxed">
-            AI that answers your phones, books your jobs, and runs 90% of your business —
-            so you can focus on the work that pays.
+            An AI office manager that answers calls, books jobs, dispatches your team,
+            and runs 90% of your business — for less than $20/day.
           </p>
-          <p className="text-base text-slate-500 mb-12">Built by a contractor. For contractors.</p>
+          <p className="text-base text-slate-500 mb-12">A real office manager costs $4,500/mo. Yours starts at $197.</p>
         </FadeIn>
 
         <FadeIn delay={300}>
