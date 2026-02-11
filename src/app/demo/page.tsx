@@ -3,12 +3,7 @@
 import { useState, useRef, useEffect } from 'react';
 import { Phone, PhoneCall, Calendar, Clock, DollarSign, Check, Mic, MicOff } from 'lucide-react';
 import { FadeIn } from '@/components/ui/FadeIn';
-
-declare global {
-  interface Window {
-    RetellWebClient: any;
-  }
-}
+import { RetellWebClient } from 'retell-client-js-sdk';
 
 type CallState = 'idle' | 'connecting' | 'connected' | 'disconnected';
 
@@ -77,14 +72,6 @@ export default function DemoPage() {
   const retellClient = useRef<any>(null);
 
   useEffect(() => {
-    // Load Retell SDK
-    const script = document.createElement('script');
-    script.src = 'https://cdn.jsdelivr.net/npm/retell-client-js-sdk/dist/index.js';
-    script.onload = () => {
-      console.log('Retell SDK loaded');
-    };
-    document.head.appendChild(script);
-
     return () => {
       if (retellClient.current) {
         retellClient.current.stopCall();
@@ -108,8 +95,8 @@ export default function DemoPage() {
       const { access_token } = await response.json();
       
       // Initialize Retell client
-      if (window.RetellWebClient) {
-        retellClient.current = new window.RetellWebClient();
+      {
+        retellClient.current = new RetellWebClient();
         
         // Set up event handlers
         retellClient.current.on('call_started', () => {
