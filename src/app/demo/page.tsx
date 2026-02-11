@@ -1,498 +1,395 @@
 'use client';
 
 import { useState, useRef, useEffect } from 'react';
-import { Phone, PhoneCall, Calendar, Clock, DollarSign, Check, Mic, MicOff, MessageSquare, Send, Wrench, AlertTriangle, HelpCircle } from 'lucide-react';
+import { Send, Calendar, ArrowLeft, Volume2, VolumeX } from 'lucide-react';
 import { FadeIn } from '@/components/ui/FadeIn';
-import { RetellWebClient } from 'retell-client-js-sdk';
 
-type CallState = 'idle' | 'connecting' | 'connected' | 'disconnected';
-type DemoMode = 'voice' | 'text';
-type Message = { role: 'user' | 'assistant'; content: string };
+type Message = {
+  role: 'user' | 'assistant';
+  content: string;
+  timestamp: Date;
+};
 
 const scriptPrompts = [
-  {
-    icon: Wrench,
-    label: "Leaky Faucet",
-    text: "Hi, I have a leaky faucet in my kitchen that won't stop dripping."
-  },
-  {
-    icon: AlertTriangle,
-    label: "Emergency",
-    text: "My pipe burst and there's water everywhere! I need someone now!"
-  },
-  {
-    icon: DollarSign,
-    label: "Pricing",
-    text: "How much does a water heater replacement cost?"
-  },
-  {
-    icon: Calendar,
-    label: "Schedule",
-    text: "I need to schedule a drain cleaning for sometime this week."
-  },
+  "I have a leaky faucet",
+  "My pipe burst, water everywhere",
+  "How much for water heater replacement?",
+  "Schedule drain cleaning"
 ];
 
-const features = [
-  { icon: Clock, text: "Answers every call in under 1 second" },
-  { icon: Calendar, text: "Books appointments automatically" },
-  { icon: PhoneCall, text: "Never calls in sick" },
-  { icon: DollarSign, text: "Costs less than $10/day" },
-];
-
-const tiers = [
-  {
-    name: 'Answering Service',
-    price: '$197',
-    features: [
-      '300 minutes included',
-      '24/7 call answering',
-      'Message taking & SMS alerts',
-      'Basic FAQ handling',
-      'Call recordings',
-    ],
-  },
-  {
-    name: 'Receptionist',
-    price: '$297',
-    features: [
-      '600 minutes included',
-      'Everything in Answering Service',
-      'Appointment booking & confirmations',
-      'Emergency routing & dispatch',
-      'Full transcripts & recordings',
-      'Customer follow-up texts',
-    ],
-    featured: true,
-  },
-  {
-    name: 'Office Manager',
-    price: '$497',
-    features: [
-      '1,200 minutes included',
-      'Everything in Receptionist',
-      'Auto-dispatch to right technician',
-      'Knows your services, pricing & schedule',
-      'Custom voice & personality',
-      'Spanish language support',
-    ],
-  },
-];
+const SARAH_GREETING = "Hi there! Mike's Plumbing, this is Sarah. How can I help you today?";
 
 export default function DemoPage() {
-  const [demoMode, setDemoMode] = useState<DemoMode>('text');
-  const [callState, setCallState] = useState<CallState>('idle');
-  const [isLoading, setIsLoading] = useState(false);
-  const [isSpeaking, setIsSpeaking] = useState(false);
   const [messages, setMessages] = useState<Message[]>([
-    { role: 'assistant', content: "Mike's Plumbing, this is Sarah. How can I help you today?" }
+    { 
+      role: 'assistant', 
+      content: SARAH_GREETING,
+      timestamp: new Date()
+    }
   ]);
   const [inputText, setInputText] = useState('');
-  const [isSending, setIsSending] = useState(false);
-  const retellClient = useRef<any>(null);
-  const chatEndRef = useRef<HTMLDivElement>(null);
+  const [isTyping, setIsTyping] = useState(false);
+  const [isPlaying, setIsPlaying] = useState(false);
+  const [audioQueue, setAudioQueue] = useState<string[]>([]);
+  const [isMuted, setIsMuted] = useState(false);
+  
+  const messagesEndRef = useRef<HTMLDivElement>(null);
+  const inputRef = useRef<HTMLInputElement>(null);
+  const currentAudioRef = useRef<HTMLAudioElement | null>(null);
+  const audioQueueRef = useRef<string[]>([]);
+  const isProcessingAudioRef = useRef(false);
 
+  // Auto-scroll to bottom when new messages arrive
   useEffect(() => {
-    chatEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+    messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
   }, [messages]);
 
+  // Auto-play Sarah's greeting on mount
   useEffect(() => {
-    return () => {
-      if (retellClient.current) {
-        retellClient.current.stopCall();
+    const timer = setTimeout(() => {
+      if (!isMuted) {
+        playTTS(SARAH_GREETING);
       }
-    };
-  }, []);
+    }, 1000);
+    return () => clearTimeout(timer);
+  }, [isMuted]);
 
-  // --- TEXT CHAT ---
+  // Process audio queue
+  useEffect(() => {
+    audioQueueRef.current = audioQueue;
+    if (audioQueue.length > 0 && !isProcessingAudioRef.current && !isMuted) {
+      processAudioQueue();
+    }
+  }, [audioQueue, isMuted]);
+
+  const processAudioQueue = async () => {
+    if (isProcessingAudioRef.current || audioQueueRef.current.length === 0 || isMuted) return;
+    
+    isProcessingAudioRef.current = true;
+    setIsPlaying(true);
+    
+    const textToSpeak = audioQueueRef.current[0];
+    
+    try {
+      const response = await fetch('/api/elevenlabs', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          text: textToSpeak,
+          voice_id: 'EXAVITQu4vr4xnSDxMaL',
+          model_id: 'eleven_turbo_v2_5'
+        }),
+      });
+
+      if (response.ok) {
+        const audioBlob = await response.blob();
+        const audioUrl = URL.createObjectURL(audioBlob);
+        
+        // Stop any currently playing audio
+        if (currentAudioRef.current) {
+          currentAudioRef.current.pause();
+          currentAudioRef.current.currentTime = 0;
+        }
+        
+        const audio = new Audio(audioUrl);
+        currentAudioRef.current = audio;
+        
+        audio.onended = () => {
+          URL.revokeObjectURL(audioUrl);
+          setAudioQueue(prev => prev.slice(1));
+          isProcessingAudioRef.current = false;
+          setIsPlaying(false);
+        };
+        
+        audio.onerror = () => {
+          URL.revokeObjectURL(audioUrl);
+          setAudioQueue(prev => prev.slice(1));
+          isProcessingAudioRef.current = false;
+          setIsPlaying(false);
+        };
+        
+        await audio.play();
+      } else {
+        throw new Error('TTS API failed');
+      }
+    } catch (error) {
+      console.error('TTS Error:', error);
+      setAudioQueue(prev => prev.slice(1));
+      isProcessingAudioRef.current = false;
+      setIsPlaying(false);
+    }
+  };
+
+  const playTTS = (text: string) => {
+    if (!isMuted) {
+      setAudioQueue(prev => [...prev, text]);
+    }
+  };
+
+  const stopAudio = () => {
+    if (currentAudioRef.current) {
+      currentAudioRef.current.pause();
+      currentAudioRef.current.currentTime = 0;
+    }
+    setAudioQueue([]);
+    isProcessingAudioRef.current = false;
+    setIsPlaying(false);
+  };
+
+  const toggleMute = () => {
+    if (!isMuted) {
+      stopAudio();
+    }
+    setIsMuted(!isMuted);
+  };
+
   const sendMessage = async (text?: string) => {
     const messageText = text || inputText.trim();
-    if (!messageText || isSending) return;
+    if (!messageText || isTyping) return;
 
-    const userMsg: Message = { role: 'user', content: messageText };
-    const newMessages = [...messages, userMsg];
-    setMessages(newMessages);
+    const userMessage: Message = {
+      role: 'user',
+      content: messageText,
+      timestamp: new Date()
+    };
+
+    setMessages(prev => [...prev, userMessage]);
     setInputText('');
-    setIsSending(true);
+    setIsTyping(true);
 
     try {
       const response = await fetch('/api/chat', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ messages: newMessages }),
+        body: JSON.stringify({ 
+          messages: [...messages, userMessage].map(m => ({
+            role: m.role,
+            content: m.content
+          }))
+        }),
       });
+
+      if (!response.ok) throw new Error('Chat API failed');
+      
       const data = await response.json();
-      setMessages(prev => [...prev, { role: 'assistant', content: data.message }]);
-    } catch {
-      setMessages(prev => [...prev, { role: 'assistant', content: "Sorry, I'm having trouble right now. Can you try again?" }]);
+      const assistantMessage: Message = {
+        role: 'assistant',
+        content: data.message,
+        timestamp: new Date()
+      };
+
+      setMessages(prev => [...prev, assistantMessage]);
+      
+      // Queue TTS for Sarah's response
+      playTTS(data.message);
+      
+    } catch (error) {
+      console.error('Chat error:', error);
+      const errorMessage: Message = {
+        role: 'assistant',
+        content: "Sorry, I'm having trouble right now. Can you try again?",
+        timestamp: new Date()
+      };
+      setMessages(prev => [...prev, errorMessage]);
+      playTTS(errorMessage.content);
     } finally {
-      setIsSending(false);
+      setIsTyping(false);
     }
   };
 
-  // --- VOICE CALL ---
-  const startCall = async () => {
-    setIsLoading(true);
-    try {
-      const response = await fetch('/api/retell', { method: 'POST' });
-      if (!response.ok) throw new Error('Failed to get access token');
-      const { access_token } = await response.json();
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    sendMessage();
+  };
 
-      retellClient.current = new RetellWebClient();
-
-      retellClient.current.on('call_started', () => {
-        setCallState('connected');
-        setIsLoading(false);
-      });
-      retellClient.current.on('call_ended', () => {
-        setCallState('disconnected');
-        setIsSpeaking(false);
-      });
-      retellClient.current.on('agent_start_talking', () => setIsSpeaking(true));
-      retellClient.current.on('agent_stop_talking', () => setIsSpeaking(false));
-      retellClient.current.on('error', () => {
-        setCallState('idle');
-        setIsLoading(false);
-      });
-
-      setCallState('connecting');
-      await retellClient.current.startCall({ accessToken: access_token });
-    } catch {
-      setCallState('idle');
-      setIsLoading(false);
+  const handleKeyPress = (e: React.KeyboardEvent) => {
+    if (e.key === 'Enter' && !e.shiftKey) {
+      e.preventDefault();
+      sendMessage();
     }
   };
 
-  const endCall = () => {
-    if (retellClient.current) {
-      retellClient.current.stopCall();
-      setCallState('idle');
-      setIsSpeaking(false);
-    }
-  };
-
-  const renderWaveform = () => {
-    const barHeights = [40, 60, 80, 100, 80, 60, 40, 55, 75, 95];
-    return (
-      <div className="flex items-center justify-center gap-1.5 mb-8">
-        {barHeights.map((h, i) => (
-          <div
-            key={i}
-            className={`w-2 rounded-full transition-all duration-150 ${
-              isSpeaking
-                ? 'bg-gradient-to-t from-emerald-500 to-blue-500 animate-pulse'
-                : 'bg-gradient-to-t from-blue-500/30 to-violet-500/30'
+  return (
+    <div className="h-screen bg-bg-primary text-white flex flex-col overflow-hidden">
+      {/* Header */}
+      <header className="flex items-center justify-between p-4 border-b border-white/10 bg-bg-secondary/50 backdrop-blur-xl">
+        <div className="flex items-center gap-3">
+          <a 
+            href="/" 
+            className="p-2 hover:bg-white/10 rounded-full transition-colors"
+            aria-label="Back to home"
+          >
+            <ArrowLeft className="w-5 h-5" />
+          </a>
+          <div className="flex items-center gap-3">
+            <div className="w-8 h-8 rounded-full bg-gradient-to-r from-orange-500 to-amber-500 flex items-center justify-center text-white font-semibold text-sm">
+              S
+            </div>
+            <div>
+              <h1 className="font-semibold text-white">Talk to Sarah</h1>
+              <div className="flex items-center gap-2 text-sm text-slate-400">
+                <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+                LIVE
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div className="flex items-center gap-2">
+          <button
+            onClick={toggleMute}
+            className={`p-2 rounded-full transition-all ${
+              isMuted 
+                ? 'bg-red-500/20 text-red-400 hover:bg-red-500/30' 
+                : isPlaying 
+                  ? 'bg-emerald-500/20 text-emerald-400 hover:bg-emerald-500/30 animate-pulse' 
+                  : 'bg-white/10 text-slate-400 hover:bg-white/20 hover:text-white'
             }`}
-            style={{
-              height: `${h * (isSpeaking ? 0.8 : 0.4)}px`,
-              animation: isSpeaking ? `waveform 0.8s ease-in-out infinite` : 'none',
-              animationDelay: `${i * 0.08}s`,
-            }}
-          />
-        ))}
-      </div>
-    );
-  };
-
-  return (
-    <div className="bg-bg-primary text-white min-h-screen">
-      {/* Navigation */}
-      <nav className="fixed top-0 left-0 right-0 z-50 glass border-b border-white/10">
-        <div className="container mx-auto px-6 py-4 flex justify-between items-center">
-          <div className="text-xl font-bold gradient-text">Silent AI Partner</div>
-          <a href="/" className="text-slate-300 hover:text-white transition-colors">Back to Home</a>
+            aria-label={isMuted ? 'Unmute Sarah' : 'Mute Sarah'}
+          >
+            {isMuted ? <VolumeX className="w-5 h-5" /> : <Volume2 className="w-5 h-5" />}
+          </button>
+          
+          <a 
+            href="https://calendly.com/silentaipartner"
+            className="bg-gradient-to-r from-orange-500 to-amber-500 hover:from-orange-400 hover:to-amber-400 text-white px-4 py-2 rounded-full text-sm font-medium transition-all btn-glow hidden sm:inline-flex items-center gap-2"
+          >
+            <Calendar className="w-4 h-4" />
+            Get Sarah
+          </a>
         </div>
-      </nav>
+      </header>
 
-      {/* Hero Section */}
-      <section className="relative pt-32 pb-24 overflow-hidden">
-        <div className="absolute inset-0 hero-grid" />
-        <div className="orb orb-1" />
-        <div className="orb orb-2" />
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_0%,#06080F_70%)]" />
-
-        <div className="relative container mx-auto px-6 text-center">
-          <FadeIn>
-            <div className="inline-flex items-center gap-2 glass px-4 py-1.5 rounded-full text-xs font-medium tracking-[0.2em] uppercase text-slate-300 mb-8">
-              <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-              Live AI Demo
-            </div>
-          </FadeIn>
-
-          <FadeIn delay={100}>
-            <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight leading-[0.95] mb-6">
-              Meet Sarah.
-              <br />
-              <span className="gradient-text">Your AI Receptionist.</span>
-            </h1>
-          </FadeIn>
-
-          <FadeIn delay={200}>
-            <p className="text-lg md:text-xl text-slate-400 mb-12 max-w-3xl mx-auto leading-relaxed">
-              Talk to Sarah right now — by voice or text. She handles calls like a real office manager:
-              booking appointments, taking messages, and answering questions.
-            </p>
-          </FadeIn>
-
-          {/* Mode Toggle */}
-          <FadeIn delay={250}>
-            <div className="flex items-center justify-center gap-2 mb-8">
-              <button
-                onClick={() => setDemoMode('text')}
-                className={`px-6 py-2.5 rounded-full font-medium transition-all inline-flex items-center gap-2 ${
-                  demoMode === 'text'
-                    ? 'bg-gradient-to-r from-blue-500 to-violet-500 text-white'
-                    : 'glass text-slate-400 hover:text-white'
-                }`}
+      {/* Messages */}
+      <div className="flex-1 overflow-y-auto p-4 space-y-4">
+        <FadeIn>
+          <div className="max-w-4xl mx-auto">
+            {messages.map((message, index) => (
+              <div
+                key={index}
+                className={`flex ${message.role === 'user' ? 'justify-end' : 'justify-start'} mb-4`}
               >
-                <MessageSquare className="w-4 h-4" />
-                Text Chat
-              </button>
-              <button
-                onClick={() => setDemoMode('voice')}
-                className={`px-6 py-2.5 rounded-full font-medium transition-all inline-flex items-center gap-2 ${
-                  demoMode === 'voice'
-                    ? 'bg-gradient-to-r from-blue-500 to-violet-500 text-white'
-                    : 'glass text-slate-400 hover:text-white'
-                }`}
-              >
-                <Phone className="w-4 h-4" />
-                Voice Call
-              </button>
-            </div>
-          </FadeIn>
-
-          {/* Demo Widget */}
-          <FadeIn delay={300}>
-            <div className="gradient-border-animated max-w-2xl mx-auto mb-8">
-              <div className="bg-bg-secondary rounded-2xl p-8 md:p-12">
-
-                {demoMode === 'voice' ? (
-                  /* VOICE MODE */
-                  <>
-                    {renderWaveform()}
-                    <div className="mb-8">
-                      <div className="text-2xl font-semibold mb-2">
-                        {callState === 'connected' ? "You're talking to Sarah!" : 'Ready to chat with Sarah?'}
-                      </div>
-                      <div className="flex items-center justify-center gap-2">
-                        {callState === 'connected' ? (
-                          <Mic className="w-4 h-4 text-emerald-400" />
-                        ) : (
-                          <MicOff className="w-4 h-4 text-slate-500" />
-                        )}
-                        <span className={`text-sm font-medium ${callState === 'connected' ? 'text-emerald-400' : 'text-slate-500'}`}>
-                          {callState === 'connected' ? 'Sarah is listening' : 'Click below to start'}
-                        </span>
-                      </div>
+                <div className="flex items-start gap-3 max-w-[80%] sm:max-w-[70%]">
+                  {message.role === 'assistant' && (
+                    <div className="w-8 h-8 rounded-full bg-gradient-to-r from-slate-600 to-slate-700 flex items-center justify-center text-white font-semibold text-sm mt-1 flex-shrink-0">
+                      S
                     </div>
-                    <button
-                      onClick={callState === 'connected' ? endCall : startCall}
-                      disabled={isLoading || callState === 'connecting'}
-                      className={`px-12 py-4 rounded-full text-xl font-semibold transition-all inline-flex items-center gap-3 ${
-                        callState === 'connected'
-                          ? 'bg-red-500 hover:bg-red-600 text-white'
-                          : 'bg-gradient-to-r from-blue-500 to-violet-500 hover:from-blue-400 hover:to-violet-400 text-white btn-glow'
-                      } ${isLoading || callState === 'connecting' ? 'opacity-50 cursor-not-allowed' : ''}`}
+                  )}
+                  
+                  <div className="flex flex-col">
+                    <div
+                      className={`rounded-2xl px-4 py-3 text-sm leading-relaxed ${
+                        message.role === 'user'
+                          ? 'bg-gradient-to-r from-orange-500 to-amber-500 text-white rounded-br-md'
+                          : 'bg-slate-800/80 text-slate-200 rounded-bl-md border border-slate-700/50'
+                      }`}
                     >
-                      {callState === 'connected' ? <PhoneCall className="w-6 h-6" /> : <Phone className="w-6 h-6" />}
-                      {callState === 'connecting' ? 'Connecting...' : callState === 'connected' ? 'End Call' : callState === 'disconnected' ? 'Call Again' : 'Try Sarah Now'}
-                    </button>
-                    {callState === 'connecting' && (
-                      <p className="text-slate-400 text-sm mt-4">Connecting to Sarah... Make sure to allow microphone access.</p>
-                    )}
-                  </>
-                ) : (
-                  /* TEXT CHAT MODE */
-                  <>
-                    {/* Chat Messages */}
-                    <div className="bg-black/30 rounded-xl p-4 mb-4 h-80 overflow-y-auto text-left space-y-3 scrollbar-thin scrollbar-thumb-slate-700">
-                      {messages.map((msg, i) => (
-                        <div key={i} className={`flex ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}>
-                          <div className={`max-w-[80%] rounded-2xl px-4 py-2.5 text-sm leading-relaxed ${
-                            msg.role === 'user'
-                              ? 'bg-gradient-to-r from-blue-500 to-violet-500 text-white'
-                              : 'bg-white/10 text-slate-200'
-                          }`}>
-                            {msg.role === 'assistant' && (
-                              <span className="text-xs text-emerald-400 font-medium block mb-1">Sarah</span>
-                            )}
-                            {msg.content}
-                          </div>
-                        </div>
-                      ))}
-                      {isSending && (
-                        <div className="flex justify-start">
-                          <div className="bg-white/10 rounded-2xl px-4 py-2.5 text-sm">
-                            <span className="text-xs text-emerald-400 font-medium block mb-1">Sarah</span>
-                            <span className="text-slate-400 animate-pulse">typing...</span>
-                          </div>
-                        </div>
+                      {message.role === 'assistant' && (
+                        <div className="text-xs text-emerald-400 font-medium mb-1">Sarah</div>
                       )}
-                      <div ref={chatEndRef} />
+                      {message.content}
                     </div>
-
-                    {/* Input */}
-                    <form
-                      onSubmit={(e) => { e.preventDefault(); sendMessage(); }}
-                      className="flex gap-2"
-                    >
-                      <input
-                        type="text"
-                        value={inputText}
-                        onChange={(e) => setInputText(e.target.value)}
-                        placeholder="Type your message to Sarah..."
-                        className="flex-1 bg-white/5 border border-white/10 rounded-full px-5 py-3 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-blue-500/50 transition-colors"
-                        disabled={isSending}
-                      />
-                      <button
-                        type="submit"
-                        disabled={!inputText.trim() || isSending}
-                        className="bg-gradient-to-r from-blue-500 to-violet-500 hover:from-blue-400 hover:to-violet-400 text-white p-3 rounded-full transition-all disabled:opacity-30"
-                      >
-                        <Send className="w-5 h-5" />
-                      </button>
-                    </form>
-                  </>
-                )}
-              </div>
-            </div>
-          </FadeIn>
-
-          {/* Script Prompts */}
-          <FadeIn delay={350}>
-            <div className="max-w-2xl mx-auto mb-16">
-              <p className="text-slate-500 text-sm mb-3">Not sure what to say? Try one of these:</p>
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-2">
-                {scriptPrompts.map((prompt, i) => (
-                  <button
-                    key={i}
-                    onClick={() => {
-                      if (demoMode === 'text') {
-                        sendMessage(prompt.text);
-                      } else {
-                        setInputText(prompt.text);
-                        setDemoMode('text');
-                        setTimeout(() => sendMessage(prompt.text), 100);
-                      }
-                    }}
-                    className="glass hover:bg-white/10 border border-white/5 hover:border-blue-500/30 rounded-xl p-3 text-left transition-all group"
-                  >
-                    <prompt.icon className="w-5 h-5 text-blue-400 mb-2 group-hover:text-blue-300" />
-                    <span className="text-xs text-slate-300 group-hover:text-white font-medium">{prompt.label}</span>
-                  </button>
-                ))}
-              </div>
-            </div>
-          </FadeIn>
-        </div>
-      </section>
-
-      {/* Features Section */}
-      <section className="py-16 bg-bg-secondary relative">
-        <div className="container mx-auto px-6">
-          <FadeIn>
-            <h2 className="text-3xl md:text-4xl font-bold text-center mb-16 tracking-tight">
-              Why Contractors <span className="gradient-text">Love Sarah</span>
-            </h2>
-          </FadeIn>
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
-            {features.map((feature, i) => (
-              <FadeIn key={i} delay={i * 100}>
-                <div className="glass-card p-6 text-center">
-                  <feature.icon className="w-12 h-12 mx-auto mb-4 text-blue-400" />
-                  <p className="text-slate-300 font-medium">{feature.text}</p>
+                    
+                    <div className={`text-xs text-slate-500 mt-1 ${
+                      message.role === 'user' ? 'text-right' : 'text-left'
+                    }`}>
+                      {message.timestamp.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
+                    </div>
+                  </div>
                 </div>
-              </FadeIn>
+              </div>
             ))}
-          </div>
-        </div>
-      </section>
 
-      {/* Pricing Section */}
-      <section className="py-24 bg-bg-primary relative">
-        <div className="container mx-auto px-6">
-          <FadeIn>
-            <h2 className="text-3xl md:text-5xl font-bold text-center mb-4 tracking-tight">
-              Simple <span className="gradient-text">Pricing</span>
-            </h2>
-            <p className="text-center text-slate-400 mb-16">No contracts. Cancel anytime.</p>
-          </FadeIn>
-          <div className="grid lg:grid-cols-3 gap-6 max-w-6xl mx-auto items-start">
-            {tiers.map((tier, i) => (
-              <FadeIn key={i} delay={i * 100}>
-                {tier.featured ? (
-                  <div className="gradient-border-animated lg:-translate-y-4">
-                    <div className="bg-bg-secondary rounded-2xl p-8 relative">
-                      <div className="absolute -top-3.5 left-1/2 -translate-x-1/2">
-                        <span className="bg-gradient-to-r from-blue-500 to-violet-500 text-white px-5 py-1.5 rounded-full text-xs font-bold tracking-wider uppercase">
-                          Most Popular
-                        </span>
+            {isTyping && (
+              <div className="flex justify-start mb-4">
+                <div className="flex items-start gap-3 max-w-[80%] sm:max-w-[70%]">
+                  <div className="w-8 h-8 rounded-full bg-gradient-to-r from-slate-600 to-slate-700 flex items-center justify-center text-white font-semibold text-sm mt-1 flex-shrink-0">
+                    S
+                  </div>
+                  <div className="bg-slate-800/80 border border-slate-700/50 rounded-2xl rounded-bl-md px-4 py-3">
+                    <div className="text-xs text-emerald-400 font-medium mb-1">Sarah</div>
+                    <div className="flex items-center gap-1">
+                      <div className="flex space-x-1">
+                        <div className="w-2 h-2 bg-slate-400 rounded-full animate-bounce" style={{ animationDelay: '0ms' }} />
+                        <div className="w-2 h-2 bg-slate-400 rounded-full animate-bounce" style={{ animationDelay: '150ms' }} />
+                        <div className="w-2 h-2 bg-slate-400 rounded-full animate-bounce" style={{ animationDelay: '300ms' }} />
                       </div>
-                      <TierContent tier={tier} featured />
+                      <span className="text-slate-500 text-sm ml-2">typing...</span>
                     </div>
                   </div>
-                ) : (
-                  <div className="glass-card p-8">
-                    <TierContent tier={tier} />
-                  </div>
-                )}
-              </FadeIn>
+                </div>
+              </div>
+            )}
+            
+            <div ref={messagesEndRef} />
+          </div>
+        </FadeIn>
+      </div>
+
+      {/* Quick Prompts */}
+      <div className="p-4 border-t border-white/10 bg-bg-secondary/30 backdrop-blur-xl">
+        <div className="max-w-4xl mx-auto mb-4">
+          <p className="text-slate-500 text-sm mb-3 text-center">Need help getting started? Try one of these:</p>
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
+            {scriptPrompts.map((prompt, index) => (
+              <button
+                key={index}
+                onClick={() => sendMessage(prompt)}
+                disabled={isTyping}
+                className="text-left p-3 bg-white/5 hover:bg-white/10 border border-white/10 hover:border-orange-500/30 rounded-xl transition-all text-sm text-slate-300 hover:text-white disabled:opacity-50 disabled:cursor-not-allowed"
+              >
+                "{prompt}"
+              </button>
             ))}
           </div>
         </div>
-      </section>
-
-      {/* CTA Section */}
-      <section className="py-24 bg-bg-secondary relative overflow-hidden">
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[400px] bg-blue-500/5 rounded-full blur-[100px]" />
-        <div className="container mx-auto px-6 text-center relative">
-          <FadeIn>
-            <h2 className="text-3xl md:text-5xl font-bold mb-6 tracking-tight">
-              Ready to Get <span className="gradient-text">Sarah</span>?
-            </h2>
-            <p className="text-slate-400 mb-12 text-lg max-w-2xl mx-auto">
-              Start your free trial today. No setup fees. No long-term contracts.
-              Just an AI that answers every call and books every job.
-            </p>
-            <a
-              href="https://calendly.com/silentaipartner"
-              className="bg-gradient-to-r from-blue-500 to-violet-500 hover:from-blue-400 hover:to-violet-400 text-white px-12 py-4 rounded-full text-xl font-semibold transition-all btn-glow inline-flex items-center gap-3"
-            >
-              <Calendar className="w-6 h-6" />
-              Start Your Free Trial
-            </a>
-          </FadeIn>
-        </div>
-      </section>
-    </div>
-  );
-}
-
-function TierContent({ tier, featured = false }: { tier: (typeof tiers)[number]; featured?: boolean }) {
-  return (
-    <>
-      <h3 className="text-xl font-semibold mb-4">{tier.name}</h3>
-      <div className="text-4xl font-bold gradient-text mb-6">
-        {tier.price}<span className="text-lg text-slate-500">/mo</span>
       </div>
-      <ul className="space-y-3 mb-8">
-        {tier.features.map((feature, j) => (
-          <li key={j} className="flex items-center gap-3">
-            <Check className="w-5 h-5 flex-shrink-0 text-blue-400" />
-            <span className="text-slate-300 text-sm">{feature}</span>
-          </li>
-        ))}
-      </ul>
-      <a
-        href="https://calendly.com/silentaipartner"
-        className={`w-full py-3 rounded-full font-semibold transition-all inline-block text-center ${
-          featured
-            ? 'bg-gradient-to-r from-blue-500 to-violet-500 hover:from-blue-400 hover:to-violet-400 text-white btn-glow'
-            : 'border border-white/20 hover:border-blue-500/50 text-white hover:text-blue-300'
-        }`}
-      >
-        Get Started
-      </a>
-    </>
+
+      {/* Input */}
+      <div className="p-4 bg-bg-secondary border-t border-white/10">
+        <div className="max-w-4xl mx-auto">
+          <form onSubmit={handleSubmit} className="flex gap-3 items-end">
+            <div className="flex-1 relative">
+              <input
+                ref={inputRef}
+                type="text"
+                value={inputText}
+                onChange={(e) => setInputText(e.target.value)}
+                onKeyPress={handleKeyPress}
+                placeholder="Type your message to Sarah..."
+                disabled={isTyping}
+                className="w-full bg-white/5 border border-white/10 focus:border-orange-500/50 focus:ring-2 focus:ring-orange-500/20 rounded-2xl px-6 py-4 text-white placeholder-slate-500 resize-none focus:outline-none transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+                maxLength={500}
+              />
+            </div>
+            
+            <button
+              type="submit"
+              disabled={!inputText.trim() || isTyping}
+              className="bg-gradient-to-r from-orange-500 to-amber-500 hover:from-orange-400 hover:to-amber-400 disabled:from-orange-500/50 disabled:to-amber-500/50 text-white p-4 rounded-2xl transition-all btn-glow disabled:cursor-not-allowed flex items-center justify-center"
+              aria-label="Send message"
+            >
+              <Send className="w-5 h-5" />
+            </button>
+          </form>
+          
+          <p className="text-center text-xs text-slate-500 mt-3">
+            Sarah responds with voice automatically. {isMuted && "🔇 Voice is muted."}
+          </p>
+        </div>
+      </div>
+
+      {/* Custom Styles */}
+      <style jsx>{`
+        @keyframes bounce {
+          0%, 80%, 100% { transform: translateY(0); }
+          40% { transform: translateY(-8px); }
+        }
+        
+        .animate-bounce {
+          animation: bounce 1.4s ease-in-out infinite;
+        }
+      `}</style>
+    </div>
   );
 }
