@@ -1,18 +1,40 @@
 @import "tailwindcss";
 
+/* ============================================
+   THEME TOKENS
+   ============================================ */
 :root {
-  --background: #000000;
-  --foreground: #ffffff;
+  --background: #06080F;
+  --foreground: #F8FAFC;
+  --bg-primary: #06080F;
+  --bg-secondary: #0A0F1E;
+  --bg-tertiary: #111827;
+  --accent-blue: #3B82F6;
+  --accent-violet: #8B5CF6;
+  --accent-cyan: #06B6D4;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --color-background: #06080F;
+  --color-foreground: #F8FAFC;
+  --color-bg-primary: #06080F;
+  --color-bg-secondary: #0A0F1E;
+  --color-bg-tertiary: #111827;
+  --color-accent-blue: #3B82F6;
+  --color-accent-violet: #8B5CF6;
+  --color-accent-cyan: #06B6D4;
+  --font-sans: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
 }
 
+/* ============================================
+   BASE STYLES
+   ============================================ */
 * {
   box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
@@ -24,32 +46,225 @@ body {
   padding: 0;
 }
 
-/* Smooth scrolling */
-html {
-  scroll-behavior: smooth;
-}
-
-/* Custom scrollbar */
+/* ============================================
+   SCROLLBAR
+   ============================================ */
 ::-webkit-scrollbar {
   width: 8px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #1a1a1a;
+  background: #0A0F1E;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #f59e0b;
+  background: linear-gradient(180deg, #3B82F6, #8B5CF6);
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #d97706;
+  background: linear-gradient(180deg, #60A5FA, #A78BFA);
 }
 
-/* Focus styles */
+/* ============================================
+   FOCUS STYLES
+   ============================================ */
 button:focus,
 a:focus {
-  outline: 2px solid #f59e0b;
+  outline: 2px solid #3B82F6;
   outline-offset: 2px;
+}
+
+/* ============================================
+   GRADIENT TEXT
+   ============================================ */
+.gradient-text {
+  background: linear-gradient(135deg, #3B82F6 0%, #8B5CF6 50%, #06B6D4 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.gradient-text-warm {
+  background: linear-gradient(135deg, #EF4444 0%, #F97316 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ============================================
+   GLASSMORPHISM
+   ============================================ */
+.glass {
+  background: rgba(15, 23, 42, 0.6);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(148, 163, 184, 0.1);
+}
+
+.glass-card {
+  background: rgba(15, 23, 42, 0.4);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(148, 163, 184, 0.08);
+  border-radius: 16px;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.glass-card:hover {
+  border-color: rgba(59, 130, 246, 0.3);
+  box-shadow: 0 0 30px rgba(59, 130, 246, 0.08);
+}
+
+/* ============================================
+   ANIMATED GRADIENT BORDER
+   ============================================ */
+.gradient-border-animated {
+  position: relative;
+  border-radius: 16px;
+}
+
+.gradient-border-animated::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 16px;
+  padding: 1.5px;
+  background: linear-gradient(135deg, #3B82F6, #8B5CF6, #06B6D4, #3B82F6);
+  background-size: 300% 300%;
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  animation: gradient-rotate 4s linear infinite;
+  pointer-events: none;
+}
+
+@keyframes gradient-rotate {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* ============================================
+   BUTTON GLOW
+   ============================================ */
+.btn-glow {
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.btn-glow:hover {
+  box-shadow: 0 0 24px rgba(59, 130, 246, 0.4), 0 0 48px rgba(139, 92, 246, 0.2);
+}
+
+/* ============================================
+   HERO BACKGROUND EFFECTS
+   ============================================ */
+.hero-grid {
+  background-image: radial-gradient(circle, rgba(59, 130, 246, 0.15) 1px, transparent 1px);
+  background-size: 40px 40px;
+  animation: grid-pulse 8s ease-in-out infinite;
+}
+
+@keyframes grid-pulse {
+  0%, 100% { opacity: 0.3; }
+  50% { opacity: 0.6; }
+}
+
+.orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  pointer-events: none;
+}
+
+.orb-1 {
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(59, 130, 246, 0.12) 0%, transparent 70%);
+  animation: orb-float-1 20s ease-in-out infinite;
+  top: -200px;
+  right: -100px;
+}
+
+.orb-2 {
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(139, 92, 246, 0.1) 0%, transparent 70%);
+  animation: orb-float-2 25s ease-in-out infinite;
+  bottom: -150px;
+  left: -100px;
+}
+
+@keyframes orb-float-1 {
+  0%, 100% { transform: translate(0, 0); }
+  33% { transform: translate(30px, -20px); }
+  66% { transform: translate(-20px, 15px); }
+}
+
+@keyframes orb-float-2 {
+  0%, 100% { transform: translate(0, 0); }
+  33% { transform: translate(-25px, 20px); }
+  66% { transform: translate(15px, -25px); }
+}
+
+/* ============================================
+   WAVEFORM ANIMATION
+   ============================================ */
+@keyframes waveform {
+  0%, 100% { transform: scaleY(0.4); opacity: 0.5; }
+  50% { transform: scaleY(1); opacity: 1; }
+}
+
+/* ============================================
+   FAQ ACCORDION
+   ============================================ */
+details summary::-webkit-details-marker {
+  display: none;
+}
+
+details summary {
+  list-style: none;
+}
+
+details[open] > div {
+  animation: accordion-open 0.3s ease-out;
+}
+
+@keyframes accordion-open {
+  from { opacity: 0; transform: translateY(-8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ============================================
+   PULSE RING (for step nodes)
+   ============================================ */
+@keyframes pulse-ring {
+  0% { transform: scale(1); opacity: 0.4; }
+  100% { transform: scale(1.8); opacity: 0; }
+}
+
+/* ============================================
+   RESPONSIVE: reduce animations on mobile
+   ============================================ */
+@media (max-width: 768px) {
+  .orb-1, .orb-2 {
+    width: 300px;
+    height: 300px;
+    filter: blur(60px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .orb-1, .orb-2 {
+    animation: none;
+  }
+  .hero-grid {
+    animation: none;
+    opacity: 0.3;
+  }
+  .gradient-border-animated::before {
+    animation: none;
+    background-position: 0% 50%;
+  }
 }
