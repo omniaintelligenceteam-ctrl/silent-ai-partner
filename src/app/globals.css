@@ -255,6 +255,47 @@ details[open] > div {
   }
 }
 
+/* ============================================
+   DEMO PAGE ANIMATIONS
+   ============================================ */
+@keyframes demo-waveform {
+  0%, 100% { 
+    transform: scaleY(0.3); 
+    opacity: 0.6; 
+  }
+  25% { 
+    transform: scaleY(0.8); 
+    opacity: 0.9; 
+  }
+  50% { 
+    transform: scaleY(1.2); 
+    opacity: 1; 
+  }
+  75% { 
+    transform: scaleY(0.9); 
+    opacity: 0.8; 
+  }
+}
+
+.demo-waveform-active .demo-waveform-bar {
+  animation: demo-waveform 0.6s ease-in-out infinite;
+}
+
+@keyframes pulse-glow {
+  0%, 100% { 
+    box-shadow: 0 0 20px rgba(59, 130, 246, 0.3);
+    transform: scale(1);
+  }
+  50% { 
+    box-shadow: 0 0 40px rgba(59, 130, 246, 0.6);
+    transform: scale(1.02);
+  }
+}
+
+.call-active {
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .orb-1, .orb-2 {
     animation: none;
@@ -266,5 +307,12 @@ details[open] > div {
   .gradient-border-animated::before {
     animation: none;
     background-position: 0% 50%;
+  }
+  .demo-waveform-bar {
+    animation: none !important;
+  }
+  .call-active {
+    animation: none;
+    box-shadow: 0 0 20px rgba(59, 130, 246, 0.3);
   }
 }
