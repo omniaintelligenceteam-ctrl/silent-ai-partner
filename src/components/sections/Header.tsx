@@ -1,29 +1,49 @@
 'use client'
 
 import Link from 'next/link'
-import { useState } from 'react'
+import { useState, useRef, useEffect } from 'react'
+
+const industries = [
+  { name: 'Plumbing', href: '/plumbing', emoji: '🔧' },
+  { name: 'HVAC', href: '/hvac', emoji: '❄️' },
+  { name: 'Landscape Lighting', href: '/landscape-lighting', emoji: '💡' },
+  { name: 'Electrical', href: '/electrical', emoji: '⚡' },
+]
 
 export function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+  const [demoDropdownOpen, setDemoDropdownOpen] = useState(false)
+  const dropdownRef = useRef<HTMLDivElement>(null)
+
+  // Close dropdown on outside click
+  useEffect(() => {
+    function handleClickOutside(event: MouseEvent) {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+        setDemoDropdownOpen(false)
+      }
+    }
+    document.addEventListener('mousedown', handleClickOutside)
+    return () => document.removeEventListener('mousedown', handleClickOutside)
+  }, [])
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 glass border-b border-slate-800/50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16">
+        <div className="flex items-center justify-between h-16 lg:h-20">
           {/* Logo */}
-          <Link href="/" className="flex items-center space-x-3 group">
+          <Link href="/" className="flex items-center space-x-3 lg:space-x-4 group">
             {/* Logo Icon */}
-            <div className="relative w-9 h-9 rounded-lg bg-gradient-to-br from-orange-500 to-amber-500 flex items-center justify-center shadow-lg shadow-orange-500/20 group-hover:shadow-orange-500/40 transition-shadow duration-300">
-              <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2.5}>
+            <div className="relative w-9 h-9 lg:w-12 lg:h-12 rounded-lg bg-gradient-to-br from-orange-500 to-amber-500 flex items-center justify-center shadow-lg shadow-orange-500/20 group-hover:shadow-orange-500/40 transition-shadow duration-300">
+              <svg className="w-5 h-5 lg:w-7 lg:h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2.5}>
                 <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z" />
               </svg>
             </div>
             {/* Logo Text */}
             <div className="flex flex-col leading-none" style={{ fontFamily: 'var(--font-display), sans-serif' }}>
-              <span className="text-[17px] font-bold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-white to-slate-300">
+              <span className="text-[17px] lg:text-[24px] font-bold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-white to-slate-300">
                 SILENT AI
               </span>
-              <span className="text-[10px] font-semibold tracking-[0.25em] uppercase text-orange-400">
+              <span className="text-[10px] lg:text-[13px] font-semibold tracking-[0.25em] uppercase text-orange-400">
                 PARTNER
               </span>
             </div>
@@ -43,12 +63,47 @@ export function Header() {
             >
               Pricing
             </Link>
-            <Link 
-              href="/demo" 
-              className="text-slate-300 hover:text-white transition-colors duration-200"
-            >
-              Demo
-            </Link>
+
+            {/* Industries Dropdown */}
+            <div className="relative" ref={dropdownRef}>
+              <button
+                onClick={() => setDemoDropdownOpen(!demoDropdownOpen)}
+                className="flex items-center space-x-1 text-slate-300 hover:text-white transition-colors duration-200"
+              >
+                <span>Industries</span>
+                <svg className={`w-4 h-4 transition-transform duration-200 ${demoDropdownOpen ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                </svg>
+              </button>
+
+              {demoDropdownOpen && (
+                <div className="absolute top-full left-1/2 -translate-x-1/2 mt-3 w-56 rounded-xl glass border border-slate-700/50 shadow-2xl shadow-black/50 overflow-hidden">
+                  <div className="py-2">
+                    {industries.map((industry) => (
+                      <Link
+                        key={industry.href}
+                        href={industry.href}
+                        className="flex items-center space-x-3 px-4 py-3 text-slate-300 hover:text-white hover:bg-orange-500/10 transition-all duration-150"
+                        onClick={() => setDemoDropdownOpen(false)}
+                      >
+                        <span className="text-lg">{industry.emoji}</span>
+                        <span className="font-medium">{industry.name}</span>
+                      </Link>
+                    ))}
+                    <div className="border-t border-slate-700/50 mt-1 pt-1">
+                      <Link
+                        href="/demo"
+                        className="flex items-center space-x-3 px-4 py-3 text-orange-400 hover:text-orange-300 hover:bg-orange-500/10 transition-all duration-150"
+                        onClick={() => setDemoDropdownOpen(false)}
+                      >
+                        <span className="text-lg">🎙️</span>
+                        <span className="font-medium">General Demo</span>
+                      </Link>
+                    </div>
+                  </div>
+                </div>
+              )}
+            </div>
           </nav>
 
           {/* Status Badge & CTA */}
@@ -60,7 +115,7 @@ export function Header() {
             
             <Link
               href="/demo"
-              className="bg-gradient-to-r from-orange-500 to-amber-500 text-white px-4 py-2 rounded-lg font-medium btn-glow hover:from-orange-600 hover:to-amber-600 transition-all duration-200"
+              className="bg-gradient-to-r from-orange-500 to-amber-500 text-white px-5 py-2.5 rounded-lg font-medium btn-glow hover:from-orange-600 hover:to-amber-600 transition-all duration-200"
             >
               Try Sarah Free
             </Link>
@@ -95,12 +150,31 @@ export function Header() {
               >
                 Pricing
               </Link>
+              
+              {/* Mobile Industries */}
+              <div className="border-t border-slate-800/50 pt-3">
+                <span className="text-xs font-mono text-slate-500 uppercase tracking-wider">Industries</span>
+                <div className="mt-2 space-y-2">
+                  {industries.map((industry) => (
+                    <Link
+                      key={industry.href}
+                      href={industry.href}
+                      className="flex items-center space-x-3 py-2 text-slate-300 hover:text-white transition-colors"
+                      onClick={() => setMobileMenuOpen(false)}
+                    >
+                      <span>{industry.emoji}</span>
+                      <span>{industry.name}</span>
+                    </Link>
+                  ))}
+                </div>
+              </div>
+
               <Link 
                 href="/demo" 
                 className="text-slate-300 hover:text-white transition-colors duration-200"
                 onClick={() => setMobileMenuOpen(false)}
               >
-                Demo
+                General Demo
               </Link>
               
               <div className="flex items-center space-x-2 text-xs font-mono pt-2 border-t border-slate-800/50">

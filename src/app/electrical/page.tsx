@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import { ArrowLeft, Phone, PhoneOff, Calendar, Zap, Plug, Gauge, Fan, Battery, AlertTriangle } from 'lucide-react';
 import { FadeIn } from '@/components/ui/FadeIn';
 import { Pricing } from '@/components/sections/Pricing';
+import { Header } from '@/components/sections/Header';
 import { RetellWebClient } from 'retell-client-js-sdk';
 
 type CallState = 'idle' | 'connecting' | 'connected' | 'error';
@@ -120,33 +121,8 @@ export default function ElectricalPage() {
   return (
     <div className="min-h-screen bg-bg-primary text-white flex flex-col">
       {/* Header */}
-      <header className="flex items-center justify-between p-4 border-b border-white/10 bg-bg-secondary/50 backdrop-blur-xl sticky top-0 z-50">
-        <div className="flex items-center gap-3">
-          <a 
-            href="/" 
-            className="p-2 hover:bg-white/10 rounded-full transition-colors"
-            aria-label="Back to home"
-          >
-            <ArrowLeft className="w-5 h-5" />
-          </a>
-          <div className="flex items-center gap-3">
-            <div className="w-8 h-8 rounded-full bg-gradient-to-r from-orange-500 to-amber-500 flex items-center justify-center text-white font-semibold text-sm">
-              S
-            </div>
-            <div>
-              <h1 className="font-semibold text-white text-sm sm:text-base">Silent AI Partner for Electricians</h1>
-            </div>
-          </div>
-        </div>
-        
-        <a 
-          href="https://calendly.com/silentaipartner"
-          className="bg-gradient-to-r from-orange-500 to-amber-500 hover:from-orange-400 hover:to-amber-400 text-white px-3 py-2 sm:px-4 sm:py-2 rounded-full text-sm font-medium transition-all btn-glow hidden sm:inline-flex items-center gap-2"
-        >
-          <Calendar className="w-4 h-4" />
-          Get Sarah
-        </a>
-      </header>
+      <Header />
+      <div className="pt-16 lg:pt-20"></div>
 
       {/* Hero Section */}
       <section className="py-16 sm:py-24 bg-bg-primary relative overflow-hidden">
