@@ -5,84 +5,87 @@ import { FadeIn } from '@/components/ui/FadeIn'
 
 const plans = [
   {
-    name: 'Answering Service',
-    role: 'Your Front Desk',
+    name: 'Starter',
+    role: 'Your AI Receptionist',
     price: 197,
-    minutes: '300 minutes',
+    setup: 200,
+    savings: '93% less than a $37K receptionist',
     features: [
-      'Answers every call 24/7',
-      'Takes messages — name, number, issue',
-      'SMS & email alerts',
-      'Basic FAQ handling',
-      'Call recordings',
-      'Overflow / after hours modes',
+      'Answers every call 24/7/365',
+      'Books appointments on the spot',
+      'Emergency call prioritization',
+      'SMS confirmations to customers',
+      'Call recordings & transcripts',
+      'Bilingual — English & Spanish',
+      'Never calls in sick, never late',
+      'Overflow & after-hours modes',
     ],
-    sarahSays: "I've got 3 messages from today. Want me to text you the details or should I just email the summary?",
+    sarahSays: "I booked 3 jobs today while you were on site. Mrs. Henderson's water heater is scheduled for Thursday at 2pm. Want me to text you the summary?",
     popular: false,
   },
   {
-    name: 'Receptionist',
-    role: 'Your Front Office',
+    name: 'Professional',
+    role: 'Your Smart Receptionist',
     price: 297,
-    minutes: '600 minutes',
+    setup: 500,
+    savings: '92% less than a $37K receptionist — and she sells',
     features: [
-      'Everything in Answering Service',
-      'Books appointments on the spot',
+      'Everything in Starter',
+      'Smart upselling on every call',
       'Calendar sync (Google, ServiceTitan, Jobber)',
+      'Trade-specific knowledge (plumbing, HVAC, electrical, lighting)',
+      'Objection handling & closing',
       'Confirmation & reminder texts',
-      'Emergency routing to your phone',
       'Remembers returning callers',
-      'Full call transcripts',
+      'Customer history & preferences',
     ],
-    sarahSays: "That's 4 jobs booked this week. I noticed Thursday has a gap at 2pm — want me to call back the Henderson lead and fill it?",
+    sarahSays: "That's 6 jobs booked this week — plus I upsold 2 maintenance plans and a water heater inspection. Thursday has a gap at 2pm, want me to call the Henderson lead?",
     popular: true,
   },
   {
-    name: 'Office Manager',
-    role: 'Your Operations',
-    price: 497,
-    minutes: '1,200 minutes',
+    name: 'Business',
+    role: 'Your Office Manager',
+    price: 397,
+    setup: 1000,
+    savings: '90% less than a $62K office manager',
     features: [
-      'Everything in Receptionist',
-      'Smart upselling on every call',
-      'CRM deep sync with full notes',
-      'Invoice follow-ups & reminders',
-      'Full customer history & preferences',
-      'Custom voice & personality',
-      'Spanish language support',
+      'Everything in Professional',
+      'Invoice follow-ups & payment reminders',
+      'Post-job follow-up calls',
+      'Review request automation (Google, Yelp)',
+      'Seasonal service campaigns',
+      'Lead scoring & priority flagging',
       'Auto-dispatch to right technician',
-      'Weekly summary reports',
+      'Custom voice & personality',
+      'Weekly performance reports',
     ],
-    sarahSays: "Revenue's up 12% this month. I've got two overdue invoices and a repeat customer asking about a maintenance plan. Want me to handle those or should we talk strategy first?",
+    sarahSays: "Revenue's up this month. I sent 12 review requests, chased 3 overdue invoices, and booked 8 maintenance plans from last month's customers. What should I hit next?",
     popular: false,
-    highlight: 'Sarah gets two $75 upsells a week. That\'s $600/mo. She costs $497. She pays for herself and buys you lunch.',
+    highlight: 'She doesn\'t just answer phones — she runs your office. Pays for herself in the first week.',
   },
   {
-    name: 'COO',
-    role: 'Your Executive',
-    price: 997,
-    minutes: 'Unlimited minutes',
+    name: 'Enterprise',
+    role: 'Your AI COO',
+    price: 497,
+    setup: 1500,
+    savings: '90% less than a $62K office manager — and she never stops',
     features: [
-      'Everything in Office Manager',
-      'Knows every inch of your business',
-      'Morning briefing + midday report + afternoon planning',
-      'AI business advisor — weekly strategy',
-      'Profit margin tracking per job',
-      'Predictive scheduling & hiring alerts',
-      'Cash flow alerts & revenue forecasting',
+      'Everything in Business',
+      'Morning briefing + end-of-day report',
+      'Revenue tracking & forecasting',
       'Automated marketing to past customers',
-      'Lead scoring & priority flagging',
+      'Competitor monitoring',
       'Crew performance tracking',
-      'Competitor pricing & review monitoring',
-      'Custom report builder',
-      '100% customizable workflows',
       'Multi-location support',
+      'Predictive scheduling',
+      'Cash flow alerts',
+      'Custom workflows & integrations',
       'Priority support + dedicated onboarding',
     ],
-    sarahSays: "Morning. You've got 8 jobs today, $14K in pending quotes, and a crew opening next Tuesday. I drafted a growth plan for Q2 — want me to walk you through it or should I start on those quotes first?",
+    sarahSays: "Morning. 8 jobs today, $14K in pending quotes, and that commercial lead called back — I booked him for 11am. I also noticed your Tuesday is light, want me to run a reactivation campaign?",
     popular: false,
     highlight: null,
-    morningBriefing: "Morning boss. When you left the office yesterday I handled that Rodriguez kitchen remodel you asked me to — sent the quote over at 7:01pm, they already replied saying they want to move forward. I also chased the 3 overdue invoices you flagged — Mrs. Chen paid hers, the other two said they'd send by Friday. Your schedule today: 6 jobs, Crew A starts at 7:30 in Mesa, and that $15K commercial lead from yesterday called back — I booked him for a site visit at 11am. What do you want me to hit first today?",
+    morningBriefing: "Morning boss. The Rodriguez quote I sent last night? They replied at 6am — they want to move forward. I chased 3 overdue invoices — Mrs. Chen paid, the other two said Friday. Today: 6 jobs, Crew A starts 7:30 in Mesa, and that $15K commercial lead is confirmed for 11am. What do you want me to hit first?",
     elite: true,
   },
 ]
@@ -137,7 +140,8 @@ export function Pricing() {
                     <span className="text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-amber-400">${plan.price}</span>
                     <span className="text-slate-500 ml-1">/mo</span>
                   </div>
-                  <div className="text-xs text-slate-500 mt-1 font-mono">{plan.minutes}</div>
+                  <div className="text-xs text-slate-500 mt-1 font-mono">${(plan as any).setup} setup</div>
+                  <div className="text-[10px] text-emerald-400 mt-2 font-medium">{(plan as any).savings}</div>
                 </div>
 
                 {/* Features */}
@@ -214,8 +218,8 @@ export function Pricing() {
         <FadeIn delay={600}>
           <div className="grid md:grid-cols-3 gap-6 max-w-4xl mx-auto text-center">
             <div>
-              <div className="text-orange-400 font-semibold mb-1">No Setup Fees</div>
-              <div className="text-slate-400 text-sm">Start immediately, zero upfront</div>
+              <div className="text-orange-400 font-semibold mb-1">One-Time Setup</div>
+              <div className="text-slate-400 text-sm">Custom configuration for your business</div>
             </div>
             <div>
               <div className="text-orange-400 font-semibold mb-1">Cancel Anytime</div>

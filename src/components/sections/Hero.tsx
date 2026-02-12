@@ -22,7 +22,7 @@ export function Hero() {
               {/* Badge */}
               <div className="inline-flex items-center px-4 py-2 rounded-full bg-slate-800/50 border border-orange-500/20 mb-8">
                 <span className="text-xs font-mono uppercase tracking-wide text-orange-400">
-                  THE AI OFFICE MANAGER FOR CONTRACTORS
+                  AI RECEPTIONIST & OFFICE MANAGER FOR CONTRACTORS
                 </span>
               </div>
             </FadeIn>
@@ -30,18 +30,18 @@ export function Hero() {
             <FadeIn delay={100}>
               {/* Headline */}
               <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold leading-tight mb-6">
-                <span className="text-white">ZERO VOICEMAIL.</span>
+                <span className="text-white">PAY 93% LESS.</span>
                 <br />
-                <span className="gradient-text">TOTAL LEVERAGE.</span>
+                <span className="gradient-text">SHE PAYS FOR THE REST.</span>
               </h1>
             </FadeIn>
 
             <FadeIn delay={200}>
               {/* Subheadline */}
               <p className="text-xl text-slate-300 mb-8 max-w-2xl leading-relaxed">
-                An AI office manager built for the mud, the noise, and the job site. 
-                Sarah handles your calls, books your jobs, and chases your invoices — 
-                while you're in the field.
+                The average contractor receptionist costs $37,000/yr. Sarah costs $197/mo. 
+                She doesn't just save you money — she books your jobs, upsells your services, 
+                and grows your business while you're in the field.
               </p>
             </FadeIn>
 
