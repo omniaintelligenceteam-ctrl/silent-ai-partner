@@ -27,8 +27,9 @@ export default function PlumbingPage() {
       setError('');
       
       // Get access token from our API
-      const response = await fetch('/api/retell', {
+      const response = await fetch("/api/retell", {
         method: 'POST',
+        body: JSON.stringify({ agent_id: "agent_5c7497a9685bfbf3fe546f07e7" }),
         headers: { 'Content-Type': 'application/json' },
       });
       

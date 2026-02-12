@@ -29,6 +29,7 @@ export default function ElectricalPage() {
       // Get access token from our API
       const response = await fetch('/api/retell', {
         method: 'POST',
+        body: JSON.stringify({ agent_id: "agent_70a42030363e2899b96acdf85a" }),
         headers: { 'Content-Type': 'application/json' },
       });
       

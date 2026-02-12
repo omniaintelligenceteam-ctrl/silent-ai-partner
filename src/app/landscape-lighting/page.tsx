@@ -29,6 +29,7 @@ export default function LandscapeLightingPage() {
       // Get access token from our API
       const response = await fetch('/api/retell', {
         method: 'POST',
+        body: JSON.stringify({ agent_id: "agent_032f8dd6a242ac38256c7b9954" }),
         headers: { 'Content-Type': 'application/json' },
       });
       
