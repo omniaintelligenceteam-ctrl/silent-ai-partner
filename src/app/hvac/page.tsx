@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react';
 import { ArrowLeft, Phone, PhoneOff, Calendar, Wind, Thermometer, Snowflake, Zap, Flame } from 'lucide-react';
 import { FadeIn } from '@/components/ui/FadeIn';
+import { Pricing } from '@/components/sections/Pricing';
 import { RetellWebClient } from 'retell-client-js-sdk';
 
 type CallState = 'idle' | 'connecting' | 'connected' | 'error';
@@ -435,6 +436,9 @@ export default function HVACPage() {
           </FadeIn>
         </div>
       </section>
+
+      {/* Pricing Section */}
+      <Pricing />
 
       {/* Footer */}
       <footer className="bg-bg-secondary border-t border-slate-800/50 mt-auto">
