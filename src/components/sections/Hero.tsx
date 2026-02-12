@@ -60,6 +60,13 @@ export function Hero() {
                 >
                   See Pricing
                 </Link>
+                <Link
+                  href="https://calendly.com/silentaipartner"
+                  target="_blank"
+                  className="border-2 border-slate-600 text-slate-300 px-8 py-4 rounded-lg font-semibold text-lg hover:border-slate-400 hover:text-white transition-all duration-200 text-center"
+                >
+                  Book a Demo Call
+                </Link>
               </div>
             </FadeIn>
           </div>
