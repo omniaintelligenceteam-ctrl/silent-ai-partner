@@ -97,7 +97,7 @@ export function Pricing() {
         <FadeIn>
           <div className="text-center mb-16">
             <span className="text-xs font-mono tracking-[0.3em] uppercase text-orange-400 block mb-4">CHOOSE YOUR SARAH</span>
-            <h2 className="text-4xl sm:text-5xl font-bold text-white mb-4">
+            <h2 className="text-4xl sm:text-5xl font-bold text-white mb-4" style={{ fontFamily: 'var(--font-display), sans-serif' }}>
               Four Levels. <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-amber-400">One Mission.</span>
             </h2>
             <p className="text-slate-400 text-lg">

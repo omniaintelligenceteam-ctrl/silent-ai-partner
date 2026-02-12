@@ -29,7 +29,7 @@ export function Hero() {
 
             <FadeIn delay={100}>
               {/* Headline */}
-              <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold leading-tight mb-6">
+              <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold leading-tight mb-6" style={{ fontFamily: 'var(--font-display), sans-serif' }}>
                 <span className="text-white">PAY 93% LESS.</span>
                 <br />
                 <span className="gradient-text">SHE PAYS FOR THE REST.</span>
