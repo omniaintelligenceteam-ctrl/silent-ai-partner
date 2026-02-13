@@ -104,8 +104,8 @@ export default function DemoPage() {
               <div className="text-4xl font-bold text-white">S</div>
             </div>
 
-            <h2 className="text-3xl font-semibold mb-2 tracking-tight">Sarah - AI Receptionist</h2>
-            <p className="text-slate-400 mb-8">Mike's Plumbing • Scottsdale, AZ</p>
+            <h2 className="text-3xl font-semibold mb-2 tracking-tight">Interview Sarah</h2>
+            <p className="text-slate-400 mb-8">Your AI Office Manager • Silent AI Partner</p>
 
             {callState === 'idle' && (
               <div className="space-y-6">
@@ -117,15 +117,15 @@ export default function DemoPage() {
                   className="bg-gradient-to-r from-orange-500 to-amber-500 hover:from-orange-400 hover:to-amber-400 text-white px-8 py-4 rounded-xl text-lg font-medium transition-all btn-glow flex items-center gap-3 mx-auto"
                 >
                   <Phone className="w-6 h-6" />
-                  Start Voice Call
+                  🎙️ Interview Sarah
                 </button>
                 <div className="text-sm text-slate-500 mt-4">
-                  <p>Try asking Sarah about:</p>
+                  <p>Try asking Sarah:</p>
                   <div className="grid grid-cols-1 gap-2 mt-3 text-slate-500">
-                    <p>• "I have a leaky faucet"</p>
-                    <p>• "How much for water heater replacement?"</p>
-                    <p>• "Schedule drain cleaning"</p>
-                    <p>• "My pipe burst, water everywhere"</p>
+                    <p>• "What can you do for my business?"</p>
+                    <p>• "How do you handle emergencies?"</p>
+                    <p>• "What makes you better than a real receptionist?"</p>
+                    <p>• "Walk me through your pricing"</p>
                   </div>
                 </div>
               </div>
