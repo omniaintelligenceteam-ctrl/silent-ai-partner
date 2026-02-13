@@ -1,6 +1,7 @@
 'use client'
 
 import { FadeIn } from '@/components/ui/FadeIn'
+import { TiltCard } from '@/components/ui/TiltCard'
 
 export function Features() {
   const features = [
@@ -59,16 +60,15 @@ export function Features() {
         <div className="grid md:grid-cols-3 gap-8 lg:gap-10">
           {features.map((feature, index) => (
             <FadeIn key={index} delay={index * 150}>
-              <div className={`glass-card p-8 lg:p-10 border-t-2 ${feature.borderColor} group`}>
-                {/* Icon */}
-                <div className={`inline-flex items-center justify-center w-14 h-14 ${feature.iconBg} rounded-2xl ${feature.iconColor} mb-8 group-hover:scale-105 transition-transform duration-300`}>
-                  {feature.icon}
+              <TiltCard>
+                <div className={`glass-card p-8 lg:p-10 border-t-2 ${feature.borderColor} group h-full`}>
+                  <div className={`inline-flex items-center justify-center w-14 h-14 ${feature.iconBg} rounded-2xl ${feature.iconColor} mb-8 group-hover:scale-105 transition-transform duration-300`}>
+                    {feature.icon}
+                  </div>
+                  <h3 className="text-xl font-bold text-white mb-4 tracking-tight">{feature.title}</h3>
+                  <p className="text-slate-400 leading-relaxed text-sm">{feature.description}</p>
                 </div>
-
-                {/* Content */}
-                <h3 className="text-xl font-bold text-white mb-4 tracking-tight">{feature.title}</h3>
-                <p className="text-slate-400 leading-relaxed text-sm">{feature.description}</p>
-              </div>
+              </TiltCard>
             </FadeIn>
           ))}
         </div>

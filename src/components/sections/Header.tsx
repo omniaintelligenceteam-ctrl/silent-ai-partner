@@ -3,6 +3,7 @@
 import Link from 'next/link'
 import Image from 'next/image'
 import { useState, useRef, useEffect } from 'react'
+import { MagneticButton } from '@/components/ui/MagneticButton'
 
 const industries = [
   { name: 'Plumbing', href: '/plumbing', emoji: '🔧' },
@@ -38,7 +39,7 @@ export function Header() {
   return (
     <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
       scrolled
-        ? 'glass border-b border-slate-800/50 shadow-lg shadow-black/20'
+        ? 'glass border-b border-slate-800/50 shadow-[0_10px_15px_-3px_rgba(0,0,0,0.2),0_1px_0_0_rgba(249,115,22,0.1)]'
         : 'bg-transparent border-b border-transparent'
     }`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -123,12 +124,14 @@ export function Header() {
               <span className="text-emerald-400/80">Online</span>
             </div>
 
-            <Link
-              href="/demo"
-              className="bg-gradient-to-r from-orange-500 to-amber-500 text-white px-5 py-2 rounded-lg text-sm font-medium btn-glow hover:from-orange-600 hover:to-amber-600 transition-all duration-200"
-            >
-              Try Sarah Free
-            </Link>
+            <MagneticButton>
+              <Link
+                href="/demo"
+                className="bg-gradient-to-r from-orange-500 to-amber-500 text-white px-5 py-2 rounded-lg text-sm font-medium btn-glow hover:from-orange-600 hover:to-amber-600 transition-all duration-200"
+              >
+                Try Sarah Free
+              </Link>
+            </MagneticButton>
           </div>
 
           {/* Mobile Menu Button */}

@@ -1,32 +1,34 @@
 'use client'
 
 import { FadeIn } from '@/components/ui/FadeIn'
+import { AnimatedCounter } from '@/components/ui/AnimatedCounter'
 
 export function PainPoints() {
   const stats = [
     {
-      number: '62%',
+      end: 62,
+      suffix: '%',
       label: 'of calls to small businesses go unanswered',
       color: 'text-red-400',
-      span: true,
     },
     {
-      number: '85%',
+      end: 85,
+      suffix: '%',
       label: 'of callers who hit voicemail DON\'T leave a message',
       color: 'text-orange-400',
-      span: false,
     },
     {
-      number: '67%',
+      end: 67,
+      suffix: '%',
       label: 'call your competitor instead',
       color: 'text-red-400',
-      span: false,
     },
     {
-      number: '$500+',
+      end: 500,
+      prefix: '$',
+      suffix: '+',
       label: 'lost revenue per missed call',
       color: 'text-orange-400',
-      span: true,
     }
   ]
 
@@ -48,9 +50,9 @@ export function PainPoints() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 lg:gap-6">
           {stats.map((stat, index) => (
             <FadeIn key={index} delay={index * 100}>
-              <div className={`glass-card p-8 lg:p-10 text-center ${stat.span ? 'md:col-span-1' : ''}`}>
+              <div className="glass-card p-8 lg:p-10 text-center">
                 <div className={`text-4xl lg:text-5xl font-bold ${stat.color} mb-4 tracking-tight`}>
-                  {stat.number}
+                  <AnimatedCounter end={stat.end} prefix={stat.prefix || ''} suffix={stat.suffix || ''} />
                 </div>
                 <div className="text-slate-400 text-sm leading-relaxed">
                   {stat.label}

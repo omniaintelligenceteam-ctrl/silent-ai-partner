@@ -1,7 +1,8 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect, useCallback } from 'react'
 import { FadeIn } from '@/components/ui/FadeIn'
+import { AnimatedCounter } from '@/components/ui/AnimatedCounter'
 
 export function LiveIntelligence() {
   const [activeLogIndex, setActiveLogIndex] = useState(0)
@@ -34,11 +35,21 @@ export function LiveIntelligence() {
   ]
 
   const stats = [
-    { label: 'Calls Handled', value: '42', color: 'text-orange-400' },
-    { label: 'Booked Today', value: '8', color: 'text-emerald-400' },
-    { label: 'Revenue Saved', value: '$4,200', color: 'text-orange-400' },
-    { label: 'AI Accuracy', value: '99.1%', color: 'gradient-text-cool' }
+    { label: 'Calls Handled', end: 42, color: 'text-orange-400' },
+    { label: 'Booked Today', end: 8, color: 'text-emerald-400' },
+    { label: 'Revenue Saved', end: 4200, prefix: '$', color: 'text-orange-400' },
+    { label: 'AI Accuracy', end: 99.1, suffix: '%', color: 'gradient-text-cool' }
   ]
+
+  // Auto-cycle through log entries every 5s
+  const cycleLog = useCallback(() => {
+    setActiveLogIndex((prev) => (prev + 1) % logs.length)
+  }, [logs.length])
+
+  useEffect(() => {
+    const interval = setInterval(cycleLog, 5000)
+    return () => clearInterval(interval)
+  }, [cycleLog])
 
   return (
     <section className="py-24 lg:py-32 bg-bg-primary">
@@ -131,7 +142,9 @@ export function LiveIntelligence() {
                   {stats.map((stat, index) => (
                     <div key={index} className="border-b border-slate-800/30 pb-4 last:border-b-0 last:pb-0">
                       <div className="text-[10px] font-mono text-slate-500 uppercase tracking-wider mb-1">{stat.label}</div>
-                      <div className={`text-xl font-bold ${stat.color}`}>{stat.value}</div>
+                      <div className={`text-xl font-bold ${stat.color}`}>
+                        <AnimatedCounter end={stat.end} prefix={stat.prefix || ''} suffix={stat.suffix || ''} />
+                      </div>
                     </div>
                   ))}
                 </div>

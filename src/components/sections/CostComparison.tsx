@@ -1,8 +1,24 @@
 'use client'
 
+import { useRef, useState, useEffect } from 'react'
 import { FadeIn } from '@/components/ui/FadeIn'
+import { AnimatedCounter } from '@/components/ui/AnimatedCounter'
 
 export function CostComparison() {
+  const barsRef = useRef<HTMLDivElement>(null)
+  const [barsVisible, setBarsVisible] = useState(false)
+
+  useEffect(() => {
+    const el = barsRef.current
+    if (!el) return
+    const observer = new IntersectionObserver(
+      ([entry]) => { if (entry.isIntersecting) setBarsVisible(true) },
+      { threshold: 0.3 }
+    )
+    observer.observe(el)
+    return () => observer.disconnect()
+  }, [])
+
   return (
     <section className="py-24 lg:py-32 bg-bg-secondary">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -19,7 +35,7 @@ export function CostComparison() {
 
         <div className="max-w-4xl mx-auto">
           <FadeIn delay={100}>
-            <div className="glass-card p-8 lg:p-10">
+            <div className="glass-card p-8 lg:p-10" ref={barsRef}>
               <div className="space-y-10">
                 {/* Office Manager Bar */}
                 <div className="space-y-4">
@@ -28,12 +44,14 @@ export function CostComparison() {
                       <h3 className="text-lg font-semibold text-white">Office Manager</h3>
                       <p className="text-sm text-slate-500">Salary + benefits + overhead + sick days</p>
                     </div>
-                    <div className="text-2xl font-bold text-red-400 tracking-tight">$4,500<span className="text-sm text-slate-500 font-normal">/mo</span></div>
+                    <div className="text-2xl font-bold text-red-400 tracking-tight">
+                      <AnimatedCounter end={4500} prefix="$" /><span className="text-sm text-slate-500 font-normal">/mo</span>
+                    </div>
                   </div>
                   <div className="w-full h-3 bg-slate-800/80 rounded-full overflow-hidden">
                     <div
-                      className="h-full bg-gradient-to-r from-red-500/80 to-red-400/80 rounded-full"
-                      style={{ width: '100%' }}
+                      className="h-full bg-gradient-to-r from-red-500/80 to-red-400/80 rounded-full transition-all duration-1000 ease-out"
+                      style={{ width: barsVisible ? '100%' : '0%' }}
                     ></div>
                   </div>
                 </div>
@@ -45,12 +63,14 @@ export function CostComparison() {
                       <h3 className="text-lg font-semibold text-white">Sarah AI</h3>
                       <p className="text-sm text-slate-500">24/7 availability + no sick days + no vacation</p>
                     </div>
-                    <div className="text-2xl font-bold text-orange-400 tracking-tight">$297<span className="text-sm text-slate-500 font-normal">/mo</span></div>
+                    <div className="text-2xl font-bold text-orange-400 tracking-tight">
+                      <AnimatedCounter end={297} prefix="$" /><span className="text-sm text-slate-500 font-normal">/mo</span>
+                    </div>
                   </div>
                   <div className="w-full h-3 bg-slate-800/80 rounded-full overflow-hidden">
                     <div
-                      className="h-full bg-gradient-to-r from-orange-500 to-amber-500 rounded-full"
-                      style={{ width: '6.6%' }}
+                      className="h-full bg-gradient-to-r from-orange-500 to-amber-500 rounded-full transition-all duration-1000 ease-out delay-500"
+                      style={{ width: barsVisible ? '6.6%' : '0%' }}
                     ></div>
                   </div>
                 </div>
@@ -59,15 +79,21 @@ export function CostComparison() {
                 <div className="border-t border-slate-800/50 pt-8">
                   <div className="grid grid-cols-3 gap-6 text-center">
                     <div>
-                      <div className="text-2xl lg:text-3xl font-bold text-emerald-400 tracking-tight">$4,203</div>
+                      <div className="text-2xl lg:text-3xl font-bold text-emerald-400 tracking-tight">
+                        <AnimatedCounter end={4203} prefix="$" />
+                      </div>
                       <div className="text-xs text-slate-500 mt-1 font-mono uppercase tracking-wider">Monthly Savings</div>
                     </div>
                     <div>
-                      <div className="text-2xl lg:text-3xl font-bold text-emerald-400 tracking-tight">$50,436</div>
+                      <div className="text-2xl lg:text-3xl font-bold text-emerald-400 tracking-tight">
+                        <AnimatedCounter end={50436} prefix="$" />
+                      </div>
                       <div className="text-xs text-slate-500 mt-1 font-mono uppercase tracking-wider">Annual Savings</div>
                     </div>
                     <div>
-                      <div className="text-2xl lg:text-3xl font-bold text-emerald-400 tracking-tight">93%</div>
+                      <div className="text-2xl lg:text-3xl font-bold text-emerald-400 tracking-tight">
+                        <AnimatedCounter end={93} suffix="%" />
+                      </div>
                       <div className="text-xs text-slate-500 mt-1 font-mono uppercase tracking-wider">Cost Reduction</div>
                     </div>
                   </div>

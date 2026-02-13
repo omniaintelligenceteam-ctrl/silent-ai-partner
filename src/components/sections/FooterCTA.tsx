@@ -2,6 +2,7 @@
 
 import Link from 'next/link'
 import { FadeIn } from '@/components/ui/FadeIn'
+import { MagneticButton } from '@/components/ui/MagneticButton'
 
 export function FooterCTA() {
   return (
@@ -17,7 +18,7 @@ export function FooterCTA() {
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight mb-6" style={{ fontFamily: 'var(--font-display), sans-serif' }}>
             <span className="text-white">Stop Losing Money.</span>
             <br />
-            <span className="gradient-text">Start Today.</span>
+            <span className="gradient-text-shimmer">Start Today.</span>
           </h2>
         </FadeIn>
 
@@ -29,12 +30,14 @@ export function FooterCTA() {
 
         <FadeIn delay={200}>
           <div className="flex flex-col sm:flex-row gap-5 justify-center items-center mb-10">
-            <Link
-              href="/demo"
-              className="bg-gradient-to-r from-orange-500 to-amber-500 text-white px-8 py-4 rounded-xl font-semibold text-lg btn-glow hover:from-orange-600 hover:to-amber-600 transition-all duration-200"
-            >
-              Try Sarah Free
-            </Link>
+            <MagneticButton>
+              <Link
+                href="/demo"
+                className="bg-gradient-to-r from-orange-500 to-amber-500 text-white px-8 py-4 rounded-xl font-semibold text-lg btn-glow hover:from-orange-600 hover:to-amber-600 transition-all duration-200"
+              >
+                Try Sarah Free
+              </Link>
+            </MagneticButton>
             <a
               href="tel:+18667821303"
               className="text-slate-400 hover:text-white transition-colors duration-200 text-sm flex items-center space-x-2"
@@ -93,7 +96,6 @@ export function FooterCTA() {
         {/* Social Proof */}
         <FadeIn delay={400}>
           <div className="mt-14 flex items-center justify-center space-x-4">
-            {/* Avatar stack */}
             <div className="flex -space-x-2">
               {['bg-orange-500', 'bg-blue-500', 'bg-emerald-500', 'bg-amber-500', 'bg-cyan-500'].map((bg, i) => (
                 <div key={i} className={`w-8 h-8 ${bg} rounded-full border-2 border-[var(--bg-primary)] flex items-center justify-center`}>

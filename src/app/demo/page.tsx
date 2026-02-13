@@ -3,8 +3,8 @@
 import { useState, useEffect } from 'react';
 import { Phone, PhoneOff } from 'lucide-react';
 import { Header } from '@/components/sections/Header';
-import { FadeIn } from '@/components/ui/FadeIn';
 import { RetellWebClient } from 'retell-client-js-sdk';
+import { MagneticButton } from '@/components/ui/MagneticButton';
 
 type CallState = 'idle' | 'connecting' | 'connected' | 'error';
 
@@ -98,27 +98,32 @@ export default function DemoPage() {
 
       {/* Main Content */}
       <div className="flex-1 flex flex-col items-center justify-center p-8">
-        <FadeIn>
           <div className="text-center max-w-md">
-            <div className="w-32 h-32 mx-auto mb-8 rounded-full bg-gradient-to-r from-orange-500 to-amber-500 flex items-center justify-center shadow-lg shadow-orange-500/20">
-              <div className="text-4xl font-bold text-white">S</div>
+            <div className="page-enter page-enter-1">
+              <div className="w-32 h-32 mx-auto mb-8 rounded-full bg-gradient-to-r from-orange-500 to-amber-500 flex items-center justify-center shadow-lg shadow-orange-500/20">
+                <div className="text-4xl font-bold text-white">S</div>
+              </div>
             </div>
 
-            <h2 className="text-3xl font-semibold mb-2 tracking-tight">Interview Sarah</h2>
-            <p className="text-slate-400 mb-8">Your AI Office Manager • Silent AI Partner</p>
+            <div className="page-enter page-enter-2">
+              <h2 className="text-3xl font-semibold mb-2 tracking-tight">Interview Sarah</h2>
+              <p className="text-slate-400 mb-8">Your AI Office Manager • Silent AI Partner</p>
+            </div>
 
             {callState === 'idle' && (
               <div className="space-y-6">
                 <p className="text-slate-300 mb-6 text-lg">
                   Experience Sarah's natural voice interaction. Click the button below to start talking!
                 </p>
-                <button
-                  onClick={startCall}
-                  className="bg-gradient-to-r from-orange-500 to-amber-500 hover:from-orange-400 hover:to-amber-400 text-white px-8 py-4 rounded-xl text-lg font-medium transition-all btn-glow flex items-center gap-3 mx-auto"
-                >
-                  <Phone className="w-6 h-6" />
-                  🎙️ Interview Sarah
-                </button>
+                <MagneticButton>
+                  <button
+                    onClick={startCall}
+                    className="bg-gradient-to-r from-orange-500 to-amber-500 hover:from-orange-400 hover:to-amber-400 text-white px-8 py-4 rounded-xl text-lg font-medium transition-all btn-glow flex items-center gap-3 mx-auto"
+                  >
+                    <Phone className="w-6 h-6" />
+                    🎙️ Interview Sarah
+                  </button>
+                </MagneticButton>
                 <div className="text-sm text-slate-500 mt-4">
                   <p>Try asking Sarah:</p>
                   <div className="grid grid-cols-1 gap-2 mt-3 text-slate-500">
@@ -200,7 +205,6 @@ export default function DemoPage() {
               </div>
             )}
           </div>
-        </FadeIn>
       </div>
 
       {/* Footer Info */}

@@ -1,12 +1,15 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { Phone, PhoneOff, Wrench, Droplets, Flame, Shield } from 'lucide-react';
 import { FadeIn } from '@/components/ui/FadeIn';
 import { Pricing } from '@/components/sections/Pricing';
 import { Header } from '@/components/sections/Header';
 import { Footer } from '@/components/sections/Footer';
 import { RetellWebClient } from 'retell-client-js-sdk';
+import { AnimatedCounter } from '@/components/ui/AnimatedCounter';
+import { TiltCard } from '@/components/ui/TiltCard';
+import { MagneticButton } from '@/components/ui/MagneticButton';
 
 type CallState = 'idle' | 'connecting' | 'connected' | 'error';
 
@@ -14,6 +17,8 @@ export default function PlumbingPage() {
   const [callState, setCallState] = useState<CallState>('idle');
   const [retellWebClient, setRetellWebClient] = useState<RetellWebClient | null>(null);
   const [error, setError] = useState<string>('');
+  const barsRef = useRef<HTMLDivElement>(null);
+  const [barsVisible, setBarsVisible] = useState(false);
 
   // Cleanup on unmount
   useEffect(() => {
@@ -23,6 +28,17 @@ export default function PlumbingPage() {
       }
     };
   }, [retellWebClient]);
+
+  useEffect(() => {
+    const el = barsRef.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => { if (entry.isIntersecting) setBarsVisible(true); },
+      { threshold: 0.3 }
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
 
   const startCall = async () => {
     try {
@@ -156,6 +172,7 @@ export default function PlumbingPage() {
       {/* Hero Section */}
       <section className="py-24 lg:py-32 bg-bg-primary relative overflow-hidden">
         <div className="absolute inset-0">
+          <div className="hero-mesh"></div>
           <div className="hero-grid absolute inset-0"></div>
           <div className="orb orb-1"></div>
           <div className="orb orb-2"></div>
@@ -163,52 +180,63 @@ export default function PlumbingPage() {
         </div>
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
-          <FadeIn>
-            <div className="text-center max-w-4xl mx-auto mb-12">
-              {/* Badge */}
+          <div className="text-center max-w-4xl mx-auto mb-12">
+            <div className="page-enter page-enter-1">
               <div className="inline-flex items-center px-4 py-2 rounded-full bg-slate-800/30 border border-slate-700/30 mb-8">
                 <span className="text-xs font-mono uppercase tracking-wide text-slate-400">
                   AI RECEPTIONIST FOR PLUMBERS
                 </span>
               </div>
+            </div>
 
+            <div className="page-enter page-enter-2">
               <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight tracking-tight mb-6" style={{ fontFamily: 'var(--font-display), sans-serif' }}>
                 <span className="text-white">Never Miss</span>
                 <br />
-                <span className="gradient-text">Another Plumbing Call</span>
+                <span className="gradient-text-shimmer">Another Plumbing Call</span>
               </h1>
+            </div>
 
+            <div className="page-enter page-enter-3">
               <p className="text-xl text-slate-400 mb-8 max-w-2xl mx-auto leading-relaxed">
                 Customers with burst pipes don't leave voicemails — they call the next plumber.
                 Sarah answers every call 24/7, books your jobs, and keeps your schedule full.
               </p>
+            </div>
 
+            <div className="page-enter page-enter-4">
               <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-                <a
-                  href="#demo"
-                  className="bg-gradient-to-r from-orange-500 to-amber-500 text-white px-8 py-4 rounded-xl font-semibold text-lg btn-glow hover:from-orange-600 hover:to-amber-600 transition-all duration-200 text-center"
-                >
-                  Try the Demo
-                </a>
+                <MagneticButton>
+                  <a
+                    href="#demo"
+                    className="bg-gradient-to-r from-orange-500 to-amber-500 text-white px-8 py-4 rounded-xl font-semibold text-lg btn-glow hover:from-orange-600 hover:to-amber-600 transition-all duration-200 text-center"
+                  >
+                    Try the Demo
+                  </a>
+                </MagneticButton>
                 <a href="https://calendly.com/silentaipartner" className="text-slate-400 hover:text-white transition-colors duration-200 text-sm flex items-center space-x-2"><span>Schedule a Call</span><svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg></a>
               </div>
             </div>
-          </FadeIn>
+          </div>
 
           {/* Services Grid */}
           <FadeIn delay={200}>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-5 max-w-4xl mx-auto">
               {services.map((service, index) => (
-                <div key={index} className="glass-card p-5 rounded-xl text-center">
-                  <service.icon className="w-8 h-8 text-orange-400 mx-auto mb-2" />
-                  <h3 className="font-semibold text-white text-sm">{service.name}</h3>
-                  <p className="text-slate-400 text-xs mt-1">{service.desc}</p>
-                </div>
+                <TiltCard key={index}>
+                  <div className="glass-card p-5 rounded-xl text-center h-full">
+                    <service.icon className="w-8 h-8 text-orange-400 mx-auto mb-2" />
+                    <h3 className="font-semibold text-white text-sm">{service.name}</h3>
+                    <p className="text-slate-400 text-xs mt-1">{service.desc}</p>
+                  </div>
+                </TiltCard>
               ))}
             </div>
           </FadeIn>
         </div>
       </section>
+
+      <div className="section-divider" />
 
       {/* Pain Points Section */}
       <section className="py-24 lg:py-32 bg-bg-secondary">
@@ -247,6 +275,8 @@ export default function PlumbingPage() {
         </div>
       </section>
 
+      <div className="section-divider" />
+
       {/* Live Demo Section */}
       <section id="demo" className="py-24 lg:py-32 bg-bg-primary">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -278,13 +308,15 @@ export default function PlumbingPage() {
                     <p className="text-slate-300 mb-6">
                       Click below to start a live voice demo. Ask about services, pricing, or schedule an appointment.
                     </p>
-                    <button
-                      onClick={startCall}
-                      className="bg-gradient-to-r from-orange-500 to-amber-500 hover:from-orange-400 hover:to-amber-400 text-white px-8 py-4 rounded-xl text-lg font-medium transition-all btn-glow flex items-center gap-3 mx-auto"
-                    >
-                      <Phone className="w-6 h-6" />
-                      Start Voice Call
-                    </button>
+                    <MagneticButton>
+                      <button
+                        onClick={startCall}
+                        className="bg-gradient-to-r from-orange-500 to-amber-500 hover:from-orange-400 hover:to-amber-400 text-white px-8 py-4 rounded-xl text-lg font-medium transition-all btn-glow flex items-center gap-3 mx-auto"
+                      >
+                        <Phone className="w-6 h-6" />
+                        Start Voice Call
+                      </button>
+                    </MagneticButton>
                     <button
                       onClick={startInterview}
                       className="border-2 border-orange-500/30 text-orange-400 px-8 py-4 rounded-full text-lg font-medium transition-all hover:border-orange-400 hover:bg-orange-500/10 flex items-center gap-3 mx-auto"
@@ -376,6 +408,8 @@ export default function PlumbingPage() {
         </div>
       </section>
 
+      <div className="section-divider" />
+
       {/* Cost Comparison Section */}
       <section className="py-24 lg:py-32 bg-bg-secondary">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -391,7 +425,7 @@ export default function PlumbingPage() {
           </FadeIn>
 
           <FadeIn delay={100}>
-            <div className="glass-card p-8 max-w-3xl mx-auto">
+            <div ref={barsRef} className="glass-card p-8 max-w-3xl mx-auto">
               <div className="space-y-8">
                 {/* Office Manager Bar */}
                 <div className="space-y-4">
@@ -400,12 +434,12 @@ export default function PlumbingPage() {
                       <h3 className="text-lg font-semibold text-white">Plumbing Dispatcher (Monthly)</h3>
                       <p className="text-sm text-slate-400">Salary + benefits + missed calls</p>
                     </div>
-                    <div className="text-2xl font-bold tracking-tight text-red-400">$4,200</div>
+                    <div className="text-2xl font-bold tracking-tight text-red-400"><AnimatedCounter end={4200} prefix="$" /></div>
                   </div>
                   <div className="w-full h-3 bg-slate-800 rounded-full overflow-hidden">
                     <div
-                      className="h-full bg-gradient-to-r from-red-500 to-red-600 rounded-full"
-                      style={{ width: '100%' }}
+                      className="h-full bg-gradient-to-r from-red-500 to-red-600 rounded-full transition-all duration-1000 ease-out"
+                      style={{ width: barsVisible ? '100%' : '0%' }}
                     ></div>
                   </div>
                 </div>
@@ -417,12 +451,12 @@ export default function PlumbingPage() {
                       <h3 className="text-lg font-semibold text-white">Sarah AI (Monthly)</h3>
                       <p className="text-sm text-slate-400">24/7 availability + no missed calls</p>
                     </div>
-                    <div className="text-2xl font-bold tracking-tight text-orange-400">$297</div>
+                    <div className="text-2xl font-bold tracking-tight text-orange-400"><AnimatedCounter end={297} prefix="$" /></div>
                   </div>
                   <div className="w-full h-3 bg-slate-800 rounded-full overflow-hidden">
                     <div
-                      className="h-full bg-gradient-to-r from-orange-500 to-amber-500 rounded-full"
-                      style={{ width: '7.1%' }}
+                      className="h-full bg-gradient-to-r from-orange-500 to-amber-500 rounded-full transition-all duration-1000 ease-out delay-500"
+                      style={{ width: barsVisible ? '7.1%' : '0%' }}
                     ></div>
                   </div>
                 </div>
@@ -431,15 +465,15 @@ export default function PlumbingPage() {
                 <div className="border-t border-slate-800/50 pt-6">
                   <div className="grid grid-cols-3 gap-4 text-center">
                     <div>
-                      <div className="text-2xl font-bold tracking-tight text-emerald-400">$3,903</div>
+                      <div className="text-2xl font-bold tracking-tight text-emerald-400"><AnimatedCounter end={3903} prefix="$" /></div>
                       <div className="text-[10px] text-slate-500 font-mono uppercase tracking-wider">Monthly Savings</div>
                     </div>
                     <div>
-                      <div className="text-2xl font-bold tracking-tight text-emerald-400">$46,836</div>
+                      <div className="text-2xl font-bold tracking-tight text-emerald-400"><AnimatedCounter end={46836} prefix="$" /></div>
                       <div className="text-[10px] text-slate-500 font-mono uppercase tracking-wider">Annual Savings</div>
                     </div>
                     <div>
-                      <div className="text-2xl font-bold tracking-tight text-emerald-400">93%</div>
+                      <div className="text-2xl font-bold tracking-tight text-emerald-400"><AnimatedCounter end={93} suffix="%" /></div>
                       <div className="text-[10px] text-slate-500 font-mono uppercase tracking-wider">Cost Reduction</div>
                     </div>
                   </div>
@@ -449,6 +483,8 @@ export default function PlumbingPage() {
           </FadeIn>
         </div>
       </section>
+
+      <div className="section-divider" />
 
       {/* Pricing Section */}
       <Pricing />
