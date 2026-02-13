@@ -9,7 +9,7 @@ const plans = [
     role: 'Your AI Receptionist',
     price: 197,
     setup: 200,
-    savings: '93% less than a $37K receptionist',
+    accent: 'slate',
     features: [
       'Answers every call 24/7/365',
       'Books appointments on the spot',
@@ -17,218 +17,229 @@ const plans = [
       'SMS confirmations to customers',
       'Call recordings & transcripts',
       'Bilingual — English & Spanish',
-      'Never calls in sick, never late',
       'Overflow & after-hours modes',
     ],
-    sarahSays: "I booked 3 jobs today while you were on site. Mrs. Henderson's water heater is scheduled for Thursday at 2pm. Want me to text you the summary?",
     popular: false,
   },
   {
     name: 'Professional',
-    role: 'Your Smart Receptionist',
+    role: 'Your Smart Office Manager',
     price: 297,
     setup: 500,
-    savings: '92% less than a $37K receptionist — and she sells',
+    accent: 'orange',
     features: [
       'Everything in Starter',
       'Smart upselling on every call',
       'Calendar sync (Google, ServiceTitan, Jobber)',
-      'Trade-specific knowledge (plumbing, HVAC, electrical, lighting)',
+      'Trade-specific knowledge',
       'Objection handling & closing',
-      'Confirmation & reminder texts',
       'Remembers returning callers',
-      'Customer history & preferences',
-    ],
-    sarahSays: "That's 6 jobs booked this week — plus I upsold 2 maintenance plans and a water heater inspection. Thursday has a gap at 2pm, want me to call the Henderson lead?",
-    popular: true,
-  },
-  {
-    name: 'Business',
-    role: 'Your Office Manager',
-    price: 397,
-    setup: 1000,
-    savings: '90% less than a $62K office manager',
-    features: [
-      'Everything in Professional',
       'Invoice follow-ups & payment reminders',
-      'Post-job follow-up calls',
-      'Review request automation (Google, Yelp)',
-      'Seasonal service campaigns',
+      'Review request automation',
       'Lead scoring & priority flagging',
-      'Auto-dispatch to right technician',
-      'Custom voice & personality',
       'Weekly performance reports',
     ],
-    sarahSays: "Revenue's up this month. I sent 12 review requests, chased 3 overdue invoices, and booked 8 maintenance plans from last month's customers. What should I hit next?",
-    popular: false,
-    highlight: 'She doesn\'t just answer phones — she runs your office. Pays for herself in the first week.',
+    popular: true,
   },
   {
     name: 'Enterprise',
     role: 'Your AI COO',
     price: 497,
     setup: 1500,
-    savings: '90% less than a $62K office manager — and she never stops',
+    accent: 'blue',
     features: [
-      'Everything in Business',
+      'Everything in Professional',
       'Morning briefing + end-of-day report',
       'Revenue tracking & forecasting',
       'Automated marketing to past customers',
-      'Competitor monitoring',
-      'Crew performance tracking',
       'Multi-location support',
       'Predictive scheduling',
       'Cash flow alerts',
       'Custom workflows & integrations',
-      'Priority support + dedicated onboarding',
+      'Dedicated onboarding & priority support',
     ],
-    sarahSays: "Morning. 8 jobs today, $14K in pending quotes, and that commercial lead called back — I booked him for 11am. I also noticed your Tuesday is light, want me to run a reactivation campaign?",
     popular: false,
-    highlight: null,
-    morningBriefing: "Morning boss. The Rodriguez quote I sent last night? They replied at 6am — they want to move forward. I chased 3 overdue invoices — Mrs. Chen paid, the other two said Friday. Today: 6 jobs, Crew A starts 7:30 in Mesa, and that $15K commercial lead is confirmed for 11am. What do you want me to hit first?",
-    elite: true,
   },
+]
+
+const comparisonRows = [
+  { feature: '24/7 Call Answering', starter: true, pro: true, enterprise: true },
+  { feature: 'Appointment Booking', starter: true, pro: true, enterprise: true },
+  { feature: 'Emergency Triage', starter: true, pro: true, enterprise: true },
+  { feature: 'Bilingual Support', starter: true, pro: true, enterprise: true },
+  { feature: 'Smart Upselling', starter: false, pro: true, enterprise: true },
+  { feature: 'CRM & Calendar Sync', starter: false, pro: true, enterprise: true },
+  { feature: 'Invoice Follow-ups', starter: false, pro: true, enterprise: true },
+  { feature: 'Review Automation', starter: false, pro: true, enterprise: true },
+  { feature: 'Revenue Forecasting', starter: false, pro: false, enterprise: true },
+  { feature: 'Multi-Location', starter: false, pro: false, enterprise: true },
+  { feature: 'Custom Workflows', starter: false, pro: false, enterprise: true },
+  { feature: 'Dedicated Onboarding', starter: false, pro: false, enterprise: true },
 ]
 
 export function Pricing() {
   return (
-    <section id="pricing" className="py-20 bg-bg-secondary">
+    <section id="pricing" className="py-24 lg:py-32 bg-bg-secondary">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <FadeIn>
-          <div className="text-center mb-16">
-            <span className="text-xs font-mono tracking-[0.3em] uppercase text-orange-400 block mb-4">CHOOSE YOUR SARAH</span>
-            <h2 className="text-4xl sm:text-5xl font-bold text-white mb-4" style={{ fontFamily: 'var(--font-display), sans-serif' }}>
-              Four Levels. <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-amber-400">One Mission.</span>
+          <div className="text-center mb-20">
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white tracking-tight mb-5" style={{ fontFamily: 'var(--font-display), sans-serif' }}>
+              Simple, Transparent Pricing
             </h2>
-            <p className="text-slate-400 text-lg">
-              No contracts. Cancel anytime. Every tier includes overflow, after hours, and full 24/7 modes.
+            <p className="text-lg text-slate-400 max-w-2xl mx-auto">
+              No contracts. Cancel anytime. Every plan includes 24/7 coverage and a 14-day free trial.
             </p>
           </div>
         </FadeIn>
 
-        {/* 4 Tiers Side by Side */}
-        <div className="grid lg:grid-cols-4 gap-4 mb-16">
+        {/* 3 Tiers */}
+        <div className="grid lg:grid-cols-3 gap-6 lg:gap-8 max-w-5xl mx-auto mb-20">
           {plans.map((plan, index) => (
             <FadeIn key={index} delay={index * 100}>
-              <div className={`relative glass-card p-6 h-full flex flex-col transition-all duration-300 ${
-                plan.popular 
-                  ? 'ring-2 ring-orange-500/50 lg:scale-[1.02]' 
-                  : (plan as any).elite
-                    ? 'ring-2 ring-amber-400/30 bg-gradient-to-b from-amber-500/5 to-transparent'
-                    : 'hover:border-orange-500/30'
+              <div className={`relative glass-card p-8 lg:p-10 h-full flex flex-col transition-all duration-300 ${
+                plan.popular
+                  ? 'ring-2 ring-orange-500/50 lg:scale-[1.04] gradient-border-animated'
+                  : plan.accent === 'blue'
+                    ? 'border-t-2 border-t-blue-500/40'
+                    : 'border-t-2 border-t-slate-700/40'
               }`}>
                 {plan.popular && (
-                  <div className="absolute -top-3 left-1/2 transform -translate-x-1/2">
-                    <span className="bg-gradient-to-r from-orange-500 to-amber-500 text-white px-4 py-1 rounded-full text-xs font-bold tracking-wider uppercase whitespace-nowrap">
+                  <div className="absolute -top-3.5 left-1/2 transform -translate-x-1/2">
+                    <span className="bg-gradient-to-r from-orange-500 to-amber-500 text-white px-5 py-1.5 rounded-full text-xs font-bold tracking-wider uppercase whitespace-nowrap shadow-lg shadow-orange-500/25">
                       MOST POPULAR
-                    </span>
-                  </div>
-                )}
-                {(plan as any).elite && (
-                  <div className="absolute -top-3 left-1/2 transform -translate-x-1/2">
-                    <span className="bg-gradient-to-r from-amber-400 to-yellow-300 text-black px-4 py-1 rounded-full text-xs font-bold tracking-wider uppercase whitespace-nowrap">
-                      ULTIMATE
                     </span>
                   </div>
                 )}
 
                 {/* Header */}
-                <div className="text-center mb-5 pt-2">
-                  <span className="text-xs font-mono text-slate-500 uppercase tracking-wider">{plan.role}</span>
-                  <h3 className="text-lg font-bold text-white mt-1">{plan.name}</h3>
-                  <div className="mt-3">
-                    <span className="text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-amber-400">${plan.price}</span>
-                    <span className="text-slate-500 ml-1">/mo</span>
+                <div className="text-center mb-8 pt-2">
+                  <div className="text-[10px] font-mono text-slate-500 uppercase tracking-[0.15em] mb-2">{plan.role}</div>
+                  <h3 className="text-xl font-bold text-white tracking-tight">{plan.name}</h3>
+                  <div className="mt-4">
+                    <span className={`text-4xl font-bold tracking-tight ${
+                      plan.popular
+                        ? 'text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-amber-400'
+                        : plan.accent === 'blue'
+                          ? 'text-blue-400'
+                          : 'text-white'
+                    }`}>${plan.price}</span>
+                    <span className="text-slate-500 text-sm ml-1">/mo</span>
                   </div>
-                  <div className="text-xs text-slate-500 mt-1 font-mono">${(plan as any).setup} setup</div>
-                  <div className="text-[10px] text-emerald-400 mt-2 font-medium">{(plan as any).savings}</div>
+                  <div className="text-xs text-slate-600 mt-1.5 font-mono">${plan.setup} one-time setup</div>
                 </div>
 
                 {/* Features */}
-                <div className="space-y-2 mb-6 flex-grow">
+                <div className="space-y-3 mb-8 flex-grow">
                   {plan.features.map((feature, fi) => (
-                    <div key={fi} className="flex items-start space-x-2">
-                      <div className="w-4 h-4 rounded-full bg-orange-500/20 flex items-center justify-center flex-shrink-0 mt-0.5">
-                        <svg className="w-2.5 h-2.5 text-orange-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <div key={fi} className="flex items-start space-x-3">
+                      <div className={`w-4 h-4 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5 ${
+                        plan.popular
+                          ? 'bg-orange-500/15'
+                          : plan.accent === 'blue'
+                            ? 'bg-blue-500/15'
+                            : 'bg-slate-700/50'
+                      }`}>
+                        <svg className={`w-2.5 h-2.5 ${
+                          plan.popular
+                            ? 'text-orange-400'
+                            : plan.accent === 'blue'
+                              ? 'text-blue-400'
+                              : 'text-slate-400'
+                        }`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
                         </svg>
                       </div>
-                      <span className="text-slate-300 text-xs leading-snug">{feature}</span>
+                      <span className="text-slate-400 text-sm leading-snug">{feature}</span>
                     </div>
                   ))}
-                </div>
-
-                {/* Highlight */}
-                {(plan as any).highlight && (
-                  <div className="bg-orange-500/10 border border-orange-500/20 rounded-lg p-3 mb-4">
-                    <p className="text-orange-300 text-xs font-medium italic">{(plan as any).highlight}</p>
-                  </div>
-                )}
-
-                {/* Sarah Says */}
-                <div className="bg-white/5 rounded-lg p-3 mb-5 border border-white/5">
-                  <div className="flex items-center gap-1.5 mb-1.5">
-                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
-                    <span className="text-[10px] font-mono text-emerald-400 uppercase tracking-wider">Sarah says</span>
-                  </div>
-                  <p className="text-slate-400 text-xs italic leading-relaxed">"{plan.sarahSays}"</p>
                 </div>
 
                 {/* CTA */}
                 <Link
                   href="/demo"
-                  className={`block w-full py-3 rounded-lg font-semibold text-center text-sm transition-all duration-200 ${
+                  className={`block w-full py-3.5 rounded-xl font-semibold text-center text-sm transition-all duration-200 ${
                     plan.popular
                       ? 'bg-gradient-to-r from-orange-500 to-amber-500 text-white btn-glow hover:from-orange-600 hover:to-amber-600'
-                      : (plan as any).elite
-                        ? 'bg-gradient-to-r from-amber-400 to-yellow-300 text-black font-bold hover:from-amber-300 hover:to-yellow-200'
-                        : 'border-2 border-orange-500/30 text-orange-400 hover:border-orange-400 hover:bg-orange-500/10'
+                      : plan.accent === 'blue'
+                        ? 'border border-blue-500/30 text-blue-400 hover:border-blue-400 hover:bg-blue-500/10'
+                        : 'border border-slate-700/50 text-slate-300 hover:border-slate-500 hover:bg-slate-800/50'
                   }`}
                 >
-                  Try Sarah Free
+                  {plan.popular ? 'Start Free Trial' : 'Try Sarah Free'}
                 </Link>
               </div>
             </FadeIn>
           ))}
         </div>
 
-        {/* COO Morning Briefing Showcase */}
-        <FadeIn delay={500}>
+        {/* Comparison Table */}
+        <FadeIn delay={400}>
           <div className="max-w-4xl mx-auto mb-16">
-            <div className="text-center mb-6">
-              <span className="text-xs font-mono tracking-[0.3em] uppercase text-amber-400">COO TIER — MORNING BRIEFING</span>
-              <h3 className="text-2xl font-bold text-white mt-2">This Is What $997/mo Feels Like</h3>
-            </div>
-            <div className="glass-card p-8 border-amber-400/20 bg-gradient-to-b from-amber-500/5 to-transparent">
-              <div className="flex items-center gap-2 mb-4">
-                <span className="w-2 h-2 rounded-full bg-amber-400 animate-pulse" />
-                <span className="text-xs font-mono text-amber-400 uppercase tracking-wider">7:00 AM — Daily Briefing</span>
-              </div>
-              <p className="text-slate-300 leading-relaxed italic">
-                "{(plans[3] as any).morningBriefing}"
-              </p>
-              <div className="mt-6 pt-4 border-t border-white/5 text-center">
-                <p className="text-slate-500 text-sm">She didn't just answer your phones. She ran your business while you slept.</p>
+            <h3 className="text-lg font-bold text-white mb-8 text-center tracking-tight">Compare Plans</h3>
+            <div className="glass-card overflow-hidden">
+              <div className="overflow-x-auto">
+                <table className="w-full">
+                  <thead>
+                    <tr className="border-b border-slate-800/50">
+                      <th className="text-left py-4 px-6 text-xs font-mono text-slate-500 uppercase tracking-wider">Feature</th>
+                      <th className="text-center py-4 px-4 text-xs font-mono text-slate-500 uppercase tracking-wider">Starter</th>
+                      <th className="text-center py-4 px-4 text-xs font-mono text-orange-400 uppercase tracking-wider">Professional</th>
+                      <th className="text-center py-4 px-4 text-xs font-mono text-blue-400 uppercase tracking-wider">Enterprise</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {comparisonRows.map((row, index) => (
+                      <tr key={index} className="border-b border-slate-800/20 last:border-b-0">
+                        <td className="py-3.5 px-6 text-slate-400 text-sm">{row.feature}</td>
+                        <td className="py-3.5 px-4 text-center">
+                          {row.starter ? (
+                            <svg className="w-4 h-4 text-emerald-400 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" />
+                            </svg>
+                          ) : (
+                            <span className="text-slate-700">—</span>
+                          )}
+                        </td>
+                        <td className="py-3.5 px-4 text-center bg-orange-500/[0.02]">
+                          {row.pro ? (
+                            <svg className="w-4 h-4 text-emerald-400 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" />
+                            </svg>
+                          ) : (
+                            <span className="text-slate-700">—</span>
+                          )}
+                        </td>
+                        <td className="py-3.5 px-4 text-center">
+                          {row.enterprise ? (
+                            <svg className="w-4 h-4 text-emerald-400 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" />
+                            </svg>
+                          ) : (
+                            <span className="text-slate-700">—</span>
+                          )}
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
               </div>
             </div>
           </div>
         </FadeIn>
 
         {/* Bottom Info */}
-        <FadeIn delay={600}>
-          <div className="grid md:grid-cols-3 gap-6 max-w-4xl mx-auto text-center">
-            <div>
-              <div className="text-orange-400 font-semibold mb-1">One-Time Setup</div>
-              <div className="text-slate-400 text-sm">Custom configuration for your business</div>
-            </div>
-            <div>
-              <div className="text-orange-400 font-semibold mb-1">Cancel Anytime</div>
-              <div className="text-slate-400 text-sm">No contracts, no penalties</div>
-            </div>
-            <div>
-              <div className="text-orange-400 font-semibold mb-1">Extra Minutes: $0.15</div>
-              <div className="text-slate-400 text-sm">Simple per-minute billing, no surprises</div>
-            </div>
+        <FadeIn delay={500}>
+          <div className="grid md:grid-cols-3 gap-6 max-w-3xl mx-auto text-center">
+            {[
+              { label: 'One-Time Setup', desc: 'Custom configuration for your business', color: 'text-orange-400' },
+              { label: 'Cancel Anytime', desc: 'No contracts, no penalties', color: 'text-emerald-400' },
+              { label: 'Extra Minutes: $0.15', desc: 'Simple per-minute billing', color: 'text-blue-400' },
+            ].map((item, index) => (
+              <div key={index}>
+                <div className={`${item.color} font-semibold text-sm mb-1`}>{item.label}</div>
+                <div className="text-slate-500 text-xs">{item.desc}</div>
+              </div>
+            ))}
           </div>
         </FadeIn>
       </div>

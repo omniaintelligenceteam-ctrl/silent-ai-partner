@@ -12,6 +12,8 @@
   --accent-orange: #F97316;
   --accent-amber: #F59E0B;
   --accent-emerald: #10B981;
+  --accent-blue: #3B82F6;
+  --accent-cyan: #06B6D4;
 }
 
 @theme inline {
@@ -23,6 +25,8 @@
   --color-accent-orange: #F97316;
   --color-accent-amber: #F59E0B;
   --color-accent-emerald: #10B981;
+  --color-accent-blue: #3B82F6;
+  --color-accent-cyan: #06B6D4;
   --font-sans: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   --font-mono: ui-monospace, SFMono-Regular, "SF Mono", Consolas, "Liberation Mono", Menlo, monospace;
 }
@@ -42,7 +46,7 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: var(--font-sans);
-  line-height: 1.6;
+  line-height: 1.75;
   margin: 0;
   padding: 0;
 }
@@ -51,7 +55,7 @@ body {
    SCROLLBAR
    ============================================ */
 ::-webkit-scrollbar {
-  width: 8px;
+  width: 6px;
 }
 
 ::-webkit-scrollbar-track {
@@ -60,7 +64,7 @@ body {
 
 ::-webkit-scrollbar-thumb {
   background: linear-gradient(180deg, #F97316, #F59E0B);
-  border-radius: 4px;
+  border-radius: 3px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
@@ -70,8 +74,8 @@ body {
 /* ============================================
    FOCUS STYLES
    ============================================ */
-button:focus,
-a:focus {
+button:focus-visible,
+a:focus-visible {
   outline: 2px solid #F97316;
   outline-offset: 2px;
 }
@@ -93,28 +97,39 @@ a:focus {
   background-clip: text;
 }
 
+.gradient-text-cool {
+  background: linear-gradient(135deg, #3B82F6 0%, #06B6D4 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
 /* ============================================
    GLASSMORPHISM
    ============================================ */
 .glass {
   background: rgba(15, 23, 42, 0.6);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
   border: 1px solid rgba(148, 163, 184, 0.1);
 }
 
 .glass-card {
   background: rgba(15, 23, 42, 0.4);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
   border: 1px solid rgba(148, 163, 184, 0.08);
-  border-radius: 16px;
-  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  border-radius: 20px;
+  transition: transform 0.4s cubic-bezier(0.23, 1, 0.32, 1),
+              border-color 0.3s ease,
+              box-shadow 0.3s ease;
 }
 
 .glass-card:hover {
-  border-color: rgba(249, 115, 22, 0.3);
-  box-shadow: 0 0 30px rgba(249, 115, 22, 0.08);
+  transform: translateY(-4px);
+  border-color: rgba(249, 115, 22, 0.25);
+  box-shadow: 0 8px 40px rgba(249, 115, 22, 0.06),
+              inset 0 1px 0 rgba(255, 255, 255, 0.04);
 }
 
 /* ============================================
@@ -122,21 +137,21 @@ a:focus {
    ============================================ */
 .gradient-border-animated {
   position: relative;
-  border-radius: 16px;
+  border-radius: 20px;
 }
 
 .gradient-border-animated::before {
   content: '';
   position: absolute;
   inset: 0;
-  border-radius: 16px;
+  border-radius: 20px;
   padding: 1.5px;
   background: linear-gradient(135deg, #F97316, #F59E0B, #FBBF24, #F97316);
   background-size: 300% 300%;
   -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
   -webkit-mask-composite: xor;
   mask-composite: exclude;
-  animation: gradient-rotate 4s linear infinite;
+  animation: gradient-rotate 6s linear infinite;
   pointer-events: none;
 }
 
@@ -151,55 +166,95 @@ a:focus {
    ============================================ */
 .btn-glow {
   position: relative;
-  transition: all 0.3s ease;
+  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
 .btn-glow:hover {
-  box-shadow: 0 0 24px rgba(249, 115, 22, 0.4), 0 0 48px rgba(245, 158, 11, 0.2);
+  transform: translateY(-2px);
+  box-shadow: 0 0 24px rgba(249, 115, 22, 0.35),
+              0 0 48px rgba(245, 158, 11, 0.15),
+              0 8px 20px rgba(249, 115, 22, 0.2);
+}
+
+.btn-glow:active {
+  transform: translateY(0);
+  box-shadow: 0 0 12px rgba(249, 115, 22, 0.2);
+}
+
+/* ============================================
+   LINK UNDERLINE ANIMATION
+   ============================================ */
+.link-animate {
+  position: relative;
+  text-decoration: none;
+}
+
+.link-animate::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 1.5px;
+  background: linear-gradient(90deg, #F97316, #F59E0B);
+  transition: width 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.link-animate:hover::after {
+  width: 100%;
 }
 
 /* ============================================
    HERO BACKGROUND EFFECTS
    ============================================ */
 .hero-grid {
-  background-image: radial-gradient(circle, rgba(249, 115, 22, 0.15) 1px, transparent 1px);
-  background-size: 40px 40px;
-  animation: grid-pulse 8s ease-in-out infinite;
+  background-image: radial-gradient(circle, rgba(249, 115, 22, 0.12) 1px, transparent 1px);
+  background-size: 48px 48px;
+  animation: grid-pulse 10s ease-in-out infinite;
 }
 
 @keyframes grid-pulse {
-  0%, 100% { opacity: 0.3; }
-  50% { opacity: 0.6; }
+  0%, 100% { opacity: 0.2; }
+  50% { opacity: 0.45; }
 }
 
 .orb {
   position: absolute;
   border-radius: 50%;
-  filter: blur(80px);
+  filter: blur(100px);
   pointer-events: none;
 }
 
 .orb-1 {
-  width: 600px;
-  height: 600px;
-  background: radial-gradient(circle, rgba(249, 115, 22, 0.12) 0%, transparent 70%);
-  animation: orb-float-1 20s ease-in-out infinite;
-  top: -200px;
-  right: -100px;
+  width: 700px;
+  height: 700px;
+  background: radial-gradient(circle, rgba(249, 115, 22, 0.08) 0%, transparent 70%);
+  animation: orb-float-1 25s ease-in-out infinite;
+  top: -250px;
+  right: -150px;
 }
 
 .orb-2 {
-  width: 500px;
-  height: 500px;
-  background: radial-gradient(circle, rgba(245, 158, 11, 0.1) 0%, transparent 70%);
-  animation: orb-float-2 25s ease-in-out infinite;
-  bottom: -150px;
-  left: -100px;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(59, 130, 246, 0.06) 0%, transparent 70%);
+  animation: orb-float-2 30s ease-in-out infinite;
+  bottom: -200px;
+  left: -150px;
+}
+
+.orb-3 {
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, rgba(6, 182, 212, 0.05) 0%, transparent 70%);
+  animation: orb-float-1 35s ease-in-out infinite reverse;
+  top: 40%;
+  left: 30%;
 }
 
 @keyframes orb-float-1 {
   0%, 100% { transform: translate(0, 0); }
-  33% { transform: translate(30px, -20px); }
+  33% { transform: translate(30px, -25px); }
   66% { transform: translate(-20px, 15px); }
 }
 
@@ -249,10 +304,10 @@ details[open] > div {
    RESPONSIVE: reduce animations on mobile
    ============================================ */
 @media (max-width: 768px) {
-  .orb-1, .orb-2 {
+  .orb-1, .orb-2, .orb-3 {
     width: 300px;
     height: 300px;
-    filter: blur(60px);
+    filter: blur(80px);
   }
 }
 
@@ -260,21 +315,21 @@ details[open] > div {
    DEMO PAGE ANIMATIONS
    ============================================ */
 @keyframes demo-waveform {
-  0%, 100% { 
-    transform: scaleY(0.3); 
-    opacity: 0.6; 
+  0%, 100% {
+    transform: scaleY(0.3);
+    opacity: 0.6;
   }
-  25% { 
-    transform: scaleY(0.8); 
-    opacity: 0.9; 
+  25% {
+    transform: scaleY(0.8);
+    opacity: 0.9;
   }
-  50% { 
-    transform: scaleY(1.2); 
-    opacity: 1; 
+  50% {
+    transform: scaleY(1.2);
+    opacity: 1;
   }
-  75% { 
-    transform: scaleY(0.9); 
-    opacity: 0.8; 
+  75% {
+    transform: scaleY(0.9);
+    opacity: 0.8;
   }
 }
 
@@ -283,11 +338,11 @@ details[open] > div {
 }
 
 @keyframes pulse-glow {
-  0%, 100% { 
+  0%, 100% {
     box-shadow: 0 0 20px rgba(249, 115, 22, 0.3);
     transform: scale(1);
   }
-  50% { 
+  50% {
     box-shadow: 0 0 40px rgba(249, 115, 22, 0.6);
     transform: scale(1.02);
   }
@@ -297,13 +352,28 @@ details[open] > div {
   animation: pulse-glow 2s ease-in-out infinite;
 }
 
+/* ============================================
+   TAB TRANSITIONS
+   ============================================ */
+@keyframes tab-content-in {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.tab-content-enter {
+  animation: tab-content-in 0.3s ease-out;
+}
+
+/* ============================================
+   REDUCED MOTION
+   ============================================ */
 @media (prefers-reduced-motion: reduce) {
-  .orb-1, .orb-2 {
+  .orb-1, .orb-2, .orb-3 {
     animation: none;
   }
   .hero-grid {
     animation: none;
-    opacity: 0.3;
+    opacity: 0.2;
   }
   .gradient-border-animated::before {
     animation: none;
@@ -315,5 +385,11 @@ details[open] > div {
   .call-active {
     animation: none;
     box-shadow: 0 0 20px rgba(249, 115, 22, 0.3);
+  }
+  .btn-glow:hover {
+    transform: none;
+  }
+  .glass-card:hover {
+    transform: none;
   }
 }
