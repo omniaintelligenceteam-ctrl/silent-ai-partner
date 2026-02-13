@@ -10,6 +10,7 @@ const plans = [
     price: 197,
     setup: 200,
     accent: 'slate',
+    payLink: 'https://buy.stripe.com/fZu9AV7Ug1Ji8Jd7E04wM0a',
     features: [
       'Answers every call 24/7/365',
       'Books appointments on the spot',
@@ -27,6 +28,7 @@ const plans = [
     price: 297,
     setup: 500,
     accent: 'orange',
+    payLink: 'https://buy.stripe.com/4gM4gBcaw0Fe7F9gaw4wM0b',
     features: [
       'Everything in Starter',
       'Smart upselling on every call',
@@ -47,6 +49,7 @@ const plans = [
     price: 497,
     setup: 1500,
     accent: 'blue',
+    payLink: 'https://buy.stripe.com/bJe3cx7UgbjS0cH2jG4wM0d',
     features: [
       'Everything in Professional',
       'Morning briefing + end-of-day report',
@@ -157,7 +160,7 @@ export function Pricing() {
                 {/* CTA */}
                 <Link
                   href="/demo"
-                  className={`block w-full py-3.5 rounded-xl font-semibold text-center text-sm transition-all duration-200 ${
+                  className={`block w-full py-3.5 rounded-xl font-semibold text-center text-sm transition-all duration-200 mb-2 ${
                     plan.popular
                       ? 'bg-gradient-to-r from-orange-500 to-amber-500 text-white btn-glow hover:from-orange-600 hover:to-amber-600'
                       : plan.accent === 'blue'
@@ -167,6 +170,14 @@ export function Pricing() {
                 >
                   {plan.popular ? 'Start Free Trial' : 'Try Sarah Free'}
                 </Link>
+                <a
+                  href={plan.payLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="block w-full py-2.5 rounded-xl font-medium text-center text-xs border border-emerald-500/30 text-emerald-400 hover:border-emerald-400 hover:bg-emerald-500/10 transition-all duration-200"
+                >
+                  Get Started →
+                </a>
               </div>
             </FadeIn>
           ))}
