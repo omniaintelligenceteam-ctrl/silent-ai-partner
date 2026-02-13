@@ -77,18 +77,7 @@ export function CostComparison() {
           </FadeIn>
 
           {/* Testimonial Quote */}
-          <FadeIn delay={200}>
-            <div className="mt-12 text-center">
-              <blockquote className="glass-card p-8 lg:p-10 max-w-3xl mx-auto border-l-2 border-orange-500/30">
-                <p className="text-lg text-slate-300 italic leading-relaxed mb-5">
-                  &ldquo;Sarah paid for herself within the first 48 hours by capturing a missed $12k roofing lead.&rdquo;
-                </p>
-                <footer className="text-orange-400 font-medium text-sm">
-                  Mike Rodriguez, Rodriguez Roofing
-                </footer>
-              </blockquote>
-            </div>
-          </FadeIn>
+          {/* Testimonials coming soon — real customers only */}
 
           {/* ROI Calculator */}
           <FadeIn delay={300}>
