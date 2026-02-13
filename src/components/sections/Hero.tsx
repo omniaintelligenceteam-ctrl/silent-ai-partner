@@ -23,7 +23,7 @@ export function Hero() {
               {/* Badge */}
               <div className="inline-flex items-center px-4 py-2 rounded-full bg-slate-800/30 border border-slate-700/30 mb-10">
                 <span className="text-[11px] font-mono uppercase tracking-[0.12em] text-slate-400">
-                  AI Receptionist & Office Manager
+                  THE AI OFFICE MANAGER FOR CONTRACTORS
                 </span>
               </div>
             </FadeIn>
@@ -40,7 +40,7 @@ export function Hero() {
             <FadeIn delay={200}>
               {/* Subheadline */}
               <p className="text-lg text-slate-400 mb-10 max-w-xl leading-relaxed">
-                The average contractor receptionist costs $37,000/yr. Sarah costs $197/mo.
+                The average office manager costs $62,500/yr. Sarah costs $397/mo.
                 She books your jobs, upsells your services, and grows your business while you&apos;re in the field.
               </p>
             </FadeIn>
