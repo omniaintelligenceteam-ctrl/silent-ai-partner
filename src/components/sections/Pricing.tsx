@@ -17,6 +17,7 @@ const plans = [
       'Answers every call 24/7/365',
       'Books appointments on the spot',
       'Emergency call prioritization',
+      'Trade-specific knowledge',
       'SMS confirmations to customers',
       'Call recordings & transcripts',
       'Bilingual — English & Spanish',
@@ -25,48 +26,34 @@ const plans = [
     popular: false,
   },
   {
-    name: 'Professional',
-    role: 'Your Smart Office Manager',
-    price: 297,
-    setup: 500,
+    name: 'Business',
+    role: 'Your AI Office Manager',
+    price: 397,
+    setup: 1000,
     accent: 'orange',
-    payLink: 'https://buy.stripe.com/4gM4gBcaw0Fe7F9gaw4wM0b',
+    payLink: 'https://buy.stripe.com/dRm3cx4I4fA8f7B2jG4wM0f',
     highlight: 'She doesn\'t just answer — she sells, follows up, and runs your office.',
     bestFeature: 'Upselling + invoicing + reviews = she pays for herself',
     features: [
       'Everything in Starter',
       'Smart upselling on every call',
       'Calendar sync (Google, ServiceTitan, Jobber)',
-      'Trade-specific knowledge',
       'Objection handling & closing',
       'Remembers returning callers',
-      'Customer history & preferences',
-    ],
-    popular: true,
-  },
-  {
-    name: 'Business',
-    role: 'Your Office Manager',
-    price: 397,
-    setup: 1000,
-    accent: 'cyan',
-    payLink: 'https://buy.stripe.com/9B600ldeAgEcgbF5vS4wM0c',
-    features: [
-      'Everything in Professional',
       'Invoice follow-ups & payment reminders',
       'Review request automation',
       'Lead scoring & priority flagging',
       'Weekly performance reports',
     ],
-    popular: false,
+    popular: true,
   },
   {
     name: 'Enterprise',
     role: 'Your AI COO',
-    price: 497,
+    price: 597,
     setup: 1500,
     accent: 'blue',
-    payLink: 'https://buy.stripe.com/bJe3cx7UgbjS0cH2jG4wM0d',
+    payLink: 'https://buy.stripe.com/4gMfZj7UgfA82kP5vS4wM0e',
     highlight: 'Like hiring a COO for less than your truck payment.',
     bestFeature: 'Morning briefings + revenue tracking + growth on autopilot',
     features: [
@@ -85,20 +72,24 @@ const plans = [
 ]
 
 const comparisonRows = [
-  { feature: '24/7 Call Answering', starter: true, pro: true, business: true, enterprise: true },
-  { feature: 'Appointment Booking', starter: true, pro: true, business: true, enterprise: true },
-  { feature: 'Emergency Triage', starter: true, pro: true, business: true, enterprise: true },
-  { feature: 'Bilingual Support', starter: true, pro: true, business: true, enterprise: true },
-  { feature: 'Smart Upselling', starter: false, pro: true, business: true, enterprise: true },
-  { feature: 'CRM & Calendar Sync', starter: false, pro: true, business: true, enterprise: true },
-  { feature: 'Customer History', starter: false, pro: true, business: true, enterprise: true },
-  { feature: 'Invoice Follow-ups', starter: false, pro: false, business: true, enterprise: true },
-  { feature: 'Review Automation', starter: false, pro: false, business: true, enterprise: true },
-  { feature: 'Lead Scoring', starter: false, pro: false, business: true, enterprise: true },
-  { feature: 'Revenue Forecasting', starter: false, pro: false, business: false, enterprise: true },
-  { feature: 'Multi-Location', starter: false, pro: false, business: false, enterprise: true },
-  { feature: 'Custom Workflows', starter: false, pro: false, business: false, enterprise: true },
-  { feature: 'Dedicated Onboarding', starter: false, pro: false, business: false, enterprise: true },
+  { feature: '24/7 Call Answering', starter: true, business: true, enterprise: true },
+  { feature: 'Appointment Booking', starter: true, business: true, enterprise: true },
+  { feature: 'Emergency Triage', starter: true, business: true, enterprise: true },
+  { feature: 'Trade-Specific Knowledge', starter: true, business: true, enterprise: true },
+  { feature: 'Bilingual Support', starter: true, business: true, enterprise: true },
+  { feature: 'Smart Upselling', starter: false, business: true, enterprise: true },
+  { feature: 'CRM & Calendar Sync', starter: false, business: true, enterprise: true },
+  { feature: 'Objection Handling', starter: false, business: true, enterprise: true },
+  { feature: 'Invoice Follow-ups', starter: false, business: true, enterprise: true },
+  { feature: 'Review Automation', starter: false, business: true, enterprise: true },
+  { feature: 'Lead Scoring', starter: false, business: true, enterprise: true },
+  { feature: 'Weekly Reports', starter: false, business: true, enterprise: true },
+  { feature: 'Morning Briefings', starter: false, business: false, enterprise: true },
+  { feature: 'Revenue Forecasting', starter: false, business: false, enterprise: true },
+  { feature: 'Automated Marketing', starter: false, business: false, enterprise: true },
+  { feature: 'Multi-Location', starter: false, business: false, enterprise: true },
+  { feature: 'Custom Workflows', starter: false, business: false, enterprise: true },
+  { feature: 'Dedicated Onboarding', starter: false, business: false, enterprise: true },
 ]
 
 function accentColor(accent: string) {
@@ -126,7 +117,7 @@ export function Pricing() {
         </FadeIn>
 
         {/* 4 Tiers */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-5 lg:gap-6 max-w-6xl mx-auto mb-20">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5 lg:gap-6 max-w-5xl mx-auto mb-20">
           {plans.map((plan, index) => {
             const colors = accentColor(plan.accent)
             return (
@@ -237,8 +228,7 @@ export function Pricing() {
                     <tr className="border-b border-slate-800/50">
                       <th className="text-left py-4 px-5 text-xs font-mono text-slate-500 uppercase tracking-wider">Feature</th>
                       <th className="text-center py-4 px-3 text-xs font-mono text-slate-500 uppercase tracking-wider">Starter</th>
-                      <th className="text-center py-4 px-3 text-xs font-mono text-orange-400 uppercase tracking-wider">Pro</th>
-                      <th className="text-center py-4 px-3 text-xs font-mono text-cyan-400 uppercase tracking-wider">Business</th>
+                      <th className="text-center py-4 px-3 text-xs font-mono text-orange-400 uppercase tracking-wider">Business</th>
                       <th className="text-center py-4 px-3 text-xs font-mono text-blue-400 uppercase tracking-wider">Enterprise</th>
                     </tr>
                   </thead>
@@ -256,15 +246,6 @@ export function Pricing() {
                           )}
                         </td>
                         <td className="py-3 px-3 text-center bg-orange-500/[0.02]">
-                          {row.pro ? (
-                            <svg className="w-4 h-4 text-emerald-400 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" />
-                            </svg>
-                          ) : (
-                            <span className="text-slate-700">—</span>
-                          )}
-                        </td>
-                        <td className="py-3 px-3 text-center">
                           {row.business ? (
                             <svg className="w-4 h-4 text-emerald-400 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" />
