@@ -11,6 +11,8 @@ const plans = [
     setup: 200,
     accent: 'slate',
     payLink: 'https://buy.stripe.com/fZu9AV7Ug1Ji8Jd7E04wM0a',
+    highlight: 'Never miss another call. 93% cheaper than a human receptionist.',
+    bestFeature: '24/7 call answering — every call, every time',
     features: [
       'Answers every call 24/7/365',
       'Books appointments on the spot',
@@ -29,6 +31,8 @@ const plans = [
     setup: 500,
     accent: 'orange',
     payLink: 'https://buy.stripe.com/4gM4gBcaw0Fe7F9gaw4wM0b',
+    highlight: 'She doesn\'t just answer — she sells, follows up, and runs your office.',
+    bestFeature: 'Upselling + invoicing + reviews = she pays for herself',
     features: [
       'Everything in Starter',
       'Smart upselling on every call',
@@ -63,6 +67,8 @@ const plans = [
     setup: 1500,
     accent: 'blue',
     payLink: 'https://buy.stripe.com/bJe3cx7UgbjS0cH2jG4wM0d',
+    highlight: 'Like hiring a COO for less than your truck payment.',
+    bestFeature: 'Morning briefings + revenue tracking + growth on autopilot',
     features: [
       'Everything in Business',
       'Morning briefing + end-of-day report',
@@ -150,6 +156,28 @@ export function Pricing() {
                     </div>
                     <div className="text-xs text-slate-600 mt-1.5 font-mono">${plan.setup} one-time setup</div>
                   </div>
+
+                  {/* Best Feature Highlight */}
+                  {(plan as any).bestFeature && (
+                    <div className={`rounded-lg p-3 mb-3 text-center ${
+                      plan.popular
+                        ? 'bg-orange-500/10 border border-orange-500/20'
+                        : plan.accent === 'blue'
+                          ? 'bg-blue-500/10 border border-blue-500/20'
+                          : 'bg-slate-700/30 border border-slate-600/20'
+                    }`}>
+                      <p className={`text-xs font-semibold ${
+                        plan.popular ? 'text-orange-300' : plan.accent === 'blue' ? 'text-blue-300' : 'text-slate-300'
+                      }`}>⚡ {(plan as any).bestFeature}</p>
+                    </div>
+                  )}
+
+                  {/* Highlight Quote */}
+                  {(plan as any).highlight && (
+                    <p className="text-[11px] text-slate-400 italic text-center mb-3 px-2">
+                      {(plan as any).highlight}
+                    </p>
+                  )}
 
                   {/* Features */}
                   <div className="space-y-2.5 mb-7 flex-grow">
