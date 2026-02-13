@@ -258,7 +258,7 @@ export default function LandscapeLightingPage() {
               </h2>
               <p className="text-lg text-slate-400">
                 Experience how Sarah handles lighting inquiries with natural voice interaction.
-                <span className="block mt-2 text-orange-400">Premier Outdoor Lighting • DEMO_PHONE</span>
+                <span className="block mt-2 text-orange-400">Premier Outdoor Lighting • (623) 294-5515</span>
               </p>
             </div>
           </FadeIn>

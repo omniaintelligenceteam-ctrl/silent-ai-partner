@@ -259,7 +259,7 @@ export default function ElectricalPage() {
               </h2>
               <p className="text-lg text-slate-400">
                 Experience how Sarah handles electrical calls with natural voice interaction.
-                <span className="block mt-2 text-orange-400">Sparks Electrical • DEMO_PHONE</span>
+                <span className="block mt-2 text-orange-400">Sparks Electrical • (520) 525-6494</span>
               </p>
             </div>
           </FadeIn>

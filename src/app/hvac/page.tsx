@@ -123,7 +123,7 @@ export default function HVACPage() {
 
   const stats = [
     {
-      number: '27%',
+      number: '62%',
       label: 'of HVAC emergency calls go to the first company that answers'
     },
     {
@@ -258,7 +258,7 @@ export default function HVACPage() {
               </h2>
               <p className="text-lg text-slate-400">
                 Experience how Sarah handles HVAC calls with natural voice interaction.
-                <span className="block mt-2 text-orange-400">Cool Air HVAC • DEMO_PHONE</span>
+                <span className="block mt-2 text-orange-400">Cool Air HVAC • (602) 932-1296</span>
               </p>
             </div>
           </FadeIn>

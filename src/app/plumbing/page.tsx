@@ -123,8 +123,8 @@ export default function PlumbingPage() {
 
   const stats = [
     {
-      number: '27%',
-      label: 'of contractor calls go unanswered'
+      number: '62%',
+      label: 'of small business calls go unanswered — during AND after hours'
     },
     {
       number: '85%',
@@ -230,7 +230,7 @@ export default function PlumbingPage() {
               <FadeIn key={index} delay={index * 100}>
                 <div className="glass-card p-8 text-center">
                   <div className={`text-4xl lg:text-5xl font-bold mb-3 ${
-                    stat.number === '27%' ? 'text-red-400' :
+                    stat.number === '62%' ? 'text-red-400' :
                     stat.number === '85%' ? 'text-red-400' :
                     stat.number === '$850+' ? 'text-orange-400' :
                     'text-blue-400'
@@ -257,7 +257,7 @@ export default function PlumbingPage() {
               </h2>
               <p className="text-lg text-slate-400">
                 Experience how Sarah handles plumbing calls with natural voice interaction.
-                <span className="block mt-2 text-orange-400">Mike's Plumbing • DEMO_PHONE</span>
+                <span className="block mt-2 text-orange-400">Mike's Plumbing • (480) 725-0700</span>
               </p>
             </div>
           </FadeIn>
