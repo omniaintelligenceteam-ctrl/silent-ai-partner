@@ -36,9 +36,9 @@ export function Header() {
             <Image 
               src="/logo.png" 
               alt="Silent AI Partner" 
-              width={160} 
-              height={160} 
-              className="w-10 h-10 lg:w-14 lg:h-14 object-contain"
+              width={300} 
+              height={470} 
+              className="w-auto h-12 lg:h-16 object-contain"
               priority
             />
           </Link>
