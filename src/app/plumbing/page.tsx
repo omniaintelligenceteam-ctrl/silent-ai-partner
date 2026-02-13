@@ -123,16 +123,16 @@ export default function PlumbingPage() {
 
   const stats = [
     {
-      number: '62%',
-      label: 'of plumbing calls go unanswered during business hours'
+      number: '27%',
+      label: 'of contractor calls go unanswered'
     },
     {
       number: '85%',
       label: 'of homeowners DON\'T leave voicemails — they call the next plumber'
     },
     {
-      number: '$850+',
-      label: 'average value of a missed emergency plumbing call'
+      number: '$450+',
+      label: 'average emergency plumbing call value'
     },
     {
       number: '24/7',
@@ -230,7 +230,7 @@ export default function PlumbingPage() {
               <FadeIn key={index} delay={index * 100}>
                 <div className="glass-card p-8 text-center">
                   <div className={`text-4xl lg:text-5xl font-bold mb-3 ${
-                    stat.number === '62%' ? 'text-red-400' :
+                    stat.number === '27%' ? 'text-red-400' :
                     stat.number === '85%' ? 'text-red-400' :
                     stat.number === '$850+' ? 'text-orange-400' :
                     'text-blue-400'

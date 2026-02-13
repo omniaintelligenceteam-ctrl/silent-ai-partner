@@ -123,7 +123,7 @@ export default function HVACPage() {
 
   const stats = [
     {
-      number: '58%',
+      number: '27%',
       label: 'of HVAC emergency calls go to the first company that answers'
     },
     {
@@ -131,8 +131,8 @@ export default function HVACPage() {
       label: 'peak season: customers call every company until someone picks up'
     },
     {
-      number: '$1,200+',
-      label: 'average AC repair job value — lost when you miss the call'
+      number: '$500+',
+      label: 'average AC repair value — lost when you miss the call'
     },
     {
       number: '24/7',
@@ -230,9 +230,9 @@ export default function HVACPage() {
               <FadeIn key={index} delay={index * 100}>
                 <div className="glass-card p-8 text-center">
                   <div className={`text-4xl lg:text-5xl font-bold mb-3 ${
-                    stat.number === '58%' ? 'text-red-400' :
+                    stat.number === '27%' ? 'text-red-400' :
                     stat.number === 'July' ? 'text-red-400' :
-                    stat.number === '$1,200+' ? 'text-orange-400' :
+                    stat.number === '$500+' ? 'text-orange-400' :
                     stat.number === '24/7' ? 'text-blue-400' :
                     'text-orange-400'
                   }`}>

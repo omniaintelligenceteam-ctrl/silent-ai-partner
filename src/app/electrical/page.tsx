@@ -131,7 +131,7 @@ export default function ElectricalPage() {
       label: 'tolerance for voicemails during electrical emergencies'
     },
     {
-      number: '$950+',
+      number: '$350+',
       label: 'average electrical service call value — lost when you don\'t answer'
     },
     {
@@ -150,7 +150,7 @@ export default function ElectricalPage() {
   const statColors: Record<string, string> = {
     'Power': 'text-red-400',
     '0%': 'text-red-400',
-    '$950+': 'text-orange-400',
+    '$350+': 'text-orange-400',
     '24/7': 'text-blue-400',
   };
 
