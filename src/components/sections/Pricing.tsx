@@ -9,6 +9,7 @@ const plans = [
     role: 'Your AI Receptionist',
     price: 197,
     setup: 200,
+    payLink: 'https://buy.stripe.com/fZu9AV7Ug1Ji8Jd7E04wM0a',
     savings: '93% less than a $37K receptionist',
     features: [
       'Answers every call 24/7/365',
@@ -28,6 +29,7 @@ const plans = [
     role: 'Your Smart Receptionist',
     price: 297,
     setup: 500,
+    payLink: 'https://buy.stripe.com/4gM4gBcaw0Fe7F9gaw4wM0b',
     savings: '92% less than a $37K receptionist — and she sells',
     features: [
       'Everything in Starter',
@@ -47,6 +49,7 @@ const plans = [
     role: 'Your Office Manager',
     price: 397,
     setup: 1000,
+    payLink: 'https://buy.stripe.com/9B600ldeAgEcgbF5vS4wM0c',
     savings: '90% less than a $62K office manager',
     features: [
       'Everything in Professional',
@@ -68,6 +71,7 @@ const plans = [
     role: 'Your AI COO',
     price: 497,
     setup: 1500,
+    payLink: 'https://buy.stripe.com/bJe3cx7UgbjS0cH2jG4wM0d',
     savings: '90% less than a $62K office manager — and she never stops',
     features: [
       'Everything in Business',
@@ -177,7 +181,7 @@ export function Pricing() {
                 {/* CTA */}
                 <Link
                   href="/demo"
-                  className={`block w-full py-3 rounded-lg font-semibold text-center text-sm transition-all duration-200 ${
+                  className={`block w-full py-3 rounded-lg font-semibold text-center text-sm transition-all duration-200 mb-2 ${
                     plan.popular
                       ? 'bg-gradient-to-r from-orange-500 to-amber-500 text-white btn-glow hover:from-orange-600 hover:to-amber-600'
                       : (plan as any).elite
@@ -187,6 +191,14 @@ export function Pricing() {
                 >
                   Try Sarah Free
                 </Link>
+                <a
+                  href={(plan as any).payLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="block w-full py-2.5 rounded-lg font-medium text-center text-xs border border-emerald-500/30 text-emerald-400 hover:border-emerald-400 hover:bg-emerald-500/10 transition-all duration-200"
+                >
+                  Get Started →
+                </a>
               </div>
             </FadeIn>
           ))}
