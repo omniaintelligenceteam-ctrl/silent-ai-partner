@@ -317,7 +317,7 @@ export default function ElectricalPage() {
                         className="bg-gradient-to-r from-orange-500 to-amber-500 hover:from-orange-400 hover:to-amber-400 text-white px-8 py-4 rounded-xl text-lg font-medium transition-all btn-glow flex items-center gap-3 mx-auto"
                       >
                         <Phone className="w-6 h-6" />
-                        Start Voice Call
+                        Live Demo
                       </button>
                     </MagneticButton>
                     <button

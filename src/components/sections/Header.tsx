@@ -107,7 +107,7 @@ export function Header() {
                         onClick={() => setDemoDropdownOpen(false)}
                       >
                         <span className="text-lg">🎙️</span>
-                        <span className="text-sm font-medium">General Demo</span>
+                        <span className="text-sm font-medium">Interview Sarah</span>
                       </Link>
                     </div>
                   </div>
@@ -183,7 +183,7 @@ export function Header() {
               </div>
 
               <Link href="/demo" className="text-slate-400 hover:text-white transition-colors duration-200 text-sm" onClick={() => setMobileMenuOpen(false)}>
-                General Demo
+                Interview Sarah
               </Link>
 
               <div className="pt-4 border-t border-slate-800/30 space-y-3">
