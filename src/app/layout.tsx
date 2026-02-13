@@ -23,7 +23,7 @@ export const metadata: Metadata = {
   description: "AI that answers your phones, books your jobs, and runs 90% of your business. 24/7 call answering, appointment booking, and lead capture for plumbers, HVAC, electricians, and more service businesses.",
   keywords: "AI receptionist, contractor phone service, automated appointment booking, missed call solution, plumber answering service, HVAC phone service, electrician call service",
   openGraph: {
-    title: "Silent AI Partner — Pay 93% Less. She Makes The Rest.",
+    title: "Silent AI Partner — The AI Office Manager Built for Contractors",
     description: "AI Receptionist & Office Manager for Contractors. Answers every call 24/7, books jobs, upsells services, and runs your office. Starting at $197/mo.",
     type: "website",
     url: "https://silentaipartner.com",
@@ -38,7 +38,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Silent AI Partner — Pay 93% Less. She Makes The Rest.",
+    title: "Silent AI Partner — The AI Office Manager Built for Contractors",
     description: "AI Receptionist & Office Manager for Contractors. Starting at $197/mo. Try the demo now.",
     images: ["https://silentaipartner.com/og-image.png"],
   },
