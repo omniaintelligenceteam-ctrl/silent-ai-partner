@@ -267,6 +267,21 @@ export function Pricing() {
           })}
         </div>
 
+        {/* Schedule Consultation CTA */}
+        <FadeIn delay={350}>
+          <div className="text-center mb-16">
+            <p className="text-slate-400 text-sm mb-4">Not sure which plan is right for you?</p>
+            <a
+              href="https://calendly.com/silentaipartner"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-block px-8 py-3.5 rounded-xl font-semibold text-center text-sm transition-all duration-200 bg-gradient-to-r from-violet-500 to-purple-500 text-white btn-glow hover:from-violet-600 hover:to-purple-600"
+            >
+              Schedule a Free Consultation
+            </a>
+          </div>
+        </FadeIn>
+
         {/* Comparison Table */}
         <FadeIn delay={400}>
           <div className="max-w-5xl mx-auto mb-16">

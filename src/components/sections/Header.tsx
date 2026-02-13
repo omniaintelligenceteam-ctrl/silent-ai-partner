@@ -127,7 +127,7 @@ export function Header() {
               href="https://calendly.com/silentaipartner"
               target="_blank"
               rel="noopener noreferrer"
-              className="border border-slate-600 text-slate-300 hover:text-white hover:border-slate-400 px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200"
+              className="bg-gradient-to-r from-violet-500 to-purple-500 text-white hover:from-violet-600 hover:to-purple-600 px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 btn-glow"
             >
               Schedule a Consultation
             </a>
@@ -191,7 +191,7 @@ export function Header() {
                   href="https://calendly.com/silentaipartner"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="block border border-slate-600 text-slate-300 px-4 py-2.5 rounded-lg text-sm font-medium transition-all text-center"
+                  className="block bg-gradient-to-r from-violet-500 to-purple-500 text-white hover:from-violet-600 hover:to-purple-600 px-4 py-2.5 rounded-lg text-sm font-medium transition-all text-center btn-glow"
                   onClick={() => setMobileMenuOpen(false)}
                 >
                   Schedule a Consultation
