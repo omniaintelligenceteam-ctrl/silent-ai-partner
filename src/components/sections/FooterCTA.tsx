@@ -95,7 +95,7 @@ export function FooterCTA() {
         <FadeIn delay={400}>
           <div className="mt-14 flex items-center justify-center">
             <a href="tel:+18667821303" className="text-slate-500 hover:text-slate-300 text-sm transition-colors">
-              Or call to hear Sarah: <span className="text-orange-400 font-semibold">(866) 782-1303</span>
+              Questions? <a href="mailto:team@silentaipartner.com" className="text-orange-400 font-semibold hover:text-orange-300 transition-colors">team@silentaipartner.com</a>
             </a>
           </div>
         </FadeIn>

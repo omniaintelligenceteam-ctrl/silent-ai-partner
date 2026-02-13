@@ -96,10 +96,10 @@ export function Footer() {
             <div className="mt-8">
               <h4 className="text-[10px] font-mono text-slate-500 uppercase tracking-[0.15em] mb-3">Contact</h4>
               <a
-                href="tel:+18667821303"
+                href="mailto:team@silentaipartner.com"
                 className="text-orange-400 hover:text-orange-300 transition-colors duration-200 text-sm font-medium"
               >
-                (866) 782-1303
+                team@silentaipartner.com
               </a>
             </div>
           </div>

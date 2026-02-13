@@ -109,6 +109,14 @@ export function Header() {
                         <span className="text-lg">🎙️</span>
                         <span className="text-sm font-medium">Interview Sarah</span>
                       </Link>
+                      <a
+                        href="mailto:team@silentaipartner.com"
+                        className="flex items-center space-x-3 px-5 py-3 text-violet-400 hover:text-violet-300 hover:bg-violet-500/5 transition-all duration-200"
+                        onClick={() => setDemoDropdownOpen(false)}
+                      >
+                        <span className="text-lg">📧</span>
+                        <span className="text-sm font-medium">Contact Us</span>
+                      </a>
                     </div>
                   </div>
                 </div>
@@ -185,6 +193,10 @@ export function Header() {
               <Link href="/demo" className="text-slate-400 hover:text-white transition-colors duration-200 text-sm" onClick={() => setMobileMenuOpen(false)}>
                 Interview Sarah
               </Link>
+
+              <a href="mailto:team@silentaipartner.com" className="text-violet-400 hover:text-violet-300 transition-colors duration-200 text-sm" onClick={() => setMobileMenuOpen(false)}>
+                📧 Contact Us
+              </a>
 
               <div className="pt-4 border-t border-slate-800/30 space-y-3">
                 <a
