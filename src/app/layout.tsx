@@ -15,6 +15,10 @@ const spaceGrotesk = Space_Grotesk({
 });
 
 export const metadata: Metadata = {
+  icons: {
+    icon: '/favicon.ico',
+    apple: '/apple-touch-icon.png',
+  },
   title: "Silent AI Partner - AI Receptionist for Contractors",
   description: "AI that answers your phones, books your jobs, and runs 90% of your business. 24/7 call answering, appointment booking, and lead capture for plumbers, HVAC, electricians, and more service businesses.",
   keywords: "AI receptionist, contractor phone service, automated appointment booking, missed call solution, plumber answering service, HVAC phone service, electrician call service",

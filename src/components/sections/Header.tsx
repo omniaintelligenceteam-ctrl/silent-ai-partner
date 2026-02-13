@@ -1,6 +1,7 @@
 'use client'
 
 import Link from 'next/link'
+import Image from 'next/image'
 import { useState, useRef, useEffect } from 'react'
 
 const industries = [
@@ -32,21 +33,14 @@ export function Header() {
         <div className="flex items-center justify-between h-16 lg:h-20">
           {/* Logo */}
           <Link href="/" className="flex items-center space-x-3 lg:space-x-4 group">
-            {/* Logo Icon */}
-            <div className="relative w-9 h-9 lg:w-12 lg:h-12 rounded-lg bg-gradient-to-br from-orange-500 to-amber-500 flex items-center justify-center shadow-lg shadow-orange-500/20 group-hover:shadow-orange-500/40 transition-shadow duration-300">
-              <svg className="w-5 h-5 lg:w-7 lg:h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2.5}>
-                <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z" />
-              </svg>
-            </div>
-            {/* Logo Text */}
-            <div className="flex flex-col leading-none" style={{ fontFamily: 'var(--font-display), sans-serif' }}>
-              <span className="text-[17px] lg:text-[24px] font-bold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-white to-slate-300">
-                SILENT AI
-              </span>
-              <span className="text-[10px] lg:text-[13px] font-semibold tracking-[0.25em] uppercase text-orange-400">
-                PARTNER
-              </span>
-            </div>
+            <Image 
+              src="/logo.png" 
+              alt="Silent AI Partner" 
+              width={160} 
+              height={160} 
+              className="w-10 h-10 lg:w-14 lg:h-14 object-contain"
+              priority
+            />
           </Link>
 
           {/* Desktop Navigation */}
