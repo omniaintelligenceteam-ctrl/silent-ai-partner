@@ -33,14 +33,19 @@ export function Header() {
         <div className="flex items-center justify-between h-16 lg:h-20">
           {/* Logo */}
           <Link href="/" className="flex items-center space-x-3 lg:space-x-4 group">
+            {/* Bolt Icon */}
             <Image 
-              src="/logo.png" 
+              src="/logo-bolt.png" 
               alt="Silent AI Partner" 
               width={300} 
               height={470} 
-              className="w-auto h-12 lg:h-16 object-contain"
+              className="w-auto h-14 lg:h-[72px] object-contain -my-2"
               priority
             />
+            {/* Brand Text */}
+            <span className="text-white font-bold text-lg lg:text-2xl tracking-tight whitespace-nowrap" style={{ fontFamily: 'var(--font-display), sans-serif' }}>
+              SILENT AI PARTNER
+            </span>
           </Link>
 
           {/* Desktop Navigation */}
