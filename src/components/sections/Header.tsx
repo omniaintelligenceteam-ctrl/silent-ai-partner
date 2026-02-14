@@ -9,6 +9,8 @@ const industries = [
   { name: 'HVAC', href: '/hvac', emoji: '❄️' },
   { name: 'Landscape Lighting', href: '/landscape-lighting', emoji: '💡' },
   { name: 'Electrical', href: '/electrical', emoji: '⚡' },
+  { name: 'Locksmith', href: '/locksmith', emoji: '🔑' },
+  { name: 'Pest Control', href: '/pest-control', emoji: '🐛' },
 ]
 
 export function Header() {
