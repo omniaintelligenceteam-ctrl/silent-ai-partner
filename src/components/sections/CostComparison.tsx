@@ -69,7 +69,7 @@ export function CostComparison() {
                   </div>
                   <div className="w-full h-3 bg-slate-800/80 rounded-full overflow-hidden">
                     <div
-                      className="h-full bg-gradient-to-r from-orange-500 to-amber-500 rounded-full transition-all duration-1000 ease-out delay-500"
+                      className="h-full bg-gradient-to-r from-orange-500 to-orange-400 rounded-full transition-all duration-1000 ease-out delay-500"
                       style={{ width: barsVisible ? '6.6%' : '0%' }}
                     ></div>
                   </div>

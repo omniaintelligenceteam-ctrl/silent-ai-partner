@@ -31,7 +31,7 @@ export function FooterCTA() {
           <div className="flex flex-col sm:flex-row gap-5 justify-center items-center mb-10">
             <Link
               href="/demo"
-              className="bg-gradient-to-r from-orange-500 to-amber-500 text-white px-8 py-4 rounded-xl font-semibold text-lg btn-glow hover:from-orange-600 hover:to-amber-600 transition-all duration-200"
+              className="bg-gradient-to-r from-orange-500 to-orange-400 text-white px-8 py-4 rounded-xl font-semibold text-lg btn-glow hover:from-orange-600 hover:to-orange-500 transition-all duration-200"
             >
               Try Sarah Free
             </Link>

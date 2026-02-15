@@ -4,7 +4,7 @@ import { FadeIn } from '@/components/ui/FadeIn'
 const industries = [
   { name: 'Plumbing', emoji: '🔧', href: '/plumbing', color: 'from-blue-500 to-cyan-500' },
   { name: 'HVAC', emoji: '❄️', href: '/hvac', color: 'from-sky-500 to-blue-500' },
-  { name: 'Landscape Lighting', emoji: '💡', href: '/landscape-lighting', color: 'from-amber-500 to-yellow-500' },
+  { name: 'Landscape Lighting', emoji: '💡', href: '/landscape-lighting', color: 'from-orange-400 to-yellow-500' },
   { name: 'Electrical', emoji: '⚡', href: '/electrical', color: 'from-violet-500 to-purple-500' },
 ]
 
@@ -50,7 +50,7 @@ export function Demo() {
                 {barHeights.map((h, i) => (
                   <div
                     key={i}
-                    className="w-1.5 rounded-full bg-gradient-to-t from-orange-500 to-amber-400"
+                    className="w-1.5 rounded-full bg-gradient-to-t from-orange-500 to-orange-300"
                     style={{
                       height: `${h * 0.4}px`,
                       animation: 'waveform 1.5s ease-in-out infinite',
@@ -74,7 +74,7 @@ export function Demo() {
 
               <a
                 href="/demo"
-                className="bg-gradient-to-r from-orange-500 to-amber-500 hover:from-orange-400 hover:to-amber-400 text-white px-8 py-4 rounded-full text-xl font-semibold transition-all btn-glow inline-flex items-center gap-2"
+                className="bg-gradient-to-r from-orange-500 to-orange-400 hover:from-orange-400 hover:to-orange-300 text-white px-8 py-4 rounded-full text-xl font-semibold transition-all btn-glow inline-flex items-center gap-2"
               >
                 <Mic className="w-5 h-5" />
                 Interview Sarah

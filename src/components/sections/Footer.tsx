@@ -30,7 +30,7 @@ export function Footer() {
             <Link href="/" className="inline-block mb-5">
               <span className="text-lg tracking-[0.15em] font-semibold">
                 <span className="text-white">SILENT</span>{' '}
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-amber-400 font-bold">AI</span>{' '}
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-orange-300 font-bold">AI</span>{' '}
                 <span className="text-white">PARTNER</span>
               </span>
             </Link>

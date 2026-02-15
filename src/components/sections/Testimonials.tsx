@@ -43,7 +43,7 @@ export function Testimonials() {
                 {/* Stars */}
                 <div className="flex gap-1 mb-4">
                   {[...Array(5)].map((_, j) => (
-                    <Star key={j} className="w-4 h-4 text-amber-400 fill-amber-400" />
+                    <Star key={j} className="w-4 h-4 text-orange-300 fill-orange-300" />
                   ))}
                 </div>
 
