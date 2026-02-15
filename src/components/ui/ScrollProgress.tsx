@@ -18,7 +18,7 @@ export function ScrollProgress() {
   return (
     <div className="fixed top-0 left-0 right-0 z-[60] h-[2px] bg-transparent pointer-events-none">
       <div
-        className="h-full bg-gradient-to-r from-orange-500 to-amber-500 will-change-transform"
+        className="h-full bg-gradient-to-r from-orange-500 to-orange-400 will-change-transform"
         style={{ transform: `scaleX(${progress})`, transformOrigin: 'left' }}
       />
     </div>

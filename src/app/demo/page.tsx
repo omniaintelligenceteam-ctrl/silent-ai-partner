@@ -100,7 +100,7 @@ export default function DemoPage() {
       <div className="flex-1 flex flex-col items-center justify-center p-8">
           <div className="text-center max-w-md">
             <div className="page-enter page-enter-1">
-              <div className="w-32 h-32 mx-auto mb-8 rounded-full bg-gradient-to-r from-orange-500 to-amber-500 flex items-center justify-center shadow-lg shadow-orange-500/20">
+              <div className="w-32 h-32 mx-auto mb-8 rounded-full bg-gradient-to-r from-orange-500 to-orange-400 flex items-center justify-center shadow-lg shadow-orange-500/20">
                 <div className="text-4xl font-bold text-white">S</div>
               </div>
             </div>
@@ -118,7 +118,7 @@ export default function DemoPage() {
                 <MagneticButton>
                   <button
                     onClick={startCall}
-                    className="bg-gradient-to-r from-orange-500 to-amber-500 hover:from-orange-400 hover:to-amber-400 text-white px-8 py-4 rounded-xl text-lg font-medium transition-all btn-glow flex items-center gap-3 mx-auto"
+                    className="bg-gradient-to-r from-orange-500 to-orange-400 hover:from-orange-400 hover:to-orange-300 text-white px-8 py-4 rounded-xl text-lg font-medium transition-all btn-glow flex items-center gap-3 mx-auto"
                   >
                     <Phone className="w-6 h-6" />
                     🎙️ Interview Sarah
@@ -164,7 +164,7 @@ export default function DemoPage() {
                     {[...Array(12)].map((_, i) => (
                       <div
                         key={i}
-                        className="bg-gradient-to-t from-orange-500 to-amber-500 rounded-full animate-pulse"
+                        className="bg-gradient-to-t from-orange-500 to-orange-400 rounded-full animate-pulse"
                         style={{
                           width: '4px',
                           height: `${Math.random() * 60 + 10}px`,
@@ -198,7 +198,7 @@ export default function DemoPage() {
                 </div>
                 <button
                   onClick={resetError}
-                  className="bg-gradient-to-r from-orange-500 to-amber-500 hover:from-orange-400 hover:to-amber-400 text-white px-6 py-3 rounded-xl font-medium transition-all"
+                  className="bg-gradient-to-r from-orange-500 to-orange-400 hover:from-orange-400 hover:to-orange-300 text-white px-6 py-3 rounded-xl font-medium transition-all"
                 >
                   Try Again
                 </button>

@@ -120,7 +120,7 @@ const comparisonRows = [
 
 function accentColor(accent: string) {
   switch (accent) {
-    case 'orange': return { bg: 'bg-orange-500/15', text: 'text-orange-400', border: 'border-t-orange-500/40', price: 'text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-amber-400' }
+    case 'orange': return { bg: 'bg-orange-500/15', text: 'text-orange-400', border: 'border-t-orange-500/40', price: 'text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-orange-300' }
     case 'cyan': return { bg: 'bg-cyan-500/15', text: 'text-cyan-400', border: 'border-t-cyan-500/40', price: 'text-cyan-400' }
     case 'blue': return { bg: 'bg-blue-500/15', text: 'text-blue-400', border: 'border-t-blue-500/40', price: 'text-blue-400' }
     case 'violet': return { bg: 'bg-violet-500/15', text: 'text-violet-400', border: 'border-t-violet-500/40', price: 'text-transparent bg-clip-text bg-gradient-to-r from-violet-400 to-purple-400' }
@@ -156,7 +156,7 @@ export function Pricing() {
                 }`}>
                   {plan.popular && (
                     <div className="absolute -top-3.5 left-1/2 transform -translate-x-1/2">
-                      <span className="bg-gradient-to-r from-orange-500 to-amber-500 text-white px-5 py-1.5 rounded-full text-xs font-bold tracking-wider uppercase whitespace-nowrap shadow-lg shadow-orange-500/25">
+                      <span className="bg-gradient-to-r from-orange-500 to-orange-400 text-white px-5 py-1.5 rounded-full text-xs font-bold tracking-wider uppercase whitespace-nowrap shadow-lg shadow-orange-500/25">
                         MOST POPULAR
                       </span>
                     </div>
@@ -241,7 +241,7 @@ export function Pricing() {
                         href="/demo"
                         className={`block w-full py-3 rounded-xl font-semibold text-center text-sm transition-all duration-200 mb-2 ${
                           plan.popular
-                            ? 'bg-gradient-to-r from-orange-500 to-amber-500 text-white btn-glow hover:from-orange-600 hover:to-amber-600'
+                            ? 'bg-gradient-to-r from-orange-500 to-orange-400 text-white btn-glow hover:from-orange-600 hover:to-orange-500'
                             : plan.accent === 'blue'
                               ? 'border border-blue-500/30 text-blue-400 hover:border-blue-400 hover:bg-blue-500/10'
                               : plan.accent === 'cyan'

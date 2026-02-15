@@ -50,7 +50,7 @@ export function Hero() {
               <div className="flex flex-col sm:flex-row items-start gap-4">
                 <Link
                   href="/demo"
-                  className="bg-gradient-to-r from-orange-500 to-amber-500 text-white px-8 py-4 rounded-lg font-semibold text-lg btn-glow hover:from-orange-600 hover:to-amber-600 transition-all duration-200"
+                  className="bg-gradient-to-r from-orange-500 to-orange-400 text-white px-8 py-4 rounded-lg font-semibold text-lg btn-glow hover:from-orange-600 hover:to-orange-500 transition-all duration-200"
                 >
                   Try Sarah Free
                 </Link>

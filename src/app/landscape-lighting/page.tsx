@@ -209,7 +209,7 @@ export default function LandscapeLightingPage() {
                 <MagneticButton>
                   <a
                     href="#demo"
-                    className="bg-gradient-to-r from-orange-500 to-amber-500 text-white px-8 py-4 rounded-xl font-semibold text-lg btn-glow hover:from-orange-600 hover:to-amber-600 transition-all duration-200 text-center"
+                    className="bg-gradient-to-r from-orange-500 to-orange-400 text-white px-8 py-4 rounded-xl font-semibold text-lg btn-glow hover:from-orange-600 hover:to-orange-500 transition-all duration-200 text-center"
                   >
                     Try the Demo
                   </a>
@@ -296,7 +296,7 @@ export default function LandscapeLightingPage() {
           <FadeIn delay={100}>
             <div className="glass-card p-8 lg:p-10">
               <div className="text-center">
-                <div className="w-24 h-24 mx-auto mb-6 rounded-full bg-gradient-to-r from-orange-500 to-amber-500 flex items-center justify-center">
+                <div className="w-24 h-24 mx-auto mb-6 rounded-full bg-gradient-to-r from-orange-500 to-orange-400 flex items-center justify-center">
                   <Sun className="w-12 h-12 text-white" />
                 </div>
 
@@ -312,7 +312,7 @@ export default function LandscapeLightingPage() {
                     <MagneticButton>
                       <button
                         onClick={startCall}
-                        className="bg-gradient-to-r from-orange-500 to-amber-500 hover:from-orange-400 hover:to-amber-400 text-white px-8 py-4 rounded-xl text-lg font-medium transition-all btn-glow flex items-center gap-3 mx-auto"
+                        className="bg-gradient-to-r from-orange-500 to-orange-400 hover:from-orange-400 hover:to-orange-300 text-white px-8 py-4 rounded-xl text-lg font-medium transition-all btn-glow flex items-center gap-3 mx-auto"
                       >
                         <Phone className="w-6 h-6" />
                         Live Demo
@@ -363,7 +363,7 @@ export default function LandscapeLightingPage() {
                         {[...Array(12)].map((_, i) => (
                           <div
                             key={i}
-                            className="bg-gradient-to-t from-orange-500 to-amber-500 rounded-full animate-pulse"
+                            className="bg-gradient-to-t from-orange-500 to-orange-400 rounded-full animate-pulse"
                             style={{
                               width: '4px',
                               height: `${Math.random() * 60 + 10}px`,
@@ -397,7 +397,7 @@ export default function LandscapeLightingPage() {
                     </div>
                     <button
                       onClick={resetError}
-                      className="bg-gradient-to-r from-orange-500 to-amber-500 hover:from-orange-400 hover:to-amber-400 text-white px-6 py-3 rounded-xl font-medium transition-all"
+                      className="bg-gradient-to-r from-orange-500 to-orange-400 hover:from-orange-400 hover:to-orange-300 text-white px-6 py-3 rounded-xl font-medium transition-all"
                     >
                       Try Again
                     </button>
@@ -456,7 +456,7 @@ export default function LandscapeLightingPage() {
                   </div>
                   <div className="w-full h-3 bg-slate-800 rounded-full overflow-hidden">
                     <div
-                      className="h-full bg-gradient-to-r from-orange-500 to-amber-500 rounded-full transition-all duration-1000 ease-out delay-500"
+                      className="h-full bg-gradient-to-r from-orange-500 to-orange-400 rounded-full transition-all duration-1000 ease-out delay-500"
                       style={{ width: barsVisible ? '7.8%' : '0%' }}
                     ></div>
                   </div>

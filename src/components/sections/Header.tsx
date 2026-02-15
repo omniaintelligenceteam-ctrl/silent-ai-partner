@@ -52,12 +52,12 @@ export function Header() {
               alt="Silent AI Partner"
               width={2048}
               height={1842}
-              className="w-auto h-14 lg:h-18 object-contain"
+              className="w-auto h-15 lg:h-19.5 object-contain"
               priority
             />
             <span className="text-base lg:text-xl tracking-[0.2em] font-semibold whitespace-nowrap">
               <span className="text-white">SILENT</span>{' '}
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-amber-400 font-bold">AI</span>{' '}
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-orange-300 font-bold">AI</span>{' '}
               <span className="text-white">PARTNER</span>
             </span>
           </Link>
@@ -143,7 +143,7 @@ export function Header() {
             </a>
             <Link
               href="/demo"
-              className="bg-gradient-to-r from-orange-500 to-amber-500 text-white px-5 py-2 rounded-lg text-sm font-medium btn-glow hover:from-orange-600 hover:to-amber-600 transition-all duration-200"
+              className="bg-gradient-to-r from-orange-500 to-orange-400 text-white px-5 py-2 rounded-lg text-sm font-medium btn-glow hover:from-orange-600 hover:to-orange-500 transition-all duration-200"
             >
               Try Sarah Free
             </Link>
@@ -212,7 +212,7 @@ export function Header() {
                 </a>
                 <Link
                   href="/demo"
-                  className="block bg-gradient-to-r from-orange-500 to-amber-500 text-white px-4 py-2.5 rounded-lg text-sm font-medium btn-glow hover:from-orange-600 hover:to-amber-600 transition-all duration-200 text-center"
+                  className="block bg-gradient-to-r from-orange-500 to-orange-400 text-white px-4 py-2.5 rounded-lg text-sm font-medium btn-glow hover:from-orange-600 hover:to-orange-500 transition-all duration-200 text-center"
                   onClick={() => setMobileMenuOpen(false)}
                 >
                   Try Sarah Free
