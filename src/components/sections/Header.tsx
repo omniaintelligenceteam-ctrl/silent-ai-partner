@@ -52,7 +52,7 @@ export function Header() {
               alt="Silent AI Partner"
               width={300}
               height={470}
-              className="w-auto h-10 lg:h-14 object-contain"
+              className="w-auto h-12 lg:h-16 object-contain"
               priority
             />
             <span className="text-base lg:text-xl tracking-[0.2em] font-semibold whitespace-nowrap">
