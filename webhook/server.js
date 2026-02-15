@@ -398,3 +398,60 @@ server.listen(PORT, '0.0.0.0', () => {
   console.log(`📱 Twilio: ${twilioClient ? '✅' : '⚠️  log only'}`);
   console.log(`👥 Customers: ${customerConfig ? customerConfig.customers.length : 0}\n`);
 });
+
+// === SMS FOLLOW-UP AFTER RETELL CALLS ===
+// Retell sends post-call data to this webhook
+// We extract caller phone and send a follow-up SMS with booking link
+
+async function handleRetellPostCall(body) {
+  try {
+    const callData = typeof body === 'string' ? JSON.parse(body) : body;
+    const callerPhone = callData.from_number || callData.caller_number;
+    const transcript = callData.transcript || '';
+    const callDuration = callData.call_duration_ms || 0;
+    
+    // Skip very short calls (spam/hangups) - less than 15 seconds
+    if (callDuration < 15000) {
+      console.log('⏭️ Skipping SMS - call too short:', callDuration, 'ms');
+      return { sent: false, reason: 'call_too_short' };
+    }
+    
+    // Skip if no caller phone
+    if (!callerPhone) {
+      console.log('⏭️ Skipping SMS - no caller phone number');
+      return { sent: false, reason: 'no_phone' };
+    }
+    
+    // Determine if this was a demo/interview call or a customer call
+    const isDemo = transcript.toLowerCase().includes('silent ai partner') || 
+                   transcript.toLowerCase().includes('interview') ||
+                   transcript.toLowerCase().includes('free trial');
+    
+    let smsMessage;
+    if (isDemo) {
+      // Demo caller - send booking link
+      smsMessage = `Thanks for trying the Silent AI Partner demo! Ready to see a custom version built for YOUR business? Book a free consultation: https://calendly.com/silentaipartner\n\nTry it free for 2 weeks - no commitment. Questions? Reply to this text.\n\n- Wes, Founder`;
+    } else {
+      // Regular customer call - send confirmation
+      smsMessage = `Thanks for calling! Your request has been logged and our team will follow up shortly. If you need immediate help, call us back anytime - we're available 24/7.`;
+    }
+    
+    if (twilioClient) {
+      const demoFrom = '+18667821303'; // Main demo line
+      await twilioClient.messages.create({
+        body: smsMessage,
+        from: demoFrom,
+        to: callerPhone
+      });
+      console.log(`📱 SMS follow-up sent to ${callerPhone} (${isDemo ? 'demo' : 'customer'})`);
+      return { sent: true, type: isDemo ? 'demo' : 'customer', to: callerPhone };
+    } else {
+      console.log(`📱 SMS would send to ${callerPhone}: ${smsMessage}`);
+      return { sent: false, reason: 'twilio_not_configured', message: smsMessage };
+    }
+  } catch (err) {
+    console.error('❌ SMS follow-up error:', err.message);
+    return { sent: false, reason: err.message };
+  }
+}
+

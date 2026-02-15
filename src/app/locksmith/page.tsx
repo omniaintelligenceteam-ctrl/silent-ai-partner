@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect, useRef } from 'react';
-import { Phone, PhoneOff, Wrench, Droplets, Flame, Shield } from 'lucide-react';
+import { Phone, PhoneOff, Key, Lock, Shield, Home, Car, Building2 } from 'lucide-react';
 import { FadeIn } from '@/components/ui/FadeIn';
 import { Pricing } from '@/components/sections/Pricing';
 import { Header } from '@/components/sections/Header';
@@ -13,7 +13,7 @@ import { MagneticButton } from '@/components/ui/MagneticButton';
 
 type CallState = 'idle' | 'connecting' | 'connected' | 'error';
 
-export default function PlumbingPage() {
+export default function LocksmithPage() {
   const [callState, setCallState] = useState<CallState>('idle');
   const [retellWebClient, setRetellWebClient] = useState<RetellWebClient | null>(null);
   const [error, setError] = useState<string>('');
@@ -48,7 +48,7 @@ export default function PlumbingPage() {
       // Get access token from our API
       const response = await fetch("/api/retell", {
         method: 'POST',
-        body: JSON.stringify({ agent_id: "agent_5c7497a9685bfbf3fe546f07e7" }),
+        body: JSON.stringify({ agent_id: "agent_31ae2934211ceae91c35e1b2fd" }),
         headers: { 'Content-Type': 'application/json' },
       });
 
@@ -144,23 +144,25 @@ export default function PlumbingPage() {
     },
     {
       number: '85%',
-      label: 'of homeowners DON\'T leave voicemails — they call the next plumber'
+      label: 'of lockout customers DON\'T leave voicemails — they call the next locksmith'
     },
     {
-      number: '$450+',
-      label: 'average emergency plumbing call value'
+      number: '$75-250',
+      label: 'Every missed lockout call = potential revenue lost'
     },
     {
       number: '24/7',
-      label: 'burst pipes and water heaters don\'t wait for business hours'
+      label: 'Lockouts happen around the clock — emergencies don\'t wait'
     }
   ];
 
   const services = [
-    { icon: Droplets, name: 'Drain Cleaning', desc: 'Clogs, backups, hydro jetting' },
-    { icon: Flame, name: 'Water Heater', desc: 'Repair, replacement, tankless install' },
-    { icon: Wrench, name: 'Leak Detection', desc: 'Slab leaks, pipe leaks, hidden issues' },
-    { icon: Shield, name: 'Pipe Repair', desc: 'Burst pipes, repiping, emergencies' },
+    { icon: Home, name: 'Residential Lockout', desc: 'Homes, apartments, doors, gates' },
+    { icon: Car, name: 'Car Lockout', desc: 'Keys locked in car, trunks, ignitions' },
+    { icon: Building2, name: 'Commercial', desc: 'Offices, retail stores, warehouses' },
+    { icon: Key, name: 'Rekey & Install', desc: 'Rekeying locks, new lock installation' },
+    { icon: Lock, name: 'Smart Locks', desc: 'Digital, keypad, smart home integration' },
+    { icon: Shield, name: 'Safe Opening', desc: 'Residential & commercial safe access' },
   ];
 
   return (
@@ -184,7 +186,7 @@ export default function PlumbingPage() {
             <div className="page-enter page-enter-1">
               <div className="inline-flex items-center px-4 py-2 rounded-full bg-slate-800/30 border border-slate-700/30 mb-8">
                 <span className="text-xs font-mono uppercase tracking-wide text-slate-400">
-                  AI RECEPTIONIST FOR PLUMBERS
+                  AI RECEPTIONIST FOR LOCKSMITHS
                 </span>
               </div>
             </div>
@@ -193,13 +195,13 @@ export default function PlumbingPage() {
               <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight tracking-tight mb-6" style={{ fontFamily: 'var(--font-display), sans-serif' }}>
                 <span className="text-white">Never Miss</span>
                 <br />
-                <span className="gradient-text-shimmer">Another Plumbing Call</span>
+                <span className="gradient-text-shimmer">Another Lockout Call</span>
               </h1>
             </div>
 
             <div className="page-enter page-enter-3">
               <p className="text-xl text-slate-400 mb-8 max-w-2xl mx-auto leading-relaxed">
-                Customers with burst pipes don't leave voicemails — they call the next plumber.
+                Customers locked out of their home or car don't leave voicemails — they call the next locksmith.
                 Sarah answers every call 24/7, books your jobs, and keeps your schedule full.
               </p>
             </div>
@@ -221,7 +223,7 @@ export default function PlumbingPage() {
 
           {/* Services Grid */}
           <FadeIn delay={200}>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-5 max-w-4xl mx-auto">
+            <div className="grid grid-cols-2 md:grid-cols-3 gap-5 max-w-5xl mx-auto">
               {services.map((service, index) => (
                 <TiltCard key={index}>
                   <div className="glass-card p-5 rounded-xl text-center h-full">
@@ -260,7 +262,7 @@ export default function PlumbingPage() {
                   <div className={`text-4xl lg:text-5xl font-bold mb-3 ${
                     stat.number === '62%' ? 'text-red-400' :
                     stat.number === '85%' ? 'text-red-400' :
-                    stat.number === '$850+' ? 'text-orange-400' :
+                    stat.number === '$75-250' ? 'text-orange-400' :
                     'text-blue-400'
                   }`}>
                     {stat.number}
@@ -283,11 +285,11 @@ export default function PlumbingPage() {
           <FadeIn>
             <div className="text-center mb-12">
               <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-white mb-4">
-                Talk to Sarah — Your AI Plumbing Receptionist
+                Talk to Sarah — Your AI Locksmith Receptionist
               </h2>
               <p className="text-lg text-slate-400">
-                Experience how Sarah handles plumbing calls with natural voice interaction.
-                <span className="block mt-2 text-orange-400">Mike's Plumbing • (480) 725-0700</span>
+                Experience how Sarah handles locksmith calls with natural voice interaction.
+                <span className="block mt-2 text-orange-400">Locksmith Express • (623) 304-7642</span>
               </p>
             </div>
           </FadeIn>
@@ -296,14 +298,14 @@ export default function PlumbingPage() {
             <div className="glass-card p-8 lg:p-10">
               <div className="text-center">
                 <div className="w-24 h-24 mx-auto mb-6 rounded-full bg-gradient-to-r from-orange-500 to-amber-500 flex items-center justify-center">
-                  <Wrench className="w-12 h-12 text-white" />
+                  <Key className="w-12 h-12 text-white" />
                 </div>
 
                 {callState === 'idle' && (
                   <div className="space-y-6">
                     <div>
                       <h3 className="text-2xl font-semibold text-white mb-2">Sarah - AI Receptionist</h3>
-                      <p className="text-slate-400">Mike's Plumbing</p>
+                      <p className="text-slate-400">Locksmith Express</p>
                     </div>
                     <p className="text-slate-300 mb-6">
                       Click below to start a live voice demo. Ask about services, pricing, or schedule an appointment.
@@ -326,10 +328,10 @@ export default function PlumbingPage() {
                     <div className="text-sm text-slate-500 mt-6">
                       <p className="mb-3">Try asking Sarah about:</p>
                       <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-slate-400">
-                        <p>&bull; "I have a burst pipe, water everywhere!"</p>
-                        <p>&bull; "How much for water heater replacement?"</p>
-                        <p>&bull; "Schedule drain cleaning next Tuesday"</p>
-                        <p>&bull; "Do you do sewer line repairs?"</p>
+                        <p>&bull; "I'm locked out of my house!"</p>
+                        <p>&bull; "How much for car lockout?"</p>
+                        <p>&bull; "I need to rekey my locks"</p>
+                        <p>&bull; "Can you install smart locks?"</p>
                       </div>
                     </div>
                   </div>
@@ -376,7 +378,7 @@ export default function PlumbingPage() {
 
                     <p className="text-emerald-400 font-medium text-lg">🟢 Connected • Speaking with Sarah</p>
                     <p className="text-slate-400">Sarah can hear you. Speak naturally!</p>
-                    <p className="text-slate-500 text-sm">Ask about plumbing services, pricing, or schedule an appointment</p>
+                    <p className="text-slate-500 text-sm">Ask about locksmith services, pricing, or schedule an appointment</p>
 
                     <button
                       onClick={endCall}
@@ -419,7 +421,7 @@ export default function PlumbingPage() {
                 Receptionist vs Sarah AI
               </h2>
               <p className="text-lg text-slate-400">
-                The math is simple. The savings are massive.
+                The math is simple. The savings are massive. ROI in 1 week.
               </p>
             </div>
           </FadeIn>
@@ -431,10 +433,10 @@ export default function PlumbingPage() {
                 <div className="space-y-4">
                   <div className="flex items-center justify-between">
                     <div>
-                      <h3 className="text-lg font-semibold text-white">Plumbing Dispatcher (Monthly)</h3>
+                      <h3 className="text-lg font-semibold text-white">Locksmith Dispatcher (Monthly)</h3>
                       <p className="text-sm text-slate-400">Salary + benefits + missed calls</p>
                     </div>
-                    <div className="text-2xl font-bold tracking-tight text-red-400"><AnimatedCounter end={4200} prefix="$" /></div>
+                    <div className="text-2xl font-bold tracking-tight text-red-400"><AnimatedCounter end={3200} prefix="$" /></div>
                   </div>
                   <div className="w-full h-3 bg-slate-800 rounded-full overflow-hidden">
                     <div
@@ -456,7 +458,7 @@ export default function PlumbingPage() {
                   <div className="w-full h-3 bg-slate-800 rounded-full overflow-hidden">
                     <div
                       className="h-full bg-gradient-to-r from-orange-500 to-amber-500 rounded-full transition-all duration-1000 ease-out delay-500"
-                      style={{ width: barsVisible ? '7.1%' : '0%' }}
+                      style={{ width: barsVisible ? '9.3%' : '0%' }}
                     ></div>
                   </div>
                 </div>
@@ -465,15 +467,15 @@ export default function PlumbingPage() {
                 <div className="border-t border-slate-800/50 pt-6">
                   <div className="grid grid-cols-3 gap-4 text-center">
                     <div>
-                      <div className="text-2xl font-bold tracking-tight text-emerald-400"><AnimatedCounter end={3903} prefix="$" /></div>
+                      <div className="text-2xl font-bold tracking-tight text-emerald-400"><AnimatedCounter end={2903} prefix="$" /></div>
                       <div className="text-[10px] text-slate-500 font-mono uppercase tracking-wider">Monthly Savings</div>
                     </div>
                     <div>
-                      <div className="text-2xl font-bold tracking-tight text-emerald-400"><AnimatedCounter end={46836} prefix="$" /></div>
+                      <div className="text-2xl font-bold tracking-tight text-emerald-400"><AnimatedCounter end={34836} prefix="$" /></div>
                       <div className="text-[10px] text-slate-500 font-mono uppercase tracking-wider">Annual Savings</div>
                     </div>
                     <div>
-                      <div className="text-2xl font-bold tracking-tight text-emerald-400"><AnimatedCounter end={93} suffix="%" /></div>
+                      <div className="text-2xl font-bold tracking-tight text-emerald-400"><AnimatedCounter end={91} suffix="%" /></div>
                       <div className="text-[10px] text-slate-500 font-mono uppercase tracking-wider">Cost Reduction</div>
                     </div>
                   </div>

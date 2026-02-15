@@ -3,13 +3,14 @@
 import Link from 'next/link'
 import Image from 'next/image'
 import { useState, useRef, useEffect } from 'react'
-import { MagneticButton } from '@/components/ui/MagneticButton'
 
 const industries = [
   { name: 'Plumbing', href: '/plumbing', emoji: '🔧' },
   { name: 'HVAC', href: '/hvac', emoji: '❄️' },
   { name: 'Landscape Lighting', href: '/landscape-lighting', emoji: '💡' },
   { name: 'Electrical', href: '/electrical', emoji: '⚡' },
+  { name: 'Locksmith', href: '/locksmith', emoji: '🔑' },
+  { name: 'Pest Control', href: '/pest-control', emoji: '🐛' },
 ]
 
 export function Header() {
@@ -108,8 +109,16 @@ export function Header() {
                         onClick={() => setDemoDropdownOpen(false)}
                       >
                         <span className="text-lg">🎙️</span>
-                        <span className="text-sm font-medium">General Demo</span>
+                        <span className="text-sm font-medium">Interview Sarah</span>
                       </Link>
+                      <a
+                        href="mailto:team@silentaipartner.com"
+                        className="flex items-center space-x-3 px-5 py-3 text-violet-400 hover:text-violet-300 hover:bg-violet-500/5 transition-all duration-200"
+                        onClick={() => setDemoDropdownOpen(false)}
+                      >
+                        <span className="text-lg">📧</span>
+                        <span className="text-sm font-medium">Contact Us</span>
+                      </a>
                     </div>
                   </div>
                 </div>
@@ -124,14 +133,20 @@ export function Header() {
               <span className="text-emerald-400/80">Online</span>
             </div>
 
-            <MagneticButton>
-              <Link
-                href="/demo"
-                className="bg-gradient-to-r from-orange-500 to-amber-500 text-white px-5 py-2 rounded-lg text-sm font-medium btn-glow hover:from-orange-600 hover:to-amber-600 transition-all duration-200"
-              >
-                Try Sarah Free
-              </Link>
-            </MagneticButton>
+            <a
+              href="https://calendly.com/silentaipartner"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="bg-gradient-to-r from-violet-500 to-purple-500 text-white hover:from-violet-600 hover:to-purple-600 px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 btn-glow"
+            >
+              Schedule a Consultation
+            </a>
+            <Link
+              href="/demo"
+              className="bg-gradient-to-r from-orange-500 to-amber-500 text-white px-5 py-2 rounded-lg text-sm font-medium btn-glow hover:from-orange-600 hover:to-amber-600 transition-all duration-200"
+            >
+              Try Sarah Free
+            </Link>
           </div>
 
           {/* Mobile Menu Button */}
@@ -178,10 +193,23 @@ export function Header() {
               </div>
 
               <Link href="/demo" className="text-slate-400 hover:text-white transition-colors duration-200 text-sm" onClick={() => setMobileMenuOpen(false)}>
-                General Demo
+                Interview Sarah
               </Link>
 
-              <div className="pt-4 border-t border-slate-800/30">
+              <a href="mailto:team@silentaipartner.com" className="text-violet-400 hover:text-violet-300 transition-colors duration-200 text-sm" onClick={() => setMobileMenuOpen(false)}>
+                📧 Contact Us
+              </a>
+
+              <div className="pt-4 border-t border-slate-800/30 space-y-3">
+                <a
+                  href="https://calendly.com/silentaipartner"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="block bg-gradient-to-r from-violet-500 to-purple-500 text-white hover:from-violet-600 hover:to-purple-600 px-4 py-2.5 rounded-lg text-sm font-medium transition-all text-center btn-glow"
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  Schedule a Consultation
+                </a>
                 <Link
                   href="/demo"
                   className="block bg-gradient-to-r from-orange-500 to-amber-500 text-white px-4 py-2.5 rounded-lg text-sm font-medium btn-glow hover:from-orange-600 hover:to-amber-600 transition-all duration-200 text-center"

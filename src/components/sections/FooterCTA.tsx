@@ -2,7 +2,6 @@
 
 import Link from 'next/link'
 import { FadeIn } from '@/components/ui/FadeIn'
-import { MagneticButton } from '@/components/ui/MagneticButton'
 
 export function FooterCTA() {
   return (
@@ -18,32 +17,31 @@ export function FooterCTA() {
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight mb-6" style={{ fontFamily: 'var(--font-display), sans-serif' }}>
             <span className="text-white">Stop Losing Money.</span>
             <br />
-            <span className="gradient-text-shimmer">Start Today.</span>
+            <span className="gradient-text">Start Today.</span>
           </h2>
         </FadeIn>
 
         <FadeIn delay={100}>
           <p className="text-lg text-slate-400 mb-10 max-w-2xl mx-auto">
-            Join 2,000+ contractors who never miss a lead again. Sarah starts answering your calls in 15 minutes.
+            Sarah starts answering your calls in 15 minutes. No contracts. Cancel anytime.
           </p>
         </FadeIn>
 
         <FadeIn delay={200}>
           <div className="flex flex-col sm:flex-row gap-5 justify-center items-center mb-10">
-            <MagneticButton>
-              <Link
-                href="/demo"
-                className="bg-gradient-to-r from-orange-500 to-amber-500 text-white px-8 py-4 rounded-xl font-semibold text-lg btn-glow hover:from-orange-600 hover:to-amber-600 transition-all duration-200"
-              >
-                Try Sarah Free
-              </Link>
-            </MagneticButton>
-            <a
-              href="tel:+18667821303"
-              className="text-slate-400 hover:text-white transition-colors duration-200 text-sm flex items-center space-x-2"
+            <Link
+              href="/demo"
+              className="bg-gradient-to-r from-orange-500 to-amber-500 text-white px-8 py-4 rounded-xl font-semibold text-lg btn-glow hover:from-orange-600 hover:to-amber-600 transition-all duration-200"
             >
-              <span>Or call to hear Sarah:</span>
-              <span className="text-orange-400 font-semibold">(866) 782-1303</span>
+              Try Sarah Free
+            </Link>
+            <a
+              href="https://calendly.com/silentaipartner"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="bg-gradient-to-r from-violet-500 to-purple-500 text-white hover:from-violet-600 hover:to-purple-600 px-8 py-4 rounded-xl font-semibold text-lg transition-all duration-200 btn-glow"
+            >
+              Schedule a Consultation
             </a>
           </div>
         </FadeIn>
@@ -93,19 +91,12 @@ export function FooterCTA() {
           </div>
         </FadeIn>
 
-        {/* Social Proof */}
+        {/* Call line */}
         <FadeIn delay={400}>
-          <div className="mt-14 flex items-center justify-center space-x-4">
-            <div className="flex -space-x-2">
-              {['bg-orange-500', 'bg-blue-500', 'bg-emerald-500', 'bg-amber-500', 'bg-cyan-500'].map((bg, i) => (
-                <div key={i} className={`w-8 h-8 ${bg} rounded-full border-2 border-[var(--bg-primary)] flex items-center justify-center`}>
-                  <span className="text-white text-[10px] font-bold">{['M', 'J', 'R', 'K', 'D'][i]}</span>
-                </div>
-              ))}
-            </div>
-            <p className="text-slate-500 text-sm">
-              <span className="text-white font-medium">2,000+</span> contractors protecting revenue
-            </p>
+          <div className="mt-14 flex items-center justify-center">
+            <a href="tel:+18667821303" className="text-slate-500 hover:text-slate-300 text-sm transition-colors">
+              Questions? <a href="mailto:team@silentaipartner.com" className="text-orange-400 font-semibold hover:text-orange-300 transition-colors">team@silentaipartner.com</a>
+            </a>
           </div>
         </FadeIn>
       </div>

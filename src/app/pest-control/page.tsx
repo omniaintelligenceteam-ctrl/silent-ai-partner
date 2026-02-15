@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect, useRef } from 'react';
-import { Phone, PhoneOff, Wrench, Droplets, Flame, Shield } from 'lucide-react';
+import { Phone, PhoneOff, Bug, Shield, Leaf, Home } from 'lucide-react';
 import { FadeIn } from '@/components/ui/FadeIn';
 import { Pricing } from '@/components/sections/Pricing';
 import { Header } from '@/components/sections/Header';
@@ -13,7 +13,7 @@ import { MagneticButton } from '@/components/ui/MagneticButton';
 
 type CallState = 'idle' | 'connecting' | 'connected' | 'error';
 
-export default function PlumbingPage() {
+export default function PestControlPage() {
   const [callState, setCallState] = useState<CallState>('idle');
   const [retellWebClient, setRetellWebClient] = useState<RetellWebClient | null>(null);
   const [error, setError] = useState<string>('');
@@ -48,7 +48,7 @@ export default function PlumbingPage() {
       // Get access token from our API
       const response = await fetch("/api/retell", {
         method: 'POST',
-        body: JSON.stringify({ agent_id: "agent_5c7497a9685bfbf3fe546f07e7" }),
+        body: JSON.stringify({ agent_id: "agent_1bcc5e8af6d8788ad9fda521d6" }),
         headers: { 'Content-Type': 'application/json' },
       });
 
@@ -139,28 +139,28 @@ export default function PlumbingPage() {
 
   const stats = [
     {
-      number: '62%',
-      label: 'of small business calls go unanswered — during AND after hours'
+      number: '68%',
+      label: 'of pest control calls go unanswered — homeowners hang up and call competitors'
     },
     {
-      number: '85%',
-      label: 'of homeowners DON\'T leave voicemails — they call the next plumber'
+      number: '$400-800',
+      label: 'average annual contract value — one missed call = lost recurring revenue'
     },
     {
-      number: '$450+',
-      label: 'average emergency plumbing call value'
+      number: 'Spring',
+      label: 'seasonal spikes mean overflow calls you can\'t handle alone'
     },
     {
       number: '24/7',
-      label: 'burst pipes and water heaters don\'t wait for business hours'
+      label: 'termites and bed bugs don\'t wait for business hours'
     }
   ];
 
   const services = [
-    { icon: Droplets, name: 'Drain Cleaning', desc: 'Clogs, backups, hydro jetting' },
-    { icon: Flame, name: 'Water Heater', desc: 'Repair, replacement, tankless install' },
-    { icon: Wrench, name: 'Leak Detection', desc: 'Slab leaks, pipe leaks, hidden issues' },
-    { icon: Shield, name: 'Pipe Repair', desc: 'Burst pipes, repiping, emergencies' },
+    { icon: Bug, name: 'General Pest Treatment', desc: 'Ants, spiders, roaches, perimeter defense' },
+    { icon: Shield, name: 'Termite Inspection/Treatment', desc: 'Inspections, treatments, damage prevention' },
+    { icon: Leaf, name: 'Bed Bug & Mosquito', desc: 'Heat treatment, yard fogging, breeding control' },
+    { icon: Home, name: 'Rodent & Wildlife Control', desc: 'Trapping, exclusion, attic cleanup, sealing' },
   ];
 
   return (
@@ -184,7 +184,7 @@ export default function PlumbingPage() {
             <div className="page-enter page-enter-1">
               <div className="inline-flex items-center px-4 py-2 rounded-full bg-slate-800/30 border border-slate-700/30 mb-8">
                 <span className="text-xs font-mono uppercase tracking-wide text-slate-400">
-                  AI RECEPTIONIST FOR PLUMBERS
+                  AI RECEPTIONIST FOR PEST CONTROL SERVICES
                 </span>
               </div>
             </div>
@@ -193,14 +193,14 @@ export default function PlumbingPage() {
               <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight tracking-tight mb-6" style={{ fontFamily: 'var(--font-display), sans-serif' }}>
                 <span className="text-white">Never Miss</span>
                 <br />
-                <span className="gradient-text-shimmer">Another Plumbing Call</span>
+                <span className="gradient-text-shimmer">Another Pest Control Call</span>
               </h1>
             </div>
 
             <div className="page-enter page-enter-3">
               <p className="text-xl text-slate-400 mb-8 max-w-2xl mx-auto leading-relaxed">
-                Customers with burst pipes don't leave voicemails — they call the next plumber.
-                Sarah answers every call 24/7, books your jobs, and keeps your schedule full.
+                Customers with bed bugs don't leave voicemails — they call the next pest control company.
+                Sarah answers every call 24/7, books your inspections, and builds your recurring revenue.
               </p>
             </div>
 
@@ -257,10 +257,10 @@ export default function PlumbingPage() {
             {stats.map((stat, index) => (
               <FadeIn key={index} delay={index * 100}>
                 <div className="glass-card p-8 text-center">
-                  <div className={`text-4xl lg:text-5xl font-bold mb-3 ${
-                    stat.number === '62%' ? 'text-red-400' :
-                    stat.number === '85%' ? 'text-red-400' :
-                    stat.number === '$850+' ? 'text-orange-400' :
+                  <div className={`text-3xl lg:text-4xl font-bold mb-3 ${
+                    stat.number === '68%' ? 'text-red-400' :
+                    stat.number === '$400-800' ? 'text-orange-400' :
+                    stat.number === 'Spring' ? 'text-emerald-400' :
                     'text-blue-400'
                   }`}>
                     {stat.number}
@@ -283,11 +283,11 @@ export default function PlumbingPage() {
           <FadeIn>
             <div className="text-center mb-12">
               <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-white mb-4">
-                Talk to Sarah — Your AI Plumbing Receptionist
+                Talk to Sarah — Your AI Pest Control Receptionist
               </h2>
               <p className="text-lg text-slate-400">
-                Experience how Sarah handles plumbing calls with natural voice interaction.
-                <span className="block mt-2 text-orange-400">Mike's Plumbing • (480) 725-0700</span>
+                Experience how Sarah handles pest control calls with natural voice interaction.
+                <span className="block mt-2 text-orange-400">Desert Pest Solutions • (623) 292-7884</span>
               </p>
             </div>
           </FadeIn>
@@ -296,17 +296,17 @@ export default function PlumbingPage() {
             <div className="glass-card p-8 lg:p-10">
               <div className="text-center">
                 <div className="w-24 h-24 mx-auto mb-6 rounded-full bg-gradient-to-r from-orange-500 to-amber-500 flex items-center justify-center">
-                  <Wrench className="w-12 h-12 text-white" />
+                  <Bug className="w-12 h-12 text-white" />
                 </div>
 
                 {callState === 'idle' && (
                   <div className="space-y-6">
                     <div>
                       <h3 className="text-2xl font-semibold text-white mb-2">Sarah - AI Receptionist</h3>
-                      <p className="text-slate-400">Mike's Plumbing</p>
+                      <p className="text-slate-400">Desert Pest Solutions</p>
                     </div>
                     <p className="text-slate-300 mb-6">
-                      Click below to start a live voice demo. Ask about services, pricing, or schedule an appointment.
+                      Click below to start a live voice demo. Ask about services, pricing, or schedule an inspection.
                     </p>
                     <MagneticButton>
                       <button
@@ -326,10 +326,10 @@ export default function PlumbingPage() {
                     <div className="text-sm text-slate-500 mt-6">
                       <p className="mb-3">Try asking Sarah about:</p>
                       <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-slate-400">
-                        <p>&bull; "I have a burst pipe, water everywhere!"</p>
-                        <p>&bull; "How much for water heater replacement?"</p>
-                        <p>&bull; "Schedule drain cleaning next Tuesday"</p>
-                        <p>&bull; "Do you do sewer line repairs?"</p>
+                        <p>&bull; "I think I have termites in my walls!"</p>
+                        <p>&bull; "How much for quarterly pest service?"</p>
+                        <p>&bull; "Schedule bed bug inspection for Friday"</p>
+                        <p>&bull; "Do you handle rodent removal?"</p>
                       </div>
                     </div>
                   </div>
@@ -376,7 +376,7 @@ export default function PlumbingPage() {
 
                     <p className="text-emerald-400 font-medium text-lg">🟢 Connected • Speaking with Sarah</p>
                     <p className="text-slate-400">Sarah can hear you. Speak naturally!</p>
-                    <p className="text-slate-500 text-sm">Ask about plumbing services, pricing, or schedule an appointment</p>
+                    <p className="text-slate-500 text-sm">Ask about pest control services, pricing, or schedule an inspection</p>
 
                     <button
                       onClick={endCall}
@@ -431,7 +431,7 @@ export default function PlumbingPage() {
                 <div className="space-y-4">
                   <div className="flex items-center justify-between">
                     <div>
-                      <h3 className="text-lg font-semibold text-white">Plumbing Dispatcher (Monthly)</h3>
+                      <h3 className="text-lg font-semibold text-white">Pest Control Dispatcher (Monthly)</h3>
                       <p className="text-sm text-slate-400">Salary + benefits + missed calls</p>
                     </div>
                     <div className="text-2xl font-bold tracking-tight text-red-400"><AnimatedCounter end={4200} prefix="$" /></div>
