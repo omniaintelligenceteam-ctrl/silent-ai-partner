@@ -3,7 +3,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { Phone, PhoneOff, Wrench, Droplets, Flame, Shield } from 'lucide-react';
 import { FadeIn } from '@/components/ui/FadeIn';
-import { Pricing } from '@/components/sections/Pricing';
+import { AuditForm } from '@/components/sections/AuditForm';
 import { Header } from '@/components/sections/Header';
 import { Footer } from '@/components/sections/Footer';
 import { RetellWebClient } from 'retell-client-js-sdk';
@@ -184,23 +184,23 @@ export default function PlumbingPage() {
             <div className="page-enter page-enter-1">
               <div className="inline-flex items-center px-4 py-2 rounded-full bg-slate-800/30 border border-slate-700/30 mb-8">
                 <span className="text-xs font-mono uppercase tracking-wide text-slate-400">
-                  AI RECEPTIONIST FOR PLUMBERS
+                  FREE AI AUDIT FOR PLUMBING CONTRACTORS
                 </span>
               </div>
             </div>
 
             <div className="page-enter page-enter-2">
               <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight tracking-tight mb-6" style={{ fontFamily: 'var(--font-display), sans-serif' }}>
-                <span className="text-white">Never Miss</span>
+                <span className="text-white">Free AI Audit</span>
                 <br />
-                <span className="gradient-text-shimmer">Another Plumbing Call</span>
+                <span className="gradient-text-shimmer">For Plumbing Contractors</span>
               </h1>
             </div>
 
             <div className="page-enter page-enter-3">
               <p className="text-xl text-slate-400 mb-8 max-w-2xl mx-auto leading-relaxed">
-                Customers with burst pipes don't leave voicemails — they call the next plumber.
-                Sarah answers every call 24/7, books your jobs, and keeps your schedule full.
+                Not sure how AI fits your plumbing business? Get a free workflow audit.
+                We'll show you what's real vs. hype — no pitch, just clarity.
               </p>
             </div>
 
@@ -208,13 +208,13 @@ export default function PlumbingPage() {
               <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
                 <MagneticButton>
                   <a
-                    href="#demo"
+                    href="#audit-form"
                     className="bg-gradient-to-r from-orange-500 to-orange-400 text-white px-8 py-4 rounded-xl font-semibold text-lg btn-glow hover:from-orange-600 hover:to-orange-500 transition-all duration-200 text-center"
                   >
-                    Try the Demo
+                    Book My Free Audit &rarr;
                   </a>
                 </MagneticButton>
-                <a href="https://calendly.com/silentaipartner" className="text-slate-400 hover:text-white transition-colors duration-200 text-sm flex items-center space-x-2"><span>Schedule a Call</span><svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg></a>
+                <a href="#audit-form" className="text-slate-400 hover:text-white transition-colors duration-200 text-sm flex items-center space-x-2"><span>Get Your Free Audit</span><svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg></a>
               </div>
             </div>
           </div>
@@ -486,8 +486,8 @@ export default function PlumbingPage() {
 
       <div className="section-divider" />
 
-      {/* Pricing Section */}
-      <Pricing />
+      {/* Audit Form Section */}
+      <AuditForm />
 
       {/* Footer */}
       <Footer />

@@ -106,14 +106,14 @@ export default function DemoPage() {
             </div>
 
             <div className="page-enter page-enter-2">
-              <h2 className="text-3xl font-semibold mb-2 tracking-tight">Interview Sarah</h2>
-              <p className="text-slate-400 mb-8">Your AI Office Manager • Silent AI Partner</p>
+              <h2 className="text-3xl font-semibold mb-2 tracking-tight">Experience AI in Action</h2>
+              <p className="text-slate-400 mb-8">Live Voice AI Demo • Silent AI Partner</p>
             </div>
 
             {callState === 'idle' && (
               <div className="space-y-6">
                 <p className="text-slate-300 mb-6 text-lg">
-                  Experience Sarah's natural voice interaction. Click the button below to start talking!
+                  Try our voice AI demo to see the technology in action. Then book your free audit to see how it fits your business.
                 </p>
                 <MagneticButton>
                   <button
@@ -121,11 +121,11 @@ export default function DemoPage() {
                     className="bg-gradient-to-r from-orange-500 to-orange-400 hover:from-orange-400 hover:to-orange-300 text-white px-8 py-4 rounded-xl text-lg font-medium transition-all btn-glow flex items-center gap-3 mx-auto"
                   >
                     <Phone className="w-6 h-6" />
-                    🎙️ Interview Sarah
+                    Start Voice Demo
                   </button>
                 </MagneticButton>
                 <div className="text-sm text-slate-500 mt-4">
-                  <p>Try asking Sarah:</p>
+                  <p>Try asking:</p>
                   <div className="grid grid-cols-1 gap-2 mt-3 text-slate-500">
                     <p>• "What can you do for my business?"</p>
                     <p>• "How do you handle emergencies?"</p>
@@ -211,12 +211,12 @@ export default function DemoPage() {
       <div className="p-6 border-t border-slate-800/30 bg-bg-secondary/50 backdrop-blur-xl">
         <div className="max-w-4xl mx-auto text-center">
           <p className="text-slate-400 text-sm mb-2">
-            This is a live demo of Sarah, an AI receptionist powered by Retell AI
+            This is a live demo of our AI voice technology powered by Retell AI
           </p>
           <p className="text-slate-500 text-xs">
-            Ready to get Sarah for your business?
-            <a href="https://calendly.com/silentaipartner" className="text-orange-400 hover:text-orange-300 transition-colors duration-200 ml-1">
-              Schedule a call →
+            See how AI can transform your business.
+            <a href="/#audit-form" className="text-orange-400 hover:text-orange-300 transition-colors duration-200 ml-1">
+              Book My Free Audit →
             </a>
           </p>
         </div>

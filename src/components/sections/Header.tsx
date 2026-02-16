@@ -65,16 +65,16 @@ export function Header() {
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center space-x-8">
             <Link
+              href="#workflows"
+              className="text-slate-400 hover:text-white transition-colors duration-300 text-sm tracking-wide"
+            >
+              What We Do
+            </Link>
+            <Link
               href="#how-it-works"
               className="text-slate-400 hover:text-white transition-colors duration-300 text-sm tracking-wide"
             >
-              How It Works
-            </Link>
-            <Link
-              href="#pricing"
-              className="text-slate-400 hover:text-white transition-colors duration-300 text-sm tracking-wide"
-            >
-              Pricing
+              The Audit
             </Link>
 
             <div className="relative" ref={dropdownRef}>
@@ -103,14 +103,6 @@ export function Header() {
                       </Link>
                     ))}
                     <div className="border-t border-slate-700/30 mt-1 pt-1">
-                      <Link
-                        href="/demo"
-                        className="flex items-center space-x-3 px-5 py-3 text-orange-400 hover:text-orange-300 hover:bg-orange-500/5 transition-all duration-200"
-                        onClick={() => setDemoDropdownOpen(false)}
-                      >
-                        <span className="text-lg">🎙️</span>
-                        <span className="text-sm font-medium">Interview Sarah</span>
-                      </Link>
                       <a
                         href="mailto:team@silentaipartner.com"
                         className="flex items-center space-x-3 px-5 py-3 text-violet-400 hover:text-violet-300 hover:bg-violet-500/5 transition-all duration-200"
@@ -133,19 +125,11 @@ export function Header() {
               <span className="text-emerald-400/80">Online</span>
             </div>
 
-            <a
-              href="https://calendly.com/silentaipartner"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="bg-gradient-to-r from-violet-500 to-purple-500 text-white hover:from-violet-600 hover:to-purple-600 px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 btn-glow"
-            >
-              Schedule a Consultation
-            </a>
             <Link
-              href="/demo"
+              href="#audit-form"
               className="bg-gradient-to-r from-orange-500 to-orange-400 text-white px-5 py-2 rounded-lg text-sm font-medium btn-glow hover:from-orange-600 hover:to-orange-500 transition-all duration-200"
             >
-              Try Sarah Free
+              Book My Free Audit →
             </Link>
           </div>
 
@@ -168,11 +152,11 @@ export function Header() {
         {mobileMenuOpen && (
           <div className="md:hidden py-6 border-t border-slate-800/30">
             <nav className="flex flex-col space-y-4">
-              <Link href="#how-it-works" className="text-slate-400 hover:text-white transition-colors duration-200 text-sm" onClick={() => setMobileMenuOpen(false)}>
-                How It Works
+              <Link href="#workflows" className="text-slate-400 hover:text-white transition-colors duration-200 text-sm" onClick={() => setMobileMenuOpen(false)}>
+                What We Do
               </Link>
-              <Link href="#pricing" className="text-slate-400 hover:text-white transition-colors duration-200 text-sm" onClick={() => setMobileMenuOpen(false)}>
-                Pricing
+              <Link href="#how-it-works" className="text-slate-400 hover:text-white transition-colors duration-200 text-sm" onClick={() => setMobileMenuOpen(false)}>
+                The Audit
               </Link>
 
               <div className="border-t border-slate-800/30 pt-4">
@@ -192,30 +176,17 @@ export function Header() {
                 </div>
               </div>
 
-              <Link href="/demo" className="text-slate-400 hover:text-white transition-colors duration-200 text-sm" onClick={() => setMobileMenuOpen(false)}>
-                Interview Sarah
-              </Link>
-
               <a href="mailto:team@silentaipartner.com" className="text-violet-400 hover:text-violet-300 transition-colors duration-200 text-sm" onClick={() => setMobileMenuOpen(false)}>
                 📧 Contact Us
               </a>
 
               <div className="pt-4 border-t border-slate-800/30 space-y-3">
-                <a
-                  href="https://calendly.com/silentaipartner"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="block bg-gradient-to-r from-violet-500 to-purple-500 text-white hover:from-violet-600 hover:to-purple-600 px-4 py-2.5 rounded-lg text-sm font-medium transition-all text-center btn-glow"
-                  onClick={() => setMobileMenuOpen(false)}
-                >
-                  Schedule a Consultation
-                </a>
                 <Link
-                  href="/demo"
+                  href="#audit-form"
                   className="block bg-gradient-to-r from-orange-500 to-orange-400 text-white px-4 py-2.5 rounded-lg text-sm font-medium btn-glow hover:from-orange-600 hover:to-orange-500 transition-all duration-200 text-center"
                   onClick={() => setMobileMenuOpen(false)}
                 >
-                  Try Sarah Free
+                  Book My Free Audit →
                 </Link>
               </div>
             </nav>

@@ -16,14 +16,13 @@ export function Hero() {
 
       {/* Content */}
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-28 lg:pt-32 pb-20">
-        <div className="grid lg:grid-cols-12 gap-12 items-center min-h-[75vh]">
-          {/* Main Content - Left Side */}
-          <div className="lg:col-span-7">
+        <div className="flex items-center justify-center min-h-[75vh]">
+          <div className="max-w-3xl text-center">
             <FadeIn>
               {/* Badge */}
               <div className="inline-flex items-center px-4 py-2 rounded-full bg-slate-800/30 border border-slate-700/30 mb-10">
                 <span className="text-[11px] font-mono uppercase tracking-[0.12em] text-slate-400">
-                  THE AI OFFICE MANAGER FOR CONTRACTORS
+                  FREE AI WORKFLOW AUDIT FOR CONTRACTORS
                 </span>
               </div>
             </FadeIn>
@@ -31,65 +30,46 @@ export function Hero() {
             <FadeIn delay={100}>
               {/* Headline */}
               <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold leading-[1.1] tracking-tight mb-8" style={{ fontFamily: 'var(--font-display), sans-serif' }}>
-                <span className="text-white">Pay 93% less.</span>
+                <span className="text-white">Not Sure What AI Can Do</span>
                 <br />
-                <span className="gradient-text">She makes the rest.</span>
+                <span className="gradient-text">For Your Business?</span>
               </h1>
             </FadeIn>
 
             <FadeIn delay={200}>
               {/* Subheadline */}
-              <p className="text-lg text-slate-400 mb-10 max-w-xl leading-relaxed">
-                The average office manager costs $62,500/yr. Sarah costs $397/mo.
-                She books your jobs, upsells your services, and grows your business while you&apos;re in the field.
+              <p className="text-lg text-slate-400 mb-6 max-w-2xl mx-auto leading-relaxed">
+                The AI space is chaos. Everyone&apos;s promising magic, but most contractors
+                don&apos;t know what&apos;s real versus vaporware.
+              </p>
+              <p className="text-lg text-slate-400 mb-10 max-w-2xl mx-auto leading-relaxed">
+                Whether you work with us or someone else (or decide to wait),
+                you deserve to know what&apos;s actually possible today.
               </p>
             </FadeIn>
 
             <FadeIn delay={300}>
-              {/* CTAs - Simplified to 2 */}
-              <div className="flex flex-col sm:flex-row items-start gap-4">
-                <Link
-                  href="/demo"
-                  className="bg-gradient-to-r from-orange-500 to-orange-400 text-white px-8 py-4 rounded-lg font-semibold text-lg btn-glow hover:from-orange-600 hover:to-orange-500 transition-all duration-200"
-                >
-                  Try Sarah Free
-                </Link>
-                <a
-                  href="https://calendly.com/silentaipartner"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="bg-gradient-to-r from-violet-500 to-purple-500 text-white hover:from-violet-600 hover:to-purple-600 px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-200 btn-glow"
-                >
-                  Schedule a Consultation
-                </a>
+              {/* Audit Pitch */}
+              <div className="glass-card p-6 mb-10 max-w-xl mx-auto">
+                <h3 className="text-white font-semibold text-lg mb-2">Get Your Free Workflow Audit</h3>
+                <p className="text-slate-400 text-sm leading-relaxed">
+                  Answer a few quick questions. I&apos;ll analyze your operation and call you
+                  within 24 hours — no pitch, just clarity. Usually takes 2 minutes.
+                </p>
               </div>
             </FadeIn>
-          </div>
 
-          {/* Stats - Right Side */}
-          <div className="lg:col-span-5">
-            <div className="space-y-5">
-              <FadeIn delay={400}>
-                <div className="glass-card p-8">
-                  <div className="text-xs font-mono text-slate-500 uppercase tracking-[0.1em] mb-2">Revenue Protected</div>
-                  <div className="text-3xl font-bold text-emerald-400 tracking-tight">$42,850</div>
-                  <div className="mt-3 h-1 w-full bg-slate-800 rounded-full overflow-hidden">
-                    <div className="h-full w-3/4 bg-gradient-to-r from-emerald-500 to-emerald-400 rounded-full"></div>
-                  </div>
-                </div>
-              </FadeIn>
-
-              <FadeIn delay={500}>
-                <div className="glass-card p-8">
-                  <div className="text-xs font-mono text-slate-500 uppercase tracking-[0.1em] mb-2">Response Time</div>
-                  <div className="text-3xl font-bold gradient-text-cool tracking-tight">&lt;1 second</div>
-                  <div className="mt-3 flex items-center gap-2">
-                    <div className="w-1.5 h-1.5 bg-cyan-400 rounded-full animate-pulse"></div>
-                    <span className="text-xs text-slate-500 font-mono">Always listening</span>
-                  </div>
-                </div>
-              </FadeIn>
-            </div>
+            <FadeIn delay={400}>
+              {/* CTA */}
+              <div className="flex justify-center">
+                <Link
+                  href="#audit-form"
+                  className="bg-gradient-to-r from-orange-500 to-orange-400 text-white px-10 py-4 rounded-lg font-semibold text-lg btn-glow hover:from-orange-600 hover:to-orange-500 transition-all duration-200"
+                >
+                  Book My Free Audit →
+                </Link>
+              </div>
+            </FadeIn>
           </div>
         </div>
       </div>
