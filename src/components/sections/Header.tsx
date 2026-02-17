@@ -82,6 +82,12 @@ export function Header() {
             >
               Pricing
             </Link>
+            <Link
+              href="#demo"
+              className="text-orange-400 hover:text-orange-300 transition-colors duration-300 text-sm tracking-wide font-medium"
+            >
+              Live Demo
+            </Link>
 
             <div className="relative" ref={dropdownRef}>
               <button
@@ -95,7 +101,7 @@ export function Header() {
               </button>
 
               {demoDropdownOpen && (
-                <div className="absolute top-full left-1/2 -translate-x-1/2 mt-4 w-56 rounded-2xl glass border border-slate-700/30 shadow-2xl shadow-black/50 overflow-hidden">
+                <div className="absolute top-full left-1/2 -translate-x-1/2 mt-4 w-56 rounded-2xl bg-[#0C1017] border border-slate-700/40 shadow-2xl shadow-black/60 overflow-hidden">
                   <div className="py-2">
                     {industries.map((industry) => (
                       <Link
@@ -174,6 +180,9 @@ export function Header() {
               </Link>
               <Link href="#pricing" className="text-slate-400 hover:text-white transition-colors duration-200 text-sm" onClick={() => setMobileMenuOpen(false)}>
                 Pricing
+              </Link>
+              <Link href="#demo" className="text-orange-400 hover:text-orange-300 transition-colors duration-200 text-sm font-medium" onClick={() => setMobileMenuOpen(false)}>
+                Live Demo
               </Link>
 
               <div className="border-t border-slate-800/30 pt-4">
