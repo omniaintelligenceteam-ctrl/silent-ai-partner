@@ -76,6 +76,12 @@ export function Header() {
             >
               The Audit
             </Link>
+            <Link
+              href="#pricing"
+              className="text-slate-400 hover:text-white transition-colors duration-300 text-sm tracking-wide"
+            >
+              Pricing
+            </Link>
 
             <div className="relative" ref={dropdownRef}>
               <button
@@ -103,6 +109,14 @@ export function Header() {
                       </Link>
                     ))}
                     <div className="border-t border-slate-700/30 mt-1 pt-1">
+                      <Link
+                        href="/demo"
+                        className="flex items-center space-x-3 px-5 py-3 text-orange-400 hover:text-orange-300 hover:bg-orange-500/5 transition-all duration-200"
+                        onClick={() => setDemoDropdownOpen(false)}
+                      >
+                        <span className="text-lg">🎙️</span>
+                        <span className="text-sm font-medium">Try the AI Demo</span>
+                      </Link>
                       <a
                         href="mailto:team@silentaipartner.com"
                         className="flex items-center space-x-3 px-5 py-3 text-violet-400 hover:text-violet-300 hover:bg-violet-500/5 transition-all duration-200"
@@ -158,6 +172,9 @@ export function Header() {
               <Link href="#how-it-works" className="text-slate-400 hover:text-white transition-colors duration-200 text-sm" onClick={() => setMobileMenuOpen(false)}>
                 The Audit
               </Link>
+              <Link href="#pricing" className="text-slate-400 hover:text-white transition-colors duration-200 text-sm" onClick={() => setMobileMenuOpen(false)}>
+                Pricing
+              </Link>
 
               <div className="border-t border-slate-800/30 pt-4">
                 <span className="text-[10px] font-mono text-slate-600 uppercase tracking-[0.15em]">Industries</span>
@@ -175,6 +192,10 @@ export function Header() {
                   ))}
                 </div>
               </div>
+
+              <Link href="/demo" className="text-orange-400 hover:text-orange-300 transition-colors duration-200 text-sm" onClick={() => setMobileMenuOpen(false)}>
+                🎙️ Try the AI Demo
+              </Link>
 
               <a href="mailto:team@silentaipartner.com" className="text-violet-400 hover:text-violet-300 transition-colors duration-200 text-sm" onClick={() => setMobileMenuOpen(false)}>
                 📧 Contact Us

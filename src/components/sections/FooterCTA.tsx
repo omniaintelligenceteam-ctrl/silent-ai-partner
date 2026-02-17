@@ -15,15 +15,15 @@ export function FooterCTA() {
       <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         <FadeIn>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight mb-6" style={{ fontFamily: 'var(--font-display), sans-serif' }}>
-            <span className="text-white">Not Everyone Needs AI.</span>
+            <span className="text-white">Let&apos;s See Where</span>
             <br />
-            <span className="gradient-text">But Everyone Should Know What&apos;s Possible.</span>
+            <span className="gradient-text">Your Time Is Going</span>
           </h2>
         </FadeIn>
 
         <FadeIn delay={100}>
           <p className="text-lg text-slate-400 mb-10 max-w-2xl mx-auto">
-            Book your free audit. Get clarity. Make an informed decision.
+            20 minutes. Where you&apos;re leaking time. What workflows would help. Whether this makes sense. No pitch. Just clarity.
           </p>
         </FadeIn>
 

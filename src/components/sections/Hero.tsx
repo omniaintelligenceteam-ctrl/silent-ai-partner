@@ -30,21 +30,18 @@ export function Hero() {
             <FadeIn delay={100}>
               {/* Headline */}
               <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold leading-[1.1] tracking-tight mb-8" style={{ fontFamily: 'var(--font-display), sans-serif' }}>
-                <span className="text-white">Not Sure What AI Can Do</span>
+                <span className="text-white">Give Your Team the Tools to</span>
                 <br />
-                <span className="gradient-text">For Your Business?</span>
+                <span className="gradient-text">Optimize Your Company</span>
               </h1>
             </FadeIn>
 
             <FadeIn delay={200}>
               {/* Subheadline */}
-              <p className="text-lg text-slate-400 mb-6 max-w-2xl mx-auto leading-relaxed">
-                The AI space is chaos. Everyone&apos;s promising magic, but most contractors
-                don&apos;t know what&apos;s real versus vaporware.
-              </p>
               <p className="text-lg text-slate-400 mb-10 max-w-2xl mx-auto leading-relaxed">
-                Whether you work with us or someone else (or decide to wait),
-                you deserve to know what&apos;s actually possible today.
+                Every contractor has the same leaks: missed calls, slow follow-ups, forgotten reviews.
+                We build automated workflows that handle the repetitive stuff — so your team can focus
+                on growing the business, not just running it.
               </p>
             </FadeIn>
 

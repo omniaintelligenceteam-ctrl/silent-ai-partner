@@ -2,21 +2,12 @@
 
 import { FadeIn } from '@/components/ui/FadeIn'
 
-const canDo = [
-  'Answer calls 24/7, book appointments, qualify leads',
-  'Follow up on quotes automatically (text, call, email)',
-  'Schedule directly into ServiceTitan, QuickBooks, Google Calendar',
-  'Detect urgency in a caller\'s voice and escalate to you',
-  'Send review requests and win-back campaigns',
-  'Optimize workflows monthly based on your data',
-]
-
-const cannotDo = [
-  'Physically show up to job sites',
-  'Make final pricing decisions that require judgment',
-  'Handle complex disputes that need the owner\'s touch',
-  'Replace decades of trade expertise',
-  'Run your business while you sip margaritas',
+const timelineSteps = [
+  { time: '8am', text: 'Check voicemails. Three missed calls. One emergency.', dotColor: 'bg-orange-400' },
+  { time: '9am', text: 'Return calls while juggling crew. Half go to voicemail.', dotColor: 'bg-red-400' },
+  { time: '11am', text: 'Double-booked Thursday. Rescheduling nightmare.', dotColor: 'bg-amber-400' },
+  { time: '1pm', text: 'Quotes from last week. Most went cold.', dotColor: 'bg-blue-400' },
+  { time: '5pm', text: 'Should ask for review. (You won\'t.)', dotColor: 'bg-violet-400' },
 ]
 
 export function PainPoints() {
@@ -26,58 +17,41 @@ export function PainPoints() {
         <FadeIn>
           <div className="text-center mb-20">
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight mb-5" style={{ fontFamily: 'var(--font-display), sans-serif' }}>
-              <span className="text-white">Before We Talk,</span>{' '}
-              <span className="gradient-text">Here&apos;s What&apos;s Real</span>
+              <span className="text-white">Where Most Companies</span>{' '}
+              <span className="gradient-text">Leak Time and Money</span>
             </h2>
           </div>
         </FadeIn>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
-          {/* AI CAN Do */}
-          <FadeIn delay={100}>
-            <div className="glass-card p-8 lg:p-10 h-full border-t-2 border-t-emerald-500/40">
-              <h3 className="text-xl font-bold text-emerald-400 mb-6 tracking-tight">
-                AI CAN do this today:
-              </h3>
-              <ul className="space-y-4">
-                {canDo.map((item, index) => (
-                  <li key={index} className="flex items-start gap-3">
-                    <svg className="w-5 h-5 text-emerald-400 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                    </svg>
-                    <span className="text-slate-300 text-sm leading-relaxed">{item}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </FadeIn>
+        <div className="max-w-2xl mx-auto">
+          <div className="space-y-0">
+            {timelineSteps.map((step, index) => (
+              <FadeIn key={index} delay={index * 100}>
+                <div className="flex gap-6">
+                  {/* Timeline dot with time */}
+                  <div className="flex flex-col items-center">
+                    <div className={`w-12 h-12 ${step.dotColor}/10 rounded-full flex items-center justify-center flex-shrink-0`}>
+                      <span className="text-xs font-bold text-slate-300">{step.time}</span>
+                    </div>
+                    {index < timelineSteps.length - 1 && (
+                      <div className="w-px h-full min-h-[40px] bg-gradient-to-b from-slate-700 to-transparent my-1"></div>
+                    )}
+                  </div>
 
-          {/* AI CANNOT Do */}
-          <FadeIn delay={200}>
-            <div className="glass-card p-8 lg:p-10 h-full border-t-2 border-t-slate-600/40">
-              <h3 className="text-xl font-bold text-slate-400 mb-6 tracking-tight">
-                AI CANNOT do this (yet):
-              </h3>
-              <ul className="space-y-4">
-                {cannotDo.map((item, index) => (
-                  <li key={index} className="flex items-start gap-3">
-                    <svg className="w-5 h-5 text-slate-500 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-                    </svg>
-                    <span className="text-slate-400 text-sm leading-relaxed">{item}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </FadeIn>
+                  {/* Content card */}
+                  <div className="glass-card p-6 mb-4 flex-1">
+                    <p className="text-slate-300 text-sm leading-relaxed">{step.text}</p>
+                  </div>
+                </div>
+              </FadeIn>
+            ))}
+          </div>
         </div>
 
-        {/* Bottom text */}
-        <FadeIn delay={300}>
+        <FadeIn delay={600}>
           <div className="text-center mt-14">
             <p className="text-slate-400 text-lg max-w-2xl mx-auto leading-relaxed">
-              <span className="text-white font-semibold">The goal:</span> AI optimizes 80% of back office grind so you
-              can focus on the 20% that actually grows your business.
+              <span className="text-white font-semibold">Repeat tomorrow.</span> This isn&apos;t a business. It&apos;s a treadmill.
             </p>
           </div>
         </FadeIn>

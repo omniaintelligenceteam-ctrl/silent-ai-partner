@@ -136,7 +136,7 @@ export function AuditForm() {
               Get Your Free Workflow Audit
             </h2>
             <p className="text-lg text-slate-400 max-w-2xl mx-auto">
-              Takes 2 minutes. I&apos;ll call you within 24 hours with your custom analysis.
+              Takes 2 minutes. I&apos;ll call you within 24 hours.
             </p>
           </div>
         </FadeIn>

@@ -5,49 +5,46 @@ import { TiltCard } from '@/components/ui/TiltCard'
 
 const workflows = [
   {
-    title: 'Money Loop Optimization',
-    emoji: '\uD83D\uDCB0',
-    description: 'Invoice → Payment → Reminder → Collection (all automated)',
-    accent: 'from-orange-500 to-orange-400',
+    title: 'The Communication Hub',
+    emoji: '\uD83D\uDCAC',
+    description: 'Phone, text, email, social DMs, website chat. Smart escalation.',
     iconBg: 'bg-orange-500/10',
-    iconColor: 'text-orange-400',
     borderColor: 'border-t-orange-500/40',
   },
   {
-    title: 'Scheduling Loop Optimization',
+    title: 'The Scheduling Engine',
     emoji: '\uD83D\uDCC5',
-    description: 'Inquiry → Qualify → Book → Confirm → Reminder (friction reduced 40%)',
-    accent: 'from-blue-500 to-cyan-500',
+    description: 'Direct booking, smart dispatch, calendar sync. Cuts phone tag 15+ hrs/week.',
     iconBg: 'bg-blue-500/10',
-    iconColor: 'text-blue-400',
     borderColor: 'border-t-blue-500/40',
   },
   {
-    title: 'Lead Recovery Optimization',
+    title: 'The Follow-Up Machine',
     emoji: '\uD83D\uDD25',
-    description: 'Quote sent → Auto-follow-up → Close (close rate +25%)',
-    accent: 'from-red-500 to-orange-500',
+    description: 'Quote follow-ups, win-backs, reminders. Close rates 30% \u2192 50%.',
     iconBg: 'bg-red-500/10',
-    iconColor: 'text-red-400',
     borderColor: 'border-t-red-500/40',
   },
   {
-    title: 'Review Engine Optimization',
+    title: 'The Content Generator',
     emoji: '\u2B50',
-    description: 'Job completed → Happy? → Review request → Google ranking boost',
-    accent: 'from-emerald-500 to-emerald-400',
+    description: 'Social posts, reviews, campaigns. No marketing hire needed.',
     iconBg: 'bg-emerald-500/10',
-    iconColor: 'text-emerald-400',
     borderColor: 'border-t-emerald-500/40',
   },
   {
-    title: 'Win-Back Optimization',
-    emoji: '\uD83D\uDD04',
-    description: '6 months no call → Re-engagement → Rebook (LTV recovered)',
-    accent: 'from-violet-500 to-purple-500',
+    title: 'The Cash Flow Manager',
+    emoji: '\uD83D\uDCB0',
+    description: 'Invoicing, reminders, collections. No more chasing money.',
     iconBg: 'bg-violet-500/10',
-    iconColor: 'text-violet-400',
     borderColor: 'border-t-violet-500/40',
+  },
+  {
+    title: 'The Intelligence Dashboard',
+    emoji: '\uD83D\uDCCA',
+    description: 'Morning briefings, weekly reports, insights. Visibility without meetings.',
+    iconBg: 'bg-cyan-500/10',
+    borderColor: 'border-t-cyan-500/40',
   },
 ]
 
@@ -58,11 +55,11 @@ export function HowItWorks() {
         <FadeIn>
           <div className="text-center mb-20">
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white tracking-tight mb-5" style={{ fontFamily: 'var(--font-display), sans-serif' }}>
-              Where AI Actually{' '}
-              <span className="gradient-text">Moves the Needle</span>
+              Automated Workflows That{' '}
+              <span className="gradient-text">Handle the Repetitive Work</span>
             </h2>
             <p className="text-lg text-slate-400 max-w-2xl mx-auto">
-              Every contractor has the same leaks. We build workflows that plug them:
+              Six core tools that free up your team&apos;s time:
             </p>
           </div>
         </FadeIn>
@@ -83,10 +80,10 @@ export function HowItWorks() {
           ))}
         </div>
 
-        <FadeIn delay={600}>
+        <FadeIn delay={700}>
           <div className="text-center mt-16">
             <p className="text-slate-400 text-sm">
-              Each workflow is custom-built for your trade, your software, your volume.
+              Each workflow runs 24/7. Custom-configured for your business.
             </p>
           </div>
         </FadeIn>

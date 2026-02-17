@@ -7,6 +7,7 @@ export function Footer() {
     { name: 'What We Do', href: '#workflows' },
     { name: 'The Audit', href: '#audit-form' },
     { name: 'How It Works', href: '#how-it-works' },
+    { name: 'Pricing', href: '#pricing' },
   ]
 
   const industryLinks = [

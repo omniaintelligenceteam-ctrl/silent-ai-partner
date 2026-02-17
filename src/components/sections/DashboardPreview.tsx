@@ -5,31 +5,31 @@ import { FadeIn } from '@/components/ui/FadeIn'
 const steps = [
   {
     emoji: '\uD83D\uDCCB',
-    text: 'I email you within 1 hour confirming I received your audit',
+    text: 'Email confirmation within 1 hour',
     color: 'text-blue-400',
     dotColor: 'bg-blue-400',
   },
   {
     emoji: '\uD83D\uDD0D',
-    text: 'I research your business, competitors, and current setup',
+    text: 'We research your business and competitors',
     color: 'text-cyan-400',
     dotColor: 'bg-cyan-400',
   },
   {
     emoji: '\uD83D\uDCDE',
-    text: 'I call you within 24 hours (usually sooner)',
+    text: 'Call within 24 hours (20-min conversation)',
     color: 'text-orange-400',
     dotColor: 'bg-orange-400',
   },
   {
     emoji: '\uD83D\uDCA1',
-    text: 'You get a 20-minute conversation — no slides, just clarity',
+    text: 'Clarity — honest assessment',
     color: 'text-emerald-400',
     dotColor: 'bg-emerald-400',
   },
   {
     emoji: '\uD83C\uDFAF',
-    text: 'If we make sense, I send a custom proposal. If not, I tell you straight.',
+    text: 'Next steps — proposal if fit, feedback if not',
     color: 'text-violet-400',
     dotColor: 'bg-violet-400',
   },
