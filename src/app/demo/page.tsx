@@ -1,222 +1,143 @@
 'use client';
 
-import { useState, useEffect } from 'react';
-import { Phone, PhoneOff } from 'lucide-react';
+import { useState } from 'react';
 import { Header } from '@/components/sections/Header';
-import { RetellWebClient } from 'retell-client-js-sdk';
-import { MagneticButton } from '@/components/ui/MagneticButton';
 
-type CallState = 'idle' | 'connecting' | 'connected' | 'error';
+type FormState = 'idle' | 'submitting' | 'success' | 'error';
 
 export default function DemoPage() {
-  const [callState, setCallState] = useState<CallState>('idle');
-  const [retellWebClient, setRetellWebClient] = useState<RetellWebClient | null>(null);
-  const [error, setError] = useState<string>('');
+  const [formState, setFormState] = useState<FormState>('idle');
+  const [name, setName] = useState('');
+  const [company, setCompany] = useState('');
+  const [phone, setPhone] = useState('');
+  const [error, setError] = useState('');
 
-  // Cleanup on unmount
-  useEffect(() => {
-    return () => {
-      if (retellWebClient) {
-        retellWebClient.stopCall();
-      }
-    };
-  }, [retellWebClient]);
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setFormState('submitting');
+    setError('');
 
-  const startCall = async () => {
     try {
-      setCallState('connecting');
-      setError('');
-
-      // Get access token from our API
-      const response = await fetch('/api/retell', {
+      const res = await fetch('/api/demo-request', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ name, company, phone }),
       });
 
-      if (!response.ok) {
-        const errorData = await response.json();
-        throw new Error(errorData.error || 'Failed to get access token');
-      }
+      if (!res.ok) throw new Error('Submission failed');
 
-      const { access_token } = await response.json();
-
-      // Initialize Retell WebClient
-      const webClient = new RetellWebClient();
-
-      webClient.on('call_started', () => {
-        console.log('Call started');
-        setCallState('connected');
-      });
-
-      webClient.on('call_ended', () => {
-        console.log('Call ended');
-        setCallState('idle');
-        setRetellWebClient(null);
-      });
-
-      webClient.on('error', (error: any) => {
-        console.error('Call error:', error);
-        setError('Call failed. Please try again.');
-        setCallState('error');
-        setRetellWebClient(null);
-      });
-
-      setRetellWebClient(webClient);
-
-      // Start the call
-      await webClient.startCall({
-        accessToken: access_token,
-      });
-
-    } catch (error: any) {
-      console.error('Error starting call:', error);
-      setError(error.message || 'Failed to start call. Please try again.');
-      setCallState('error');
-      setRetellWebClient(null);
+      setFormState('success');
+    } catch {
+      setError('Something went wrong. Please try again.');
+      setFormState('error');
     }
-  };
-
-  const endCall = () => {
-    if (retellWebClient) {
-      retellWebClient.stopCall();
-      setRetellWebClient(null);
-    }
-    setCallState('idle');
-    setError('');
-  };
-
-  const resetError = () => {
-    setCallState('idle');
-    setError('');
   };
 
   return (
     <div className="min-h-screen bg-bg-primary text-white flex flex-col overflow-hidden">
-      {/* Header */}
       <Header />
-      <div className="pt-16 lg:pt-20"></div>
+      <div className="pt-16 lg:pt-20" />
 
-      {/* Main Content */}
       <div className="flex-1 flex flex-col items-center justify-center p-8">
-          <div className="text-center max-w-md">
-            <div className="page-enter page-enter-1">
-              <div className="w-32 h-32 mx-auto mb-8 rounded-full bg-gradient-to-r from-orange-500 to-orange-400 flex items-center justify-center shadow-lg shadow-orange-500/20">
-                <div className="text-4xl font-bold text-white">S</div>
-              </div>
-            </div>
+        <div className="text-center max-w-md w-full">
 
-            <div className="page-enter page-enter-2">
-              <h2 className="text-3xl font-semibold mb-2 tracking-tight">Experience AI in Action</h2>
-              <p className="text-slate-400 mb-8">Live Voice AI Demo • Silent AI Partner</p>
-            </div>
-
-            {callState === 'idle' && (
-              <div className="space-y-6">
-                <p className="text-slate-300 mb-6 text-lg">
-                  Try our voice AI demo to see the technology in action. Then book your free audit to see how it fits your business.
-                </p>
-                <MagneticButton>
-                  <button
-                    onClick={startCall}
-                    className="bg-gradient-to-r from-orange-500 to-orange-400 hover:from-orange-400 hover:to-orange-300 text-white px-8 py-4 rounded-xl text-lg font-medium transition-all btn-glow flex items-center gap-3 mx-auto"
-                  >
-                    <Phone className="w-6 h-6" />
-                    Start Voice Demo
-                  </button>
-                </MagneticButton>
-                <div className="text-sm text-slate-500 mt-4">
-                  <p>Try asking:</p>
-                  <div className="grid grid-cols-1 gap-2 mt-3 text-slate-500">
-                    <p>• "What can you do for my business?"</p>
-                    <p>• "How do you handle emergencies?"</p>
-                    <p>• "What makes you better than a real receptionist?"</p>
-                    <p>• "Walk me through your pricing"</p>
-                  </div>
-                </div>
-              </div>
-            )}
-
-            {callState === 'connecting' && (
-              <div className="space-y-6">
-                <div className="flex justify-center mb-4">
-                  <div className="flex space-x-2">
-                    <div className="w-3 h-3 bg-orange-500 rounded-full animate-bounce" style={{ animationDelay: '0ms' }} />
-                    <div className="w-3 h-3 bg-orange-500 rounded-full animate-bounce" style={{ animationDelay: '150ms' }} />
-                    <div className="w-3 h-3 bg-orange-500 rounded-full animate-bounce" style={{ animationDelay: '300ms' }} />
-                  </div>
-                </div>
-                <p className="text-slate-300 text-lg">Connecting to Sarah...</p>
-                <p className="text-slate-400 text-sm">This may take a few seconds</p>
-                <button
-                  onClick={endCall}
-                  className="bg-red-500/20 hover:bg-red-500/30 text-red-400 px-6 py-3 rounded-xl font-medium transition-all"
-                >
-                  Cancel
-                </button>
-              </div>
-            )}
-
-            {callState === 'connected' && (
-              <div className="space-y-6">
-                {/* Waveform Visualization */}
-                <div className="flex justify-center mb-6">
-                  <div className="flex items-end space-x-1 h-16">
-                    {[...Array(12)].map((_, i) => (
-                      <div
-                        key={i}
-                        className="bg-gradient-to-t from-orange-500 to-orange-400 rounded-full animate-pulse"
-                        style={{
-                          width: '4px',
-                          height: `${Math.random() * 60 + 10}px`,
-                          animationDelay: `${i * 100}ms`,
-                          animationDuration: '1s'
-                        }}
-                      />
-                    ))}
-                  </div>
-                </div>
-
-                <p className="text-emerald-400 font-medium text-lg">🟢 Connected • Speaking with Sarah</p>
-                <p className="text-slate-400">Sarah can hear you. Speak naturally!</p>
-                <p className="text-slate-500 text-sm">Ask about plumbing services, pricing, or schedule an appointment</p>
-
-                <button
-                  onClick={endCall}
-                  className="bg-red-500 hover:bg-red-600 text-white px-8 py-4 rounded-xl text-lg font-medium transition-all flex items-center gap-3 mx-auto"
-                >
-                  <PhoneOff className="w-6 h-6" />
-                  End Call
-                </button>
-              </div>
-            )}
-
-            {callState === 'error' && (
-              <div className="space-y-6">
-                <div className="p-4 bg-red-500/20 border border-red-500/30 rounded-xl">
-                  <p className="text-red-400 font-medium mb-2">Call Failed</p>
-                  <p className="text-red-300 text-sm">{error}</p>
-                </div>
-                <button
-                  onClick={resetError}
-                  className="bg-gradient-to-r from-orange-500 to-orange-400 hover:from-orange-400 hover:to-orange-300 text-white px-6 py-3 rounded-xl font-medium transition-all"
-                >
-                  Try Again
-                </button>
-              </div>
-            )}
+          {/* Avatar */}
+          <div className="w-32 h-32 mx-auto mb-8 rounded-full bg-gradient-to-r from-orange-500 to-orange-400 flex items-center justify-center shadow-lg shadow-orange-500/20">
+            <div className="text-4xl font-bold text-white">S</div>
           </div>
+
+          <h2 className="text-3xl font-semibold mb-2 tracking-tight">Meet Sarah</h2>
+          <p className="text-slate-400 mb-2">Your AI Office Manager • Silent AI Partner</p>
+          <p className="text-slate-300 mb-8 text-lg">
+            See how Sarah handles your calls — 24/7, never misses a lead.
+          </p>
+
+          {(formState === 'idle' || formState === 'error') && (
+            <form onSubmit={handleSubmit} className="space-y-4 text-left">
+              <div>
+                <label className="block text-sm text-slate-400 mb-1.5 ml-1">Your Name</label>
+                <input
+                  type="text"
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                  placeholder="John Smith"
+                  required
+                  className="w-full bg-slate-800/60 border border-slate-700/60 rounded-xl px-4 py-3 text-white placeholder-slate-500 focus:outline-none focus:border-orange-500/60 focus:ring-1 focus:ring-orange-500/30 transition-all"
+                />
+              </div>
+
+              <div>
+                <label className="block text-sm text-slate-400 mb-1.5 ml-1">Company Name</label>
+                <input
+                  type="text"
+                  value={company}
+                  onChange={(e) => setCompany(e.target.value)}
+                  placeholder="Smith's HVAC"
+                  required
+                  className="w-full bg-slate-800/60 border border-slate-700/60 rounded-xl px-4 py-3 text-white placeholder-slate-500 focus:outline-none focus:border-orange-500/60 focus:ring-1 focus:ring-orange-500/30 transition-all"
+                />
+              </div>
+
+              <div>
+                <label className="block text-sm text-slate-400 mb-1.5 ml-1">Phone Number</label>
+                <input
+                  type="tel"
+                  value={phone}
+                  onChange={(e) => setPhone(e.target.value)}
+                  placeholder="(555) 867-5309"
+                  required
+                  className="w-full bg-slate-800/60 border border-slate-700/60 rounded-xl px-4 py-3 text-white placeholder-slate-500 focus:outline-none focus:border-orange-500/60 focus:ring-1 focus:ring-orange-500/30 transition-all"
+                />
+              </div>
+
+              {formState === 'error' && (
+                <p className="text-red-400 text-sm text-center">{error}</p>
+              )}
+
+              <button
+                type="submit"
+                disabled={formState === 'submitting'}
+                className="w-full bg-gradient-to-r from-orange-500 to-orange-400 hover:from-orange-400 hover:to-orange-300 disabled:opacity-60 text-white px-8 py-4 rounded-xl text-lg font-medium transition-all btn-glow mt-2"
+              >
+                {formState === 'submitting' ? 'Sending...' : 'Get My Free Demo →'}
+              </button>
+
+              <p className="text-slate-500 text-xs text-center pt-1">
+                We&apos;ll call you within 24 hours. No spam, ever.
+              </p>
+            </form>
+          )}
+
+          {formState === 'success' && (
+            <div className="space-y-6">
+              <div className="w-20 h-20 mx-auto rounded-full bg-emerald-500/20 flex items-center justify-center">
+                <span className="text-4xl">✅</span>
+              </div>
+              <h3 className="text-2xl font-semibold text-emerald-400">You&apos;re on the list!</h3>
+              <p className="text-slate-300">
+                We&apos;ll call you within 24 hours to set up your free demo. Get ready to see Sarah in action.
+              </p>
+              <p className="text-slate-500 text-sm">
+                Questions? Email us at{' '}
+                <a href="mailto:wes@silentaipartner.com" className="text-orange-400 hover:text-orange-300 transition-colors">
+                  wes@silentaipartner.com
+                </a>
+              </p>
+            </div>
+          )}
+        </div>
       </div>
 
-      {/* Footer Info */}
+      {/* Footer */}
       <div className="p-6 border-t border-slate-800/30 bg-bg-secondary/50 backdrop-blur-xl">
         <div className="max-w-4xl mx-auto text-center">
           <p className="text-slate-400 text-sm mb-2">
-            This is a live demo of our AI voice technology powered by Retell AI
+            Sarah answers calls 24/7 — so you never miss a lead again.
           </p>
           <p className="text-slate-500 text-xs">
-            See how AI can transform your business.
-            <a href="/#audit-form" className="text-orange-400 hover:text-orange-300 transition-colors duration-200 ml-1">
-              Book My Free Audit →
+            Already a customer?{' '}
+            <a href="https://calendly.com/silentaipartner" className="text-orange-400 hover:text-orange-300 transition-colors duration-200">
+              Schedule a call →
             </a>
           </p>
         </div>
