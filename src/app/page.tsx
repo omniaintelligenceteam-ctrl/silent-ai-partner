@@ -5,7 +5,7 @@ import { HowItWorks } from '@/components/sections/HowItWorks'
 import { WhoThisHelps } from '@/components/sections/WhoThisHelps'
 import { TheOutcome } from '@/components/sections/TheOutcome'
 import { Features } from '@/components/sections/Features'
-import { Pricing } from '@/components/sections/Pricing'
+
 import { VoiceDemo } from '@/components/sections/VoiceDemo'
 import { AuditForm } from '@/components/sections/AuditForm'
 import { DashboardPreview } from '@/components/sections/DashboardPreview'
@@ -27,8 +27,6 @@ export default function Home() {
       <TheOutcome />
       <div className="section-divider" />
       <Features />
-      <div className="section-divider" />
-      <Pricing />
       <div className="section-divider" />
       <VoiceDemo />
       <div className="section-divider" />

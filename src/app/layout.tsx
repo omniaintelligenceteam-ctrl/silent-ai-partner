@@ -22,7 +22,7 @@ export const metadata: Metadata = {
     icon: '/logo-bolt.png',
     apple: '/logo-bolt.png',
   },
-  title: "Stop Drowning in Busywork — Silent AI Partner",
+  title: "Silent AI Partner",
   description: "Workflow automation for contractors. We build systems that handle your calls, scheduling, follow-ups, and content — so your team can focus on growth. Free workflow audit.",
   keywords: "workflow automation, contractor automation, AI for contractors, automated scheduling, call answering service, contractor office manager, plumber automation, HVAC automation, electrician automation",
   openGraph: {

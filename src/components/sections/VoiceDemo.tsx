@@ -150,15 +150,15 @@ export function VoiceDemo() {
                     <p className="text-slate-400">Silent AI Partner</p>
                   </div>
 
-                  <p className="text-slate-300 mb-6">
+                  <p className="text-slate-300">
                     Click below to start a live voice conversation. Ask her anything — services, scheduling, pricing.
                   </p>
 
-                  <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                  <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
                     <MagneticButton>
                       <button
                         onClick={startCall}
-                        className="bg-gradient-to-r from-orange-500 to-orange-400 hover:from-orange-400 hover:to-orange-300 text-white px-8 py-4 rounded-xl text-lg font-medium transition-all btn-glow flex items-center gap-3 mx-auto"
+                        className="bg-gradient-to-r from-orange-500 to-orange-400 hover:from-orange-400 hover:to-orange-300 text-white min-w-[220px] px-8 py-4 rounded-xl text-lg font-medium transition-all btn-glow flex items-center justify-center gap-3"
                       >
                         <Phone className="w-6 h-6" />
                         Live Demo
@@ -167,15 +167,15 @@ export function VoiceDemo() {
 
                     <button
                       onClick={startInterview}
-                      className="border-2 border-orange-500/30 text-orange-400 px-8 py-4 rounded-xl text-lg font-medium transition-all hover:border-orange-400 hover:bg-orange-500/10 flex items-center gap-3 mx-auto"
+                      className="border-2 border-orange-500/30 text-orange-400 min-w-[220px] px-8 py-4 rounded-xl text-lg font-medium transition-all hover:border-orange-400 hover:bg-orange-500/10 flex items-center justify-center gap-3"
                     >
                       🎙️ Interview Sarah
                     </button>
                   </div>
 
-                  <div className="text-sm text-slate-500 mt-6">
+                  <div className="text-sm text-slate-500 pt-2">
                     <p className="mb-3">Try asking Sarah about:</p>
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-slate-400">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-slate-400">
                       <p>&bull; &quot;What services do you offer?&quot;</p>
                       <p>&bull; &quot;I need someone out today&quot;</p>
                       <p>&bull; &quot;How much does it cost?&quot;</p>

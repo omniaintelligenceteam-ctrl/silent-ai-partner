@@ -77,12 +77,6 @@ export function Header() {
               The Audit
             </Link>
             <Link
-              href="#pricing"
-              className="text-slate-400 hover:text-white transition-colors duration-300 text-sm tracking-wide"
-            >
-              Pricing
-            </Link>
-            <Link
               href="#demo"
               className="text-orange-400 hover:text-orange-300 transition-colors duration-300 text-sm tracking-wide font-medium"
             >
@@ -177,9 +171,6 @@ export function Header() {
               </Link>
               <Link href="#how-it-works" className="text-slate-400 hover:text-white transition-colors duration-200 text-sm" onClick={() => setMobileMenuOpen(false)}>
                 The Audit
-              </Link>
-              <Link href="#pricing" className="text-slate-400 hover:text-white transition-colors duration-200 text-sm" onClick={() => setMobileMenuOpen(false)}>
-                Pricing
               </Link>
               <Link href="#demo" className="text-orange-400 hover:text-orange-300 transition-colors duration-200 text-sm font-medium" onClick={() => setMobileMenuOpen(false)}>
                 Live Demo
