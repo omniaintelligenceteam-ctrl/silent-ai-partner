@@ -2,6 +2,7 @@
 
 import Link from 'next/link'
 import { FadeIn } from '@/components/ui/FadeIn'
+import { FloatingPaths } from '@/components/ui/background-paths'
 
 export function Hero() {
   return (
@@ -9,6 +10,8 @@ export function Hero() {
       {/* Background Effects */}
       <div className="absolute inset-0">
         <div className="hero-grid absolute inset-0"></div>
+        <FloatingPaths position={1} />
+        <FloatingPaths position={-1} />
         <div className="orb orb-1"></div>
         <div className="orb orb-2"></div>
         <div className="orb orb-3"></div>
