@@ -158,6 +158,7 @@ export function VoiceDemo() {
                     <MagneticButton>
                       <button
                         onClick={startCall}
+                        data-glow
                         className="bg-gradient-to-r from-orange-500 to-orange-400 hover:from-orange-400 hover:to-orange-300 text-white min-w-[220px] px-8 py-4 rounded-xl text-lg font-medium transition-all btn-glow flex items-center justify-center gap-3"
                       >
                         <Phone className="w-6 h-6" />
@@ -167,6 +168,7 @@ export function VoiceDemo() {
 
                     <button
                       onClick={startInterview}
+                      data-glow
                       className="border-2 border-orange-500/30 text-orange-400 min-w-[220px] px-8 py-4 rounded-xl text-lg font-medium transition-all hover:border-orange-400 hover:bg-orange-500/10 flex items-center justify-center gap-3"
                     >
                       🎙️ Interview Sarah
@@ -198,6 +200,7 @@ export function VoiceDemo() {
                   <p className="text-slate-400 text-sm">This may take a few seconds</p>
                   <button
                     onClick={endCall}
+                    data-glow="red"
                     className="bg-red-500/20 hover:bg-red-500/30 text-red-400 px-6 py-3 rounded-xl font-medium transition-all"
                   >
                     Cancel
@@ -229,6 +232,7 @@ export function VoiceDemo() {
 
                   <button
                     onClick={endCall}
+                    data-glow="red"
                     className="bg-red-500 hover:bg-red-600 text-white px-8 py-4 rounded-xl text-lg font-medium transition-all flex items-center gap-3 mx-auto"
                   >
                     <PhoneOff className="w-6 h-6" />
@@ -245,6 +249,7 @@ export function VoiceDemo() {
                   </div>
                   <button
                     onClick={resetError}
+                    data-glow
                     className="bg-gradient-to-r from-orange-500 to-orange-400 hover:from-orange-400 hover:to-orange-300 text-white px-6 py-3 rounded-xl font-medium transition-all"
                   >
                     Try Again

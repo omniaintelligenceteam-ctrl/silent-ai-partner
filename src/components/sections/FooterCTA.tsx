@@ -31,6 +31,7 @@ export function FooterCTA() {
           <div className="flex justify-center mb-10">
             <Link
               href="#audit-form"
+              data-glow
               className="bg-gradient-to-r from-orange-500 to-orange-400 text-white px-10 py-4 rounded-xl font-semibold text-lg btn-glow hover:from-orange-600 hover:to-orange-500 transition-all duration-200"
             >
               Book My Free Audit →

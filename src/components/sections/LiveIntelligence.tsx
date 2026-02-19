@@ -81,6 +81,7 @@ export function LiveIntelligence() {
                     <button
                       key={index}
                       onClick={() => setActiveLogIndex(index)}
+                      data-glow
                       className={`px-3 py-1.5 rounded-lg text-xs font-mono transition-all duration-200 ${
                         index === activeLogIndex
                           ? 'bg-orange-500/15 border border-orange-500/30 text-orange-400'

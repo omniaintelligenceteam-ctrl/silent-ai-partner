@@ -210,6 +210,7 @@ export default function PlumbingPage() {
                   <a
                     href="#audit-form"
                     className="bg-gradient-to-r from-orange-500 to-orange-400 text-white px-8 py-4 rounded-xl font-semibold text-lg btn-glow hover:from-orange-600 hover:to-orange-500 transition-all duration-200 text-center"
+                    data-glow
                   >
                     Book My Free Audit &rarr;
                   </a>
@@ -312,6 +313,7 @@ export default function PlumbingPage() {
                       <button
                         onClick={startCall}
                         className="bg-gradient-to-r from-orange-500 to-orange-400 hover:from-orange-400 hover:to-orange-300 text-white px-8 py-4 rounded-xl text-lg font-medium transition-all btn-glow flex items-center gap-3 mx-auto"
+                        data-glow
                       >
                         <Phone className="w-6 h-6" />
                         Live Demo
@@ -320,6 +322,7 @@ export default function PlumbingPage() {
                     <button
                       onClick={startInterview}
                       className="border-2 border-orange-500/30 text-orange-400 px-8 py-4 rounded-full text-lg font-medium transition-all hover:border-orange-400 hover:bg-orange-500/10 flex items-center gap-3 mx-auto"
+                      data-glow
                     >
                       🎙️ Interview Sarah
                     </button>
@@ -349,6 +352,7 @@ export default function PlumbingPage() {
                     <button
                       onClick={endCall}
                       className="bg-red-500/20 hover:bg-red-500/30 text-red-400 px-6 py-3 rounded-xl font-medium transition-all"
+                      data-glow="red"
                     >
                       Cancel
                     </button>
@@ -381,6 +385,7 @@ export default function PlumbingPage() {
                     <button
                       onClick={endCall}
                       className="bg-red-500 hover:bg-red-600 text-white px-8 py-4 rounded-xl text-lg font-medium transition-all flex items-center gap-3 mx-auto"
+                      data-glow="red"
                     >
                       <PhoneOff className="w-6 h-6" />
                       End Call
@@ -397,6 +402,7 @@ export default function PlumbingPage() {
                     <button
                       onClick={resetError}
                       className="bg-gradient-to-r from-orange-500 to-orange-400 hover:from-orange-400 hover:to-orange-300 text-white px-6 py-3 rounded-xl font-medium transition-all"
+                      data-glow
                     >
                       Try Again
                     </button>

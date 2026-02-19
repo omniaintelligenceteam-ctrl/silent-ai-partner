@@ -195,6 +195,63 @@ a:focus-visible {
 }
 
 /* ============================================
+   SPOTLIGHT GLOW EFFECT (cursor-tracking border)
+   ============================================ */
+[data-glow] {
+  position: relative;
+}
+
+[data-glow]::before,
+[data-glow]::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: var(--glow-width, 2px);
+  pointer-events: none;
+  background-attachment: fixed;
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+[data-glow]:hover::before,
+[data-glow]:hover::after,
+[data-glow]:focus-visible::before,
+[data-glow]:focus-visible::after {
+  opacity: 1;
+}
+
+[data-glow]::before {
+  background: radial-gradient(
+    var(--glow-radius, 120px) var(--glow-radius, 120px) at
+    calc(var(--glow-x, 0) * 1px) calc(var(--glow-y, 0) * 1px),
+    hsl(calc(var(--glow-base, 30) + var(--glow-xp, 0) * var(--glow-spread, 200)) 100% 60% / var(--glow-intensity, 0.9)),
+    transparent
+  );
+  background-attachment: fixed;
+  filter: brightness(1.5);
+}
+
+[data-glow]::after {
+  background: radial-gradient(
+    calc(var(--glow-radius, 120px) * 0.6) calc(var(--glow-radius, 120px) * 0.6) at
+    calc(var(--glow-x, 0) * 1px) calc(var(--glow-y, 0) * 1px),
+    hsl(0 0% 100% / calc(var(--glow-intensity, 0.9) * 0.35)),
+    transparent
+  );
+  background-attachment: fixed;
+}
+
+/* Spotlight color variants */
+[data-glow="red"] { --glow-base: 0; }
+[data-glow="blue"] { --glow-base: 220; }
+[data-glow="green"] { --glow-base: 120; }
+[data-glow="purple"] { --glow-base: 280; }
+
+/* ============================================
    LINK UNDERLINE ANIMATION
    ============================================ */
 .link-animate {
@@ -505,5 +562,9 @@ details[open] > div {
     opacity: 1;
     transform: none;
     filter: none;
+  }
+  [data-glow]::before,
+  [data-glow]::after {
+    display: none;
   }
 }

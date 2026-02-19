@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { Inter, Space_Grotesk } from "next/font/google";
 import { ScrollProgress } from "@/components/ui/ScrollProgress";
 import { MouseSpotlight } from "@/components/ui/MouseSpotlight";
+import { PointerGlow } from "@/components/ui/pointer-glow";
 import "./globals.css";
 
 const inter = Inter({
@@ -55,6 +56,7 @@ export default function RootLayout({
         <div className="noise-overlay" aria-hidden="true" />
         <ScrollProgress />
         <MouseSpotlight />
+        <PointerGlow />
         {children}
       </body>
     </html>
