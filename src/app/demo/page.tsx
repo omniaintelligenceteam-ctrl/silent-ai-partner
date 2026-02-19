@@ -96,10 +96,9 @@ export default function DemoPage() {
 
               <button
                 type="submit"
-                disabled={formState === 'submitting'}
                 className="w-full bg-gradient-to-r from-orange-500 to-orange-400 hover:from-orange-400 hover:to-orange-300 disabled:opacity-60 text-white px-8 py-4 rounded-xl text-lg font-medium transition-all btn-glow mt-2"
               >
-                {formState === 'submitting' ? 'Sending...' : 'Get My Free Demo →'}
+                Get My Free Demo →
               </button>
 
               <p className="text-slate-500 text-xs text-center pt-1">
