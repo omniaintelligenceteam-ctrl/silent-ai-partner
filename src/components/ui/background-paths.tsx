@@ -12,11 +12,11 @@ function FloatingPaths({ position }: { position: number }) {
         } ${343 - i * 6}C${616 - i * 5 * position} ${470 - i * 6} ${
             684 - i * 5 * position
         } ${875 - i * 6} ${684 - i * 5 * position} ${875 - i * 6}`,
-        width: 0.8 + i * 0.06,
-        color: i % 4 === 0 ? "rgba(249,115,22,1)"
-             : i % 4 === 1 ? "rgba(251,146,60,0.8)"
-             : i % 4 === 2 ? "rgba(59,130,246,0.6)"
-             : "rgba(148,163,184,0.5)",
+        width: 0.5 + i * 0.04,
+        color: i % 4 === 0 ? "rgba(249,115,22,0.12)"
+             : i % 4 === 1 ? "rgba(251,146,60,0.09)"
+             : i % 4 === 2 ? "rgba(59,130,246,0.06)"
+             : "rgba(148,163,184,0.04)",
     }));
 
     return (
@@ -28,23 +28,34 @@ function FloatingPaths({ position }: { position: number }) {
                 preserveAspectRatio="xMidYMid slice"
             >
                 <title>Background Paths</title>
-                {paths.map((path) => (
-                    <motion.path
-                        key={path.id}
-                        d={path.d}
-                        stroke={path.color}
-                        strokeWidth={path.width}
-                        initial={{ pathLength: 1, pathOffset: 0 }}
-                        animate={{
-                            pathOffset: [0, 1],
-                        }}
-                        transition={{
-                            duration: 30 + Math.random() * 20,
-                            repeat: Number.POSITIVE_INFINITY,
-                            ease: "linear",
-                        }}
-                    />
-                ))}
+                <defs>
+                    <radialGradient id={`mask-grad-${position}`} cx="50%" cy="40%" r="50%">
+                        <stop offset="0%" stopColor="black" />
+                        <stop offset="60%" stopColor="white" />
+                    </radialGradient>
+                    <mask id={`center-fade-${position}`}>
+                        <rect width="100%" height="100%" fill={`url(#mask-grad-${position})`} />
+                    </mask>
+                </defs>
+                <g mask={`url(#center-fade-${position})`}>
+                    {paths.map((path) => (
+                        <motion.path
+                            key={path.id}
+                            d={path.d}
+                            stroke={path.color}
+                            strokeWidth={path.width}
+                            initial={{ pathLength: 1, pathOffset: 0 }}
+                            animate={{
+                                pathOffset: [0, 1],
+                            }}
+                            transition={{
+                                duration: 30 + Math.random() * 20,
+                                repeat: Number.POSITIVE_INFINITY,
+                                ease: "linear",
+                            }}
+                        />
+                    ))}
+                </g>
             </svg>
         </div>
     );
