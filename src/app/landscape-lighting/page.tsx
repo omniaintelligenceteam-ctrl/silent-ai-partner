@@ -10,6 +10,12 @@ import { RetellWebClient } from 'retell-client-js-sdk';
 import { AnimatedCounter } from '@/components/ui/AnimatedCounter';
 import { TiltCard } from '@/components/ui/TiltCard';
 import { MagneticButton } from '@/components/ui/MagneticButton';
+import { HowItWorks } from '@/components/sections/HowItWorks';
+import { WhoThisHelps } from '@/components/sections/WhoThisHelps';
+import { TheOutcome } from '@/components/sections/TheOutcome';
+import { Features } from '@/components/sections/Features';
+import { DashboardPreview } from '@/components/sections/DashboardPreview';
+import { FooterCTA } from '@/components/sections/FooterCTA';
 
 type CallState = 'idle' | 'connecting' | 'connected' | 'error';
 
@@ -492,9 +498,21 @@ export default function LandscapeLightingPage() {
       </section>
 
       <div className="section-divider" />
+      <HowItWorks />
+      <div className="section-divider" />
+      <WhoThisHelps />
+      <div className="section-divider" />
+      <TheOutcome />
+      <div className="section-divider" />
+      <Features />
+      <div className="section-divider" />
 
       {/* Audit Form Section */}
       <AuditForm />
+      <div className="section-divider" />
+      <DashboardPreview />
+      <div className="section-divider" />
+      <FooterCTA />
 
       {/* Footer */}
       <Footer />
