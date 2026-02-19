@@ -11,10 +11,18 @@ import { AuditForm } from '@/components/sections/AuditForm'
 import { DashboardPreview } from '@/components/sections/DashboardPreview'
 import { FooterCTA } from '@/components/sections/FooterCTA'
 import { Footer } from '@/components/sections/Footer'
+import { FloatingPaths } from '@/components/ui/background-paths'
 
 export default function Home() {
   return (
-    <div className="bg-bg-primary text-white min-h-screen">
+    <div className="relative bg-bg-primary text-white min-h-screen">
+      {/* Animated SVG path background */}
+      <div className="fixed inset-0 pointer-events-none z-0">
+        <FloatingPaths position={1} />
+        <FloatingPaths position={-1} />
+      </div>
+
+      <div className="relative z-10">
       <Header />
       <Hero />
       <div className="section-divider" />
@@ -36,6 +44,7 @@ export default function Home() {
       <div className="section-divider" />
       <FooterCTA />
       <Footer />
+      </div>
     </div>
   )
 }
