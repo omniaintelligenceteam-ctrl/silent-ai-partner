@@ -94,9 +94,7 @@ export function LiveProof() {
 
           {/* Panel 2 — Agent OS in the open */}
           <motion.a
-            href="https://agentos.getoios.com"
-            target="_blank"
-            rel="noopener noreferrer"
+            href="/form"
             data-cursor="cta"
             className="group glass-card p-8 lg:p-10 block relative overflow-hidden hover:border-amber-400/30 transition-colors duration-300"
             initial={{ opacity: 0, y: 32 }}
@@ -119,15 +117,16 @@ export function LiveProof() {
                   className="text-2xl sm:text-3xl lg:text-4xl font-bold text-white tracking-tight group-hover:text-amber-300 transition-colors duration-300 break-all"
                   style={{ fontFamily: 'var(--font-display), sans-serif' }}
                 >
-                  agentos.getoios.com
+                  Agent OS
                 </span>
               </div>
               <p className="text-slate-400 leading-relaxed">
-                The dashboard where our own AI operators run OIOS. Real agent activity you can
-                watch, not a mockup. This is what your business gets.
+                The dashboard where our own AI operators run OIOS. On your first call we&apos;ll
+                show it working live — real agents, real activity, not a mockup. This is what
+                your business gets.
               </p>
               <span className="mt-6 inline-flex items-center gap-1.5 text-sm font-medium text-amber-400">
-                Watch them work
+                See it live on your first call
                 <ArrowUpRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
               </span>
             </div>
