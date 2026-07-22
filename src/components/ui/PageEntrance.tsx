@@ -116,7 +116,7 @@ export function PageEntrance({ children }: { children: React.ReactNode }) {
         style={{
           opacity: show ? 1 : 0,
           transform: show ? 'translateY(0)' : 'translateY(12px)',
-          transition: 'opacity 0.6s ease, transform 0.6s ease',
+          transition: 'opacity 0.25s var(--ease-out), transform 0.25s var(--ease-out)',
         }}
       >
         {children}

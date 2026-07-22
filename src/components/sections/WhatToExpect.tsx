@@ -1,8 +1,8 @@
 'use client'
 
 import Link from 'next/link'
-import { useRef, useState } from 'react'
-import { motion, useInView, AnimatePresence, useMotionValue, useTransform } from 'motion/react'
+import { useRef, useState, useEffect } from 'react'
+import { motion, useInView, AnimatePresence, useMotionValue, useTransform, animate } from 'motion/react'
 import { MagneticButton } from '@/components/ui/MagneticButton'
 import {
   Phone,
@@ -374,6 +374,32 @@ function TierCard({
 
 /* ─── ROI Calculator ──────────────────────────────────────────────────────────── */
 
+// Rolls from the previous value to the new one on slider change — the outputs
+// read as a live meter instead of teleporting text. Plain React state driven
+// by animate()'s onUpdate, so nothing fights reconciliation.
+function RollingNumber({ value, prefix = '', suffix = '' }: { value: number; prefix?: string; suffix?: string }) {
+  const [display, setDisplay] = useState(value)
+  const prev = useRef(value)
+
+  useEffect(() => {
+    const from = prev.current
+    prev.current = value
+    if (from === value) return
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      setDisplay(value)
+      return
+    }
+    const controls = animate(from, value, {
+      duration: 0.4,
+      ease: [0.23, 1, 0.32, 1],
+      onUpdate: (v) => setDisplay(v),
+    })
+    return () => controls.stop()
+  }, [value])
+
+  return <span>{`${prefix}${Math.round(display).toLocaleString()}${suffix}`}</span>
+}
+
 function ROICalculator() {
   const ref = useRef(null)
   const inView = useInView(ref, { once: true, margin: '-60px' })
@@ -452,10 +478,10 @@ function ROICalculator() {
             transition={{ duration: 0.6, delay: 0.3 }}
           >
             {[
-              { icon: Wallet, label: 'Admin hours cost, per month', value: `$${monthlyAdminCost.toLocaleString()}`, color: 'text-emerald-400', border: 'border-emerald-400/20' },
-              { icon: TrendingUp, label: 'Revenue leaking from lost leads', value: `$${monthlyLeakRevenue.toLocaleString()}`, color: 'text-amber-400', border: 'border-amber-400/20' },
-              { icon: BarChart3, label: 'Annual cost of doing nothing', value: `$${annualCost.toLocaleString()}`, color: 'text-teal-400', border: 'border-teal-400/20' },
-              { icon: CalendarClock, label: 'Hours back per week with OIOS', value: `~${adminHours}hrs`, color: 'text-cyan-400', border: 'border-cyan-400/20' },
+              { icon: Wallet, label: 'Admin hours cost, per month', num: monthlyAdminCost, prefix: '$', suffix: '', color: 'text-emerald-400', border: 'border-emerald-400/20' },
+              { icon: TrendingUp, label: 'Revenue leaking from lost leads', num: monthlyLeakRevenue, prefix: '$', suffix: '', color: 'text-amber-400', border: 'border-amber-400/20' },
+              { icon: BarChart3, label: 'Annual cost of doing nothing', num: annualCost, prefix: '$', suffix: '', color: 'text-teal-400', border: 'border-teal-400/20' },
+              { icon: CalendarClock, label: 'Hours back per week with OIOS', num: adminHours, prefix: '~', suffix: 'hrs', color: 'text-cyan-400', border: 'border-cyan-400/20' },
             ].map((output) => {
               const Icon = output.icon
               return (
@@ -465,7 +491,9 @@ function ROICalculator() {
                   </div>
                   <div className="flex-1">
                     <div className="text-xs text-slate-500 font-mono uppercase tracking-wider">{output.label}</div>
-                    <div className={`text-2xl font-bold ${output.color}`} style={{ fontFamily: 'var(--font-display), sans-serif' }}>{output.value}</div>
+                    <div className={`text-2xl font-bold ${output.color}`} style={{ fontFamily: 'var(--font-display), sans-serif' }}>
+                      <RollingNumber value={output.num} prefix={output.prefix} suffix={output.suffix} />
+                    </div>
                   </div>
                 </div>
               )

@@ -66,26 +66,25 @@ export function Header() {
             {navLinks.map((link) => {
               const isActive = pathname === link.href
               return (
-                <MagneticButton key={link.href} strength={0.15}>
-                  <Link
-                    href={link.href}
-                    className={`relative text-sm tracking-wide transition-colors duration-300 ${
-                      link.accent
-                        ? `${isActive ? 'text-teal-300' : 'text-teal-400 hover:text-teal-300'} font-medium`
-                        : `${isActive ? 'text-white' : 'text-slate-400 hover:text-white'}`
-                    }`}
-                  >
-                    {link.label}
-                    {/* Animated underline */}
-                    {isActive && (
-                      <motion.span
-                        layoutId="nav-underline"
-                        className="absolute -bottom-1 left-0 right-0 h-px bg-teal-400"
-                        transition={{ type: 'spring', stiffness: 300, damping: 30 }}
-                      />
-                    )}
-                  </Link>
-                </MagneticButton>
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  className={`relative text-sm tracking-wide transition-colors duration-300 ${
+                    link.accent
+                      ? `${isActive ? 'text-teal-300' : 'text-teal-400 hover:text-teal-300'} font-medium`
+                      : `${isActive ? 'text-white' : 'text-slate-400 hover:text-white'}`
+                  }`}
+                >
+                  {link.label}
+                  {/* Animated underline */}
+                  {isActive && (
+                    <motion.span
+                      layoutId="nav-underline"
+                      className="absolute -bottom-1 left-0 right-0 h-px bg-teal-400"
+                      transition={{ type: 'spring', stiffness: 300, damping: 30 }}
+                    />
+                  )}
+                </Link>
               )
             })}
           </nav>

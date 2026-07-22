@@ -336,6 +336,7 @@ export function DailySchedule() {
 
   useEffect(() => {
     if (!sectionInView) return
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
     const interval = setInterval(() => {
       setActiveIndex((prev) => (prev + 1) % events.length)
     }, 3000)

@@ -6,6 +6,7 @@ import { PointerGlow } from "@/components/ui/pointer-glow";
 import { SmoothScroll } from "@/components/ui/SmoothScroll";
 import { CustomCursor } from "@/components/ui/CustomCursor";
 import { ScrollRevealInit } from "@/components/ui/ScrollRevealInit";
+import { MotionProvider } from "@/components/ui/MotionProvider";
 import "./globals.css";
 
 const inter = Inter({
@@ -159,7 +160,9 @@ export default function RootLayout({
         <CustomCursor />
         <ScrollRevealInit />
         <SmoothScroll>
-          {children}
+          <MotionProvider>
+            {children}
+          </MotionProvider>
         </SmoothScroll>
       </body>
     </html>

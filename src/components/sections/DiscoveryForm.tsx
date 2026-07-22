@@ -1,7 +1,7 @@
 'use client'
 
 import { useState } from 'react'
-import { motion } from 'motion/react'
+import { motion, AnimatePresence } from 'motion/react'
 
 type FormData = {
   fullName: string
@@ -177,15 +177,15 @@ export function DiscoveryForm() {
     }
   }
 
-  if (submitted) {
-    return (
-      <div className="min-h-screen flex items-center justify-center px-4">
-        <motion.div
-          initial={{ opacity: 0, scale: 0.95 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.5 }}
-          className="max-w-lg w-full"
-        >
+  const successView = (
+      <motion.div
+        key="success"
+        initial={{ opacity: 0, y: 16, scale: 0.97 }}
+        animate={{ opacity: 1, y: 0, scale: 1 }}
+        transition={{ duration: 0.45, ease: [0.23, 1, 0.32, 1] }}
+        className="min-h-screen flex items-center justify-center px-4"
+      >
+        <div className="max-w-lg w-full">
           <div className="rounded-2xl border border-slate-700/30 bg-slate-900/50 backdrop-blur-sm p-10 lg:p-14 text-center">
             <SuccessCheckmark />
             <h3
@@ -199,19 +199,20 @@ export function DiscoveryForm() {
             </p>
             <p className="text-teal-400 font-semibold">— Wes, OIOS</p>
           </div>
-        </motion.div>
-      </div>
-    )
-  }
+        </div>
+      </motion.div>
+  )
 
-  return (
-    <div className="min-h-screen flex items-center justify-center px-4 py-16">
+  const formView = (
       <motion.div
+        key="form"
         initial={{ opacity: 0, y: 24 }}
         animate={{ opacity: 1, y: 0 }}
+        exit={{ opacity: 0, y: -12, scale: 0.99, transition: { duration: 0.25, ease: [0.23, 1, 0.32, 1] } }}
         transition={{ duration: 0.6 }}
-        className="max-w-xl w-full"
+        className="min-h-screen flex items-center justify-center px-4 py-16"
       >
+        <div className="max-w-xl w-full">
         {/* Header */}
         <div className="text-center mb-10">
           <h1
@@ -373,7 +374,10 @@ export function DiscoveryForm() {
             <p className="text-sm text-slate-500">No commitment. No credit card. Just a conversation.</p>
           </div>
         </div>
+        </div>
       </motion.div>
-    </div>
   )
+
+  // mode="wait": form exits fully, then the success card enters — one moment, no overlap
+  return <AnimatePresence mode="wait">{submitted ? successView : formView}</AnimatePresence>
 }

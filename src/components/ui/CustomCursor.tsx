@@ -30,6 +30,8 @@ export function CustomCursor() {
       if (dotRef.current) {
         dotRef.current.style.transform = `translate(${e.clientX}px, ${e.clientY}px)`
       }
+      // wake the ring-follow loop if it went idle
+      if (!raf) raf = requestAnimationFrame(animate)
     }
 
     function handleMouseOver(e: MouseEvent) {
@@ -64,15 +66,22 @@ export function CustomCursor() {
       setVisible(true)
     }
 
-    // Ring follows with lerp for smooth trailing
-    let raf: number
+    // Ring follows with lerp for smooth trailing.
+    // The loop idles once the ring settles (< 0.1px delta) and is woken by mousemove.
+    let raf = 0
     function animate() {
-      ringPos.current.x += (pos.current.x - ringPos.current.x) * 0.15
-      ringPos.current.y += (pos.current.y - ringPos.current.y) * 0.15
+      const dx = pos.current.x - ringPos.current.x
+      const dy = pos.current.y - ringPos.current.y
+      ringPos.current.x += dx * 0.15
+      ringPos.current.y += dy * 0.15
       if (ringRef.current) {
         ringRef.current.style.transform = `translate(${ringPos.current.x}px, ${ringPos.current.y}px)`
       }
-      raf = requestAnimationFrame(animate)
+      if (Math.abs(dx) > 0.1 || Math.abs(dy) > 0.1) {
+        raf = requestAnimationFrame(animate)
+      } else {
+        raf = 0
+      }
     }
     raf = requestAnimationFrame(animate)
 
@@ -82,7 +91,7 @@ export function CustomCursor() {
     document.addEventListener('mouseenter', handleMouseEnter)
 
     return () => {
-      cancelAnimationFrame(raf)
+      if (raf) cancelAnimationFrame(raf)
       document.removeEventListener('mousemove', handleMouseMove)
       document.removeEventListener('mouseover', handleMouseOver)
       document.removeEventListener('mouseleave', handleMouseLeave)
