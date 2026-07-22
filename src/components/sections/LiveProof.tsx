@@ -23,7 +23,7 @@ export function LiveProof() {
   const inView = useInView(ref, { once: true, margin: '-80px' })
 
   return (
-    <section className="py-24 lg:py-32 bg-bg-primary relative overflow-hidden">
+    <section id="watch" className="py-24 lg:py-32 bg-bg-primary relative overflow-hidden">
       <div ref={ref} className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <motion.div
