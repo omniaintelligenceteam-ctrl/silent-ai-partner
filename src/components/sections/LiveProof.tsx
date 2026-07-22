@@ -16,7 +16,7 @@ function LiveDot({ color = 'bg-emerald-400' }: { color?: string }) {
 
 // ─── Live Proof ──────────────────────────────────────────────────────────────
 // The proof asset nobody can fake: Agent OS — the dashboard where our own AI
-// operators run OIOS. Shown live on the first call (it sits behind a login).
+// operators run OIOS. Public sanitized window at agentos.getoios.com/watch.
 export function LiveProof() {
   const ref = useRef<HTMLDivElement>(null)
   const inView = useInView(ref, { once: true, margin: '-80px' })
@@ -44,14 +44,16 @@ export function LiveProof() {
             Don&apos;t take our word for it. <span className="gradient-text">Watch it run.</span>
           </h2>
           <p className="mt-4 text-slate-400 text-base md:text-lg max-w-2xl mx-auto">
-            Most AI companies show you a video. We run our own business on OIOS — and walk you
-            through the live dashboard on your first call.
+            Most AI companies show you a video. We run our own business on OIOS — and leave
+            the dashboard open so you can watch.
           </p>
         </motion.div>
 
         {/* Agent OS proof panel */}
         <motion.a
-          href="/form"
+          href="https://agentos.getoios.com/watch"
+          target="_blank"
+          rel="noopener noreferrer"
           data-cursor="cta"
           className="group glass-card p-8 lg:p-10 block relative overflow-hidden hover:border-amber-400/30 transition-colors duration-300 max-w-2xl mx-auto"
           initial={{ opacity: 0, y: 32 }}
@@ -78,12 +80,11 @@ export function LiveProof() {
               </span>
             </div>
             <p className="text-slate-400 leading-relaxed">
-              The dashboard where our own AI operators run OIOS. On your first call we&apos;ll
-              show it working live — real agents, real activity, not a mockup. This is what
-              your business gets.
+              The dashboard where our own AI operators run OIOS. Watch the live feed right
+              now — real agents, real activity, not a mockup. This is what your business gets.
             </p>
             <span className="mt-6 inline-flex items-center gap-1.5 text-sm font-medium text-amber-400">
-              See it live on your first call
+              Watch them run
               <ArrowUpRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
             </span>
           </div>
