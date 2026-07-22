@@ -42,13 +42,6 @@ export function Footer() {
             >
               Talk to us: (480) 305-0357
             </a>
-            <br />
-            <a
-              href="tel:+18667821303"
-              className="text-slate-400 hover:text-white transition-colors duration-200 text-sm mt-1 inline-block"
-            >
-              Talk to our AI receptionist: (866) 782-1303
-            </a>
           </div>
 
           {/* Nav Links */}
