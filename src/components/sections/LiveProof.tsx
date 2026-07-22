@@ -3,6 +3,7 @@
 import { useRef } from 'react'
 import { motion, useInView } from 'motion/react'
 import { ArrowUpRight } from 'lucide-react'
+import { Video } from '@/components/ui/Video'
 
 // ─── Live status dot ─────────────────────────────────────────────────────────
 function LiveDot({ color = 'bg-emerald-400' }: { color?: string }) {
@@ -44,9 +45,25 @@ export function LiveProof() {
             Don&apos;t take our word for it. <span className="gradient-text">Watch it run.</span>
           </h2>
           <p className="mt-4 text-slate-400 text-base md:text-lg max-w-2xl mx-auto">
-            Most AI companies show you a video. We run our own business on OIOS — and leave
-            the dashboard open so you can watch.
+            Most AI companies show you a video. Fine — here&apos;s ours, in 60 seconds. The
+            difference: our dashboard stays open, so you can watch the real thing run.
           </p>
+        </motion.div>
+
+        {/* The 60-second version */}
+        <motion.div
+          className="mb-14 lg:mb-16"
+          initial={{ opacity: 0, y: 32 }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6, delay: 0.1 }}
+        >
+          <Video
+            src="https://pub-a387aca030aa4df390425aa14606713c.r2.dev/oios-in-60-seconds.mp4"
+            poster="https://pub-a387aca030aa4df390425aa14606713c.r2.dev/oios-in-60-seconds.jpg"
+            posterAlt="Agent OS — the live dashboard where OIOS's AI operators run the business"
+            aspectRatio="16/9"
+            className="max-w-4xl mx-auto border border-white/10"
+          />
         </motion.div>
 
         {/* Agent OS proof panel */}
