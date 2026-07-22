@@ -121,8 +121,8 @@ export function AboutContent() {
               },
               {
                 icon: Shield,
-                title: 'Zero Risk',
-                description: "You don't pay until OIOS pays for itself. No contracts. No setup fees. If it doesn't deliver, you don't pay. Period.",
+                title: 'You Own Everything',
+                description: "Month-to-month, no contracts. Every tool, integration, and piece of data we build is yours — if you ever leave, it all walks with you.",
                 color: 'text-emerald-400',
                 border: 'border-emerald-400/20',
               },
@@ -173,7 +173,7 @@ export function AboutContent() {
               { icon: Lock, title: 'End-to-End Encryption', description: 'All data encrypted in transit and at rest', color: 'text-teal-400', border: 'border-teal-400/20' },
               { icon: Shield, title: 'Enterprise-Grade Security', description: 'Built on trusted, audited infrastructure providers', color: 'text-emerald-400', border: 'border-emerald-400/20' },
               { icon: Eye, title: 'Private by Default', description: 'Your data is never shared or used for training', color: 'text-cyan-400', border: 'border-cyan-400/20' },
-              { icon: ServerCog, title: '99.9% Uptime', description: 'Redundant infrastructure — your AI team never sleeps', color: 'text-amber-400', border: 'border-amber-400/20' },
+              { icon: ServerCog, title: 'Always On', description: 'Redundant infrastructure — your AI team never sleeps', color: 'text-amber-400', border: 'border-amber-400/20' },
             ].map((item, i) => {
               const Icon = item.icon
               return (

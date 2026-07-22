@@ -142,10 +142,11 @@ function ClockFace({ activeIndex }: { activeIndex: number }) {
       {Array.from({ length: 24 }).map((_, i) => {
         const angle = (i / 24) * 360 - 90
         const rad = (angle * Math.PI) / 180
-        const x1 = cx + (r - 2) * Math.cos(rad)
-        const y1 = cy + (r - 2) * Math.sin(rad)
-        const x2 = cx + (r - (i % 6 === 0 ? 12 : 6)) * Math.cos(rad)
-        const y2 = cy + (r - (i % 6 === 0 ? 12 : 6)) * Math.sin(rad)
+        // toFixed keeps server/client SVG output identical (avoids hydration mismatch)
+        const x1 = (cx + (r - 2) * Math.cos(rad)).toFixed(3)
+        const y1 = (cy + (r - 2) * Math.sin(rad)).toFixed(3)
+        const x2 = (cx + (r - (i % 6 === 0 ? 12 : 6)) * Math.cos(rad)).toFixed(3)
+        const y2 = (cy + (r - (i % 6 === 0 ? 12 : 6)) * Math.sin(rad)).toFixed(3)
         return (
           <line
             key={`tick-${i}`}
@@ -161,8 +162,9 @@ function ClockFace({ activeIndex }: { activeIndex: number }) {
         const angle = hourAngles[i]
         const rad = (angle * Math.PI) / 180
         const markerR = r - 25
-        const mx = cx + markerR * Math.cos(rad)
-        const my = cy + markerR * Math.sin(rad)
+        // toFixed keeps server/client SVG output identical (avoids hydration mismatch)
+        const mx = +(cx + markerR * Math.cos(rad)).toFixed(3)
+        const my = +(cy + markerR * Math.sin(rad)).toFixed(3)
         const isActive = i === activeIndex
 
         return (

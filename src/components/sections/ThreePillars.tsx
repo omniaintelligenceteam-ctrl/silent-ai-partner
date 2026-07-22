@@ -409,7 +409,7 @@ export function ThreePillars() {
           </div>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight" style={{ fontFamily: 'var(--font-display), sans-serif' }}>
             <span className="text-white">Three Systems.</span>{' '}
-            <span className="gradient-text">One Platform.</span>
+            <span className="gradient-text">One Partner.</span>
           </h2>
         </motion.div>
 

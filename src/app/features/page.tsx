@@ -46,7 +46,7 @@ export default function FeaturesPage() {
         <Header />
         <PageHero
           title="What OIOS Does"
-          subtitle="Three systems. One platform. Zero missed calls."
+          subtitle="Three systems. One partner. Zero missed calls."
           badge="Features"
         />
         <SectionTransition />

@@ -2,7 +2,6 @@ import type { Metadata } from 'next'
 import { Header } from '@/components/sections/Header'
 import { PageHero } from '@/components/sections/PageHero'
 import { WhatToExpect } from '@/components/sections/WhatToExpect'
-import { OnboardingTimeline } from '@/components/sections/OnboardingTimeline'
 import { FAQ } from '@/components/sections/FAQ'
 import { BookDiscoveryCall } from '@/components/sections/BookDiscoveryCall'
 import { FinalCTA } from '@/components/sections/FinalCTA'
@@ -51,8 +50,6 @@ export default function PricingPage() {
           badge="What to Expect"
         />
         <WhatToExpect />
-        <SectionTransition />
-        <OnboardingTimeline />
         <SectionTransition />
         <FAQ />
         <SectionTransition />

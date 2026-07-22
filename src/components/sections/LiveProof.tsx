@@ -44,7 +44,7 @@ export function LiveProof() {
             Don&apos;t take our word for it. <span className="gradient-text">Test it.</span>
           </h2>
           <p className="mt-4 text-slate-400 text-base md:text-lg max-w-2xl mx-auto">
-            Most AI companies show you a video. We give you a phone number and a live dashboard.
+            Most AI companies show you a video. We hand you a phone number — and show you the live dashboard on your first call.
           </p>
         </motion.div>
 

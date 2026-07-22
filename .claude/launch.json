@@ -3,10 +3,10 @@
   "configurations": [
     {
       "name": "getoios-dev",
-      "runtimeExecutable": "npx",
-      "runtimeArgs": ["next", "dev"],
-      "cwd": "C:\\Users\\default.DESKTOP-ON29PVN\\getoios",
-      "port": 3000
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["run", "dev"],
+      "port": 3000,
+      "cwd": "C:/Users/default.DESKTOP-ON29PVN/getoios"
     }
   ]
 }

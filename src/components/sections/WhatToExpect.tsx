@@ -495,7 +495,7 @@ function ROICalculator() {
 const pricingFaqs = [
   { q: "Why don't you list prices publicly?", a: "Every stack is custom — your rules, your tools, your workflows. We quote against what you'd spend hiring for the same work (a receptionist, a bookkeeper, a dev shop), not against a menu. Book a call and we'll scope it with you." },
   { q: 'Is there a contract?', a: 'No. Month-to-month, cancel anytime, no fees. And you own everything we build — if you leave, every tool, integration, and piece of data walks with you.' },
-  { q: 'What happens in Month 1?', a: "The install. We set up your AI Operating System, connect your tools, and ship your first custom build live by Day 7 — a real thing working in your business, not a demo. Then the monthly rhythm starts: one meeting, one big build, everything else keeps running." },
+  { q: 'What happens in Month 1?', a: "The install. We set up your AI Operating System, connect your tools, and ship your first custom build live by Day 7. Then the monthly rhythm starts: one meeting, one big build, everything else keeps running." },
   { q: 'Can I change bands later?', a: 'Yes. The bands describe scope, not a cage. As your business grows, the build cadence and coverage grow with it — changes take effect the next month.' },
 ]
 
