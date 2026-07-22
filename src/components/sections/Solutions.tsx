@@ -21,7 +21,7 @@ const solutions: SolutionCard[] = [
     icon: '📞',
     title: 'Phones & First Contact',
     description: 'Every call answered. Every lead captured.',
-    impact: '$1,600-2,400/mo recovered',
+    impact: 'Every call answered, 24/7',
     problem: "Phone rings while you're with a customer. Lead's gone by noon.",
     bullets: [
       'AI answers every call in under 1 second',
@@ -30,16 +30,16 @@ const solutions: SolutionCard[] = [
       'Sends instant text-back on missed calls',
     ],
     impactMetrics: [
-      '$1,600-2,400/mo in recovered leads',
+      'Missed calls turned into booked jobs',
       'Zero missed calls, 24/7 coverage',
-      '100% lead capture rate',
+      'Every caller logged, tagged, and followed up',
     ],
   },
   {
     icon: '🎯',
     title: 'Lead Capture & Follow-Up',
     description: 'Every lead source monitored. Instant response.',
-    impact: '30-40% more leads converted',
+    impact: 'No lead waits, no lead forgotten',
     problem: "Leads come from 5 places. I write them on paper or forget.",
     bullets: [
       'Every lead source monitored in real time',
@@ -48,8 +48,8 @@ const solutions: SolutionCard[] = [
       'Nurture sequences that run on autopilot',
     ],
     impactMetrics: [
-      '30-40% more leads converted',
-      '5x faster response time',
+      'Every lead answered in seconds, not hours',
+      'One pipeline across every lead source',
       'Zero leads lost between channels',
     ],
   },
@@ -57,7 +57,7 @@ const solutions: SolutionCard[] = [
     icon: '📅',
     title: 'Scheduling & Booking',
     description: 'Real-time sync. Automated reminders. No no-shows.',
-    impact: '50%+ fewer no-shows',
+    impact: 'Booked, confirmed, reminded',
     problem: "Phone tag. Double bookings. No-shows.",
     bullets: [
       'Real-time calendar sync across platforms',
@@ -66,8 +66,8 @@ const solutions: SolutionCard[] = [
       'No-show follow-up and rescheduling',
     ],
     impactMetrics: [
-      '2-3 hrs/week saved on scheduling',
-      '50%+ fewer no-shows',
+      'Scheduling off your plate entirely',
+      'Every booking confirmed and reminded',
       'Zero double bookings',
     ],
   },
@@ -75,7 +75,7 @@ const solutions: SolutionCard[] = [
     icon: '📄',
     title: 'Estimates & Proposals',
     description: 'Voice-note the scope. Estimate sent in 30 seconds.',
-    impact: '20-30% higher close rate',
+    impact: 'Same-day estimates, every time',
     problem: "I type up estimates at 9pm after a long day. Then never follow up.",
     bullets: [
       'Voice-note the scope \u2192 estimate generated in 30 sec',
@@ -85,7 +85,7 @@ const solutions: SolutionCard[] = [
     ],
     impactMetrics: [
       'Same-day estimates, every time',
-      '20-30% higher close rate',
+      'Every proposal followed up on schedule',
       'Zero forgotten follow-ups',
     ],
   },
@@ -93,7 +93,7 @@ const solutions: SolutionCard[] = [
     icon: '💰',
     title: 'Invoicing & Getting Paid',
     description: 'Auto-invoice on completion. Payment link attached.',
-    impact: 'Paid in under 10 days',
+    impact: 'Invoiced the moment the job closes',
     problem: "I forget to invoice for 3 days. Then they don't pay for 30 more.",
     bullets: [
       'Auto-invoice triggered on job completion',
@@ -102,7 +102,7 @@ const solutions: SolutionCard[] = [
       'Weekly accounts receivable summary',
     ],
     impactMetrics: [
-      'Days-to-payment from 25+ to under 10',
+      'Reminders keep every invoice moving',
       'Zero forgotten invoices',
       'Consistent cash flow',
     ],
@@ -111,7 +111,7 @@ const solutions: SolutionCard[] = [
     icon: '📧',
     title: 'Email & Daily Admin',
     description: 'Inbox triaged. Replies drafted. Briefing sent.',
-    impact: '1.5-2 hrs/day saved',
+    impact: 'Inbox handled before coffee',
     problem: "50 emails a day. I read 10 and close the inbox.",
     bullets: [
       'Inbox triaged every 30 minutes automatically',
@@ -120,7 +120,7 @@ const solutions: SolutionCard[] = [
       'Morning briefing with action items sent daily',
     ],
     impactMetrics: [
-      '1.5-2 hours/day saved on email',
+      'Every email triaged, replies drafted',
       'Zero missed critical emails',
       'Inbox always under control',
     ],
@@ -129,7 +129,7 @@ const solutions: SolutionCard[] = [
     icon: '⭐',
     title: 'Reviews & Reputation',
     description: 'Review requests at peak satisfaction. Auto-responses.',
-    impact: '3-5x more reviews',
+    impact: 'A review request after every job',
     problem: "Competitor has 200 reviews and does worse work than me.",
     bullets: [
       'Review request sent 2 hours post-job (peak satisfaction)',
@@ -138,7 +138,7 @@ const solutions: SolutionCard[] = [
       'Negative review alerts sent immediately',
     ],
     impactMetrics: [
-      '3-5x more reviews collected',
+      'Requests land at peak satisfaction',
       'Faster response to negative reviews',
       'Higher overall rating over time',
     ],
@@ -165,7 +165,7 @@ const solutions: SolutionCard[] = [
     icon: '👥',
     title: 'Team & Hiring',
     description: 'Applications screened. Interviews scheduled. Crew dispatched.',
-    impact: '5-8 hrs saved per hire',
+    impact: 'Screening and scheduling handled',
     problem: "I hired whoever answered. No onboarding. Chaos.",
     bullets: [
       'Application screening and candidate ranking',
@@ -174,7 +174,7 @@ const solutions: SolutionCard[] = [
       'Daily team dispatch via text message',
     ],
     impactMetrics: [
-      '5-8 hours saved per hire',
+      'Every applicant screened and ranked',
       'Consistent onboarding experience',
       'Reliable daily crew communication',
     ],
@@ -183,7 +183,7 @@ const solutions: SolutionCard[] = [
     icon: '📊',
     title: 'Numbers & Reporting',
     description: 'Weekly KPI report. Real-time pipeline. Cash flow alerts.',
-    impact: 'Tax prep: 20 hrs \u2192 2 hrs',
+    impact: 'Your numbers, every Monday',
     problem: "Am I making money? I think so. My bank account looks okay.",
     bullets: [
       'Weekly Monday morning KPI report delivered',
@@ -193,7 +193,7 @@ const solutions: SolutionCard[] = [
     ],
     impactMetrics: [
       'Data-driven decisions, not gut feelings',
-      'Tax prep from 20 hrs to 2',
+      'Tax-ready records all year',
       'Proactive cash flow management',
     ],
   },
@@ -201,7 +201,7 @@ const solutions: SolutionCard[] = [
     icon: '🔄',
     title: 'Customer Retention',
     description: 'Satisfaction checks. Seasonal reminders. Referral programs.',
-    impact: '20-30% more repeat business',
+    impact: 'No customer forgotten after the job',
     problem: "Job done. Invoice paid. Customer forgotten.",
     bullets: [
       'Satisfaction check at 1 week post-job',
@@ -210,7 +210,7 @@ const solutions: SolutionCard[] = [
       'VIP tagging for repeat customers',
     ],
     impactMetrics: [
-      '20-30% increase in repeat business',
+      'Seasonal reminders bring them back',
       'Higher customer lifetime value',
       'Automated referral generation',
     ],
@@ -360,8 +360,8 @@ function SolutionCardItem({ card, index }: { card: SolutionCard; index: number }
 // ─── Stats Bar ──────────────────────────────────────────────────────────────
 const stats = [
   { value: '13', label: 'Workflows' },
-  { value: '15+', label: 'hrs/week saved' },
-  { value: '$2,000+', label: '/mo recovered' },
+  { value: 'Day 7', label: 'first build live' },
+  { value: '1+', label: 'builds shipped monthly' },
   { value: '24/7', label: 'coverage' },
 ]
 

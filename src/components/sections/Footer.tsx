@@ -8,7 +8,7 @@ export function Footer() {
     { name: 'How It Works', href: '/how-it-works' },
     { name: 'Solutions', href: '/solutions' },
     { name: 'What to Expect', href: '/pricing' },
-    { name: 'Book Your Audit', href: '/form' },
+    { name: 'Start Month 1', href: '/form' },
   ]
 
   const legalLinks = [
@@ -27,7 +27,7 @@ export function Footer() {
             </Link>
             <p className="text-slate-600 text-xs font-mono mb-5">by Omnia Intelligence AI</p>
             <p className="text-slate-500 text-sm leading-relaxed mb-6 max-w-xs">
-              AI operations for small businesses. Calls answered, admin handled, pipeline visible — 24/7.
+              We install AI Operating Systems for small businesses. Calls answered, admin handled, pipeline visible — 24/7.
             </p>
             <a
               href="mailto:team@getoios.com"
@@ -40,7 +40,14 @@ export function Footer() {
               href="tel:+14803050357"
               className="text-slate-400 hover:text-white transition-colors duration-200 text-sm mt-2 inline-block"
             >
-              (480) 305-0357
+              Talk to us: (480) 305-0357
+            </a>
+            <br />
+            <a
+              href="tel:+18667821303"
+              className="text-slate-400 hover:text-white transition-colors duration-200 text-sm mt-1 inline-block"
+            >
+              Talk to our AI receptionist: (866) 782-1303
             </a>
           </div>
 

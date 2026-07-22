@@ -246,7 +246,7 @@ export function AboutContent() {
                 data-cursor="cta"
                 className="inline-block bg-gradient-to-r from-amber-500 to-amber-400 text-white px-10 py-4 rounded-xl text-lg font-bold btn-glow hover:from-amber-600 hover:to-amber-500 transition-colors"
               >
-                Book a Free 30-Minute Audit →
+                Start Month 1 →
               </Link>
             </MagneticButton>
           </motion.div>

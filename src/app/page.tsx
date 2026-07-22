@@ -2,6 +2,7 @@ import { Header } from '@/components/sections/Header'
 import { Hero } from '@/components/sections/Hero'
 import { WhoItsFor } from '@/components/sections/WhoItsFor'
 import { CapabilityBreakdown } from '@/components/sections/CapabilityBreakdown'
+import { LiveProof } from '@/components/sections/LiveProof'
 import { DepartmentTicker } from '@/components/ui/DepartmentTicker'
 
 import { FAQ } from '@/components/sections/FAQ'
@@ -22,6 +23,8 @@ export default function Home() {
         <WhoItsFor />
         <SectionTransition />
         <CapabilityBreakdown />
+        <SectionTransition />
+        <LiveProof />
         <SectionTransition />
         <FAQ />
         <SectionTransition />

@@ -1,50 +1,30 @@
 'use client'
 
-import { useRef, useEffect, useState } from 'react'
-import { motion, useInView } from 'motion/react'
+import { motion } from 'motion/react'
 import { Shield, Calendar, MapPin } from 'lucide-react'
 import { LogoMarquee } from '@/components/ui/LogoMarquee'
 
-// ─── Count-up hook ───────────────────────────────────────────────────────────
-function useCountUp(target: number, duration: number, active: boolean) {
-  const [count, setCount] = useState(0)
-
-  useEffect(() => {
-    if (!active) return
-    const start = performance.now()
-    const frame = (now: number) => {
-      const progress = Math.min((now - start) / (duration * 1000), 1)
-      const eased = 1 - Math.pow(1 - progress, 3)
-      setCount(Math.round(eased * target))
-      if (progress < 1) requestAnimationFrame(frame)
-    }
-    requestAnimationFrame(frame)
-  }, [active, target, duration])
-
-  return count
-}
-
-// ─── Powered-by tech badges ─────────────────────────────────────────────────
-const techStack = ['Retell AI', 'Twilio', 'OpenAI', 'Vercel', 'ServiceTitan', 'Housecall Pro', 'Jobber', 'QuickBooks']
+// ─── Works-with integration badges ──────────────────────────────────────────
+const techStack = ['Google Calendar', 'QuickBooks', 'ServiceTitan', 'Housecall Pro', 'Jobber', 'Stripe', 'Gmail', 'Slack']
 
 // ─── Trust cards data ────────────────────────────────────────────────────────
 const trustCards = [
   {
     icon: Shield,
-    title: 'Pay Nothing Until It Works',
-    description: "60-day performance guarantee. If OIOS doesn't pay for itself, you walk away free.",
+    title: 'You Own Everything',
+    description: 'Every tool, every integration, every piece of data we build is yours. If you ever leave, it all walks with you.',
     pulse: true,
   },
   {
     icon: Calendar,
     title: 'Month-to-Month',
-    description: 'No contracts. Cancel anytime. No fees.',
+    description: 'No contracts. Cancel anytime. We earn the retainer every 30 days or you stop paying it.',
     pulse: false,
   },
   {
     icon: MapPin,
     title: 'Founded in Scottsdale, AZ',
-    description: 'Real people. Real company. Local touch.',
+    description: 'Real people. Real company. A human partner who knows your business, not a ticket queue.',
     pulse: false,
   },
 ]
@@ -94,9 +74,6 @@ function TrustCard({
 
 // ─── Main export ─────────────────────────────────────────────────────────────
 export function TrustSignals() {
-  const statRef = useRef(null)
-  const statInView = useInView(statRef, { once: true, margin: '-80px' })
-  const count = useCountUp(1200, 1.8, statInView)
 
   return (
     <section className="py-24 lg:py-32 bg-bg-secondary">
@@ -111,62 +88,30 @@ export function TrustSignals() {
           transition={{ duration: 0.6 }}
         >
           <div className="inline-flex items-center px-3 py-1.5 rounded-full bg-slate-800/40 border border-slate-700/30 mb-6">
-            <span className="text-[10px] font-mono uppercase tracking-[0.15em] text-slate-400">Why Trust Us</span>
+            <span className="text-[10px] font-mono uppercase tracking-[0.15em] text-slate-400">The Partner Model</span>
           </div>
           <h2
             className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight"
             style={{ fontFamily: 'var(--font-display), sans-serif' }}
           >
-            <span className="text-white">Zero Risk.</span>
+            <span className="text-white">No contracts. No lock-in.</span>
             <br />
-            <span className="gradient-text">We Prove It First.</span>
+            <span className="gradient-text">You own everything.</span>
           </h2>
         </motion.div>
 
-        {/* Powered-by row */}
+        {/* Works-with row */}
         <div className="mb-16">
-          <p className="text-center text-[10px] font-mono uppercase tracking-[0.15em] text-slate-500 mb-4">Powered by</p>
+          <p className="text-center text-[10px] font-mono uppercase tracking-[0.15em] text-slate-500 mb-4">Works with</p>
           <LogoMarquee items={techStack} speed={25} />
         </div>
 
         {/* Trust cards */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 lg:gap-6 mb-16">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 lg:gap-6">
           {trustCards.map((card, i) => (
             <TrustCard key={card.title} {...card} index={i} />
           ))}
         </div>
-
-        {/* Stat counter */}
-        <motion.div
-          ref={statRef}
-          className="text-center max-w-2xl mx-auto"
-          initial={{ opacity: 0, y: 24 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-        >
-          <div className="glass-card p-8 lg:p-12 relative overflow-hidden">
-            <div
-              className="absolute inset-0 rounded-xl opacity-30"
-              style={{
-                background:
-                  'linear-gradient(135deg, rgba(45,212,191,0.15) 0%, transparent 50%, rgba(245,158,11,0.15) 100%)',
-              }}
-            />
-            <div
-              className="text-4xl sm:text-5xl lg:text-6xl font-bold font-mono text-teal-400 mb-3 relative"
-            >
-              {count.toLocaleString()}+
-            </div>
-            <p
-              className="text-lg lg:text-xl font-semibold text-white mb-1 relative"
-              style={{ fontFamily: 'var(--font-display), sans-serif' }}
-            >
-              Demo Calls Completed
-            </p>
-            <p className="text-sm text-slate-500 font-mono relative">and counting</p>
-          </div>
-        </motion.div>
 
       </div>
     </section>

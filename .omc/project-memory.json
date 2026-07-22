@@ -1,6 +1,6 @@
 {
   "version": "1.0.0",
-  "lastScanned": 1780663549842,
+  "lastScanned": 1780973923129,
   "projectRoot": "c:\\Users\\default.DESKTOP-ON29PVN\\getoios",
   "techStack": {
     "languages": [
@@ -87,7 +87,7 @@
       "path": "docs",
       "purpose": "Documentation",
       "fileCount": 4,
-      "lastAccessed": 1780663549538,
+      "lastAccessed": 1780973923037,
       "keyFiles": [
         "discovery-call-script.md",
         "dm-playbook.md",
@@ -99,7 +99,7 @@
       "path": "knowledge-bases",
       "purpose": null,
       "fileCount": 2,
-      "lastAccessed": 1780663549539,
+      "lastAccessed": 1780973923038,
       "keyFiles": [
         "locksmith-kb.md",
         "pest-control-kb.md"
@@ -109,7 +109,7 @@
       "path": "playwright-report",
       "purpose": null,
       "fileCount": 1,
-      "lastAccessed": 1780663549549,
+      "lastAccessed": 1780973923038,
       "keyFiles": [
         "index.html"
       ]
@@ -118,7 +118,7 @@
       "path": "prep",
       "purpose": null,
       "fileCount": 20,
-      "lastAccessed": 1780663549549,
+      "lastAccessed": 1780973923039,
       "keyFiles": [
         "00-MORNING-BRIEFING.md",
         "01-reddit-outreach.md",
@@ -131,7 +131,7 @@
       "path": "public",
       "purpose": "Public files",
       "fileCount": 10,
-      "lastAccessed": 1780663549550,
+      "lastAccessed": 1780973923040,
       "keyFiles": [
         "file.svg",
         "globe.svg",
@@ -144,14 +144,14 @@
       "path": "src",
       "purpose": "Source code",
       "fileCount": 0,
-      "lastAccessed": 1780663549552,
+      "lastAccessed": 1780973923041,
       "keyFiles": []
     },
     "temporary screenshots": {
       "path": "temporary screenshots",
       "purpose": null,
       "fileCount": 16,
-      "lastAccessed": 1780663549553,
+      "lastAccessed": 1780973923041,
       "keyFiles": [
         "screenshot-1-workflows.png",
         "screenshot-10-paths-test.png",
@@ -160,11 +160,18 @@
         "screenshot-13-paths-readable.png"
       ]
     },
+    "test-results": {
+      "path": "test-results",
+      "purpose": null,
+      "fileCount": 1,
+      "lastAccessed": 1780973923042,
+      "keyFiles": []
+    },
     "tests": {
       "path": "tests",
       "purpose": "Test files",
       "fileCount": 1,
-      "lastAccessed": 1780663549553,
+      "lastAccessed": 1780973923042,
       "keyFiles": [
         "seed.spec.ts"
       ]
@@ -173,7 +180,7 @@
       "path": "tools",
       "purpose": null,
       "fileCount": 13,
-      "lastAccessed": 1780663549554,
+      "lastAccessed": 1780973923045,
       "keyFiles": [
         "calendly-monitor.py",
         "call-analyzer.py",
@@ -186,7 +193,7 @@
       "path": "webhook",
       "purpose": null,
       "fileCount": 6,
-      "lastAccessed": 1780663549555,
+      "lastAccessed": 1780973923047,
       "keyFiles": [
         "call-log.json",
         "customers.json",
@@ -199,7 +206,7 @@
       "path": "src\\app",
       "purpose": "Application code",
       "fileCount": 6,
-      "lastAccessed": 1780663549674,
+      "lastAccessed": 1780973923054,
       "keyFiles": [
         "globals.css",
         "layout.tsx",
@@ -210,14 +217,14 @@
       "path": "src\\components",
       "purpose": "UI components",
       "fileCount": 0,
-      "lastAccessed": 1780663549700,
+      "lastAccessed": 1780973923057,
       "keyFiles": []
     },
     "src\\lib": {
       "path": "src\\lib",
       "purpose": "Library code",
       "fileCount": 5,
-      "lastAccessed": 1780663549723,
+      "lastAccessed": 1780973923060,
       "keyFiles": [
         "gsap-init.ts",
         "rate-limit.ts",
@@ -228,7 +235,7 @@
       "path": "tests\\api",
       "purpose": "API routes",
       "fileCount": 1,
-      "lastAccessed": 1780663549778,
+      "lastAccessed": 1780973923062,
       "keyFiles": [
         "api-routes.spec.ts"
       ]
@@ -237,7 +244,7 @@
       "path": "tests\\pages",
       "purpose": "Page components",
       "fileCount": 4,
-      "lastAccessed": 1780663549812,
+      "lastAccessed": 1780973923067,
       "keyFiles": [
         "features.spec.ts",
         "homepage.spec.ts",
@@ -248,302 +255,74 @@
   "hotPaths": [
     {
       "path": "src\\components\\sections\\Hero.tsx",
-      "accessCount": 14,
-      "lastAccessed": 1780678868916,
-      "type": "file"
-    },
-    {
-      "path": "",
-      "accessCount": 12,
-      "lastAccessed": 1780667901496,
-      "type": "directory"
-    },
-    {
-      "path": "src\\app\\globals.css",
-      "accessCount": 12,
-      "lastAccessed": 1780669268137,
-      "type": "file"
-    },
-    {
-      "path": "src",
-      "accessCount": 7,
-      "lastAccessed": 1780668030501,
-      "type": "directory"
-    },
-    {
-      "path": "package.json",
-      "accessCount": 5,
-      "lastAccessed": 1780667981743,
-      "type": "file"
-    },
-    {
-      "path": "src\\components\\ui\\spotlight-card.tsx",
       "accessCount": 4,
-      "lastAccessed": 1780667998498,
-      "type": "file"
-    },
-    {
-      "path": "src\\app\\page.tsx",
-      "accessCount": 4,
-      "lastAccessed": 1780667999848,
-      "type": "file"
-    },
-    {
-      "path": "src\\components\\ui\\button.tsx",
-      "accessCount": 3,
-      "lastAccessed": 1780667880509,
-      "type": "file"
-    },
-    {
-      "path": "src\\components\\sections\\Header.tsx",
-      "accessCount": 2,
-      "lastAccessed": 1780664513205,
-      "type": "file"
-    },
-    {
-      "path": "src\\components\\sections\\ProblemStats.tsx",
-      "accessCount": 2,
-      "lastAccessed": 1780664515554,
-      "type": "file"
-    },
-    {
-      "path": "src\\components\\ui\\glowing-effect.tsx",
-      "accessCount": 2,
-      "lastAccessed": 1780664547927,
-      "type": "file"
-    },
-    {
-      "path": "src\\components\\ui\\RotatingText.tsx",
-      "accessCount": 2,
-      "lastAccessed": 1780664662954,
-      "type": "file"
-    },
-    {
-      "path": "src\\app\\layout.tsx",
-      "accessCount": 2,
-      "lastAccessed": 1780664700875,
-      "type": "file"
-    },
-    {
-      "path": "src\\components\\ui\\TiltCard.tsx",
-      "accessCount": 2,
-      "lastAccessed": 1780667897010,
-      "type": "file"
-    },
-    {
-      "path": "tsconfig.json",
-      "accessCount": 2,
-      "lastAccessed": 1780667982139,
-      "type": "file"
-    },
-    {
-      "path": "src\\components\\sections\\PageHero.tsx",
-      "accessCount": 1,
-      "lastAccessed": 1780664495467,
-      "type": "file"
-    },
-    {
-      "path": "src\\components\\sections\\ROINumbers.tsx",
-      "accessCount": 1,
-      "lastAccessed": 1780664499931,
-      "type": "file"
-    },
-    {
-      "path": "src\\components\\sections\\Pricing.tsx",
-      "accessCount": 1,
-      "lastAccessed": 1780664500553,
-      "type": "file"
-    },
-    {
-      "path": "src\\components\\sections\\AboutContent.tsx",
-      "accessCount": 1,
-      "lastAccessed": 1780664500779,
-      "type": "file"
-    },
-    {
-      "path": "src\\components\\ui\\pointer-glow.tsx",
-      "accessCount": 1,
-      "lastAccessed": 1780664501701,
-      "type": "file"
-    },
-    {
-      "path": "src\\components\\sections\\WhoItsFor.tsx",
-      "accessCount": 1,
-      "lastAccessed": 1780664504695,
-      "type": "file"
-    },
-    {
-      "path": "src\\components\\sections\\Solutions.tsx",
-      "accessCount": 1,
-      "lastAccessed": 1780664504777,
+      "lastAccessed": 1780974433188,
       "type": "file"
     },
     {
       "path": "src\\components\\sections\\CapabilityBreakdown.tsx",
-      "accessCount": 1,
-      "lastAccessed": 1780664505192,
+      "accessCount": 4,
+      "lastAccessed": 1780974439218,
       "type": "file"
     },
     {
-      "path": "src\\components\\sections\\FinalCTA.tsx",
-      "accessCount": 1,
-      "lastAccessed": 1780664505548,
+      "path": "tests\\pages\\navigation.spec.ts",
+      "accessCount": 4,
+      "lastAccessed": 1780974471493,
       "type": "file"
     },
     {
-      "path": "src\\components\\ui\\background-paths.tsx",
-      "accessCount": 1,
-      "lastAccessed": 1780664505934,
+      "path": "src\\components\\sections\\Header.tsx",
+      "accessCount": 3,
+      "lastAccessed": 1780974606180,
       "type": "file"
-    },
-    {
-      "path": "src\\components\\ui\\ShaderBackground.tsx",
-      "accessCount": 1,
-      "lastAccessed": 1780664506313,
-      "type": "file"
-    },
-    {
-      "path": "src\\components\\ui\\MagneticButton.tsx",
-      "accessCount": 1,
-      "lastAccessed": 1780664511137,
-      "type": "file"
-    },
-    {
-      "path": "src\\components\\sections\\ThreePillars.tsx",
-      "accessCount": 1,
-      "lastAccessed": 1780664511894,
-      "type": "file"
-    },
-    {
-      "path": "src\\components\\sections",
-      "accessCount": 1,
-      "lastAccessed": 1780664512918,
-      "type": "directory"
     },
     {
       "path": "src\\components\\sections\\Footer.tsx",
-      "accessCount": 1,
-      "lastAccessed": 1780664513430,
+      "accessCount": 2,
+      "lastAccessed": 1780974424100,
       "type": "file"
     },
     {
-      "path": "src\\components\\sections\\WhatToExpect.tsx",
-      "accessCount": 1,
-      "lastAccessed": 1780664517511,
+      "path": "src\\app\\sitemap.ts",
+      "accessCount": 2,
+      "lastAccessed": 1780974442101,
       "type": "file"
     },
     {
-      "path": "src\\components\\ui\\FadeIn.tsx",
-      "accessCount": 1,
-      "lastAccessed": 1780664518597,
+      "path": "src\\app\\demo\\page.tsx",
+      "accessCount": 2,
+      "lastAccessed": 1780974453455,
       "type": "file"
     },
     {
-      "path": "src\\components\\ui\\AnimatedCounter.tsx",
-      "accessCount": 1,
-      "lastAccessed": 1780664518992,
+      "path": "tests\\forms\\demo-request.spec.ts",
+      "accessCount": 2,
+      "lastAccessed": 1780974475774,
       "type": "file"
     },
     {
-      "path": "src\\app\\ops\\_components\\kpi-strip.tsx",
+      "path": "src\\components\\sections\\VoiceDemo.tsx",
       "accessCount": 1,
-      "lastAccessed": 1780664527311,
+      "lastAccessed": 1780973968858,
       "type": "file"
     },
     {
-      "path": "src\\app\\ops\\_components\\agent-live-card.tsx",
+      "path": "src\\app\\demo\\layout.tsx",
       "accessCount": 1,
-      "lastAccessed": 1780664527575,
+      "lastAccessed": 1780973982040,
       "type": "file"
     },
     {
-      "path": "src\\components\\ui\\TextReveal.tsx",
+      "path": "next.config.ts",
       "accessCount": 1,
-      "lastAccessed": 1780664539294,
+      "lastAccessed": 1780974074830,
       "type": "file"
     },
     {
-      "path": "src\\components\\ui\\PageEntrance.tsx",
+      "path": "src\\app\\audit\\page.tsx",
       "accessCount": 1,
-      "lastAccessed": 1780664539709,
-      "type": "file"
-    },
-    {
-      "path": "src\\components\\ui\\CinematicEntrance.tsx",
-      "accessCount": 1,
-      "lastAccessed": 1780664560648,
-      "type": "file"
-    },
-    {
-      "path": "tests",
-      "accessCount": 1,
-      "lastAccessed": 1780664955108,
-      "type": "directory"
-    },
-    {
-      "path": "tests\\pages\\homepage.spec.ts",
-      "accessCount": 1,
-      "lastAccessed": 1780664967533,
-      "type": "file"
-    },
-    {
-      "path": "playwright.config.ts",
-      "accessCount": 1,
-      "lastAccessed": 1780665233023,
-      "type": "file"
-    },
-    {
-      "path": "hero-desktop-1440.png",
-      "accessCount": 1,
-      "lastAccessed": 1780665315170,
-      "type": "file"
-    },
-    {
-      "path": "hero-desktop-full.png",
-      "accessCount": 1,
-      "lastAccessed": 1780665361128,
-      "type": "file"
-    },
-    {
-      "path": "hero-desktop-clean.png",
-      "accessCount": 1,
-      "lastAccessed": 1780665401983,
-      "type": "file"
-    },
-    {
-      "path": "hero-1440x900-top.png",
-      "accessCount": 1,
-      "lastAccessed": 1780665494687,
-      "type": "file"
-    },
-    {
-      "path": "hero-375-top.png",
-      "accessCount": 1,
-      "lastAccessed": 1780665522068,
-      "type": "file"
-    },
-    {
-      "path": "hero-375-card.png",
-      "accessCount": 1,
-      "lastAccessed": 1780665546232,
-      "type": "file"
-    },
-    {
-      "path": "hero-bg-v2.png",
-      "accessCount": 1,
-      "lastAccessed": 1780666740819,
-      "type": "file"
-    },
-    {
-      "path": "hero-bg-v3.png",
-      "accessCount": 1,
-      "lastAccessed": 1780666872434,
-      "type": "file"
-    },
-    {
-      "path": "hero-bg-v3-mobile.png",
-      "accessCount": 1,
-      "lastAccessed": 1780666930553,
+      "lastAccessed": 1780974089999,
       "type": "file"
     }
   ],

@@ -3,20 +3,20 @@ import { Header } from '@/components/sections/Header'
 import { PageHero } from '@/components/sections/PageHero'
 import { HowItWorksNew } from '@/components/sections/HowItWorksNew'
 import { TrustSignals } from '@/components/sections/TrustSignals'
-import { Testimonials } from '@/components/sections/Testimonials'
+import { LiveProof } from '@/components/sections/LiveProof'
 import { FinalCTA } from '@/components/sections/FinalCTA'
 import { Footer } from '@/components/sections/Footer'
 import { PageEntrance } from '@/components/ui/PageEntrance'
 import { SectionTransition } from '@/components/ui/SectionTransition'
 
 export const metadata: Metadata = {
-  title: 'How OIOS Works — Audit, Build, Run',
+  title: 'How OIOS Works — Build, Run, Ship',
   description:
-    'A simple 3-step process: we audit your current operations, build your AI systems, and run them for you — so you can focus on the work, not the admin.',
+    'Month 1: we install your AI Operating System and ship your first build live by Day 7. Then one meeting a month, one big build, and everything running 24/7.',
   openGraph: {
-    title: 'How OIOS Works — Audit, Build, Run',
+    title: 'How OIOS Works — Build, Run, Ship',
     description:
-      'A simple 3-step process: we audit your current operations, build your AI systems, and run them for you — so you can focus on the work, not the admin.',
+      'Month 1: we install your AI Operating System and ship your first build live by Day 7. Then one meeting a month, one big build, and everything running 24/7.',
     url: 'https://getoios.com/how-it-works',
     images: [
       {
@@ -29,9 +29,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'How OIOS Works — Audit, Build, Run',
+    title: 'How OIOS Works — Build, Run, Ship',
     description:
-      'A simple 3-step process: we audit your current operations, build your AI systems, and run them for you — so you can focus on the work, not the admin.',
+      'Month 1: we install your AI Operating System and ship your first build live by Day 7. Then one meeting a month, one big build, and everything running 24/7.',
     images: ['/opengraph-image'],
   },
   alternates: {
@@ -46,7 +46,7 @@ export default function HowItWorksPage() {
         <Header />
         <PageHero
           title="How It Works"
-          subtitle="Audit. Build. Run. Three steps to AI operations."
+          subtitle="Build. Run. Ship. One meeting a month, one big build, everything running 24/7."
           badge="Process"
         />
         <SectionTransition />
@@ -54,7 +54,7 @@ export default function HowItWorksPage() {
         <SectionTransition />
         <TrustSignals />
         <SectionTransition />
-        <Testimonials />
+        <LiveProof />
         <SectionTransition />
         <FinalCTA />
         <SectionTransition />

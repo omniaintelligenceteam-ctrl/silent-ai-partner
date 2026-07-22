@@ -111,8 +111,8 @@ export function Hero() {
             transition={{ duration: 0.8, delay: 0.25 }}
             className="mt-7 max-w-xl text-base sm:text-lg text-gray-300/80 leading-relaxed"
           >
-            We install your AI Operating System, ship your first build live in week one, then keep
-            shipping on a monthly retainer. Phones, scheduling, sales, marketing, ops, finance &mdash;
+            We build the software you need, run the operations you can&apos;t afford to hire for, and
+            ship something new every 30 days. Phones, scheduling, sales, marketing, ops, finance &mdash;
             running 24/7.
           </motion.p>
 
@@ -130,6 +130,21 @@ export function Hero() {
               </button>
             </Link>
           </motion.div>
+
+          {/* Live proof line — real demo number, answers 24/7 */}
+          <motion.a
+            href="tel:+18667821303"
+            initial={animate ? { opacity: 0 } : false}
+            animate={animate ? { opacity: 1 } : undefined}
+            transition={{ duration: 0.8, delay: 0.55 }}
+            className="mt-5 inline-flex items-center gap-2 text-sm font-mono text-slate-400 hover:text-teal-300 transition-colors duration-200"
+          >
+            <span className="relative inline-flex h-2 w-2">
+              <span className="absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-60 animate-ping" style={{ animationDuration: '2s' }} />
+              <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-400" />
+            </span>
+            Hear it live: (866) 782-1303 — our AI answers
+          </motion.a>
         </div>
 
         {/* 3D robot — right under the hero, lit by a soft backlight so it reads

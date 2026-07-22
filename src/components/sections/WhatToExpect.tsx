@@ -23,27 +23,27 @@ import {
 
 const tiers = [
   {
-    name: 'Starter',
-    tagline: 'Stop missing calls.',
+    name: 'Foundation',
+    tagline: 'Your AI OS, installed and running.',
     icon: Phone,
     accent: 'teal' as const,
     gradient: 'from-teal-500/20 via-teal-400/5 to-transparent',
     glowColor: 'rgba(45,212,191,0.15)',
     hexColor: '#2DD4BF',
     description:
-      'AI receptionist answers every call 24/7, captures leads, and books appointments — so you never lose another job to voicemail.',
+      'The entry point. We install your AI Operating System, put an AI receptionist on your phones, and ship one custom build every month.',
     includes: [
+      'AIOS install — first build live by Day 7',
       'AI call answering — 24/7, every ring',
-      'Lead capture & instant text-back',
-      'Appointment scheduling',
-      'Daily summary briefings',
-      'Direct access to Wes during setup',
+      'One custom build per month',
+      '24/7 monitoring on everything we ship',
+      'Monthly business review with your partner',
     ],
-    bestFor: 'Solo operators and 1–3 person teams',
+    bestFor: 'Owners who want the phones and the admin handled first',
   },
   {
-    name: 'Growth',
-    tagline: 'Run the back office on autopilot.',
+    name: 'Engine',
+    tagline: 'The whole back office on autopilot.',
     icon: FileText,
     accent: 'amber' as const,
     gradient: 'from-amber-500/20 via-amber-400/5 to-transparent',
@@ -51,19 +51,18 @@ const tiers = [
     hexColor: '#F59E0B',
     popular: true,
     description:
-      'Everything in Starter plus automated follow-ups, proposal generation, invoicing reminders, and CRM updates — your admin disappears.',
+      'Everything in Foundation, moving faster. Two to three builds a month, and every system we ship gets tuned monthly so it keeps getting better.',
     includes: [
-      'Everything in Starter',
-      'Automated follow-ups & nurture sequences',
-      'Proposal & estimate generation',
-      'Invoice reminders & payment nudges',
-      'CRM auto-updates & pipeline tracking',
-      'Review request automation',
+      'Everything in Foundation',
+      'Two to three custom builds per month',
+      'Monthly optimization on every shipped system',
+      'Direct line to your partner — Slack or text',
+      'Follow-ups, invoicing, CRM, and reporting automated',
     ],
-    bestFor: 'Growing teams doing $500K–$2M/year',
+    bestFor: 'Teams ready to automate the whole back office',
   },
   {
-    name: 'Full Ops',
+    name: 'Empire',
     tagline: 'Your entire business, orchestrated.',
     icon: BarChart3,
     accent: 'cyan' as const,
@@ -71,17 +70,15 @@ const tiers = [
     glowColor: 'rgba(6,182,212,0.15)',
     hexColor: '#06B6D4',
     description:
-      'Everything in Growth plus weekly reporting, proactive alerts, marketing content, compliance tracking, and multi-channel automation.',
+      'The deep partnership. A queued build pipeline that never stops, weekly optimization, and a dedicated operations surface across the whole business.',
     includes: [
-      'Everything in Growth',
-      'Weekly performance reports & insights',
-      'Proactive business alerts',
-      'Marketing content generation',
-      'Compliance & documentation tracking',
-      'Multi-channel automation (email, SMS, chat)',
-      'Custom workflow builds',
+      'Everything in Engine',
+      'Queued builds — the pipeline never sits idle',
+      'Weekly optimization across every system',
+      'Dedicated COO-level operations surface',
+      'Shared 12-month roadmap, built with you',
     ],
-    bestFor: 'Established businesses scaling past $2M/year',
+    bestFor: 'Owners who want an AI-first operating layer across the business',
   },
 ]
 
@@ -123,28 +120,28 @@ const accentMap = {
 const steps = [
   {
     num: '01',
-    title: 'Free Audit',
+    title: 'Install Week',
     description:
-      'We analyze your current workflow — calls missed, time wasted on admin, revenue left on the table. Takes 15 minutes.',
+      'Day 1–7: we set up your AI Operating System — workspace, integrations, your rules, prices, and tone — and ship your first custom build live. Working in your business, not a demo.',
     icon: Zap,
     accent: 'text-amber-400',
     glow: 'rgba(245,158,11,0.12)',
   },
   {
     num: '02',
-    title: 'Custom Build',
+    title: 'One Meeting a Month',
     description:
-      'We configure your AI to match your business — your services, your tone, your process. You review everything before it goes live.',
-    icon: Shield,
+      'We review the last 30 days together, then decide what to build next. One big build — or two small ones. You direct the roadmap; we ship it.',
+    icon: Clock,
     accent: 'text-teal-400',
     glow: 'rgba(45,212,191,0.12)',
   },
   {
     num: '03',
-    title: 'Go Live & Prove It',
+    title: 'The Stack Compounds',
     description:
-      "Your AI goes live and we track every metric. If it doesn't pay for itself in 60 days, you owe nothing. Zero risk.",
-    icon: Clock,
+      'Everything already built keeps running 24/7 while the next thing ships. By month six, six systems are working while the seventh goes live.',
+    icon: Shield,
     accent: 'text-emerald-400',
     glow: 'rgba(52,211,153,0.12)',
   },
@@ -293,7 +290,7 @@ function TierCard({
             >
               Custom
             </span>
-            <span className="text-slate-500 text-sm">based on your audit</span>
+            <span className="text-slate-500 text-sm">scoped to your business</span>
           </div>
 
           {/* Includes */}
@@ -366,7 +363,7 @@ function TierCard({
                   : `bg-slate-800/80 border-2 ${a.border} text-white hover:bg-slate-700/80 ${a.borderHover}`
               }`}
             >
-              {tier.popular ? 'Book Your Free Audit →' : 'Start Risk-Free →'}
+              {tier.popular ? 'Start Month 1 →' : 'Book a Call →'}
             </Link>
           </MagneticButton>
         </div>
@@ -385,10 +382,9 @@ function ROICalculator() {
   const [adminHours, setAdminHours] = useState(20)
   const [teamSize, setTeamSize] = useState(5)
 
-  const monthlyAdminSaved = Math.round(adminHours * 4.33 * 25)
-  const monthlyRevenue = Math.round(jobsPerMonth * 0.15 * avgJobValue)
-  const annualSavings = (monthlyAdminSaved + monthlyRevenue) * 12
-  const roiDays = Math.max(7, Math.round(30 - (monthlyRevenue / 1000) * 2))
+  const monthlyAdminCost = Math.round(adminHours * 4.33 * 25)
+  const monthlyLeakRevenue = Math.round(jobsPerMonth * 0.15 * avgJobValue)
+  const annualCost = (monthlyAdminCost + monthlyLeakRevenue) * 12
 
   const sliderClass = 'w-full h-2 bg-slate-700/50 rounded-full appearance-none cursor-pointer [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:w-5 [&::-webkit-slider-thumb]:h-5 [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:bg-teal-400 [&::-webkit-slider-thumb]:shadow-[0_0_12px_rgba(45,212,191,0.5)] [&::-webkit-slider-thumb]:cursor-pointer'
 
@@ -408,13 +404,13 @@ function ROICalculator() {
         >
           <div className="inline-flex items-center px-4 py-2 rounded-full bg-slate-800/50 border border-slate-700/40 mb-8">
             <Calculator className="w-3.5 h-3.5 text-teal-400 mr-2" />
-            <span className="text-[10px] font-mono uppercase tracking-[0.18em] text-slate-400">ROI Calculator</span>
+            <span className="text-[10px] font-mono uppercase tracking-[0.18em] text-slate-400">The Leak Calculator</span>
           </div>
           <h2 className="text-4xl sm:text-5xl font-bold tracking-tight mb-4" style={{ fontFamily: 'var(--font-display), sans-serif' }}>
-            <span className="text-white">Calculate Your </span>
-            <span className="gradient-text">ROI</span>
+            <span className="text-white">What&apos;s the leak </span>
+            <span className="gradient-text">costing you?</span>
           </h2>
-          <p className="text-slate-400 text-lg max-w-lg mx-auto">See how much OIOS saves your business</p>
+          <p className="text-slate-400 text-lg max-w-lg mx-auto">Missed calls, unworked leads, and admin hours have a price. Put your numbers in.</p>
         </motion.div>
 
         <div className="grid md:grid-cols-2 gap-8">
@@ -456,10 +452,10 @@ function ROICalculator() {
             transition={{ duration: 0.6, delay: 0.3 }}
           >
             {[
-              { icon: Wallet, label: 'Monthly admin cost saved', value: `$${monthlyAdminSaved.toLocaleString()}`, color: 'text-emerald-400', border: 'border-emerald-400/20' },
-              { icon: TrendingUp, label: 'Revenue from captured leads', value: `$${monthlyRevenue.toLocaleString()}`, color: 'text-amber-400', border: 'border-amber-400/20' },
-              { icon: BarChart3, label: 'Annual total savings', value: `$${annualSavings.toLocaleString()}`, color: 'text-teal-400', border: 'border-teal-400/20' },
-              { icon: CalendarClock, label: 'Pays for itself in', value: `~${roiDays} days`, color: 'text-cyan-400', border: 'border-cyan-400/20' },
+              { icon: Wallet, label: 'Admin hours cost, per month', value: `$${monthlyAdminCost.toLocaleString()}`, color: 'text-emerald-400', border: 'border-emerald-400/20' },
+              { icon: TrendingUp, label: 'Revenue leaking from lost leads', value: `$${monthlyLeakRevenue.toLocaleString()}`, color: 'text-amber-400', border: 'border-amber-400/20' },
+              { icon: BarChart3, label: 'Annual cost of doing nothing', value: `$${annualCost.toLocaleString()}`, color: 'text-teal-400', border: 'border-teal-400/20' },
+              { icon: CalendarClock, label: 'Hours back per week with OIOS', value: `~${adminHours}hrs`, color: 'text-cyan-400', border: 'border-cyan-400/20' },
             ].map((output) => {
               const Icon = output.icon
               return (
@@ -497,10 +493,10 @@ function ROICalculator() {
 /* ─── Pricing FAQ ──────────────────────────────────────────────────────────── */
 
 const pricingFaqs = [
-  { q: "Why don't you list prices publicly?", a: "Every business is different. We build custom packages based on your industry, team size, and operations needs. Book a free audit and we'll give you exact pricing in 24 hours." },
-  { q: 'Is there a contract?', a: "No long-term contracts. We're so confident OIOS will pay for itself that we offer a 60-day performance guarantee. Month-to-month, cancel anytime." },
-  { q: "What's included in the free audit?", a: 'A 30-minute call where we analyze your current operations, identify revenue leaks, and show you exactly how OIOS would work for your business. No obligation.' },
-  { q: 'Can I upgrade or downgrade?', a: 'Absolutely. As your business grows, your AI team grows with you. Upgrades take effect immediately — no waiting period.' },
+  { q: "Why don't you list prices publicly?", a: "Every stack is custom — your rules, your tools, your workflows. We quote against what you'd spend hiring for the same work (a receptionist, a bookkeeper, a dev shop), not against a menu. Book a call and we'll scope it with you." },
+  { q: 'Is there a contract?', a: 'No. Month-to-month, cancel anytime, no fees. And you own everything we build — if you leave, every tool, integration, and piece of data walks with you.' },
+  { q: 'What happens in Month 1?', a: "The install. We set up your AI Operating System, connect your tools, and ship your first custom build live by Day 7 — a real thing working in your business, not a demo. Then the monthly rhythm starts: one meeting, one big build, everything else keeps running." },
+  { q: 'Can I change bands later?', a: 'Yes. The bands describe scope, not a cage. As your business grows, the build cadence and coverage grow with it — changes take effect the next month.' },
 ]
 
 function PricingFAQ() {
@@ -683,7 +679,7 @@ export function WhatToExpect() {
             >
               <div className="w-1.5 h-1.5 bg-amber-400 rounded-full mr-2.5 animate-pulse" />
               <span className="text-[10px] font-mono uppercase tracking-[0.18em] text-slate-400">
-                Choose Your Level
+                Capability Bands
               </span>
             </motion.div>
 
@@ -697,7 +693,7 @@ export function WhatToExpect() {
                 animate={tiersInView ? { opacity: 1, y: 0 } : {}}
                 transition={{ delay: 0.15, duration: 0.6 }}
               >
-                Three Tiers.
+                Three bands.
               </motion.span>
               <motion.span
                 className="gradient-text-warm"
@@ -705,7 +701,7 @@ export function WhatToExpect() {
                 animate={tiersInView ? { opacity: 1, y: 0 } : {}}
                 transition={{ delay: 0.25, duration: 0.6 }}
               >
-                One Goal.
+                One partner.
               </motion.span>
             </h2>
 
@@ -715,7 +711,7 @@ export function WhatToExpect() {
               animate={tiersInView ? { opacity: 1 } : {}}
               transition={{ delay: 0.4 }}
             >
-              Your audit determines which tier fits — and the price is based on what you actually need.
+              Bands describe scope, not price. Every engagement is quoted custom — against what you&apos;d spend hiring for the same work.
             </motion.p>
           </motion.div>
 
@@ -767,8 +763,8 @@ export function WhatToExpect() {
               className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight"
               style={{ fontFamily: 'var(--font-display), sans-serif' }}
             >
-              <span className="text-white">From Audit to </span>
-              <span className="gradient-text">Autopilot.</span>
+              <span className="text-white">From install to </span>
+              <span className="gradient-text">autopilot.</span>
             </h2>
           </motion.div>
 
@@ -835,14 +831,15 @@ export function WhatToExpect() {
                 className="text-3xl sm:text-4xl font-bold text-white mb-3 relative"
                 style={{ fontFamily: 'var(--font-display), sans-serif' }}
               >
-                60-Day Performance Guarantee
+                You Own Everything We Build
               </h3>
               <p className="text-emerald-400 font-bold text-lg mb-4 relative">
-                You Don&apos;t Pay Until It Pays for Itself
+                Month-to-Month. No Contracts. No Lock-In.
               </p>
               <p className="text-slate-400 text-base leading-relaxed max-w-lg mx-auto mb-10 relative">
-                If OIOS doesn&apos;t generate enough value to cover its cost in the first 60 days,
-                you pay nothing. Not a discount — a full walk-away. We take the risk so you don&apos;t have to.
+                Every tool, every integration, every piece of data is yours. If you ever leave,
+                it all walks with you and keeps working. We earn the retainer every 30 days —
+                or you stop paying it.
               </p>
 
               <MagneticButton>
@@ -851,7 +848,7 @@ export function WhatToExpect() {
                   data-cursor="cta"
                   className="inline-block bg-gradient-to-r from-amber-500 via-orange-400 to-amber-500 bg-[length:200%_100%] hover:bg-[position:100%_0] text-white px-12 py-[18px] rounded-xl text-lg font-bold shadow-[0_0_24px_rgba(245,158,11,0.3)] hover:shadow-[0_0_36px_rgba(245,158,11,0.5)] transition-all duration-300 relative tracking-wide"
                 >
-                  Start Risk-Free →
+                  Start Month 1 →
                 </Link>
               </MagneticButton>
             </div>

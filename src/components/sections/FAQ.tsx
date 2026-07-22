@@ -12,7 +12,7 @@ const faqs = [
   },
   {
     q: 'How long does setup take?',
-    a: 'Each project takes roughly 2 weeks to a month, depending on what you want to do. We connect to your systems, train the AI on your specific business, and build out your workflows. The more areas you want covered, the more we customize. Every project is scoped around your business.',
+    a: 'Your first build is live by Day 7. Month 1 is the install: we set up your AI Operating System, connect your tools, and ship one custom build that works in your business — not a demo. After that, the rhythm is one meeting a month, one big build (or two small ones), and everything already built keeps running 24/7.',
   },
   {
     q: 'What if my team doesn\u2019t like it?',
@@ -123,7 +123,7 @@ export function FAQ() {
             className="text-3xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-4"
             style={{ fontFamily: 'var(--font-display), sans-serif' }}
           >
-            Questions? <span className="gradient-text">We&apos;ve Got Answers</span>
+            The questions <span className="gradient-text">every owner asks first</span>
           </motion.h2>
 
           <motion.p

@@ -1,16 +1,16 @@
 ﻿'use client'
 
 const tickerItems = [
-  'Phone Answering',
-  'Job Scheduling',
-  'Lead Follow-Up',
-  'Review Requests',
-  'Daily Briefings',
-  'Invoice Reminders',
-  'Sales Pipeline',
-  'Content Creation',
-  'Dispatch Routing',
-  'Cash Flow Alerts',
+  'Every call answered',
+  'Jobs booked on the call',
+  'Leads chased in minutes',
+  'Reviews requested automatically',
+  'Your day briefed by 7 AM',
+  'Invoices chased for you',
+  'Pipeline you can see',
+  'Content that goes out weekly',
+  'Crews routed',
+  'Cash flow flagged early',
 ]
 
 export function DepartmentTicker() {

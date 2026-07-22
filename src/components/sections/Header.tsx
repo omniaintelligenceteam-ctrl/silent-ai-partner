@@ -108,7 +108,7 @@ export function Header() {
                 data-cursor="cta"
                 className="bg-gradient-to-r from-amber-500 to-amber-400 text-white px-5 py-2 rounded-lg text-sm font-medium btn-glow hover:from-amber-600 hover:to-amber-500 transition-all duration-200 whitespace-nowrap shrink-0"
               >
-                Start Risk-Free →
+                Start Month 1 →
               </Link>
             </MagneticButton>
           </div>
@@ -185,7 +185,7 @@ export function Header() {
                     className="block bg-gradient-to-r from-amber-500 to-amber-400 text-white px-4 py-3.5 rounded-lg text-sm font-bold btn-glow hover:from-amber-600 hover:to-amber-500 transition-all duration-200 text-center"
                     onClick={() => setMobileMenuOpen(false)}
                   >
-                    Start Risk-Free →
+                    Start Month 1 →
                   </Link>
                 </motion.div>
               </nav>
@@ -212,7 +212,7 @@ export function Header() {
                 data-cursor="cta"
                 className="block w-full bg-gradient-to-r from-amber-500 to-amber-400 text-white px-5 py-3.5 rounded-lg text-sm font-bold btn-glow hover:from-amber-600 hover:to-amber-500 transition-all duration-200 text-center"
               >
-                Start Risk-Free →
+                Start Month 1 →
               </Link>
             </div>
           </motion.div>

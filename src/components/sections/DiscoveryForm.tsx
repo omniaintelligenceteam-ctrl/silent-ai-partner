@@ -218,7 +218,7 @@ export function DiscoveryForm() {
             className="text-3xl sm:text-4xl font-bold text-white tracking-tight mb-3"
             style={{ fontFamily: 'var(--font-display), sans-serif' }}
           >
-            Let&apos;s see what we can do for you
+            What&apos;s eating your week?
           </h1>
           <p className="text-slate-400 text-base">
             Takes about 3 minutes. I&apos;ll use this to prep something specific for our call.

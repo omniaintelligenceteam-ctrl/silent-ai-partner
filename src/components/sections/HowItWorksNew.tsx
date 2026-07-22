@@ -5,11 +5,11 @@ import { useScroll, useTransform, motion, AnimatePresence } from 'motion/react'
 
 // ─── Step 1 Visual: Animated checklist with SVG checkmark draw ──────────────
 const auditItems = [
-  'How calls are currently handled',
-  'Where leads fall through the cracks',
-  'Admin tasks eating your week',
-  'Current tools and workflows',
-  'Revenue leaks and missed follow-ups',
+  'Workspace, integrations, and API keys set up',
+  'AI trained on your rules, prices, and tone',
+  'Phones and calendar connected',
+  'First custom build scoped with you',
+  'Build live and working by Day 7',
 ]
 
 function AnimatedCheck({ visible }: { visible: boolean }) {
@@ -68,7 +68,7 @@ function AuditChecklist({ active }: { active: boolean }) {
 
   return (
     <div className="glass-card p-6 lg:p-8 space-y-4">
-      <div className="text-[10px] font-mono text-slate-500 uppercase tracking-[0.15em] mb-6">Audit Scope</div>
+      <div className="text-[10px] font-mono text-slate-500 uppercase tracking-[0.15em] mb-6">Month 1 Install</div>
       {auditItems.map((item, i) => (
         <motion.div
           key={item}
@@ -263,25 +263,25 @@ function ChatMock({ active }: { active: boolean }) {
 const steps = [
   {
     number: '01',
-    title: 'We Audit Your Business',
-    description: 'We spend 60 minutes understanding your calls, admin, and workflows. No generic templates — we map the exact spots where time and money are leaking.',
+    title: 'Build: Your AI OS, Installed',
+    description: 'Month 1 is the install. We set up your workspace, connect your tools, train the AI on your rules, prices, and tone — and ship your first custom build live by Day 7. A real thing working in your business, not a demo.',
     visual: (active: boolean) => <AuditChecklist active={active} />,
     accent: 'text-teal-400',
     accentBg: 'bg-teal-400',
   },
   {
     number: '02',
-    title: 'We Build Your AI Operations Center',
-    description: 'Your OIOS instance gets built with your business data, your voice, your workflows. Every automation is configured to match how you already work. Two weeks to live.',
-    visual: (active: boolean) => <ConfigMock active={active} />,
+    title: 'Run: OIOS Works 24/7. You Approve What Matters.',
+    description: 'Phones, scheduling, follow-ups, invoicing — running around the clock. Nothing goes out to a customer without your say-so. You text OIOS like you\'d text an assistant, and it keeps you briefed.',
+    visual: (active: boolean) => <ChatMock active={active} />,
     accent: 'text-amber-400',
     accentBg: 'bg-amber-400',
   },
   {
     number: '03',
-    title: 'OIOS Runs 24/7. You Approve What Matters.',
-    description: 'Nothing gets sent to a customer without your say-so. You text OIOS like you\'d text an assistant. It handles the rest and keeps you briefed.',
-    visual: (active: boolean) => <ChatMock active={active} />,
+    title: 'Ship: Something New Every Month',
+    description: 'One meeting a month. One big build — or two small ones. Everything already built keeps running while the next thing ships. The stack compounds; the retainer stays month-to-month.',
+    visual: (active: boolean) => <ConfigMock active={active} />,
     accent: 'text-cyan-400',
     accentBg: 'bg-cyan-400',
   },
@@ -314,7 +314,7 @@ export function HowItWorksNew() {
               <span className="text-[10px] font-mono uppercase tracking-[0.15em] text-slate-400">How It Works</span>
             </div>
             <h2 className="text-3xl font-bold tracking-tight text-white" style={{ fontFamily: 'var(--font-display), sans-serif' }}>
-              Audit. Build. <span className="gradient-text">Run.</span>
+              Build. Run. <span className="gradient-text">Ship.</span>
             </h2>
           </div>
           <div className="space-y-16">

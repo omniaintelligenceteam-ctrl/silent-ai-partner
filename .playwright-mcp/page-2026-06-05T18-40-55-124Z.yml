@@ -1,0 +1,402 @@
+- generic [active] [ref=e1]:
+  - generic:
+    - generic:
+      - generic:
+        - generic: OIOS
+        - generic: OIOS
+        - generic: OIOS
+      - generic: OMNIA INTELLIGENCE
+  - generic [ref=e3]:
+    - banner [ref=e4]:
+      - generic [ref=e6]:
+        - link "OIOS — Omnia Intelligence OIOS by Omnia Intelligence AI" [ref=e7] [cursor=pointer]:
+          - /url: /
+          - img "OIOS — Omnia Intelligence" [ref=e8]
+          - generic [ref=e9]:
+            - generic [ref=e10]: OIOS
+            - generic [ref=e11]: by Omnia Intelligence AI
+        - navigation [ref=e12]:
+          - link "What It Does" [ref=e14] [cursor=pointer]:
+            - /url: /features
+          - link "How It Works" [ref=e16] [cursor=pointer]:
+            - /url: /how-it-works
+          - link "What to Expect" [ref=e18] [cursor=pointer]:
+            - /url: /pricing
+          - link "Live Demo" [ref=e20] [cursor=pointer]:
+            - /url: /demo
+          - link "About" [ref=e22] [cursor=pointer]:
+            - /url: /about
+        - generic [ref=e23]:
+          - button "Book a Call" [ref=e25] [cursor=pointer]
+          - link "Start Risk-Free →" [ref=e27] [cursor=pointer]:
+            - /url: /form
+    - generic [ref=e31]:
+      - generic [ref=e32]:
+        - generic [ref=e33]:
+          - img [ref=e34]
+          - generic [ref=e37]: Month-to-month. You own everything we build.
+        - heading "Your AI Operating System. Installed." [level=1] [ref=e38]:
+          - text: Your AI Operating System.
+          - generic [ref=e41]: Installed.
+        - paragraph [ref=e42]: We install your AI Operating System, ship your first build live in week one, then keep shipping on a monthly retainer. Phones, scheduling, sales, marketing, ops, finance — running 24/7.
+        - generic [ref=e43]:
+          - link "Start Month 1" [ref=e44] [cursor=pointer]:
+            - /url: /form
+            - button "Start Month 1" [ref=e45]:
+              - text: Start Month 1
+              - img [ref=e46]
+          - link "See It Live" [ref=e48] [cursor=pointer]:
+            - /url: /demo
+            - button "See It Live" [ref=e49]:
+              - img [ref=e50]
+              - text: See It Live
+      - generic [ref=e52]:
+        - img
+    - generic [ref=e55]:
+      - generic [ref=e56]:
+        - generic [ref=e57]: Phone Answering
+        - generic [ref=e58]: ·
+      - generic [ref=e59]:
+        - generic [ref=e60]: Job Scheduling
+        - generic [ref=e61]: ·
+      - generic [ref=e62]:
+        - generic [ref=e63]: Lead Follow-Up
+        - generic [ref=e64]: ·
+      - generic [ref=e65]:
+        - generic [ref=e66]: Review Requests
+        - generic [ref=e67]: ·
+      - generic [ref=e68]:
+        - generic [ref=e69]: Daily Briefings
+        - generic [ref=e70]: ·
+      - generic [ref=e71]:
+        - generic [ref=e72]: Invoice Reminders
+        - generic [ref=e73]: ·
+      - generic [ref=e74]:
+        - generic [ref=e75]: Sales Pipeline
+        - generic [ref=e76]: ·
+      - generic [ref=e77]:
+        - generic [ref=e78]: Content Creation
+        - generic [ref=e79]: ·
+      - generic [ref=e80]:
+        - generic [ref=e81]: Dispatch Routing
+        - generic [ref=e82]: ·
+      - generic [ref=e83]:
+        - generic [ref=e84]: Cash Flow Alerts
+        - generic [ref=e85]: ·
+      - generic [ref=e86]:
+        - generic [ref=e87]: Phone Answering
+        - generic [ref=e88]: ·
+      - generic [ref=e89]:
+        - generic [ref=e90]: Job Scheduling
+        - generic [ref=e91]: ·
+      - generic [ref=e92]:
+        - generic [ref=e93]: Lead Follow-Up
+        - generic [ref=e94]: ·
+      - generic [ref=e95]:
+        - generic [ref=e96]: Review Requests
+        - generic [ref=e97]: ·
+      - generic [ref=e98]:
+        - generic [ref=e99]: Daily Briefings
+        - generic [ref=e100]: ·
+      - generic [ref=e101]:
+        - generic [ref=e102]: Invoice Reminders
+        - generic [ref=e103]: ·
+      - generic [ref=e104]:
+        - generic [ref=e105]: Sales Pipeline
+        - generic [ref=e106]: ·
+      - generic [ref=e107]:
+        - generic [ref=e108]: Content Creation
+        - generic [ref=e109]: ·
+      - generic [ref=e110]:
+        - generic [ref=e111]: Dispatch Routing
+        - generic [ref=e112]: ·
+      - generic [ref=e113]:
+        - generic [ref=e114]: Cash Flow Alerts
+        - generic [ref=e115]: ·
+    - generic [ref=e118]:
+      - generic [ref=e121]: Built For Small Business
+      - heading "Your Entire Back Office, Run by OIOS." [level=2] [ref=e122]
+    - generic [ref=e126]:
+      - generic [ref=e127]:
+        - generic [ref=e128]:
+          - img [ref=e130]
+          - generic [ref=e132]:
+            - heading "Phones" [level=3] [ref=e133]
+            - paragraph [ref=e134]: Every call answered. Every caller remembered.
+        - generic [ref=e135]:
+          - button "Answering Modes" [ref=e137]:
+            - generic [ref=e138]: Answering Modes
+            - img [ref=e140]
+          - button "Alerting" [ref=e143]:
+            - generic [ref=e144]: Alerting
+            - img [ref=e146]
+          - button "Call Intelligence" [ref=e149]:
+            - generic [ref=e150]: Call Intelligence
+            - img [ref=e152]
+          - button "Language" [ref=e155]:
+            - generic [ref=e156]: Language
+            - img [ref=e158]
+          - button "Analytics" [ref=e161]:
+            - generic [ref=e162]: Analytics
+            - img [ref=e164]
+        - link "See it in action →" [ref=e166] [cursor=pointer]:
+          - /url: /demo
+      - generic [ref=e167]:
+        - generic [ref=e168]:
+          - img [ref=e170]
+          - generic [ref=e172]:
+            - heading "Scheduling" [level=3] [ref=e173]
+            - paragraph [ref=e174]: Booked on the call. Confirmed by text. No no-shows.
+        - generic [ref=e175]:
+          - button "Live Booking" [ref=e177]:
+            - generic [ref=e178]: Live Booking
+            - img [ref=e180]
+          - button "Calendar Sync" [ref=e183]:
+            - generic [ref=e184]: Calendar Sync
+            - img [ref=e186]
+          - button "Reminders" [ref=e189]:
+            - generic [ref=e190]: Reminders
+            - img [ref=e192]
+          - button "Smart Dispatch" [ref=e195]:
+            - generic [ref=e196]: Smart Dispatch
+            - img [ref=e198]
+          - button "Waitlist" [ref=e201]:
+            - generic [ref=e202]: Waitlist
+            - img [ref=e204]
+        - link "See it in action →" [ref=e206] [cursor=pointer]:
+          - /url: /demo
+      - generic [ref=e207]:
+        - generic [ref=e208]:
+          - img [ref=e210]
+          - generic [ref=e213]:
+            - heading "Sales" [level=3] [ref=e214]
+            - paragraph [ref=e215]: No lead falls through the cracks. Ever.
+        - generic [ref=e216]:
+          - button "Lead Capture" [ref=e218]:
+            - generic [ref=e219]: Lead Capture
+            - img [ref=e221]
+          - button "Follow-Up" [ref=e224]:
+            - generic [ref=e225]: Follow-Up
+            - img [ref=e227]
+          - button "Upselling" [ref=e230]:
+            - generic [ref=e231]: Upselling
+            - img [ref=e233]
+          - button "Lead Scoring" [ref=e236]:
+            - generic [ref=e237]: Lead Scoring
+            - img [ref=e239]
+          - button "Pipeline" [ref=e242]:
+            - generic [ref=e243]: Pipeline
+            - img [ref=e245]
+          - button "Outbound" [ref=e248]:
+            - generic [ref=e249]: Outbound
+            - img [ref=e251]
+        - link "See it in action →" [ref=e253] [cursor=pointer]:
+          - /url: /demo
+      - generic [ref=e254]:
+        - generic [ref=e255]:
+          - img [ref=e257]
+          - generic [ref=e260]:
+            - heading "Marketing" [level=3] [ref=e261]
+            - paragraph [ref=e262]: The stuff you know you should do but never have time for.
+        - generic [ref=e263]:
+          - button "Reviews" [ref=e265]:
+            - generic [ref=e266]: Reviews
+            - img [ref=e268]
+          - button "Re-Engagement" [ref=e271]:
+            - generic [ref=e272]: Re-Engagement
+            - img [ref=e274]
+          - button "Campaigns" [ref=e277]:
+            - generic [ref=e278]: Campaigns
+            - img [ref=e280]
+          - button "Content" [ref=e283]:
+            - generic [ref=e284]: Content
+            - img [ref=e286]
+          - button "Analytics" [ref=e289]:
+            - generic [ref=e290]: Analytics
+            - img [ref=e292]
+        - link "See it in action →" [ref=e294] [cursor=pointer]:
+          - /url: /demo
+      - generic [ref=e295]:
+        - generic [ref=e296]:
+          - img [ref=e298]
+          - generic [ref=e301]:
+            - heading "Operations" [level=3] [ref=e302]
+            - paragraph [ref=e303]: Wake up to a briefing. Not a mess.
+        - generic [ref=e304]:
+          - button "Daily Briefings" [ref=e306]:
+            - generic [ref=e307]: Daily Briefings
+            - img [ref=e309]
+          - button "CRM Sync" [ref=e312]:
+            - generic [ref=e313]: CRM Sync
+            - img [ref=e315]
+          - button "Reporting" [ref=e318]:
+            - generic [ref=e319]: Reporting
+            - img [ref=e321]
+          - button "Crew Management" [ref=e324]:
+            - generic [ref=e325]: Crew Management
+            - img [ref=e327]
+          - button "Job Tracking" [ref=e330]:
+            - generic [ref=e331]: Job Tracking
+            - img [ref=e333]
+          - button "Workflow Automation" [ref=e336]:
+            - generic [ref=e337]: Workflow Automation
+            - img [ref=e339]
+        - link "See it in action →" [ref=e341] [cursor=pointer]:
+          - /url: /demo
+      - generic [ref=e342]:
+        - generic [ref=e343]:
+          - img [ref=e345]
+          - generic [ref=e347]:
+            - heading "Finance" [level=3] [ref=e348]
+            - paragraph [ref=e349]: No more awkward past-due calls. We handle it.
+        - generic [ref=e350]:
+          - button "Invoicing" [ref=e352]:
+            - generic [ref=e353]: Invoicing
+            - img [ref=e355]
+          - button "Cash Flow" [ref=e358]:
+            - generic [ref=e359]: Cash Flow
+            - img [ref=e361]
+          - button "Profitability" [ref=e364]:
+            - generic [ref=e365]: Profitability
+            - img [ref=e367]
+          - button "Reporting" [ref=e370]:
+            - generic [ref=e371]: Reporting
+            - img [ref=e373]
+          - button "Planning" [ref=e376]:
+            - generic [ref=e377]: Planning
+            - img [ref=e379]
+        - link "See it in action →" [ref=e381] [cursor=pointer]:
+          - /url: /demo
+    - generic [ref=e384]:
+      - generic [ref=e385]:
+        - generic [ref=e388]: FAQ
+        - heading "Questions? We've Got Answers" [level=2] [ref=e389]
+        - paragraph [ref=e390]: Everything business owners ask before they sign up.
+      - generic [ref=e391]:
+        - button "Is my business data secure?" [ref=e393]:
+          - heading "Is my business data secure?" [level=3] [ref=e394]
+          - img [ref=e396]
+        - button "How long does setup take?" [ref=e398]:
+          - heading "How long does setup take?" [level=3] [ref=e399]
+          - img [ref=e401]
+        - button "What if my team doesn’t like it?" [ref=e403]:
+          - heading "What if my team doesn’t like it?" [level=3] [ref=e404]
+          - img [ref=e406]
+        - button "Can I cancel anytime?" [ref=e408]:
+          - heading "Can I cancel anytime?" [level=3] [ref=e409]
+          - img [ref=e411]
+        - button "Do I need to change my phone number?" [ref=e413]:
+          - heading "Do I need to change my phone number?" [level=3] [ref=e414]
+          - img [ref=e416]
+        - button "What happens if the AI gets something wrong?" [ref=e418]:
+          - heading "What happens if the AI gets something wrong?" [level=3] [ref=e419]
+          - img [ref=e421]
+        - button "What types of businesses do you work with?" [ref=e423]:
+          - heading "What types of businesses do you work with?" [level=3] [ref=e424]
+          - img [ref=e426]
+    - generic [ref=e429]:
+      - generic [ref=e430]:
+        - heading "Let's see what we can do for you" [level=1] [ref=e431]
+        - paragraph [ref=e432]: Takes about 3 minutes. I'll use this to prep something specific for our call.
+      - generic [ref=e433]:
+        - generic [ref=e434]:
+          - generic [ref=e435]:
+            - generic [ref=e436]:
+              - generic [ref=e437]: Your Name
+              - textbox "Your name" [ref=e438]
+            - generic [ref=e439]:
+              - generic [ref=e440]: Business Name
+              - textbox "Your business" [ref=e441]
+          - generic [ref=e442]:
+            - generic [ref=e443]: What does your business do?
+            - textbox "e.g. dental practice, insurance agency, restaurant, real estate..." [ref=e444]
+          - generic [ref=e445]:
+            - generic [ref=e446]: How many people on your team?
+            - generic [ref=e447]:
+              - button "Just me" [ref=e448]
+              - button "2-5" [ref=e449]
+              - button "6-15" [ref=e450]
+              - button "16+" [ref=e451]
+          - generic [ref=e452]:
+            - generic [ref=e453]: About how many calls per week?
+            - generic [ref=e454]:
+              - button "Under 20" [ref=e455]
+              - button "20-50" [ref=e456]
+              - button "50-100" [ref=e457]
+              - button "100+" [ref=e458]
+          - generic [ref=e459]:
+            - generic [ref=e460]: Who handles your calls right now?
+            - generic [ref=e461]:
+              - button "Me" [ref=e462]
+              - button "Office person" [ref=e463]
+              - button "Answering service" [ref=e464]
+              - button "It's chaos" [ref=e465]
+          - generic [ref=e466]:
+            - generic [ref=e467]: What's your biggest pain point right now?
+            - textbox "The thing that keeps you up at night..." [ref=e468]
+          - generic [ref=e469]:
+            - generic [ref=e470]: What software do you use to run your business? (optional)
+            - textbox "e.g. Jobber, ServiceTitan, QuickBooks, spreadsheets..." [ref=e471]
+          - generic [ref=e472]:
+            - generic [ref=e473]: Phone number
+            - textbox "(XXX) XXX-XXXX" [ref=e474]
+          - generic [ref=e475]:
+            - generic [ref=e476]: Best time to talk?
+            - generic [ref=e477]:
+              - button "Morning" [ref=e478]
+              - button "Afternoon" [ref=e479]
+              - button "Evening" [ref=e480]
+              - button "Whenever" [ref=e481]
+          - button "Submit" [ref=e483]
+        - paragraph [ref=e485]: No commitment. No credit card. Just a conversation.
+    - generic [ref=e494]:
+      - generic [ref=e496]: Get Started
+      - heading "Ready to Install Your AI OS?" [level=2] [ref=e497]:
+        - text: Ready to Install
+        - text: Your AI OS?
+      - paragraph [ref=e498]: "Month 1: install + your first build live by Day 7. Month-to-month. You own every tool, integration, and piece of data we build."
+      - link "Start Month 1 →" [ref=e501] [cursor=pointer]:
+        - /url: /form
+    - contentinfo [ref=e503]:
+      - generic [ref=e504]:
+        - generic [ref=e505]:
+          - generic [ref=e506]:
+            - link "OIOS" [ref=e507] [cursor=pointer]:
+              - /url: /
+            - paragraph [ref=e508]: by Omnia Intelligence AI
+            - paragraph [ref=e509]: AI operations for small businesses. Calls answered, admin handled, pipeline visible — 24/7.
+            - link "team@getoios.com" [ref=e510] [cursor=pointer]:
+              - /url: mailto:team@getoios.com
+            - link "(480) 305-0357" [ref=e511] [cursor=pointer]:
+              - /url: tel:+14803050357
+          - generic [ref=e512]:
+            - heading "Navigate" [level=3] [ref=e513]
+            - list [ref=e514]:
+              - listitem [ref=e515]:
+                - link "What It Does" [ref=e516] [cursor=pointer]:
+                  - /url: /features
+              - listitem [ref=e517]:
+                - link "How It Works" [ref=e518] [cursor=pointer]:
+                  - /url: /how-it-works
+              - listitem [ref=e519]:
+                - link "Solutions" [ref=e520] [cursor=pointer]:
+                  - /url: /solutions
+              - listitem [ref=e521]:
+                - link "Live Demo" [ref=e522] [cursor=pointer]:
+                  - /url: /demo
+              - listitem [ref=e523]:
+                - link "What to Expect" [ref=e524] [cursor=pointer]:
+                  - /url: /pricing
+              - listitem [ref=e525]:
+                - link "Book Your Audit" [ref=e526] [cursor=pointer]:
+                  - /url: /form
+          - generic [ref=e527]:
+            - heading "Legal" [level=3] [ref=e528]
+            - list [ref=e529]:
+              - listitem [ref=e530]:
+                - link "Privacy Policy" [ref=e531] [cursor=pointer]:
+                  - /url: /privacy
+              - listitem [ref=e532]:
+                - link "Terms of Service" [ref=e533] [cursor=pointer]:
+                  - /url: /terms
+        - paragraph [ref=e536]: © 2026 Omnia Intelligence AI. All rights reserved.

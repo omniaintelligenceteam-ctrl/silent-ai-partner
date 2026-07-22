@@ -11,13 +11,13 @@ import { PageEntrance } from '@/components/ui/PageEntrance'
 import { SectionTransition } from '@/components/ui/SectionTransition'
 
 export const metadata: Metadata = {
-  title: 'Pricing — OIOS | AI Operations for Small Businesses',
+  title: 'What to Expect — OIOS | AI Operations for Small Businesses',
   description:
-    'Custom-built AI operations for your business. No fixed tiers — we build exactly what you need.',
+    'Three capability bands, every engagement custom-quoted. Month 1 installs your AI Operating System with your first build live by Day 7 — then one big build every month.',
   openGraph: {
-    title: 'Pricing — OIOS | AI Operations for Small Businesses',
+    title: 'What to Expect — OIOS | AI Operations for Small Businesses',
     description:
-      'Simple, transparent pricing for AI-powered operations. Less than a part-time hire. More than an entire operations team.',
+      'Three capability bands, every engagement custom-quoted. Month 1 installs your AI Operating System with your first build live by Day 7 — then one big build every month.',
     url: 'https://getoios.com/pricing',
     images: [
       {
@@ -30,9 +30,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Pricing — OIOS | AI Operations for Small Businesses',
+    title: 'What to Expect — OIOS | AI Operations for Small Businesses',
     description:
-      'Simple, transparent pricing for AI-powered operations. Less than a part-time hire. More than an entire operations team.',
+      'Three capability bands, every engagement custom-quoted. Month 1 installs your AI Operating System with your first build live by Day 7 — then one big build every month.',
     images: ['/opengraph-image'],
   },
   alternates: {
@@ -47,8 +47,8 @@ export default function PricingPage() {
         <Header />
         <PageHero
           title="Custom-Built for Your Business"
-          subtitle="Only pay for what works."
-          badge="Pricing"
+          subtitle="Scope that fits, quoted against the hires you'll never make."
+          badge="What to Expect"
         />
         <WhatToExpect />
         <SectionTransition />

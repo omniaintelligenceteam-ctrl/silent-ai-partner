@@ -30,14 +30,14 @@ export const metadata: Metadata = {
     apple: '/apple-touch-icon.png',
   },
   title: {
-    default: "OIOS — Your AI-Powered Operations Team | Omnia Intelligence AI",
+    default: "OIOS — We install AI Operating Systems for small businesses | Omnia Intelligence AI",
     template: "%s | OIOS by Omnia Intelligence AI",
   },
-  description: "Answer every call. Capture every lead. Run every task. OIOS answers calls 24/7, automates back office workflows, and shows you every lead, job, and dollar in real time.",
+  description: "We build the software you need, run the operations you can't afford to hire for, and ship something new every 30 days. Calls answered, admin handled, pipeline visible — 24/7.",
   keywords: "AI operations, AI for small businesses, AI receptionist, AI back office, business automation, OIOS, Omnia Intelligence AI, AI office manager, small business AI",
   openGraph: {
-    title: "OIOS — AI-Powered Operations for Small Businesses",
-    description: "OIOS answers calls 24/7, automates back office workflows, and shows you every lead, job, and dollar in real time. Free audit.",
+    title: "OIOS — We install AI Operating Systems for small businesses",
+    description: "We install your AI Operating System, ship your first build live by Day 7, then keep shipping every month. Calls answered, admin handled, pipeline visible — 24/7.",
     type: "website",
     url: "https://getoios.com",
     siteName: "OIOS by Omnia Intelligence AI",
@@ -46,14 +46,14 @@ export const metadata: Metadata = {
         url: "/opengraph-image",
         width: 1200,
         height: 630,
-        alt: "OIOS — AI Operations Platform for Small Businesses",
+        alt: "OIOS — AI Operating Systems for small businesses, installed",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "OIOS — AI-Powered Operations for Small Businesses",
-    description: "OIOS answers calls 24/7, automates back office workflows, and shows you every lead, job, and dollar in real time. Free audit.",
+    title: "OIOS — We install AI Operating Systems for small businesses",
+    description: "We install your AI Operating System, ship your first build live by Day 7, then keep shipping every month. Calls answered, admin handled, pipeline visible — 24/7.",
     images: ["/opengraph-image"],
   },
   alternates: {
@@ -118,27 +118,27 @@ export default function RootLayout({
     "publisher": { "@id": "https://getoios.com/#organization" },
   };
 
-  const softwareSchema = {
+  const serviceSchema = {
     "@context": "https://schema.org",
-    "@type": "SoftwareApplication",
-    "@id": "https://getoios.com/#software",
+    "@type": "ProfessionalService",
+    "@id": "https://getoios.com/#service",
     "name": "OIOS",
-    "alternateName": "OIOS AI Operations Platform",
-    "description": "AI-powered operations platform for small businesses. Includes 24/7 AI receptionist, automated scheduling, follow-up automation, CRM management, revenue tracking, and marketing content generation.",
+    "alternateName": "OIOS AI Operating System",
+    "description": "AI-first operations partner for small businesses on a monthly retainer. OIOS installs a custom AI Operating System, runs phones, scheduling, follow-ups, invoicing, and reporting 24/7, and ships a new custom build every month.",
     "url": "https://getoios.com",
-    "applicationCategory": "BusinessApplication",
-    "operatingSystem": "Web-based (SaaS)",
-    "featureList": [
-      "24/7 AI Receptionist",
-      "Automated Lead Capture",
-      "Appointment Scheduling",
-      "Follow-Up Automation",
-      "Proposal Generation",
-      "CRM Management",
-      "Revenue Tracking",
-      "Marketing Content Generation",
-    ],
-    "publisher": { "@id": "https://getoios.com/#organization" },
+    "provider": { "@id": "https://getoios.com/#organization" },
+    "areaServed": { "@type": "Country", "name": "United States" },
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "OIOS capabilities",
+      "itemListElement": [
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "24/7 AI call answering and lead capture" } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Appointment scheduling and reminders" } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Follow-up and pipeline automation" } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Invoicing and cash-flow reporting" } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Custom software builds shipped monthly" } },
+      ],
+    },
   };
 
   return (
@@ -147,7 +147,7 @@ export default function RootLayout({
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
-            __html: JSON.stringify([organizationSchema, websiteSchema, softwareSchema]),
+            __html: JSON.stringify([organizationSchema, websiteSchema, serviceSchema]),
           }}
         />
       </head>
