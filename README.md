@@ -108,6 +108,21 @@ src/
   lib/             # Utilities (rate-limit, sanitize)
 ```
 
+## Plaud MCP
+
+`.mcp.json` registers the [Plaud](https://docs.plaud.ai/plaud-mcp-cli/mcp) MCP server at project scope, so
+recordings, transcripts, and AI notes are reachable from a Claude Code session in this repo — useful when
+pulling call transcripts into audit prep or site copy.
+
+Approve the server when Claude Code prompts on first launch, then ask for a recording (`list my recent Plaud
+recordings`) to run the one-time browser OAuth. Tokens land in `~/.plaud/tokens-mcp.json` and refresh
+automatically. Tools: `login`, `logout`, `get_current_user`, `list_files`, `get_file`, `get_note`,
+`get_transcript`.
+
+For the matching skills (`plaud-browse`, `plaud-find`, `plaud-read`, `plaud-digest`, `plaud-followup`,
+`plaud-export`, `plaud-shared`) run `npx -y @plaud-ai/mcp@latest install` once — it writes them to
+`~/.claude/skills/`, which is per-machine and outside this repo.
+
 ## License
 
 Proprietary. Omnia Intelligence AI.
