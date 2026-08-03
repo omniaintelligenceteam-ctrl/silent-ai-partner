@@ -108,20 +108,22 @@ src/
   lib/             # Utilities (rate-limit, sanitize)
 ```
 
-## Plaud MCP
+## Plaud
 
-`.mcp.json` registers the [Plaud](https://docs.plaud.ai/plaud-mcp-cli/mcp) MCP server at project scope, so
-recordings, transcripts, and AI notes are reachable from a Claude Code session in this repo — useful when
-pulling call transcripts into audit prep or site copy.
+Call recordings live in [Plaud](https://docs.plaud.ai/plaud-mcp-cli/mcp) and reach Claude through the
+account-level **Plaud** connector (claude.ai → Settings → Connectors), not through anything in this repo —
+useful when pulling call transcripts into audit prep or site copy. Tools: `get_current_user`, `list_files`,
+`get_file`, `get_note`, `get_transcript`.
 
-Approve the server when Claude Code prompts on first launch, then ask for a recording (`list my recent Plaud
-recordings`) to run the one-time browser OAuth. Tokens land in `~/.plaud/tokens-mcp.json` and refresh
-automatically. Tools: `login`, `logout`, `get_current_user`, `list_files`, `get_file`, `get_note`,
-`get_transcript`.
+Deliberately no `.mcp.json` here. A project-scoped stdio server would shadow the connector with a second,
+separately-authenticated Plaud whose tools error until OAuth runs on that machine — and OAuth can't complete
+in a remote session, since the callback binds to `localhost:8199` on whichever host started it.
 
-For the matching skills (`plaud-browse`, `plaud-find`, `plaud-read`, `plaud-digest`, `plaud-followup`,
-`plaud-export`, `plaud-shared`) run `npx -y @plaud-ai/mcp@latest install` once — it writes them to
-`~/.claude/skills/`, which is per-machine and outside this repo.
+`list_files` only returns recordings that have finished syncing, and `get_transcript`/`get_note` return `[]`
+until a recording is transcribed in the Plaud app — syncing the audio is not enough. Recordings are named by
+timestamp, so filter with `date_from`/`date_to` rather than `query`. For the companion skills (`plaud-read`,
+`plaud-digest`, `plaud-followup`, …) run `npx -y @plaud-ai/mcp@latest install` on your own machine; they land
+in `~/.claude/skills/` and are per-machine.
 
 ## License
 
